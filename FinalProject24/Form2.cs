@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class LoginUserControl : UserControl
+    public partial class loginForm : Form
     {
-        public LoginUserControl()
+        public loginForm()
         {
             InitializeComponent();
         }
