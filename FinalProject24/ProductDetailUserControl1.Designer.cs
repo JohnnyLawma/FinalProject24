@@ -53,7 +53,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(110, 69);
+            pictureBox1.Location = new Point(71, 61);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(416, 277);
             pictureBox1.TabIndex = 0;
@@ -63,7 +63,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(551, 53);
+            label1.Location = new Point(512, 45);
             label1.Name = "label1";
             label1.Size = new Size(202, 37);
             label1.TabIndex = 12;
@@ -72,20 +72,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16.25F, FontStyle.Bold);
-            label2.Location = new Point(551, 161);
+            label2.Font = new Font("Segoe UI Semibold", 17.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(512, 153);
             label2.Name = "label2";
-            label2.Size = new Size(127, 30);
+            label2.Size = new Size(129, 31);
             label2.TabIndex = 13;
             label2.Text = "Spice Level";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16.25F, FontStyle.Bold);
-            label3.Location = new Point(551, 341);
+            label3.Font = new Font("Segoe UI Semibold", 17.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(512, 333);
             label3.Name = "label3";
-            label3.Size = new Size(197, 30);
+            label3.Size = new Size(197, 31);
             label3.TabIndex = 14;
             label3.Text = "Extra Condiments";
             // 
@@ -93,7 +93,7 @@
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 11.25F);
-            checkBox1.Location = new Point(556, 210);
+            checkBox1.Location = new Point(517, 202);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(83, 24);
             checkBox1.TabIndex = 15;
@@ -105,7 +105,7 @@
             // 
             checkBox2.AutoSize = true;
             checkBox2.Font = new Font("Segoe UI", 11.25F);
-            checkBox2.Location = new Point(556, 247);
+            checkBox2.Location = new Point(517, 239);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(53, 24);
             checkBox2.TabIndex = 16;
@@ -117,7 +117,7 @@
             // 
             checkBox3.AutoSize = true;
             checkBox3.Font = new Font("Segoe UI", 11.25F);
-            checkBox3.Location = new Point(556, 289);
+            checkBox3.Location = new Point(517, 281);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(111, 24);
             checkBox3.TabIndex = 17;
@@ -129,7 +129,7 @@
             // 
             checkBox4.AutoSize = true;
             checkBox4.Font = new Font("Segoe UI", 11.25F);
-            checkBox4.Location = new Point(556, 383);
+            checkBox4.Location = new Point(517, 375);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(71, 24);
             checkBox4.TabIndex = 18;
@@ -141,7 +141,7 @@
             // 
             checkBox5.AutoSize = true;
             checkBox5.Font = new Font("Segoe UI", 11.25F);
-            checkBox5.Location = new Point(556, 422);
+            checkBox5.Location = new Point(517, 414);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(129, 24);
             checkBox5.TabIndex = 19;
@@ -153,7 +153,7 @@
             // 
             checkBox6.AutoSize = true;
             checkBox6.Font = new Font("Segoe UI", 11.25F);
-            checkBox6.Location = new Point(556, 463);
+            checkBox6.Location = new Point(517, 455);
             checkBox6.Name = "checkBox6";
             checkBox6.Size = new Size(95, 24);
             checkBox6.TabIndex = 20;
@@ -167,7 +167,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(551, 530);
+            button1.Location = new Point(512, 522);
             button1.Name = "button1";
             button1.Size = new Size(319, 41);
             button1.TabIndex = 21;
@@ -178,7 +178,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(558, 96);
+            label4.Location = new Point(519, 88);
             label4.Name = "label4";
             label4.Size = new Size(56, 25);
             label4.TabIndex = 22;
@@ -188,7 +188,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(105, 369);
+            label5.Location = new Point(66, 361);
             label5.Name = "label5";
             label5.Size = new Size(108, 25);
             label5.TabIndex = 23;
@@ -207,7 +207,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(label6);
-            groupBox1.Location = new Point(110, 397);
+            groupBox1.Location = new Point(71, 389);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(416, 117);
             groupBox1.TabIndex = 25;
@@ -215,7 +215,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(599, 501);
+            button2.Location = new Point(560, 493);
             button2.Name = "button2";
             button2.Size = new Size(28, 23);
             button2.TabIndex = 26;
@@ -225,7 +225,7 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(553, 501);
+            button3.Location = new Point(514, 493);
             button3.Name = "button3";
             button3.Size = new Size(29, 23);
             button3.TabIndex = 27;
@@ -236,7 +236,7 @@
             // 
             label7.AutoSize = true;
             label7.BackColor = SystemColors.ControlLight;
-            label7.Location = new Point(581, 505);
+            label7.Location = new Point(542, 497);
             label7.Name = "label7";
             label7.Size = new Size(19, 15);
             label7.TabIndex = 28;
