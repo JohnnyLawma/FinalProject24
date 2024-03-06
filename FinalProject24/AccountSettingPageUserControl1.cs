@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class loginForm : Form
+    public partial class AccountSettingPageUserControl1 : UserControl
     {
-        public loginForm()
+        public AccountSettingPageUserControl1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

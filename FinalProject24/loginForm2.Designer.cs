@@ -89,6 +89,59 @@
             button1.TabIndex = 8;
             button1.Text = "Sign In";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.ScrollBar;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(131, 176);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(262, 29);
+            textBox2.TabIndex = 6;
+            textBox2.Text = "Enter your password";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(25, 178);
+            label3.Name = "label3";
+            label3.Size = new Size(79, 21);
+            label3.TabIndex = 5;
+            label3.Text = "Password:";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ScrollBar;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(131, 114);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(262, 29);
+            textBox1.TabIndex = 4;
+            textBox1.Text = "Enter your email";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(53, 116);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 21);
+            label2.TabIndex = 3;
+            label2.Text = "Email:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(94, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(196, 37);
+            label1.TabIndex = 1;
+            label1.Text = "Welcome Back!";
             // 
             // textBox2
             // 
