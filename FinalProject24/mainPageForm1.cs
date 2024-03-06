@@ -1,8 +1,8 @@
 namespace FinalProject24
 {
-    public partial class Form1 : Form
+    public partial class mainPageForm1 : Form
     {
-        public Form1()
+        public mainPageForm1()
         {
             InitializeComponent();
         }
