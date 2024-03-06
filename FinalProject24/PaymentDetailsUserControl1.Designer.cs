@@ -147,7 +147,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(379, 425);
+            button1.Location = new Point(360, 428);
             button1.Name = "button1";
             button1.Size = new Size(187, 41);
             button1.TabIndex = 15;
