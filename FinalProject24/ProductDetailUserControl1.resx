@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label6.Text" xml:space="preserve">
+    <value>﻿A burger typically consists of a cooked patty, often made 
+from ground meat such as beef, placed inside a sliced bun. 
+Toppings can include lettuce, tomato, onion, pickles, cheese,
+ and condiments like ketchup, mustard, and mayonnaise.</value>
+  </data>
 </root>
