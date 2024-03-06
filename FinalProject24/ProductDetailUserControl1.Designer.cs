@@ -99,7 +99,6 @@
             checkBox1.TabIndex = 15;
             checkBox1.Text = "Medium";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // checkBox2
             // 
@@ -111,7 +110,6 @@
             checkBox2.TabIndex = 16;
             checkBox2.Text = "Hot";
             checkBox2.UseVisualStyleBackColor = true;
-            checkBox2.CheckedChanged += this.checkBox2_CheckedChanged;
             // 
             // checkBox3
             // 
@@ -123,7 +121,6 @@
             checkBox3.TabIndex = 17;
             checkBox3.Text = "Extreme Hot";
             checkBox3.UseVisualStyleBackColor = true;
-            checkBox3.CheckedChanged += this.checkBox3_CheckedChanged;
             // 
             // checkBox4
             // 
@@ -135,7 +132,6 @@
             checkBox4.TabIndex = 18;
             checkBox4.Text = "Honey";
             checkBox4.UseVisualStyleBackColor = true;
-            checkBox4.CheckedChanged += this.checkBox4_CheckedChanged;
             // 
             // checkBox5
             // 
@@ -147,7 +143,6 @@
             checkBox5.TabIndex = 19;
             checkBox5.Text = "Honey Mustard";
             checkBox5.UseVisualStyleBackColor = true;
-            checkBox5.CheckedChanged += this.checkBox5_CheckedChanged;
             // 
             // checkBox6
             // 
@@ -159,7 +154,6 @@
             checkBox6.TabIndex = 20;
             checkBox6.Text = "Hot Sause";
             checkBox6.UseVisualStyleBackColor = true;
-            checkBox6.CheckedChanged += this.checkBox6_CheckedChanged;
             // 
             // button1
             // 
@@ -221,6 +215,7 @@
             button2.TabIndex = 26;
             button2.Text = "+";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -231,6 +226,7 @@
             button3.TabIndex = 27;
             button3.Text = "-";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // label7
             // 
@@ -238,9 +234,9 @@
             label7.BackColor = SystemColors.ControlLight;
             label7.Location = new Point(542, 497);
             label7.Name = "label7";
-            label7.Size = new Size(19, 15);
+            label7.Size = new Size(13, 15);
             label7.TabIndex = 28;
-            label7.Text = "11";
+            label7.Text = "1";
             // 
             // ProductDetailUserControl1
             // 
@@ -265,7 +261,6 @@
             Controls.Add(groupBox1);
             Name = "ProductDetailUserControl1";
             Size = new Size(900, 600);
-            Load += this.ProductDetailUserControl1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

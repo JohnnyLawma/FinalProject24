@@ -17,9 +17,18 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            int count = int.Parse(label7.Text);
+            count = Math.Max(0, count - 1);
+            label7.Text = count.ToString();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int count = int.Parse(label7.Text); 
+            count += 1;
+            label7.Text = count.ToString();
         }
     }
 }
