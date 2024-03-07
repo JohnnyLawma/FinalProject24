@@ -28,114 +28,166 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            MenuSideBar = new Panel();
             profilePictureBox = new PictureBox();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            settingButton = new Button();
+            paymentButton = new Button();
+            orderButton = new Button();
             nameLabel = new Label();
-            button4 = new Button();
-            panel1.SuspendLayout();
+            signOutButton = new Button();
+            TopBar = new Panel();
+            button1 = new Button();
+            searchTextBox = new TextBox();
+            mainPanel = new Panel();
+            MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).BeginInit();
+            TopBar.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // MenuSideBar
             // 
-            panel1.BackColor = Color.DarkCyan;
-            panel1.Controls.Add(profilePictureBox);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(nameLabel);
-            panel1.Controls.Add(button4);
-            panel1.Location = new Point(1, 0);
-            panel1.Margin = new Padding(2, 1, 2, 1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(100, 600);
-            panel1.TabIndex = 1;
+            MenuSideBar.BackColor = Color.FromArgb(124, 172, 175);
+            MenuSideBar.Controls.Add(profilePictureBox);
+            MenuSideBar.Controls.Add(settingButton);
+            MenuSideBar.Controls.Add(paymentButton);
+            MenuSideBar.Controls.Add(orderButton);
+            MenuSideBar.Controls.Add(nameLabel);
+            MenuSideBar.Controls.Add(signOutButton);
+            MenuSideBar.Location = new Point(2, 0);
+            MenuSideBar.Margin = new Padding(4, 2, 4, 2);
+            MenuSideBar.Name = "MenuSideBar";
+            MenuSideBar.Size = new Size(186, 1280);
+            MenuSideBar.TabIndex = 1;
             // 
             // profilePictureBox
             // 
             profilePictureBox.BackColor = Color.MintCream;
-            profilePictureBox.Location = new Point(12, 30);
-            profilePictureBox.Margin = new Padding(2, 1, 2, 1);
+            profilePictureBox.Location = new Point(22, 64);
+            profilePictureBox.Margin = new Padding(4, 2, 4, 2);
             profilePictureBox.Name = "profilePictureBox";
-            profilePictureBox.Size = new Size(75, 53);
+            profilePictureBox.Size = new Size(139, 113);
             profilePictureBox.TabIndex = 5;
             profilePictureBox.TabStop = false;
             // 
-            // button3
+            // settingButton
             // 
-            button3.Location = new Point(2, 205);
-            button3.Margin = new Padding(2, 1, 2, 1);
-            button3.Name = "button3";
-            button3.Size = new Size(96, 42);
-            button3.TabIndex = 2;
-            button3.Text = "Setting";
-            button3.UseVisualStyleBackColor = true;
+            settingButton.Location = new Point(4, 437);
+            settingButton.Margin = new Padding(4, 2, 4, 2);
+            settingButton.Name = "settingButton";
+            settingButton.Size = new Size(178, 90);
+            settingButton.TabIndex = 2;
+            settingButton.Text = "Setting";
+            settingButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // paymentButton
             // 
-            button2.Location = new Point(2, 161);
-            button2.Margin = new Padding(2, 1, 2, 1);
-            button2.Name = "button2";
-            button2.Size = new Size(96, 42);
-            button2.TabIndex = 1;
-            button2.Text = "Payment";
-            button2.UseVisualStyleBackColor = true;
+            paymentButton.Location = new Point(4, 343);
+            paymentButton.Margin = new Padding(4, 2, 4, 2);
+            paymentButton.Name = "paymentButton";
+            paymentButton.Size = new Size(178, 90);
+            paymentButton.TabIndex = 1;
+            paymentButton.Text = "Payment";
+            paymentButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // orderButton
             // 
-            button1.Location = new Point(2, 115);
-            button1.Margin = new Padding(2, 1, 2, 1);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 42);
-            button1.TabIndex = 0;
-            button1.Text = "Order";
-            button1.UseVisualStyleBackColor = true;
+            orderButton.Location = new Point(4, 245);
+            orderButton.Margin = new Padding(4, 2, 4, 2);
+            orderButton.Name = "orderButton";
+            orderButton.Size = new Size(178, 90);
+            orderButton.TabIndex = 0;
+            orderButton.Text = "Order";
+            orderButton.UseVisualStyleBackColor = true;
             // 
             // nameLabel
             // 
             nameLabel.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(12, 84);
-            nameLabel.Margin = new Padding(2, 0, 2, 0);
+            nameLabel.Location = new Point(22, 179);
+            nameLabel.Margin = new Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(75, 30);
+            nameLabel.Size = new Size(139, 64);
             nameLabel.TabIndex = 4;
             nameLabel.Text = "Name";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button4
+            // signOutButton
             // 
-            button4.Location = new Point(2, 250);
-            button4.Margin = new Padding(2, 1, 2, 1);
-            button4.Name = "button4";
-            button4.Size = new Size(96, 42);
-            button4.TabIndex = 3;
-            button4.Text = "Sign Out";
-            button4.UseVisualStyleBackColor = true;
+            signOutButton.Location = new Point(4, 533);
+            signOutButton.Margin = new Padding(4, 2, 4, 2);
+            signOutButton.Name = "signOutButton";
+            signOutButton.Size = new Size(178, 90);
+            signOutButton.TabIndex = 3;
+            signOutButton.Text = "Sign Out";
+            signOutButton.UseVisualStyleBackColor = true;
+            // 
+            // TopBar
+            // 
+            TopBar.AutoSize = true;
+            TopBar.BackColor = Color.FromArgb(41, 41, 41);
+            TopBar.Controls.Add(button1);
+            TopBar.Controls.Add(searchTextBox);
+            TopBar.Location = new Point(187, 0);
+            TopBar.Name = "TopBar";
+            TopBar.Size = new Size(1638, 132);
+            TopBar.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1308, 29);
+            button1.Name = "button1";
+            button1.Size = new Size(202, 68);
+            button1.TabIndex = 1;
+            button1.Text = "Carts: 0";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // searchTextBox
+            // 
+            searchTextBox.Location = new Point(528, 29);
+            searchTextBox.Multiline = true;
+            searchTextBox.Name = "searchTextBox";
+            searchTextBox.Size = new Size(686, 68);
+            searchTextBox.TabIndex = 0;
+            searchTextBox.Text = "Search restaurant";
+            // 
+            // mainPanel
+            // 
+            mainPanel.AutoSize = true;
+            mainPanel.Location = new Point(191, 135);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1634, 1062);
+            mainPanel.TabIndex = 3;
             // 
             // mainPageForm1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 561);
-            Controls.Add(panel1);
+            ClientSize = new Size(1827, 1197);
+            Controls.Add(mainPanel);
+            Controls.Add(TopBar);
+            Controls.Add(MenuSideBar);
+            Margin = new Padding(6);
             Name = "mainPageForm1";
             Text = "mainPageForm1";
-            panel1.ResumeLayout(false);
+            MenuSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).EndInit();
+            TopBar.ResumeLayout(false);
+            TopBar.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel MenuSideBar;
         private PictureBox profilePictureBox;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button settingButton;
+        private Button paymentButton;
+        private Button orderButton;
         private Label nameLabel;
-        private Button button4;
+        private Button signOutButton;
+        private Panel TopBar;
+        private Button button1;
+        private TextBox searchTextBox;
+        private Panel mainPanel;
     }
 }
