@@ -58,7 +58,7 @@ namespace FinalProject24
         public menuCardUserControl()
         {
             InitializeComponent();
-            addButton.Click += addButton_Click; // Ensure this handler is wired up to the '+' button's Click event
+            //addButton.Click += addButton_Click; // Ensure this handler is wired up to the '+' button's Click event
         }
 
         private void addButton_Click(object sender, EventArgs e)

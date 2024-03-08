@@ -15,7 +15,7 @@ namespace FinalProject24
         {
             count++;
             cartLabel.Text = "Cart: " + count.ToString();
-            MessageBox.Show(count.ToString());
+            //MessageBox.Show(count.ToString());
         }
 
   
