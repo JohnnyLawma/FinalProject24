@@ -37,9 +37,9 @@
             nameLabel = new Label();
             signOutButton = new Button();
             TopBar = new Panel();
-            cartLabel = new Button();
             searchTextBox = new TextBox();
             mainPanel = new Panel();
+            cartButton = new Button();
             menuLabel = new Label();
             menuPanel = new Panel();
             MenuSideBar.SuspendLayout();
@@ -131,25 +131,16 @@
             // 
             TopBar.AutoSize = true;
             TopBar.BackColor = Color.FromArgb(41, 41, 41);
-            TopBar.Controls.Add(cartLabel);
             TopBar.Controls.Add(searchTextBox);
+            TopBar.Controls.Add(cartButton);
             TopBar.Location = new Point(187, 0);
             TopBar.Name = "TopBar";
             TopBar.Size = new Size(1638, 132);
             TopBar.TabIndex = 2;
             // 
-            // cartLabel
-            // 
-            cartLabel.Location = new Point(1386, 29);
-            cartLabel.Name = "cartLabel";
-            cartLabel.Size = new Size(202, 68);
-            cartLabel.TabIndex = 1;
-            cartLabel.Text = "Carts: 0";
-            cartLabel.UseVisualStyleBackColor = true;
-            // 
             // searchTextBox
             // 
-            searchTextBox.Location = new Point(528, 29);
+            searchTextBox.Location = new Point(384, 29);
             searchTextBox.Multiline = true;
             searchTextBox.Name = "searchTextBox";
             searchTextBox.Size = new Size(766, 68);
@@ -166,6 +157,15 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1651, 1062);
             mainPanel.TabIndex = 3;
+            // 
+            // cartButton
+            // 
+            cartButton.Location = new Point(1254, 29);
+            cartButton.Name = "cartButton";
+            cartButton.Size = new Size(202, 68);
+            cartButton.TabIndex = 2;
+            cartButton.Text = "Carts: 0";
+            cartButton.UseVisualStyleBackColor = true;
             // 
             // menuLabel
             // 
@@ -218,10 +218,10 @@
         private Label nameLabel;
         private Button signOutButton;
         private Panel TopBar;
-        private Button cartLabel;
         private TextBox searchTextBox;
         private Panel mainPanel;
         private Panel menuPanel;
         private Label menuLabel;
+        private Button cartButton;
     }
 }

@@ -14,7 +14,7 @@ namespace FinalProject24
         private void Card_AddButtonClicked(object sender, EventArgs e)
         {
             count++;
-            cartLabel.Text = "Cart: " + count.ToString();
+            cartButton.Text = "Carts: " + count.ToString();
             //MessageBox.Show(count.ToString());
         }
 
