@@ -1,6 +1,6 @@
 ﻿namespace FinalProject24
 {
-    partial class signUpPageUserControl
+    partial class JG_signUpPageUserControl
     {
         /// <summary> 
         /// Required designer variable.

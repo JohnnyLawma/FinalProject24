@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class signUpPageUserControl : UserControl
+    public partial class JG_signUpPageUserControl : UserControl
     {
-        public signUpPageUserControl()
+        public JG_signUpPageUserControl()
         {
             InitializeComponent();
         }
