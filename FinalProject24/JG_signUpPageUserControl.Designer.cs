@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            radioButton2 = new RadioButton();
+            managerRadioButton = new RadioButton();
             label7 = new Label();
-            radioButton1 = new RadioButton();
-            textBox4 = new TextBox();
+            customerRadioButton = new RadioButton();
+            nameTextBox = new TextBox();
             label6 = new Label();
-            textBox3 = new TextBox();
+            confirmPasswordTextBox = new TextBox();
             label5 = new Label();
-            linkLabel1 = new LinkLabel();
+            loginLabel = new LinkLabel();
             label4 = new Label();
-            button1 = new Button();
-            textBox2 = new TextBox();
+            createAccountButton = new Button();
+            passwordTextBox = new TextBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            emailTextBox = new TextBox();
             label2 = new Label();
             label1 = new Label();
             SuspendLayout();
             // 
-            // radioButton2
+            // managerRadioButton
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(312, 284);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(72, 19);
-            radioButton2.TabIndex = 40;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Manager";
-            radioButton2.UseVisualStyleBackColor = true;
+            managerRadioButton.AutoSize = true;
+            managerRadioButton.Location = new Point(312, 284);
+            managerRadioButton.Name = "managerRadioButton";
+            managerRadioButton.Size = new Size(72, 19);
+            managerRadioButton.TabIndex = 40;
+            managerRadioButton.TabStop = true;
+            managerRadioButton.Text = "Manager";
+            managerRadioButton.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -66,27 +66,27 @@
             label7.TabIndex = 39;
             label7.Text = "What type of user are you?";
             // 
-            // radioButton1
+            // customerRadioButton
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(229, 284);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(77, 19);
-            radioButton1.TabIndex = 38;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Customer";
-            radioButton1.UseVisualStyleBackColor = true;
+            customerRadioButton.AutoSize = true;
+            customerRadioButton.Location = new Point(229, 284);
+            customerRadioButton.Name = "customerRadioButton";
+            customerRadioButton.Size = new Size(77, 19);
+            customerRadioButton.TabIndex = 38;
+            customerRadioButton.TabStop = true;
+            customerRadioButton.Text = "Customer";
+            customerRadioButton.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // nameTextBox
             // 
-            textBox4.BackColor = SystemColors.ScrollBar;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(147, 100);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(262, 29);
-            textBox4.TabIndex = 37;
-            textBox4.Text = "Enter your name";
+            nameTextBox.BackColor = SystemColors.ScrollBar;
+            nameTextBox.BorderStyle = BorderStyle.FixedSingle;
+            nameTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            nameTextBox.Location = new Point(147, 100);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.Size = new Size(262, 29);
+            nameTextBox.TabIndex = 37;
+            nameTextBox.Text = "Enter your name";
             // 
             // label6
             // 
@@ -98,16 +98,16 @@
             label6.TabIndex = 36;
             label6.Text = "Name:";
             // 
-            // textBox3
+            // confirmPasswordTextBox
             // 
-            textBox3.BackColor = SystemColors.ScrollBar;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(147, 240);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(262, 29);
-            textBox3.TabIndex = 35;
-            textBox3.Text = "Confirm your password";
+            confirmPasswordTextBox.BackColor = SystemColors.ScrollBar;
+            confirmPasswordTextBox.BorderStyle = BorderStyle.FixedSingle;
+            confirmPasswordTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            confirmPasswordTextBox.Location = new Point(147, 240);
+            confirmPasswordTextBox.Name = "confirmPasswordTextBox";
+            confirmPasswordTextBox.Size = new Size(262, 29);
+            confirmPasswordTextBox.TabIndex = 35;
+            confirmPasswordTextBox.Text = "Confirm your password";
             // 
             // label5
             // 
@@ -119,16 +119,16 @@
             label5.TabIndex = 34;
             label5.Text = "Retype Password:";
             // 
-            // linkLabel1
+            // loginLabel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 12F);
-            linkLabel1.Location = new Point(276, 359);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(53, 21);
-            linkLabel1.TabIndex = 33;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Log In";
+            loginLabel.AutoSize = true;
+            loginLabel.Font = new Font("Segoe UI", 12F);
+            loginLabel.Location = new Point(276, 359);
+            loginLabel.Name = "loginLabel";
+            loginLabel.Size = new Size(53, 21);
+            loginLabel.TabIndex = 33;
+            loginLabel.TabStop = true;
+            loginLabel.Text = "Log In";
             // 
             // label4
             // 
@@ -140,29 +140,30 @@
             label4.TabIndex = 32;
             label4.Text = "Already have an account?";
             // 
-            // button1
+            // createAccountButton
             // 
-            button1.BackColor = Color.Black;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(98, 310);
-            button1.Name = "button1";
-            button1.Size = new Size(262, 33);
-            button1.TabIndex = 31;
-            button1.Text = "Create Account";
-            button1.UseVisualStyleBackColor = false;
+            createAccountButton.BackColor = Color.Black;
+            createAccountButton.FlatStyle = FlatStyle.Flat;
+            createAccountButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createAccountButton.ForeColor = SystemColors.ButtonHighlight;
+            createAccountButton.Location = new Point(98, 310);
+            createAccountButton.Name = "createAccountButton";
+            createAccountButton.Size = new Size(262, 33);
+            createAccountButton.TabIndex = 31;
+            createAccountButton.Text = "Create Account";
+            createAccountButton.UseVisualStyleBackColor = false;
+            createAccountButton.Click += createAccountButton_Click;
             // 
-            // textBox2
+            // passwordTextBox
             // 
-            textBox2.BackColor = SystemColors.ScrollBar;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(147, 194);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(262, 29);
-            textBox2.TabIndex = 30;
-            textBox2.Text = "Enter your password";
+            passwordTextBox.BackColor = SystemColors.ScrollBar;
+            passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
+            passwordTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            passwordTextBox.Location = new Point(147, 194);
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.Size = new Size(262, 29);
+            passwordTextBox.TabIndex = 30;
+            passwordTextBox.Text = "Enter your password";
             // 
             // label3
             // 
@@ -174,16 +175,16 @@
             label3.TabIndex = 29;
             label3.Text = "Password:";
             // 
-            // textBox1
+            // emailTextBox
             // 
-            textBox1.BackColor = SystemColors.ScrollBar;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(147, 148);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(262, 29);
-            textBox1.TabIndex = 28;
-            textBox1.Text = "Enter your email";
+            emailTextBox.BackColor = SystemColors.ScrollBar;
+            emailTextBox.BorderStyle = BorderStyle.FixedSingle;
+            emailTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            emailTextBox.Location = new Point(147, 148);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.Size = new Size(262, 29);
+            emailTextBox.TabIndex = 28;
+            emailTextBox.Text = "Enter your email";
             // 
             // label2
             // 
@@ -205,27 +206,27 @@
             label1.TabIndex = 26;
             label1.Text = "Make an Account!";
             // 
-            // signUpPageUserControl
+            // JG_signUpPageUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
-            Controls.Add(radioButton2);
+            Controls.Add(managerRadioButton);
             Controls.Add(label7);
-            Controls.Add(radioButton1);
-            Controls.Add(textBox4);
+            Controls.Add(customerRadioButton);
+            Controls.Add(nameTextBox);
             Controls.Add(label6);
-            Controls.Add(textBox3);
+            Controls.Add(confirmPasswordTextBox);
             Controls.Add(label5);
-            Controls.Add(linkLabel1);
+            Controls.Add(loginLabel);
             Controls.Add(label4);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
+            Controls.Add(createAccountButton);
+            Controls.Add(passwordTextBox);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(emailTextBox);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "signUpPageUserControl";
+            Name = "JG_signUpPageUserControl";
             Size = new Size(450, 430);
             ResumeLayout(false);
             PerformLayout();
@@ -233,19 +234,19 @@
 
         #endregion
 
-        private RadioButton radioButton2;
+        private RadioButton managerRadioButton;
         private Label label7;
-        private RadioButton radioButton1;
-        private TextBox textBox4;
+        private RadioButton customerRadioButton;
+        private TextBox nameTextBox;
         private Label label6;
-        private TextBox textBox3;
+        private TextBox confirmPasswordTextBox;
         private Label label5;
-        private LinkLabel linkLabel1;
+        private LinkLabel loginLabel;
         private Label label4;
-        private Button button1;
-        private TextBox textBox2;
+        private Button createAccountButton;
+        private TextBox passwordTextBox;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox emailTextBox;
         private Label label2;
         private Label label1;
     }

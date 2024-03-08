@@ -17,9 +17,27 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+        string newEmail, newPassword, newName, confirmPassword;
 
+        private void createAccountButton_Click(object sender, EventArgs e)
+        {
+            newName = nameTextBox.Text;
+            newEmail = emailTextBox.Text;
+            newPassword = passwordTextBox.Text;
+            confirmPassword = confirmPasswordTextBox.Text;
+            if (!CheckPassword())
+            {
+                MessageBox.Show("Passwords do not match!!!");
+            }
+        }
+        private bool CheckPassword()
+        {
+            bool result = false;
+            if (newPassword == confirmPassword)
+            {
+                result = true;
+            }
+            return result;
         }
     }
 }
