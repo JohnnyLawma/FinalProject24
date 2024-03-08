@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPageForm1));
             MenuSideBar = new Panel();
             profilePictureBox = new PictureBox();
             settingButton = new Button();
@@ -36,12 +37,15 @@
             nameLabel = new Label();
             signOutButton = new Button();
             TopBar = new Panel();
-            button1 = new Button();
+            cartLabel = new Button();
             searchTextBox = new TextBox();
             mainPanel = new Panel();
+            menuLabel = new Label();
+            menuPanel = new Panel();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).BeginInit();
             TopBar.SuspendLayout();
+            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuSideBar
@@ -62,10 +66,13 @@
             // profilePictureBox
             // 
             profilePictureBox.BackColor = Color.MintCream;
+            profilePictureBox.BorderStyle = BorderStyle.Fixed3D;
+            profilePictureBox.Image = (Image)resources.GetObject("profilePictureBox.Image");
             profilePictureBox.Location = new Point(22, 64);
             profilePictureBox.Margin = new Padding(4, 2, 4, 2);
             profilePictureBox.Name = "profilePictureBox";
             profilePictureBox.Size = new Size(139, 113);
+            profilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             profilePictureBox.TabIndex = 5;
             profilePictureBox.TabStop = false;
             // 
@@ -107,12 +114,12 @@
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(139, 64);
             nameLabel.TabIndex = 4;
-            nameLabel.Text = "Name";
+            nameLabel.Text = "Emmly";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // signOutButton
             // 
-            signOutButton.Location = new Point(4, 533);
+            signOutButton.Location = new Point(4, 1047);
             signOutButton.Margin = new Padding(4, 2, 4, 2);
             signOutButton.Name = "signOutButton";
             signOutButton.Size = new Size(178, 90);
@@ -124,38 +131,60 @@
             // 
             TopBar.AutoSize = true;
             TopBar.BackColor = Color.FromArgb(41, 41, 41);
-            TopBar.Controls.Add(button1);
+            TopBar.Controls.Add(cartLabel);
             TopBar.Controls.Add(searchTextBox);
             TopBar.Location = new Point(187, 0);
             TopBar.Name = "TopBar";
             TopBar.Size = new Size(1638, 132);
             TopBar.TabIndex = 2;
             // 
-            // button1
+            // cartLabel
             // 
-            button1.Location = new Point(1308, 29);
-            button1.Name = "button1";
-            button1.Size = new Size(202, 68);
-            button1.TabIndex = 1;
-            button1.Text = "Carts: 0";
-            button1.UseVisualStyleBackColor = true;
+            cartLabel.Location = new Point(1386, 29);
+            cartLabel.Name = "cartLabel";
+            cartLabel.Size = new Size(202, 68);
+            cartLabel.TabIndex = 1;
+            cartLabel.Text = "Carts: 0";
+            cartLabel.UseVisualStyleBackColor = true;
             // 
             // searchTextBox
             // 
             searchTextBox.Location = new Point(528, 29);
             searchTextBox.Multiline = true;
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(686, 68);
+            searchTextBox.Size = new Size(766, 68);
             searchTextBox.TabIndex = 0;
             searchTextBox.Text = "Search restaurant";
             // 
             // mainPanel
             // 
+            mainPanel.AutoScroll = true;
             mainPanel.AutoSize = true;
-            mainPanel.Location = new Point(191, 135);
+            mainPanel.Controls.Add(menuLabel);
+            mainPanel.Controls.Add(menuPanel);
+            mainPanel.Location = new Point(187, 135);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1634, 1062);
+            mainPanel.Size = new Size(1651, 1062);
             mainPanel.TabIndex = 3;
+            // 
+            // menuLabel
+            // 
+            menuLabel.AutoSize = true;
+            menuLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            menuLabel.Location = new Point(153, 80);
+            menuLabel.Name = "menuLabel";
+            menuLabel.Size = new Size(105, 45);
+            menuLabel.TabIndex = 1;
+            menuLabel.Text = "Menu";
+            menuLabel.Click += menuLabel_Click;
+            // 
+            // menuPanel
+            // 
+            menuPanel.AutoScroll = true;
+            menuPanel.Location = new Point(166, 128);
+            menuPanel.Name = "menuPanel";
+            menuPanel.Size = new Size(1290, 860);
+            menuPanel.TabIndex = 0;
             // 
             // mainPageForm1
             // 
@@ -168,10 +197,13 @@
             Margin = new Padding(6);
             Name = "mainPageForm1";
             Text = "mainPageForm1";
+            Load += mainPageForm1_Load;
             MenuSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).EndInit();
             TopBar.ResumeLayout(false);
             TopBar.PerformLayout();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,8 +218,10 @@
         private Label nameLabel;
         private Button signOutButton;
         private Panel TopBar;
-        private Button button1;
+        private Button cartLabel;
         private TextBox searchTextBox;
         private Panel mainPanel;
+        private Panel menuPanel;
+        private Label menuLabel;
     }
 }
