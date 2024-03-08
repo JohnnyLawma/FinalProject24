@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPageForm1));
             MenuSideBar = new Panel();
             profilePictureBox = new PictureBox();
             settingButton = new Button();
@@ -65,10 +66,13 @@
             // profilePictureBox
             // 
             profilePictureBox.BackColor = Color.MintCream;
+            profilePictureBox.BorderStyle = BorderStyle.Fixed3D;
+            profilePictureBox.Image = (Image)resources.GetObject("profilePictureBox.Image");
             profilePictureBox.Location = new Point(22, 64);
             profilePictureBox.Margin = new Padding(4, 2, 4, 2);
             profilePictureBox.Name = "profilePictureBox";
             profilePictureBox.Size = new Size(139, 113);
+            profilePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             profilePictureBox.TabIndex = 5;
             profilePictureBox.TabStop = false;
             // 
@@ -110,12 +114,12 @@
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(139, 64);
             nameLabel.TabIndex = 4;
-            nameLabel.Text = "Name";
+            nameLabel.Text = "Emmly";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // signOutButton
             // 
-            signOutButton.Location = new Point(4, 533);
+            signOutButton.Location = new Point(4, 1047);
             signOutButton.Margin = new Padding(4, 2, 4, 2);
             signOutButton.Name = "signOutButton";
             signOutButton.Size = new Size(178, 90);

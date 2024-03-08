@@ -10,17 +10,15 @@ namespace FinalProject24
         int count = 0; // To count the item
 
 
-
+        // For handling card incremnt event
         private void Card_AddButtonClicked(object sender, EventArgs e)
-        {
-            UpdateCartCount();
-        }
-
-        private void UpdateCartCount()
         {
             count++;
             cartLabel.Text = "Cart: " + count.ToString();
+            MessageBox.Show(count.ToString());
         }
+
+  
 
   
 
@@ -39,12 +37,12 @@ namespace FinalProject24
             
 
             // Load 9 demo menu cards
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 // Create a new instance of the menuCardUserControl
                 menuCardUserControl card = new menuCardUserControl();
 
-                // Assuming each card is 200x300 and we want a 10-pixel space between them
+                // Assuming each card is 400 x 382 and we want a 15-pixel space between them
                 card.Size = new Size(controlWidth, controlHeight);
                 card.Location = new Point(
                     (i % numControlsPerRow) * (controlWidth + controlSpacing), // X position
@@ -55,7 +53,7 @@ namespace FinalProject24
                 card.ItemName = "Demo Item " + (i + 1);
                 card.ItemPrice = "$" + (6.00m + i).ToString("0.00");
 
-                card.AddButtonClicked += Card_AddButtonClicked;
+                card.AddButtonClicked += Card_AddButtonClicked;       // user control event click is store to these form
 
                 menuPanel.Controls.Add(card);
             }

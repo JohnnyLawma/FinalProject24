@@ -55,7 +55,6 @@ namespace FinalProject24
 
 
         // This for when user click add button, the cart will be increment
-       
         public menuCardUserControl()
         {
             InitializeComponent();
