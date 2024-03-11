@@ -10,17 +10,45 @@ namespace FinalProject24
         int count = 0; // To count the item
 
 
+
+        public struct cartArray
+        {
+            public string Title;
+            public decimal Price;
+            public string ImagePath;
+        }
+
+        private List<cartArray> selectedItems = new List<cartArray>();
+
+
         // For handling card incremnt event
         private void Card_AddButtonClicked(object sender, EventArgs e)
         {
-            count++;
-            cartButton.Text = "Carts: " + count.ToString();
+            // Cast the sender to menuCardUserControl
+            menuCardUserControl card = sender as menuCardUserControl;
+
+            // Check if the cast was successful
+            if (card != null)
+            {
+                cartArray item = new cartArray
+                {
+                    Title = card.ItemName,
+                    Price = Decimal.Parse(card.ItemPrice.Replace("$", "")),
+                    ImagePath = card.ImagePath // Access the ImagePath property
+                };
+
+                selectedItems.Add(item); // Add to the list
+                count++;
+                cartButton.Text = "Carts: " + count.ToString();
+            }
+
+
+
             //MessageBox.Show(count.ToString());
         }
 
-  
 
-  
+
 
         private void mainPageForm1_Load(object sender, EventArgs e)
         {
@@ -34,7 +62,8 @@ namespace FinalProject24
             int controlHeight = 382; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
-            
+            string impagePaths = @"C:\Users\johnn\Downloads\foodbowl.jpg";
+
 
             // Load 9 demo menu cards
             for (int i = 0; i < 9; i++)
@@ -52,6 +81,8 @@ namespace FinalProject24
                 // Set the properties for the demo
                 card.ItemName = "Demo Item " + (i + 1);
                 card.ItemPrice = "$" + (6.00m + i).ToString("0.00");
+                card.ItemImage = Image.FromFile(impagePaths);
+                card.ImagePath = impagePaths;
 
                 card.AddButtonClicked += Card_AddButtonClicked;       // user control event click is store to these form
 
@@ -59,15 +90,9 @@ namespace FinalProject24
             }
 
 
-            
+
 
         }
-
-
-
-
-
-
 
 
 
@@ -75,6 +100,16 @@ namespace FinalProject24
         private void menuLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cartButton_Click(object sender, EventArgs e)
+        {
+            foreach (var item in selectedItems)
+            {
+                // Process each item as needed
+                // For example, displaying item details in a MessageBox or a list
+                MessageBox.Show($"Title: {item.Title},Image Path: {item.ImagePath}");
+            }
         }
     }
 }

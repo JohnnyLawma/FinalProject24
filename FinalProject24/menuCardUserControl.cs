@@ -32,32 +32,43 @@ namespace FinalProject24
 
 
         // You may have a data structure for menu items like this
-        public class MenuItemData
+        /*public class MenuItemData
         {
             public string Name { get; set; }
             public decimal Price { get; set; }
             // public Image Image { get; set; } // If you have images for menu items
         }
 
+        */
+        
+        public Image ItemImage
+        {
+            get { return menuPictureBox.Image; }
+            set { menuPictureBox.Image = value; }
+        
+        }
 
-      
+        public string ImagePath { get; set; }
+
 
 
 
         // Method to load data into the control
-        public void LoadData(MenuItemData data)
+        /*public void LoadData(MenuItemData data)
         {
             ItemName = data.Name;
             ItemPrice = data.Price.ToString("C"); // Format as currency
                                                   // Set the image if you have an image control
                                                   // itemPictureBox.Image = data.Image;
         }
-
+        */
 
         // This for when user click add button, the cart will be increment
         public menuCardUserControl()
         {
             InitializeComponent();
+            // Set the PictureBox SizeMode to StretchImage
+            menuPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             //addButton.Click += addButton_Click; // Ensure this handler is wired up to the '+' button's Click event
         }
 

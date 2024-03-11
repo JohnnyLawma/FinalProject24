@@ -23,11 +23,18 @@ namespace FinalProject24
         const string managerEMAIL = "abc@gmail.com";
         const string managerPASSWORD = "abcde";
 
+
+        // Loading the main Form in Memeory
+        mainPageForm1 loadMainForm = new mainPageForm1();
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
             {
                 MessageBox.Show("You have logged in! Welcome back Customer!");
+                this.Hide(); // Hiding the Login Form
+                loadMainForm.Show(); // Opening the Main Menu Form
             }
             else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
             {

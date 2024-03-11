@@ -38,8 +38,8 @@
             signOutButton = new Button();
             TopBar = new Panel();
             searchTextBox = new TextBox();
-            mainPanel = new Panel();
             cartButton = new Button();
+            mainPanel = new Panel();
             menuLabel = new Label();
             menuPanel = new Panel();
             MenuSideBar.SuspendLayout();
@@ -147,6 +147,16 @@
             searchTextBox.TabIndex = 0;
             searchTextBox.Text = "Search restaurant";
             // 
+            // cartButton
+            // 
+            cartButton.Location = new Point(1254, 29);
+            cartButton.Name = "cartButton";
+            cartButton.Size = new Size(202, 68);
+            cartButton.TabIndex = 2;
+            cartButton.Text = "Carts: 0";
+            cartButton.UseVisualStyleBackColor = true;
+            cartButton.Click += cartButton_Click;
+            // 
             // mainPanel
             // 
             mainPanel.AutoScroll = true;
@@ -157,15 +167,6 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1651, 1062);
             mainPanel.TabIndex = 3;
-            // 
-            // cartButton
-            // 
-            cartButton.Location = new Point(1254, 29);
-            cartButton.Name = "cartButton";
-            cartButton.Size = new Size(202, 68);
-            cartButton.TabIndex = 2;
-            cartButton.Text = "Carts: 0";
-            cartButton.UseVisualStyleBackColor = true;
             // 
             // menuLabel
             // 
