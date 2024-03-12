@@ -129,6 +129,7 @@
             loginLabel.TabIndex = 33;
             loginLabel.TabStop = true;
             loginLabel.Text = "Log In";
+            loginLabel.LinkClicked += loginLabel_LinkClicked;
             // 
             // label4
             // 

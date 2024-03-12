@@ -12,6 +12,22 @@ namespace FinalProject24
 {
     public partial class JG_signUpPageUserControl : UserControl
     {
+
+        private static JG_signUpPageUserControl _instance;
+
+        public static JG_signUpPageUserControl Instance
+        {
+            get
+            {
+                // If the instance is null, create it
+                if (_instance == null)
+                {
+                    _instance = new JG_signUpPageUserControl();
+                }
+                // Return the existing or new instance
+                return _instance;
+            }
+        }
         public JG_signUpPageUserControl()
         {
             InitializeComponent();
@@ -38,6 +54,11 @@ namespace FinalProject24
                 result = true;
             }
             return result;
+        }
+
+        private void loginLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            JG_signUpPageUserControl.Instance.SendToBack();
         }
     }
 }
