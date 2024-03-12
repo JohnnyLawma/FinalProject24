@@ -66,6 +66,7 @@
             signupLabel.TabIndex = 10;
             signupLabel.TabStop = true;
             signupLabel.Text = "Sign Up";
+            signupLabel.LinkClicked += signupLabel_LinkClicked;
             // 
             // label4
             // 
@@ -89,7 +90,7 @@
             signinButton.TabIndex = 8;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
-            signinButton.Click += button1_Click;
+            signinButton.Click += signinButton_Click;
             // 
             // passwordTextBox
             // 
