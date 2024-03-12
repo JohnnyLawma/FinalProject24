@@ -29,11 +29,17 @@ namespace FinalProject24
         mainPageForm1 loadMainForm = new mainPageForm1();
 
 
-        private void signinButton_Click(object sender, EventArgs e)
+        private async void signinButton_Click(object sender, EventArgs e)
         {
             if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
             {
-                MessageBox.Show("You have logged in! Welcome back Customer!");
+                //MessageBox.Show("You have logged in! Welcome back Customer!");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                successOrNotLabel.Text = "Sucess! Welcome back Customer";
+
+                // Wait for 1 seconds to show sucess message.
+                await Task.Delay(1000);
+
                 this.Hide(); // Hiding the Login Form
                 loadMainForm.Show(); // Opening the Main Menu Form
             }
@@ -47,7 +53,9 @@ namespace FinalProject24
             }
             else
             {
-                MessageBox.Show("The email or password was entered incorrectly. Try again!");
+                //MessageBox.Show("The email or password was entered incorrectly. Try again!");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Red;
+                successOrNotLabel.Text = "The email or password was entered incorrectly";
             }
         }
 
