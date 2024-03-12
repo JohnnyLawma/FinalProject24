@@ -32,6 +32,7 @@
             itemNameLabel = new Label();
             priceLabel = new Label();
             addButton = new Button();
+            removeButton = new Button();
             ((System.ComponentModel.ISupportInitialize)menuPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -75,10 +76,22 @@
             addButton.UseVisualStyleBackColor = true;
             addButton.Click += addButton_Click;
             // 
+            // removeButton
+            // 
+            removeButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            removeButton.Location = new Point(224, 191);
+            removeButton.Name = "removeButton";
+            removeButton.Size = new Size(68, 54);
+            removeButton.TabIndex = 4;
+            removeButton.Text = "-";
+            removeButton.UseVisualStyleBackColor = true;
+            removeButton.Click += removeButton_Click;
+            // 
             // menuCardUserControl
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(removeButton);
             Controls.Add(addButton);
             Controls.Add(priceLabel);
             Controls.Add(itemNameLabel);
@@ -96,5 +109,6 @@
         private Label itemNameLabel;
         private Label priceLabel;
         private Button addButton;
+        private Button removeButton;
     }
 }

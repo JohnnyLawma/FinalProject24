@@ -14,8 +14,10 @@ namespace FinalProject24
     public partial class menuCardUserControl : UserControl
     {
 
-        // Declare the event using EventHandler, no need for a custom delegate
+        // Declare the event for + and - button
         public event EventHandler AddButtonClicked;
+        public event EventHandler<MenuItemEventArgs> RemoveButtonClicked;
+
 
         public string ItemName
         {
@@ -40,16 +42,22 @@ namespace FinalProject24
         }
 
         */
-        
+
         public Image ItemImage
         {
             get { return menuPictureBox.Image; }
             set { menuPictureBox.Image = value; }
-        
+
         }
 
         public string ImagePath { get; set; }
 
+
+        public class MenuItemEventArgs : EventArgs
+        {
+            public string ItemName { get; set; }
+            // Add other properties if needed
+        }
 
 
 
@@ -81,5 +89,18 @@ namespace FinalProject24
 
 
 
+
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            var args = new MenuItemEventArgs
+            {
+                ItemName = this.ItemName
+                
+            };
+
+            // When the remove button is clicked, raise the event
+            RemoveButtonClicked?.Invoke(this, args);
+        }
     }
 }

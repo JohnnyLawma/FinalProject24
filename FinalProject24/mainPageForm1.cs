@@ -20,8 +20,8 @@ namespace FinalProject24
 
         private List<cartArray> selectedItems = new List<cartArray>();
 
-
-        // For handling card incremnt event
+        // For + button
+        // For handling card incremnt event and storing selected item to a list
         private void Card_AddButtonClicked(object sender, EventArgs e)
         {
             // Cast the sender to menuCardUserControl
@@ -47,9 +47,37 @@ namespace FinalProject24
             //MessageBox.Show(count.ToString());
         }
 
+        // For handling - (remove) Button
+        private void Card_RemoveButtonClicked(object sender, EventArgs e)
+        {
+            if (sender is menuCardUserControl card)
+            {
+                // Initialize a variable to store the index of the item to remove
+                int indexToRemove = -1;
 
+                // Looping through the list to find the item
+                for (int i = 0; i < selectedItems.Count; i++)
+                {
+                    if (selectedItems[i].Title == card.ItemName)
+                    {
+                        indexToRemove = i;
+                        break; // Stop the loop once we found the item
+                    }
+                }
 
+                // Checking if we found an item to remove
+                if (indexToRemove != -1)
+                {
+                    selectedItems.RemoveAt(indexToRemove); // Remove the item from the list
+                    count--; // Decrement the count
+                    cartButton.Text = "Carts: " + count.ToString(); // Update the cart count display
+                                                                    
+                }
+            } // If line End
 
+        }
+
+        // This is load when the Form is loaded.
         private void mainPageForm1_Load(object sender, EventArgs e)
         {
             menuPanel.Controls.Clear();
@@ -84,15 +112,17 @@ namespace FinalProject24
                 card.ItemImage = Image.FromFile(impagePaths);
                 card.ImagePath = impagePaths;
 
-                card.AddButtonClicked += Card_AddButtonClicked;       // user control event click is store to these form
+                card.AddButtonClicked += Card_AddButtonClicked;    
+                card.RemoveButtonClicked += Card_RemoveButtonClicked;
+
 
                 menuPanel.Controls.Add(card);
-            }
+            } // For Loop End Line
 
 
 
 
-        }
+        } // mainPageForm1_Load End Line
 
 
 
@@ -106,10 +136,12 @@ namespace FinalProject24
         {
             foreach (var item in selectedItems)
             {
-                // Process each item as needed
                 // For example, displaying item details in a MessageBox or a list
                 MessageBox.Show($"Title: {item.Title},Image Path: {item.ImagePath}");
             }
         }
-    }
+
+
+
+    } // mainPageForm1 End Line
 }
