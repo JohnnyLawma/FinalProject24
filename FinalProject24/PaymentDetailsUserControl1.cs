@@ -16,5 +16,10 @@ namespace FinalProject24
         {
             InitializeComponent();
         }
+
+        private void PaymentUserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

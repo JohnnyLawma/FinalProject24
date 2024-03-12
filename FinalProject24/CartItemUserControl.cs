@@ -10,19 +10,24 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class MyCartUserControl1 : UserControl
+    public partial class CartItemUserControl : UserControl
     {
-        public MyCartUserControl1()
+        public CartItemUserControl()
         {
             InitializeComponent();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void CartItemUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
