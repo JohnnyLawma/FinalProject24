@@ -92,7 +92,7 @@ namespace FinalProject24
             int controlHeight = 382; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
-            string impagePaths = @"C:\Users\johnn\Downloads\foodbowl.jpg";
+            string impagePaths = @"D:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
 
 
             // Load 9 demo menu cards
