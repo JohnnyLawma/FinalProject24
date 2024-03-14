@@ -46,60 +46,84 @@
             textBox1.BackColor = SystemColors.ScrollBar;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = SystemColors.GrayText;
             textBox1.Location = new Point(346, 216);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(262, 29);
             textBox1.TabIndex = 5;
+            textBox1.Text = "123 Street Name, City, State";
+            textBox1.Enter += textBox1_Enter;
+            textBox1.Leave += textBox1_Leave;
             // 
             // textBox2
             // 
             textBox2.BackColor = SystemColors.ScrollBar;
             textBox2.BorderStyle = BorderStyle.FixedSingle;
             textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = SystemColors.GrayText;
             textBox2.Location = new Point(346, 282);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(201, 29);
             textBox2.TabIndex = 6;
+            textBox2.Text = "6037-9973-2234-7221";
+            textBox2.Enter += textBox2_Enter;
+            textBox2.Leave += textBox2_Leave;
             // 
             // textBox3
             // 
             textBox3.BackColor = SystemColors.ScrollBar;
             textBox3.BorderStyle = BorderStyle.FixedSingle;
             textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.ForeColor = SystemColors.GrayText;
             textBox3.Location = new Point(346, 343);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(345, 29);
             textBox3.TabIndex = 7;
+            textBox3.Text = "Full Name";
+            textBox3.Enter += textBox3_Enter;
+            textBox3.Leave += textBox3_Leave;
             // 
             // textBox4
             // 
             textBox4.BackColor = SystemColors.ScrollBar;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
             textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox4.ForeColor = SystemColors.GrayText;
             textBox4.Location = new Point(553, 282);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(55, 29);
             textBox4.TabIndex = 8;
+            textBox4.Text = "CV";
+            textBox4.Enter += textBox4_Enter;
+            textBox4.Leave += textBox4_Leave;
             // 
             // textBox5
             // 
             textBox5.BackColor = SystemColors.ScrollBar;
             textBox5.BorderStyle = BorderStyle.FixedSingle;
             textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox5.ForeColor = SystemColors.GrayText;
             textBox5.Location = new Point(614, 282);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(77, 29);
             textBox5.TabIndex = 9;
+            textBox5.Text = "MM/YY";
+            textBox5.Enter += textBox5_Enter;
+            textBox5.Leave += textBox5_Leave;
             // 
             // textBox6
             // 
             textBox6.BackColor = SystemColors.ScrollBar;
             textBox6.BorderStyle = BorderStyle.FixedSingle;
             textBox6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox6.ForeColor = SystemColors.GrayText;
             textBox6.Location = new Point(614, 216);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(77, 29);
             textBox6.TabIndex = 10;
+            textBox6.Text = "Zip Code";
+            textBox6.Enter += textBox6_Enter;
+            textBox6.Leave += textBox6_Leave;
             // 
             // label1
             // 
@@ -153,6 +177,7 @@
             button1.TabIndex = 15;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // PaymentUserControl1
             // 
@@ -169,6 +194,7 @@
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            ForeColor = SystemColors.GrayText;
             Name = "PaymentUserControl1";
             Size = new Size(900, 600);
             Load += PaymentUserControl1_Load;

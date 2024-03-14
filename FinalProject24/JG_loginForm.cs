@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FinalProject24
 {
@@ -23,23 +24,54 @@ namespace FinalProject24
         const string managerEMAIL = "abc@gmail.com";
         const string managerPASSWORD = "abcde";
 
-        private void button1_Click(object sender, EventArgs e)
+
+        // Loading the main Form in Memeory
+        mainPageForm1 loadMainForm = new mainPageForm1();
+
+
+        private async void signinButton_Click(object sender, EventArgs e)
         {
             if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
             {
-                MessageBox.Show("You have logged in! Welcome back Customer!");
+                //MessageBox.Show("You have logged in! Welcome back Customer!");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                successOrNotLabel.Text = "Sucess! Welcome back Customer";
+
+                // Wait for 1 seconds to show sucess message.
+                await Task.Delay(1000);
+
+                this.Hide(); // Hiding the Login Form
+                loadMainForm.Show(); // Opening the Main Menu Form
             }
             else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
             {
                 MessageBox.Show("You have logged in! Welcome back Manager!");
             }
-            else if (emailTextBox.Text == "Enter your email" ||  passwordTextBox.Text == "Enter your password")
+            else if (emailTextBox.Text == "Enter your email" || passwordTextBox.Text == "Enter your password")
             {
                 MessageBox.Show("Please enter your email and password.");
             }
             else
             {
-                MessageBox.Show("The email or password was entered incorrectly. Try again!");
+                //MessageBox.Show("The email or password was entered incorrectly. Try again!");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Red;
+                successOrNotLabel.Text = "The email or password was entered incorrectly";
+            }
+        }
+
+        private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!panel1.Controls.Contains(JG_signUpPageUserControl.Instance))
+            {
+                panel1.Controls.Add(JG_signUpPageUserControl.Instance);
+                panel1.Controls.Add(JG_managerLoginPageUserControl.Instance);
+                JG_signUpPageUserControl.Instance.Dock = DockStyle.Fill;
+                JG_signUpPageUserControl.Instance.BringToFront();
+                JG_managerLoginPageUserControl.Instance.SendToBack();
+            }
+            else
+            {
+                JG_signUpPageUserControl.Instance.BringToFront();
             }
         }
     }
