@@ -5,6 +5,7 @@ namespace FinalProject24
         public mainPageForm1()
         {
             InitializeComponent();
+          
         }
 
         int count = 0; // To count the item
@@ -71,14 +72,15 @@ namespace FinalProject24
                     selectedItems.RemoveAt(indexToRemove); // Remove the item from the list
                     count--; // Decrement the count
                     cartButton.Text = "Carts: " + count.ToString(); // Update the cart count display
-                                                                    
+
                 }
             } // If line End
 
         }
 
-        // This is load when the Form is loaded.
-        private void mainPageForm1_Load(object sender, EventArgs e)
+
+
+        private void PopulateMenuPanel()
         {
             menuPanel.Controls.Clear();
 
@@ -112,15 +114,21 @@ namespace FinalProject24
                 card.ItemImage = Image.FromFile(impagePaths);
                 card.ImagePath = impagePaths;
 
-                card.AddButtonClicked += Card_AddButtonClicked;    
+                card.AddButtonClicked += Card_AddButtonClicked;
                 card.RemoveButtonClicked += Card_RemoveButtonClicked;
 
 
                 menuPanel.Controls.Add(card);
             } // For Loop End Line
+        }
 
 
 
+        // This is load when the Form is loaded.
+        private void mainPageForm1_Load(object sender, EventArgs e)
+        {
+
+            PopulateMenuPanel();
 
         } // mainPageForm1_Load End Line
 
@@ -141,6 +149,35 @@ namespace FinalProject24
             }
         }
 
+
+        private void paymentButton_Click(object sender, EventArgs e)
+        {
+            if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
+            {
+                mainPanel.Controls.Add(PaymentUserControl1.Instance);
+                PaymentUserControl1.Instance.Dock = DockStyle.Fill;
+                PaymentUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                PaymentUserControl1.Instance.BringToFront();
+            }
+
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+
+        }
+
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            //mainPanel.Visible = false; // Hide the mainPanel
+            menuPanel.Visible = true; // Show the menuPanel
+            menuLabel.Visible = true;
+
+        }
 
 
     } // mainPageForm1 End Line

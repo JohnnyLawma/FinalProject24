@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPageForm1));
             MenuSideBar = new Panel();
+            homeButton = new Button();
             profilePictureBox = new PictureBox();
             settingButton = new Button();
             paymentButton = new Button();
@@ -39,18 +40,18 @@
             TopBar = new Panel();
             searchTextBox = new TextBox();
             cartButton = new Button();
-            mainPanel = new Panel();
-            menuLabel = new Label();
             menuPanel = new Panel();
+            menuLabel = new Label();
+            mainPanel = new Panel();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).BeginInit();
             TopBar.SuspendLayout();
-            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuSideBar
             // 
             MenuSideBar.BackColor = Color.FromArgb(124, 172, 175);
+            MenuSideBar.Controls.Add(homeButton);
             MenuSideBar.Controls.Add(profilePictureBox);
             MenuSideBar.Controls.Add(settingButton);
             MenuSideBar.Controls.Add(paymentButton);
@@ -62,6 +63,17 @@
             MenuSideBar.Name = "MenuSideBar";
             MenuSideBar.Size = new Size(186, 1280);
             MenuSideBar.TabIndex = 1;
+            // 
+            // homeButton
+            // 
+            homeButton.Location = new Point(4, 263);
+            homeButton.Margin = new Padding(4, 2, 4, 2);
+            homeButton.Name = "homeButton";
+            homeButton.Size = new Size(178, 90);
+            homeButton.TabIndex = 6;
+            homeButton.Text = "Home";
+            homeButton.UseVisualStyleBackColor = true;
+            homeButton.Click += homeButton_Click;
             // 
             // profilePictureBox
             // 
@@ -78,7 +90,7 @@
             // 
             // settingButton
             // 
-            settingButton.Location = new Point(4, 437);
+            settingButton.Location = new Point(4, 577);
             settingButton.Margin = new Padding(4, 2, 4, 2);
             settingButton.Name = "settingButton";
             settingButton.Size = new Size(178, 90);
@@ -88,17 +100,18 @@
             // 
             // paymentButton
             // 
-            paymentButton.Location = new Point(4, 343);
+            paymentButton.Location = new Point(4, 473);
             paymentButton.Margin = new Padding(4, 2, 4, 2);
             paymentButton.Name = "paymentButton";
             paymentButton.Size = new Size(178, 90);
             paymentButton.TabIndex = 1;
             paymentButton.Text = "Payment";
             paymentButton.UseVisualStyleBackColor = true;
+            paymentButton.Click += paymentButton_Click;
             // 
             // orderButton
             // 
-            orderButton.Location = new Point(4, 245);
+            orderButton.Location = new Point(4, 366);
             orderButton.Margin = new Padding(4, 2, 4, 2);
             orderButton.Name = "orderButton";
             orderButton.Size = new Size(178, 90);
@@ -157,41 +170,39 @@
             cartButton.UseVisualStyleBackColor = true;
             cartButton.Click += cartButton_Click;
             // 
-            // mainPanel
+            // menuPanel
             // 
-            mainPanel.AutoScroll = true;
-            mainPanel.AutoSize = true;
-            mainPanel.Controls.Add(menuLabel);
-            mainPanel.Controls.Add(menuPanel);
-            mainPanel.Location = new Point(187, 135);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1651, 1062);
-            mainPanel.TabIndex = 3;
+            menuPanel.AutoScroll = true;
+            menuPanel.Location = new Point(372, 228);
+            menuPanel.Name = "menuPanel";
+            menuPanel.Size = new Size(1290, 860);
+            menuPanel.TabIndex = 0;
             // 
             // menuLabel
             // 
             menuLabel.AutoSize = true;
             menuLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuLabel.Location = new Point(153, 80);
+            menuLabel.Location = new Point(359, 180);
             menuLabel.Name = "menuLabel";
             menuLabel.Size = new Size(105, 45);
             menuLabel.TabIndex = 1;
             menuLabel.Text = "Menu";
             menuLabel.Click += menuLabel_Click;
             // 
-            // menuPanel
+            // mainPanel
             // 
-            menuPanel.AutoScroll = true;
-            menuPanel.Location = new Point(166, 128);
-            menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(1290, 860);
-            menuPanel.TabIndex = 0;
+            mainPanel.Location = new Point(187, 132);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1638, 1053);
+            mainPanel.TabIndex = 3;
             // 
             // mainPageForm1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1827, 1197);
+            Controls.Add(menuLabel);
+            Controls.Add(menuPanel);
             Controls.Add(mainPanel);
             Controls.Add(TopBar);
             Controls.Add(MenuSideBar);
@@ -203,8 +214,6 @@
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).EndInit();
             TopBar.ResumeLayout(false);
             TopBar.PerformLayout();
-            mainPanel.ResumeLayout(false);
-            mainPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,9 +229,10 @@
         private Button signOutButton;
         private Panel TopBar;
         private TextBox searchTextBox;
-        private Panel mainPanel;
+        private Button cartButton;
+        private Button homeButton;
         private Panel menuPanel;
         private Label menuLabel;
-        private Button cartButton;
+        private Panel mainPanel;
     }
 }

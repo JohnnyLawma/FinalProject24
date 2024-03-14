@@ -14,10 +14,28 @@ namespace FinalProject24
 {
     public partial class PaymentUserControl1 : UserControl
     {
-        public PaymentUserControl1()
+
+        private static PaymentUserControl1 _instance;
+
+        
+        private PaymentUserControl1()
         {
             InitializeComponent();
         }
+
+        
+        public static PaymentUserControl1 Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PaymentUserControl1();
+                }
+                return _instance;
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
