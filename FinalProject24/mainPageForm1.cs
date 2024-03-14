@@ -92,7 +92,7 @@ namespace FinalProject24
             int controlHeight = 382; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
-            string impagePaths = @"D:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
+            string impagePaths = @"E:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
 
 
             // Load 9 demo menu cards
@@ -197,7 +197,25 @@ namespace FinalProject24
             menuLabel.Visible = false;
         }
 
+        /*
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
+            {
+                mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
+                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
 
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+        }
 
+        */
     } // mainPageForm1 End Line
 }
