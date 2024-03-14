@@ -42,6 +42,7 @@
             mainPanel = new Panel();
             menuLabel = new Label();
             menuPanel = new Panel();
+            homeButton = new Button();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).BeginInit();
             TopBar.SuspendLayout();
@@ -51,6 +52,7 @@
             // MenuSideBar
             // 
             MenuSideBar.BackColor = Color.FromArgb(124, 172, 175);
+            MenuSideBar.Controls.Add(homeButton);
             MenuSideBar.Controls.Add(profilePictureBox);
             MenuSideBar.Controls.Add(settingButton);
             MenuSideBar.Controls.Add(paymentButton);
@@ -78,7 +80,7 @@
             // 
             // settingButton
             // 
-            settingButton.Location = new Point(4, 437);
+            settingButton.Location = new Point(4, 577);
             settingButton.Margin = new Padding(4, 2, 4, 2);
             settingButton.Name = "settingButton";
             settingButton.Size = new Size(178, 90);
@@ -88,7 +90,7 @@
             // 
             // paymentButton
             // 
-            paymentButton.Location = new Point(4, 343);
+            paymentButton.Location = new Point(4, 473);
             paymentButton.Margin = new Padding(4, 2, 4, 2);
             paymentButton.Name = "paymentButton";
             paymentButton.Size = new Size(178, 90);
@@ -98,7 +100,7 @@
             // 
             // orderButton
             // 
-            orderButton.Location = new Point(4, 245);
+            orderButton.Location = new Point(4, 366);
             orderButton.Margin = new Padding(4, 2, 4, 2);
             orderButton.Name = "orderButton";
             orderButton.Size = new Size(178, 90);
@@ -187,6 +189,16 @@
             menuPanel.Size = new Size(1290, 860);
             menuPanel.TabIndex = 0;
             // 
+            // homeButton
+            // 
+            homeButton.Location = new Point(4, 263);
+            homeButton.Margin = new Padding(4, 2, 4, 2);
+            homeButton.Name = "homeButton";
+            homeButton.Size = new Size(178, 90);
+            homeButton.TabIndex = 6;
+            homeButton.Text = "Home";
+            homeButton.UseVisualStyleBackColor = true;
+            // 
             // mainPageForm1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -224,5 +236,6 @@
         private Panel menuPanel;
         private Label menuLabel;
         private Button cartButton;
+        private Button homeButton;
     }
 }
