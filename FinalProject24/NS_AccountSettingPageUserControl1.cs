@@ -13,6 +13,21 @@ namespace FinalProject24
 {
     public partial class NS_AccountSettingPageUserControl1 : UserControl
     {
+
+        private static NS_AccountSettingPageUserControl1 _instance;
+
+        public static NS_AccountSettingPageUserControl1 Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new NS_AccountSettingPageUserControl1();
+                return _instance;
+            }
+        }
+
+
+
         // Variables for dummy values, when db connected this maybe changed
         private string name = "";
         private string email = "";

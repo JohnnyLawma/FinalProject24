@@ -41,8 +41,8 @@
             // 
             // NametextBox
             // 
-            NametextBox.Location = new Point(369, 149);
-            NametextBox.Margin = new Padding(4, 4, 4, 4);
+            NametextBox.Location = new Point(633, 245);
+            NametextBox.Margin = new Padding(4);
             NametextBox.Multiline = true;
             NametextBox.Name = "NametextBox";
             NametextBox.Size = new Size(370, 59);
@@ -51,8 +51,8 @@
             // 
             // EmailtextBox
             // 
-            EmailtextBox.Location = new Point(369, 282);
-            EmailtextBox.Margin = new Padding(4, 4, 4, 4);
+            EmailtextBox.Location = new Point(633, 378);
+            EmailtextBox.Margin = new Padding(4);
             EmailtextBox.Multiline = true;
             EmailtextBox.Name = "EmailtextBox";
             EmailtextBox.Size = new Size(370, 55);
@@ -61,8 +61,8 @@
             // 
             // PhonetextBox
             // 
-            PhonetextBox.Location = new Point(369, 410);
-            PhonetextBox.Margin = new Padding(4, 4, 4, 4);
+            PhonetextBox.Location = new Point(633, 506);
+            PhonetextBox.Margin = new Padding(4);
             PhonetextBox.Multiline = true;
             PhonetextBox.Name = "PhonetextBox";
             PhonetextBox.Size = new Size(370, 60);
@@ -73,7 +73,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.Location = new Point(369, 33);
+            label1.Location = new Point(633, 129);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(273, 45);
@@ -84,7 +84,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(369, 113);
+            label2.Location = new Point(633, 209);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(79, 32);
@@ -95,7 +95,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(369, 246);
+            label3.Location = new Point(633, 342);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(165, 32);
@@ -105,8 +105,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(369, 369);
+            label4.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            label4.Location = new Point(633, 465);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(203, 37);
@@ -118,8 +118,8 @@
             Applybutton.BackColor = SystemColors.ActiveCaptionText;
             Applybutton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Applybutton.ForeColor = SystemColors.ControlLightLight;
-            Applybutton.Location = new Point(420, 513);
-            Applybutton.Margin = new Padding(4, 4, 4, 4);
+            Applybutton.Location = new Point(686, 618);
+            Applybutton.Margin = new Padding(4);
             Applybutton.Name = "Applybutton";
             Applybutton.Size = new Size(240, 65);
             Applybutton.TabIndex = 8;
@@ -131,8 +131,8 @@
             // 
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(349, 595);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Location = new Point(609, 751);
+            textBox1.Margin = new Padding(4);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(441, 119);
@@ -156,7 +156,7 @@
             Controls.Add(NametextBox);
             Margin = new Padding(5, 6, 5, 6);
             Name = "NS_AccountSettingPageUserControl1";
-            Size = new Size(1170, 768);
+            Size = new Size(1638, 1053);
             ResumeLayout(false);
             PerformLayout();
         }

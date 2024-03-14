@@ -97,6 +97,7 @@
             settingButton.TabIndex = 2;
             settingButton.Text = "Setting";
             settingButton.UseVisualStyleBackColor = true;
+            settingButton.Click += settingButton_Click;
             // 
             // paymentButton
             // 

@@ -5,7 +5,7 @@ namespace FinalProject24
         public mainPageForm1()
         {
             InitializeComponent();
-          
+
         }
 
         int count = 0; // To count the item
@@ -178,6 +178,25 @@ namespace FinalProject24
             menuLabel.Visible = true;
 
         }
+
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
+            {
+                mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
+                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+        }
+
 
 
     } // mainPageForm1 End Line
