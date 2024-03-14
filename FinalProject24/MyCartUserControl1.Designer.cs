@@ -219,6 +219,7 @@
             label3.Size = new Size(131, 21);
             label3.TabIndex = 0;
             label3.Text = "Summary Order";
+            label3.Click += label3_Click;
             // 
             // toolTip1
             // 
