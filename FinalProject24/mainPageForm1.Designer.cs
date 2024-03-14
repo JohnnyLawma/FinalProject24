@@ -191,9 +191,9 @@
             // 
             // mainPanel
             // 
-            mainPanel.Location = new Point(187, 125);
+            mainPanel.Location = new Point(187, 132);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1638, 1060);
+            mainPanel.Size = new Size(1638, 1053);
             mainPanel.TabIndex = 3;
             // 
             // mainPageForm1
