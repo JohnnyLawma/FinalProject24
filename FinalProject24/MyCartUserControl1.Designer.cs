@@ -172,7 +172,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(18, 142);
+            button1.Location = new Point(19, 143);
             button1.Name = "button1";
             button1.Size = new Size(215, 49);
             button1.TabIndex = 4;
