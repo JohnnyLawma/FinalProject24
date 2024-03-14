@@ -149,11 +149,12 @@ namespace FinalProject24
             }
         }
 
+
         private void paymentButton_Click(object sender, EventArgs e)
         {
-            if (!menuPanel.Controls.Contains(PaymentUserControl1.Instance))
+            if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
             {
-                menuPanel.Controls.Add(PaymentUserControl1.Instance);
+                mainPanel.Controls.Add(PaymentUserControl1.Instance);
                 PaymentUserControl1.Instance.Dock = DockStyle.Fill;
                 PaymentUserControl1.Instance.BringToFront();
             }
@@ -161,14 +162,20 @@ namespace FinalProject24
             {
                 PaymentUserControl1.Instance.BringToFront();
             }
+
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+
         }
 
 
         private void homeButton_Click(object sender, EventArgs e)
         {
-            menuPanel.Controls.Clear();
-
-            PopulateMenuPanel(); // If you repopulate the menu each time
+            mainPanel.Visible = false; // Hide the mainPanel
+            menuPanel.Visible = true; // Show the menuPanel
         }
+
+
     } // mainPageForm1 End Line
 }
