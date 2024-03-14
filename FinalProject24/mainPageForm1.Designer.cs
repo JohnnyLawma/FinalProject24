@@ -116,7 +116,7 @@
             orderButton.Name = "orderButton";
             orderButton.Size = new Size(178, 90);
             orderButton.TabIndex = 0;
-            orderButton.Text = "Order";
+            orderButton.Text = "Order History";
             orderButton.UseVisualStyleBackColor = true;
             // 
             // nameLabel
