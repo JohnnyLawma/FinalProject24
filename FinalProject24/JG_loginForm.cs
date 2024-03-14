@@ -51,7 +51,7 @@ namespace FinalProject24
             {
                 MessageBox.Show("Please enter your email and password.");
             }
-            else
+            else //
             {
                 //MessageBox.Show("The email or password was entered incorrectly. Try again!");
                 successOrNotLabel.ForeColor = System.Drawing.Color.Red;
