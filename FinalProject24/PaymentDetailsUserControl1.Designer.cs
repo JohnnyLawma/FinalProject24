@@ -197,6 +197,7 @@
             ForeColor = SystemColors.GrayText;
             Name = "PaymentUserControl1";
             Size = new Size(900, 600);
+            Load += PaymentUserControl1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
