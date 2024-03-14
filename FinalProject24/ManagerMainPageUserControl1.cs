@@ -16,20 +16,5 @@ namespace FinalProject24
         {
             InitializeComponent();
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ManagerMainPageUserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
