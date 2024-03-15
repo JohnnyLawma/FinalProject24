@@ -1,6 +1,6 @@
 ﻿namespace FinalProject24
 {
-    partial class JG_managerLoginPageUserControl
+    partial class JG_blankPageUserControl
     {
         /// <summary> 
         /// Required designer variable.

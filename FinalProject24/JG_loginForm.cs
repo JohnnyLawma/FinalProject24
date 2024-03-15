@@ -19,10 +19,10 @@ namespace FinalProject24
         }
 
         // before implementation of a database for email and password, use these 
-        const string customerEMAIL = "abc@gmail.com";
-        const string customerPASSWORD = "abcde";
-        const string managerEMAIL = "abc@gmail.com";
-        const string managerPASSWORD = "abcde";
+        const string customerEMAIL = "123";
+        const string customerPASSWORD = "123";
+        const string managerEMAIL = "456";
+        const string managerPASSWORD = "456";
 
 
         // Loading the main Form in Memeory
@@ -35,7 +35,7 @@ namespace FinalProject24
             {
                 //MessageBox.Show("You have logged in! Welcome back Customer!");
                 successOrNotLabel.ForeColor = System.Drawing.Color.Green;
-                successOrNotLabel.Text = "Sucess! Welcome back Customer";
+                successOrNotLabel.Text = "Success! Welcome back Customer!";
 
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
@@ -45,33 +45,120 @@ namespace FinalProject24
             }
             else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
             {
-                MessageBox.Show("You have logged in! Welcome back Manager!");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                successOrNotLabel.Text = "Success! Welcome back Manager!";
+
+                // Wait for 1 seconds to show sucess message.
+                await Task.Delay(1000);
+
+                this.Hide(); // Hiding the Login Form
+                loadMainForm.Show(); // Opening the Main Menu Form
             }
             else if (emailTextBox.Text == "Enter your email" || passwordTextBox.Text == "Enter your password")
             {
-                MessageBox.Show("Please enter your email and password.");
+                successOrNotLabel.ForeColor = System.Drawing.Color.Yellow;
+                successOrNotLabel.Text = "Please enter your email and password.";
+                emailTextBox.Focus();
+
+                // Wait for 1 seconds to show sucess message.
+                await Task.Delay(1000);
+
+
             }
             else //
             {
                 //MessageBox.Show("The email or password was entered incorrectly. Try again!");
                 successOrNotLabel.ForeColor = System.Drawing.Color.Red;
                 successOrNotLabel.Text = "The email or password was entered incorrectly";
+                emailTextBox.Focus();
+
+                // Wait for 1 seconds to show sucess message.
+                await Task.Delay(1000);
+
+
             }
         }
+
+
 
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!panel1.Controls.Contains(JG_signUpPageUserControl.Instance))
             {
                 panel1.Controls.Add(JG_signUpPageUserControl.Instance);
-                panel1.Controls.Add(JG_managerLoginPageUserControl.Instance);
+                panel1.Controls.Add(JG_blankPageUserControl.Instance);
                 JG_signUpPageUserControl.Instance.Dock = DockStyle.Fill;
                 JG_signUpPageUserControl.Instance.BringToFront();
-                JG_managerLoginPageUserControl.Instance.SendToBack();
+                JG_blankPageUserControl.Instance.SendToBack();
             }
             else
             {
                 JG_signUpPageUserControl.Instance.BringToFront();
+            }
+        }
+
+        private void emailTextBox_Enter(object sender, EventArgs e)
+        {
+
+            if (emailTextBox.Text == "Enter your email")
+            {
+                emailTextBox.Text = "";
+                emailTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void emailTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+            {
+                emailTextBox.Text = "Enter your email";
+                emailTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void passwordTextBox_Enter(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Text == "Enter your password")
+            {
+                passwordTextBox.Text = "";
+                passwordTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void passwordTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(passwordTextBox.Text))
+            {
+                passwordTextBox.Text = "Enter your password";
+                passwordTextBox.ForeColor = Color.Gray;
+            }
+        }
+
+
+        private void signinButton_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                signinButton_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+
+        private void passwordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                signinButton_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+
+        private void emailTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                passwordTextBox.Focus();
+                e.Handled = true;
             }
         }
     }

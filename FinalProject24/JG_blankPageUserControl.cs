@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class JG_managerLoginPageUserControl : UserControl
+    public partial class JG_blankPageUserControl : UserControl
     {
-        private static JG_managerLoginPageUserControl _instance;
+        private static JG_blankPageUserControl _instance;
 
-        public static JG_managerLoginPageUserControl Instance
+        public static JG_blankPageUserControl Instance
         {
             get
             {
                 // If the instance is null, create it
                 if (_instance == null)
                 {
-                    _instance = new JG_managerLoginPageUserControl();
+                    _instance = new JG_blankPageUserControl();
                 }
                 // Return the existing or new instance
                 return _instance;
@@ -29,7 +29,7 @@ namespace FinalProject24
         }
 
 
-        public JG_managerLoginPageUserControl()
+        public JG_blankPageUserControl()
         {
             InitializeComponent();
         }

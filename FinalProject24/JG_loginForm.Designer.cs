@@ -75,7 +75,7 @@
             signupLabel.Location = new Point(295, 372);
             signupLabel.Name = "signupLabel";
             signupLabel.Size = new Size(65, 21);
-            signupLabel.TabIndex = 10;
+            signupLabel.TabIndex = 3;
             signupLabel.TabStop = true;
             signupLabel.Text = "Sign Up";
             signupLabel.LinkClicked += signupLabel_LinkClicked;
@@ -99,21 +99,26 @@
             signinButton.Location = new Point(101, 245);
             signinButton.Name = "signinButton";
             signinButton.Size = new Size(262, 33);
-            signinButton.TabIndex = 8;
+            signinButton.TabIndex = 2;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
             signinButton.Click += signinButton_Click;
+            signinButton.KeyPress += signinButton_KeyPress;
             // 
             // passwordTextBox
             // 
             passwordTextBox.BackColor = SystemColors.ScrollBar;
             passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
             passwordTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            passwordTextBox.ForeColor = Color.Gray;
             passwordTextBox.Location = new Point(102, 184);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(262, 29);
-            passwordTextBox.TabIndex = 6;
+            passwordTextBox.TabIndex = 1;
             passwordTextBox.Text = "Enter your password";
+            passwordTextBox.Enter += passwordTextBox_Enter;
+            passwordTextBox.KeyPress += passwordTextBox_KeyPress;
+            passwordTextBox.Leave += passwordTextBox_Leave;
             // 
             // label3
             // 
@@ -130,11 +135,15 @@
             emailTextBox.BackColor = SystemColors.ScrollBar;
             emailTextBox.BorderStyle = BorderStyle.FixedSingle;
             emailTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            emailTextBox.ForeColor = Color.Gray;
             emailTextBox.Location = new Point(102, 111);
             emailTextBox.Name = "emailTextBox";
             emailTextBox.Size = new Size(262, 29);
-            emailTextBox.TabIndex = 4;
+            emailTextBox.TabIndex = 0;
             emailTextBox.Text = "Enter your email";
+            emailTextBox.Enter += emailTextBox_Enter;
+            emailTextBox.KeyPress += emailTextBox_KeyPress;
+            emailTextBox.Leave += emailTextBox_Leave;
             // 
             // label2
             // 
