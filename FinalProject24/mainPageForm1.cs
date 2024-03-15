@@ -1,11 +1,33 @@
+using System.Drawing;
+using System.Drawing.Drawing2D;
+
 namespace FinalProject24
 {
     public partial class mainPageForm1 : Form
     {
+
+
+
+
         public mainPageForm1()
         {
             InitializeComponent();
-
+            // @"C:\Users\johnn\Downloads\profilePicture.jpg"
+            try
+            {
+                // Load the image from a file and set it to the roundPictureBox1
+                roundPictureBox1.Image = Image.FromFile(@"C:\Users\johnn\Downloads\profilePicture.jpg"); // Make sure to provide the correct path
+                //roundPictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // This will ensure the image fits within the roundPictureBox1
+                roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("The specified image file cannot be found.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
 
         int count = 0; // To count the item
@@ -127,8 +149,11 @@ namespace FinalProject24
         // This is load when the Form is loaded.
         private void mainPageForm1_Load(object sender, EventArgs e)
         {
+            
 
             PopulateMenuPanel();
+
+
 
         } // mainPageForm1_Load End Line
 
