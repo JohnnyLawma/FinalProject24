@@ -28,146 +28,160 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            button3 = new Button();
-            panel1 = new Panel();
-            button1 = new Button();
-            label4 = new Label();
-            button2 = new Button();
-            label3 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
+            myCartPictureBox = new PictureBox();
+            myCartFoodNameLabel = new Label();
+            myCartRestaurantLabel = new Label();
+            myCartDeleteButton = new Button();
+            addAndDeletePanel = new Panel();
+            myCartRemoveButton = new Button();
+            myCartTotalItemLabel = new Label();
+            myCartAddButton = new Button();
+            myCartPriceLabel = new Label();
+            ((System.ComponentModel.ISupportInitialize)myCartPictureBox).BeginInit();
+            addAndDeletePanel.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // myCartPictureBox
             // 
-            pictureBox1.BackColor = SystemColors.ControlLight;
-            pictureBox1.Location = new Point(3, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(116, 104);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            myCartPictureBox.BackColor = SystemColors.ControlLight;
+            myCartPictureBox.Location = new Point(6, 6);
+            myCartPictureBox.Margin = new Padding(6);
+            myCartPictureBox.Name = "myCartPictureBox";
+            myCartPictureBox.Size = new Size(226, 222);
+            myCartPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            myCartPictureBox.TabIndex = 0;
+            myCartPictureBox.TabStop = false;
             // 
-            // label1
+            // myCartFoodNameLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(158, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 21);
-            label1.TabIndex = 2;
-            label1.Text = "Food Name";
+            myCartFoodNameLabel.AutoSize = true;
+            myCartFoodNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            myCartFoodNameLabel.Location = new Point(293, 38);
+            myCartFoodNameLabel.Margin = new Padding(6, 0, 6, 0);
+            myCartFoodNameLabel.Name = "myCartFoodNameLabel";
+            myCartFoodNameLabel.Size = new Size(194, 45);
+            myCartFoodNameLabel.TabIndex = 2;
+            myCartFoodNameLabel.Text = "Food Name";
             // 
-            // label2
+            // myCartRestaurantLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(158, 69);
-            label2.Name = "label2";
-            label2.Size = new Size(98, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Restaurant Name";
+            myCartRestaurantLabel.AutoSize = true;
+            myCartRestaurantLabel.Location = new Point(293, 147);
+            myCartRestaurantLabel.Margin = new Padding(6, 0, 6, 0);
+            myCartRestaurantLabel.Name = "myCartRestaurantLabel";
+            myCartRestaurantLabel.Size = new Size(197, 32);
+            myCartRestaurantLabel.TabIndex = 3;
+            myCartRestaurantLabel.Text = "Restaurant Name";
             // 
-            // button3
+            // myCartDeleteButton
             // 
-            button3.BackColor = Color.Transparent;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(346, 58);
-            button3.Name = "button3";
-            button3.Size = new Size(35, 25);
-            button3.TabIndex = 8;
-            button3.Text = "🗑️";
-            button3.UseVisualStyleBackColor = false;
+            myCartDeleteButton.BackColor = Color.Transparent;
+            myCartDeleteButton.FlatAppearance.BorderSize = 0;
+            myCartDeleteButton.FlatStyle = FlatStyle.Flat;
+            myCartDeleteButton.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            myCartDeleteButton.Location = new Point(591, 124);
+            myCartDeleteButton.Margin = new Padding(6);
+            myCartDeleteButton.Name = "myCartDeleteButton";
+            myCartDeleteButton.Size = new Size(65, 53);
+            myCartDeleteButton.TabIndex = 8;
+            myCartDeleteButton.Text = "🗑️";
+            myCartDeleteButton.UseVisualStyleBackColor = false;
+            myCartDeleteButton.Click += myCartDeleteButton_Click;
             // 
-            // panel1
+            // addAndDeletePanel
             // 
-            panel1.BackColor = SystemColors.ActiveBorder;
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(button2);
-            panel1.Location = new Point(399, 59);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(82, 25);
-            panel1.TabIndex = 7;
+            addAndDeletePanel.BackColor = SystemColors.ActiveBorder;
+            addAndDeletePanel.Controls.Add(myCartRemoveButton);
+            addAndDeletePanel.Controls.Add(myCartTotalItemLabel);
+            addAndDeletePanel.Controls.Add(myCartAddButton);
+            addAndDeletePanel.Location = new Point(682, 126);
+            addAndDeletePanel.Margin = new Padding(6);
+            addAndDeletePanel.Name = "addAndDeletePanel";
+            addAndDeletePanel.Size = new Size(152, 53);
+            addAndDeletePanel.TabIndex = 7;
             // 
-            // button1
+            // myCartRemoveButton
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(54, -14);
-            button1.Name = "button1";
-            button1.Size = new Size(35, 47);
-            button1.TabIndex = 1;
-            button1.Text = "-";
-            button1.UseVisualStyleBackColor = true;
+            myCartRemoveButton.FlatAppearance.BorderSize = 0;
+            myCartRemoveButton.FlatStyle = FlatStyle.Flat;
+            myCartRemoveButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            myCartRemoveButton.Location = new Point(100, -30);
+            myCartRemoveButton.Margin = new Padding(6);
+            myCartRemoveButton.Name = "myCartRemoveButton";
+            myCartRemoveButton.Size = new Size(65, 100);
+            myCartRemoveButton.TabIndex = 1;
+            myCartRemoveButton.Text = "-";
+            myCartRemoveButton.UseVisualStyleBackColor = true;
+            myCartRemoveButton.Click += myCartRemoveButton_Click;
             // 
-            // label4
+            // myCartTotalItemLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(35, 5);
-            label4.Name = "label4";
-            label4.Size = new Size(13, 15);
-            label4.TabIndex = 0;
-            label4.Text = "1";
+            myCartTotalItemLabel.AutoSize = true;
+            myCartTotalItemLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            myCartTotalItemLabel.Location = new Point(65, 11);
+            myCartTotalItemLabel.Margin = new Padding(6, 0, 6, 0);
+            myCartTotalItemLabel.Name = "myCartTotalItemLabel";
+            myCartTotalItemLabel.Size = new Size(27, 32);
+            myCartTotalItemLabel.TabIndex = 0;
+            myCartTotalItemLabel.Text = "1";
             // 
-            // button2
+            // myCartAddButton
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(0, -10);
-            button2.Name = "button2";
-            button2.Size = new Size(29, 41);
-            button2.TabIndex = 2;
-            button2.Text = "+";
-            button2.UseVisualStyleBackColor = true;
+            myCartAddButton.FlatAppearance.BorderSize = 0;
+            myCartAddButton.FlatStyle = FlatStyle.Flat;
+            myCartAddButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            myCartAddButton.Location = new Point(0, -21);
+            myCartAddButton.Margin = new Padding(6);
+            myCartAddButton.Name = "myCartAddButton";
+            myCartAddButton.Size = new Size(54, 87);
+            myCartAddButton.TabIndex = 2;
+            myCartAddButton.Text = "+";
+            myCartAddButton.UseVisualStyleBackColor = true;
+            myCartAddButton.Click += myCartAddButton_Click;
             // 
-            // label3
+            // myCartPriceLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(434, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(47, 17);
-            label3.TabIndex = 6;
-            label3.Text = "$12.99";
+            myCartPriceLabel.AutoSize = true;
+            myCartPriceLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            myCartPriceLabel.Location = new Point(737, 46);
+            myCartPriceLabel.Margin = new Padding(6, 0, 6, 0);
+            myCartPriceLabel.Name = "myCartPriceLabel";
+            myCartPriceLabel.Size = new Size(97, 36);
+            myCartPriceLabel.TabIndex = 6;
+            myCartPriceLabel.Text = "$12.99";
             // 
             // CartItemUC
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             BorderStyle = BorderStyle.FixedSingle;
-            Controls.Add(button3);
-            Controls.Add(panel1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            Controls.Add(myCartDeleteButton);
+            Controls.Add(addAndDeletePanel);
+            Controls.Add(myCartPriceLabel);
+            Controls.Add(myCartRestaurantLabel);
+            Controls.Add(myCartFoodNameLabel);
+            Controls.Add(myCartPictureBox);
+            Margin = new Padding(6);
             Name = "CartItemUC";
-            Size = new Size(507, 109);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Size = new Size(876, 233);
+            ((System.ComponentModel.ISupportInitialize)myCartPictureBox).EndInit();
+            addAndDeletePanel.ResumeLayout(false);
+            addAndDeletePanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private Label label1;
-        private Label label2;
-        private Button button3;
-        private Panel panel1;
-        private Button button1;
-        private Label label4;
-        private Button button2;
-        private Label label3;
+        private PictureBox myCartPictureBox;
+        private Label myCartFoodNameLabel;
+        private Label myCartRestaurantLabel;
+        private Button myCartDeleteButton;
+        private Panel addAndDeletePanel;
+        private Button myCartRemoveButton;
+        private Label myCartTotalItemLabel;
+        private Button myCartAddButton;
+        private Label myCartPriceLabel;
     }
 }

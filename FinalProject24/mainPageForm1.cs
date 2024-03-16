@@ -7,12 +7,13 @@ namespace FinalProject24
     {
 
 
-
+        private CartUC cartUCInstance;
 
         public mainPageForm1()
         {
             InitializeComponent();
-            // @"C:\Users\johnn\Downloads\profilePicture.jpg"
+           
+            // For Loading Circular Shape image.
             try
             {
                 // Load the image from a file and set it to the roundPictureBox1
@@ -28,6 +29,10 @@ namespace FinalProject24
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+
+
+
+
         }
 
         int count = 0; // To count the item
@@ -167,11 +172,38 @@ namespace FinalProject24
 
         private void cartButton_Click(object sender, EventArgs e)
         {
-            foreach (var item in selectedItems)
+            // Check if CartUC instance is null or not already added to the main panel
+            if (cartUCInstance == null || !mainPanel.Controls.Contains(cartUCInstance))
             {
-                // For example, displaying item details in a MessageBox or a list
-                MessageBox.Show($"Title: {item.Title},Image Path: {item.ImagePath}");
+                if (cartUCInstance == null)
+                {
+                    cartUCInstance = new CartUC();
+                }
+                mainPanel.Controls.Add(cartUCInstance);
+                cartUCInstance.Dock = DockStyle.Fill;
             }
+
+            // Bring the CartUC instance to the front
+            cartUCInstance.BringToFront();
+
+            // Convert the selectedItems to CartItem objects, now including ImagePath
+            var itemsToLoad = selectedItems.Select(item => new CartItem
+            {
+                FoodName = item.Title,
+                Price = item.Price,
+                RestaurantName = "", // Assuming you have restaurant name data somewhere
+                Quantity = 1, // Assuming a default quantity of 1 for each item for now
+                ImagePath = item.ImagePath // Include the image path
+            }).ToList();
+
+            // Load the items into the cart
+            cartUCInstance.LoadCartItems(itemsToLoad);
+
+            // Set visibility to switch to the cart view
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+
         }
 
 

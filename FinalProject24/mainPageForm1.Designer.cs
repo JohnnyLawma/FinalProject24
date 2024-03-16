@@ -46,6 +46,7 @@
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             TopBar.SuspendLayout();
+            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuSideBar
@@ -175,7 +176,7 @@
             // menuPanel
             // 
             menuPanel.AutoScroll = true;
-            menuPanel.Location = new Point(371, 228);
+            menuPanel.Location = new Point(183, 94);
             menuPanel.Margin = new Padding(4, 2, 4, 2);
             menuPanel.Name = "menuPanel";
             menuPanel.Size = new Size(1291, 860);
@@ -195,6 +196,7 @@
             // 
             // mainPanel
             // 
+            mainPanel.Controls.Add(menuPanel);
             mainPanel.Location = new Point(188, 132);
             mainPanel.Margin = new Padding(4, 2, 4, 2);
             mainPanel.Name = "mainPanel";
@@ -207,7 +209,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1827, 1197);
             Controls.Add(menuLabel);
-            Controls.Add(menuPanel);
             Controls.Add(mainPanel);
             Controls.Add(TopBar);
             Controls.Add(MenuSideBar);
@@ -219,6 +220,7 @@
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             TopBar.ResumeLayout(false);
             TopBar.PerformLayout();
+            mainPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
