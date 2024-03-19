@@ -157,6 +157,7 @@ namespace FinalProject24
             
 
             PopulateMenuPanel();
+            mainPanel.Visible = false;
 
 
 
@@ -230,9 +231,9 @@ namespace FinalProject24
         private void homeButton_Click(object sender, EventArgs e)
         {
             mainPanel.Controls.Clear();
-            //mainPanel.Visible = false; // Hide the mainPanel
+            mainPanel.Visible = false; // Hide the mainPanel
             menuPanel.Visible = true; // Show the menuPanel
-            menuLabel.Visible = true;
+            //menuLabel.Visible = true;
 
         }
 

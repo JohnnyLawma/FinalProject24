@@ -37,16 +37,15 @@
             orderButton = new Button();
             nameLabel = new Label();
             signOutButton = new Button();
+            mainPanel = new Panel();
             TopBar = new Panel();
             searchTextBox = new TextBox();
             cartButton = new Button();
             menuPanel = new Panel();
             menuLabel = new Label();
-            mainPanel = new Panel();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             TopBar.SuspendLayout();
-            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuSideBar
@@ -140,6 +139,14 @@
             signOutButton.Text = "Sign Out";
             signOutButton.UseVisualStyleBackColor = true;
             // 
+            // mainPanel
+            // 
+            mainPanel.Location = new Point(188, 132);
+            mainPanel.Margin = new Padding(4, 2, 4, 2);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1638, 1054);
+            mainPanel.TabIndex = 3;
+            // 
             // TopBar
             // 
             TopBar.AutoSize = true;
@@ -176,7 +183,7 @@
             // menuPanel
             // 
             menuPanel.AutoScroll = true;
-            menuPanel.Location = new Point(183, 94);
+            menuPanel.Location = new Point(370, 226);
             menuPanel.Margin = new Padding(4, 2, 4, 2);
             menuPanel.Name = "menuPanel";
             menuPanel.Size = new Size(1291, 860);
@@ -194,22 +201,14 @@
             menuLabel.Text = "Menu";
             menuLabel.Click += menuLabel_Click;
             // 
-            // mainPanel
-            // 
-            mainPanel.Controls.Add(menuPanel);
-            mainPanel.Location = new Point(188, 132);
-            mainPanel.Margin = new Padding(4, 2, 4, 2);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1638, 1054);
-            mainPanel.TabIndex = 3;
-            // 
             // mainPageForm1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1827, 1197);
-            Controls.Add(menuLabel);
             Controls.Add(mainPanel);
+            Controls.Add(menuLabel);
+            Controls.Add(menuPanel);
             Controls.Add(TopBar);
             Controls.Add(MenuSideBar);
             Margin = new Padding(6);
@@ -220,7 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             TopBar.ResumeLayout(false);
             TopBar.PerformLayout();
-            mainPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
