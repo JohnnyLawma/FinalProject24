@@ -83,10 +83,10 @@ namespace FinalProject24
             }
         }
 
-        // Additional methods and event handlers...
+        
     }
 
-    // Define the CartItem class according to your actual data structure
+    // Define the CartItem class items.
     public class CartItem
     {
         public string FoodName { get; set; }

@@ -49,7 +49,7 @@ namespace FinalProject24
             {
                 if (!string.IsNullOrWhiteSpace(ImagePath))
                 {
-                    // Assuming you have a PictureBox control named pictureBox in CartItemUC
+                    
                     myCartPictureBox.Image = Image.FromFile(ImagePath);
                 }
             }

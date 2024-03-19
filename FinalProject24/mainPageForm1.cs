@@ -187,13 +187,13 @@ namespace FinalProject24
             // Bring the CartUC instance to the front
             cartUCInstance.BringToFront();
 
-            // Convert the selectedItems to CartItem objects, now including ImagePath
+            // Convert the selectedItems to CartItem objects
             var itemsToLoad = selectedItems.Select(item => new CartItem
             {
                 FoodName = item.Title,
                 Price = item.Price,
-                RestaurantName = "", // Assuming you have restaurant name data somewhere
-                Quantity = 1, // Assuming a default quantity of 1 for each item for now
+                RestaurantName = "", 
+                Quantity = 1, 
                 ImagePath = item.ImagePath // Include the image path
             }).ToList();
 
