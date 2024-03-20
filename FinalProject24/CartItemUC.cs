@@ -64,16 +64,29 @@ namespace FinalProject24
             InitializeComponent();
 
             // Attach event handlers to the buttons
-            myCartAddButton.Click += myCartAddButton_Click;
-            myCartRemoveButton.Click += myCartRemoveButton_Click;
-            myCartDeleteButton.Click += myCartDeleteButton_Click;
+            //myCartAddButton.Click += myCartAddButton_Click;
+            //myCartRemoveButton.Click += myCartRemoveButton_Click;
+            //myCartDeleteButton.Click += myCartDeleteButton_Click;
 
         }
+
+        public CartItem GetCartItem()
+        {
+            return new CartItem
+            {
+                FoodName = this.FoodName,
+                Price = this.Price,
+                RestaurantName = this.RestaurantName,
+                Quantity = this.Quantity
+            };
+        }
+
 
         private void myCartAddButton_Click(object sender, EventArgs e)
         {
             Quantity++; // Increase the quantity
             QuantityIncreased?.Invoke(this, EventArgs.Empty);
+            CartUC.Instance.UpdateSummaryOrder();
         }
 
         private void myCartRemoveButton_Click(object sender, EventArgs e)
@@ -82,12 +95,14 @@ namespace FinalProject24
             {
                 Quantity--; // Decrease the quantity but not less than 1
                 QuantityDecreased?.Invoke(this, EventArgs.Empty);
+                CartUC.Instance.UpdateSummaryOrder();
             }
         }
 
         private void myCartDeleteButton_Click(object sender, EventArgs e)
         {
             ItemRemoved?.Invoke(this, EventArgs.Empty); // Remove the item entirely
+            CartUC.Instance.UpdateSummaryOrder();
         }
 
 

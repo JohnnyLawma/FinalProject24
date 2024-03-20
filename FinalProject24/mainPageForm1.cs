@@ -119,6 +119,7 @@ namespace FinalProject24
             int controlHeight = 382; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
+            // Change the Image here by proving the file Path
             string impagePaths = @"C:\Users\johnn\Downloads\foodbowl.jpg";
 
 
