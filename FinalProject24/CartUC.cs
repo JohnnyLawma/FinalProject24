@@ -41,37 +41,46 @@ namespace FinalProject24
         // Method to load items into the CartUC and update the list
         public void LoadCartItems(IEnumerable<CartItem> items)
         {
-            selectedItems.Clear();
-            selectedItems.AddRange(items);
+            selectedItems.Clear(); // Clear any existing items from the list.
 
-            UpdateSummaryOrder(); // Calculate the summary order after loading items
+            var groupedItems = items
+                .GroupBy(item => new { item.FoodName, item.Price }) // Group by unique name and price.
+                .Select(group => new CartItem
+                {
+                    FoodName = group.Key.FoodName,
+                    Price = group.Key.Price,
+                    Quantity = group.Sum(g => g.Quantity), // Sum quantities of identical items.
+                    ImagePath = group.First().ImagePath // Take the image path from the first item in each group.
+                });
 
-            loadCardPanel.Controls.Clear(); // Clear previous items
-            int yOffset = 0; // Start with a 0 offset from the top
-            const int itemMargin = 10; // Margin between items
+            selectedItems.AddRange(groupedItems); // Add grouped items to the list.
+            UpdateSummaryOrder(); // Recalculate the summary order.
 
-            foreach (var item in selectedItems)
+            loadCardPanel.Controls.Clear(); // Clear the panel for the new controls.
+
+            int yOffset = 0; // Initialize Y-offset for the first item.
+
+            foreach (var item in selectedItems) // Iterate over the grouped items.
             {
                 var cartItemControl = new CartItemUC
                 {
                     FoodName = item.FoodName,
                     Price = item.Price,
-                    RestaurantName = item.RestaurantName,
                     Quantity = item.Quantity,
-                    ImagePath = item.ImagePath,
-                    // Set other properties as needed
+                    ImagePath = item.ImagePath
                 };
 
-                // Position the control with the current yOffset
-                cartItemControl.Location = new Point(0, yOffset);
-                yOffset += cartItemControl.Height + itemMargin; // Update yOffset
+                cartItemControl.LoadImage(); // Load the item's image.
 
-                cartItemControl.LoadImage();
-                loadCardPanel.Controls.Add(cartItemControl);
+                cartItemControl.Location = new Point(0, yOffset); // Set the location with the current yOffset.
+                yOffset += cartItemControl.Height + 10; // Increment yOffset for the next item.
+
+                loadCardPanel.Controls.Add(cartItemControl); // Add the control to the panel.
             }
         }
 
-       
+
+
 
         // Method to calculate the summary order
         public void UpdateSummaryOrder()
