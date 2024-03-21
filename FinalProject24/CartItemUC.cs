@@ -17,6 +17,14 @@ namespace FinalProject24
         public event EventHandler QuantityDecreased;
         public event EventHandler ItemRemoved;
 
+
+        
+
+        public class QuantityChangedEventArgs : EventArgs
+        {
+            public int QuantityChange { get; set; }
+        }
+
         // Properties for the food name, price, restaurant name, and quantity
         public string FoodName
         {
@@ -82,10 +90,16 @@ namespace FinalProject24
         }
 
 
+
+
+
         private void myCartAddButton_Click(object sender, EventArgs e)
         {
             Quantity++; // Increase the quantity
             QuantityIncreased?.Invoke(this, EventArgs.Empty);
+
+           
+
             CartUC.Instance.UpdateSummaryOrder();
         }
 
@@ -95,6 +109,7 @@ namespace FinalProject24
             {
                 Quantity--; // Decrease the quantity but not less than 1
                 QuantityDecreased?.Invoke(this, EventArgs.Empty);
+               
                 CartUC.Instance.UpdateSummaryOrder();
             }
         }

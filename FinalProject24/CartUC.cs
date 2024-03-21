@@ -33,10 +33,23 @@ namespace FinalProject24
         {
             InitializeComponent();
 
+          
+
         }
 
 
         private List<CartItem> selectedItems = new List<CartItem>();
+
+        public int TotalQuantity
+        {
+            get { return selectedItems.Sum(item => item.Quantity); }
+        }
+
+        //....
+        public event EventHandler CartItemsChanged;
+
+
+
 
         // Method to load items into the CartUC and update the list
         public void LoadCartItems(IEnumerable<CartItem> items)
@@ -70,10 +83,16 @@ namespace FinalProject24
                     ImagePath = item.ImagePath
                 };
 
+               
+
+                loadCardPanel.Controls.Add(cartItemControl);
+
                 cartItemControl.LoadImage(); // Load the item's image.
 
                 cartItemControl.Location = new Point(0, yOffset); // Set the location with the current yOffset.
                 yOffset += cartItemControl.Height + 10; // Increment yOffset for the next item.
+
+                SubscribeToItemEvents(cartItemControl);
 
                 loadCardPanel.Controls.Add(cartItemControl); // Add the control to the panel.
             }
@@ -96,6 +115,17 @@ namespace FinalProject24
             taxPriceLabel.Text = $"${tax:0.00}";
             totalLabelText.Text = $"${total:0.00}";
         }
+
+
+
+        //......................
+        private void OnCartItemChanged()
+        {
+            CartItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+
+
 
 
         private void CartItemUC_QuantityIncreased(object sender, EventArgs e)
@@ -123,6 +153,73 @@ namespace FinalProject24
             UpdateSummaryOrder(); // Recalculate the summary order
 
         }
+
+
+        //............
+        // This method sets up event listeners for the CartItemUC controls.
+        private void SubscribeToItemEvents(CartItemUC cartItemControl)
+        {
+            // When the quantity is increased on the CartItemUC control...
+            cartItemControl.QuantityIncreased += (sender, args) =>
+            {
+                // Find the item in the cart that matches the one being changed.
+                var itemInCart = selectedItems.FirstOrDefault(item => item.FoodName == cartItemControl.FoodName && item.Price == cartItemControl.Price);
+
+                // If we find the item...
+                if (itemInCart != null)
+                {
+                    // Increase its quantity by one.
+                    itemInCart.Quantity++;
+
+                    // Update the order summary to reflect the new quantity.
+                    UpdateSummaryOrder();
+                }
+            };
+
+            // When the quantity is decreased on the CartItemUC control...
+            cartItemControl.QuantityDecreased += (sender, args) =>
+            {
+                // Find the item in the cart that matches the one being changed.
+                var itemInCart = selectedItems.FirstOrDefault(item => item.FoodName == cartItemControl.FoodName && item.Price == cartItemControl.Price);
+
+                // If we find the item and its quantity is more than one...
+                if (itemInCart != null && itemInCart.Quantity > 1)
+                {
+                    // Decrease its quantity by one.
+                    itemInCart.Quantity--;
+
+                    // Update the order summary to reflect the new quantity.
+                    UpdateSummaryOrder();
+                }
+            };
+
+            // When an item is removed from the CartItemUC control...
+            cartItemControl.ItemRemoved += (sender, args) =>
+            {
+                // Find the item in the cart that matches the one being changed.
+                var itemInCart = selectedItems.FirstOrDefault(item => item.FoodName == cartItemControl.FoodName && item.Price == cartItemControl.Price);
+
+                // If we find the item...
+                if (itemInCart != null)
+                {
+                    // Remove it from the cart.
+                    selectedItems.Remove(itemInCart);
+
+                    // Update the order summary since an item was removed.
+                    UpdateSummaryOrder();
+                }
+
+                // Remove the control representing the item from the UI.
+                loadCardPanel.Controls.Remove(cartItemControl);
+
+                // Clean up the control to free resources.
+                cartItemControl.Dispose();
+            };
+        }
+
+
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {

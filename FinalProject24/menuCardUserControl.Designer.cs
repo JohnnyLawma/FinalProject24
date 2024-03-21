@@ -91,13 +91,14 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(removeButton);
             Controls.Add(addButton);
             Controls.Add(priceLabel);
             Controls.Add(itemNameLabel);
             Controls.Add(menuPictureBox);
             Name = "menuCardUserControl";
-            Size = new Size(400, 382);
+            Size = new Size(398, 380);
             ((System.ComponentModel.ISupportInitialize)menuPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();

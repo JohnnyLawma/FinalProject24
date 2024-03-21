@@ -30,12 +30,17 @@ namespace FinalProject24
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
 
-
+            SetupCartUC();
 
 
         }
 
         int count = 0; // To count the item
+
+
+        //............
+        public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
+
 
 
 
@@ -44,6 +49,7 @@ namespace FinalProject24
             public string Title;
             public decimal Price;
             public string ImagePath;
+            public int Quantity;
         }
 
         private List<cartArray> selectedItems = new List<cartArray>();
@@ -75,6 +81,9 @@ namespace FinalProject24
             //MessageBox.Show(count.ToString());
         }
 
+
+
+
         // For handling - (remove) Button
         private void Card_RemoveButtonClicked(object sender, EventArgs e)
         {
@@ -104,6 +113,9 @@ namespace FinalProject24
             } // If line End
 
         }
+
+
+        
 
 
 
@@ -234,7 +246,7 @@ namespace FinalProject24
             mainPanel.Controls.Clear();
             mainPanel.Visible = false; // Hide the mainPanel
             menuPanel.Visible = true; // Show the menuPanel
-            //menuLabel.Visible = true;
+            menuLabel.Visible = true;
 
         }
 
@@ -256,25 +268,31 @@ namespace FinalProject24
             menuLabel.Visible = false;
         }
 
-        /*
-        private void settingButton_Click(object sender, EventArgs e)
-        {
-            if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
-            {
-                mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
-                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
-            else
-            {
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
 
-            mainPanel.Visible = true;
-            menuPanel.Visible = false;
-            menuLabel.Visible = false;
+        //.............
+        private void CartUC_CartItemsChanged(object sender, EventArgs e)
+        {
+            // Update the cart count label here
+            cartButton.Text = $"Carts: {cartUCInstance.TotalQuantity}";
         }
 
-        */
+
+        private void SetupCartUC()
+        {
+            if (cartUCInstance == null)
+            {
+                cartUCInstance = new CartUC();
+                cartUCInstance.CartItemsChanged += CartUC_CartItemsChanged;
+                // other initialization if needed
+            }
+            if (!mainPanel.Controls.Contains(cartUCInstance))
+            {
+                mainPanel.Controls.Add(cartUCInstance);
+                // other setup if needed
+            }
+        }
+
+
+
     } // mainPageForm1 End Line
 }
