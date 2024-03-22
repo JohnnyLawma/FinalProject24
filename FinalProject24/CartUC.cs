@@ -49,7 +49,7 @@ namespace FinalProject24
         public event EventHandler CartItemsChanged;
 
 
-
+  
 
         // Method to load items into the CartUC and update the list
         public void LoadCartItems(IEnumerable<CartItem> items)
@@ -114,16 +114,12 @@ namespace FinalProject24
             subtotalPriceLabel.Text = $"${subtotal:0.00}";
             taxPriceLabel.Text = $"${tax:0.00}";
             totalLabelText.Text = $"${total:0.00}";
+
+           
         }
 
-
-
-        //......................
-        private void OnCartItemChanged()
-        {
-            CartItemsChanged?.Invoke(this, EventArgs.Empty);
-        }
-
+        
+        
 
 
 

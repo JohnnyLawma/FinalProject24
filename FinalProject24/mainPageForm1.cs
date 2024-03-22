@@ -17,7 +17,7 @@ namespace FinalProject24
             try
             {
                 // Load the image from a file and set it to the roundPictureBox1
-                roundPictureBox1.Image = Image.FromFile(@"C:\Users\johnn\Downloads\profilePicture.jpg"); // Make sure to provide the correct path
+                roundPictureBox1.Image = Image.FromFile(@"C:\Users\Iam\Documents\Computer Languages_VIsual Programming\FinalProject\Images\profilePicture.jpg"); // Make sure to provide the correct path
                 //roundPictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // This will ensure the image fits within the roundPictureBox1
                 roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
@@ -30,7 +30,7 @@ namespace FinalProject24
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
 
-            SetupCartUC();
+           
 
 
         }
@@ -132,7 +132,7 @@ namespace FinalProject24
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
             // Change the Image here by proving the file Path
-            string impagePaths = @"C:\Users\johnn\Downloads\foodbowl.jpg";
+            string impagePaths = @"C:\Users\Iam\Documents\Computer Languages_VIsual Programming\FinalProject\Images\foodbowl.jpg";
 
 
             // Load 9 demo menu cards
@@ -156,6 +156,9 @@ namespace FinalProject24
 
                 card.AddButtonClicked += Card_AddButtonClicked;
                 card.RemoveButtonClicked += Card_RemoveButtonClicked;
+
+         
+
 
 
                 menuPanel.Controls.Add(card);
@@ -277,20 +280,9 @@ namespace FinalProject24
         }
 
 
-        private void SetupCartUC()
-        {
-            if (cartUCInstance == null)
-            {
-                cartUCInstance = new CartUC();
-                cartUCInstance.CartItemsChanged += CartUC_CartItemsChanged;
-                // other initialization if needed
-            }
-            if (!mainPanel.Controls.Contains(cartUCInstance))
-            {
-                mainPanel.Controls.Add(cartUCInstance);
-                // other setup if needed
-            }
-        }
+
+
+       
 
 
 
