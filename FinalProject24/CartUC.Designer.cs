@@ -34,11 +34,13 @@
             subtotalPriceLabel = new Label();
             taxPriceLabel = new Label();
             totalItemNumberLabel = new Label();
-            button1 = new Button();
+            buyNowButton = new Button();
             subtotalLabel = new Label();
             taxLabel = new Label();
             totalItemLabel = new Label();
             loadCardPanel = new Panel();
+            totalLabel = new Label();
+            totalLabelText = new Label();
             summaryOrderPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,10 +71,12 @@
             // summaryOrderPanel
             // 
             summaryOrderPanel.BackColor = SystemColors.ScrollBar;
+            summaryOrderPanel.Controls.Add(totalLabelText);
+            summaryOrderPanel.Controls.Add(totalLabel);
             summaryOrderPanel.Controls.Add(subtotalPriceLabel);
             summaryOrderPanel.Controls.Add(taxPriceLabel);
             summaryOrderPanel.Controls.Add(totalItemNumberLabel);
-            summaryOrderPanel.Controls.Add(button1);
+            summaryOrderPanel.Controls.Add(buyNowButton);
             summaryOrderPanel.Controls.Add(subtotalLabel);
             summaryOrderPanel.Controls.Add(taxLabel);
             summaryOrderPanel.Controls.Add(totalItemLabel);
@@ -87,7 +91,7 @@
             // 
             subtotalPriceLabel.AutoSize = true;
             subtotalPriceLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            subtotalPriceLabel.Location = new Point(303, 226);
+            subtotalPriceLabel.Location = new Point(303, 161);
             subtotalPriceLabel.Margin = new Padding(6, 0, 6, 0);
             subtotalPriceLabel.Name = "subtotalPriceLabel";
             subtotalPriceLabel.Size = new Size(91, 32);
@@ -98,7 +102,7 @@
             // 
             taxPriceLabel.AutoSize = true;
             taxPriceLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            taxPriceLabel.Location = new Point(303, 175);
+            taxPriceLabel.Location = new Point(303, 209);
             taxPriceLabel.Margin = new Padding(6, 0, 6, 0);
             taxPriceLabel.Name = "taxPriceLabel";
             taxPriceLabel.Size = new Size(77, 32);
@@ -116,25 +120,25 @@
             totalItemNumberLabel.TabIndex = 5;
             totalItemNumberLabel.Text = "3";
             // 
-            // button1
+            // buyNowButton
             // 
-            button1.BackColor = SystemColors.Window;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(35, 305);
-            button1.Margin = new Padding(6);
-            button1.Name = "button1";
-            button1.Size = new Size(399, 105);
-            button1.TabIndex = 4;
-            button1.Text = "Buy Now";
-            button1.UseVisualStyleBackColor = false;
+            buyNowButton.BackColor = SystemColors.Window;
+            buyNowButton.FlatAppearance.BorderSize = 0;
+            buyNowButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buyNowButton.ForeColor = SystemColors.ActiveCaptionText;
+            buyNowButton.Location = new Point(35, 305);
+            buyNowButton.Margin = new Padding(6);
+            buyNowButton.Name = "buyNowButton";
+            buyNowButton.Size = new Size(399, 105);
+            buyNowButton.TabIndex = 4;
+            buyNowButton.Text = "Buy Now";
+            buyNowButton.UseVisualStyleBackColor = false;
             // 
             // subtotalLabel
             // 
             subtotalLabel.AutoSize = true;
             subtotalLabel.Font = new Font("Segoe UI", 9.75F);
-            subtotalLabel.Location = new Point(35, 222);
+            subtotalLabel.Location = new Point(35, 157);
             subtotalLabel.Margin = new Padding(6, 0, 6, 0);
             subtotalLabel.Name = "subtotalLabel";
             subtotalLabel.Size = new Size(117, 36);
@@ -145,7 +149,7 @@
             // 
             taxLabel.AutoSize = true;
             taxLabel.Font = new Font("Segoe UI", 9.75F);
-            taxLabel.Location = new Point(35, 171);
+            taxLabel.Location = new Point(35, 205);
             taxLabel.Margin = new Padding(6, 0, 6, 0);
             taxLabel.Name = "taxLabel";
             taxLabel.Size = new Size(57, 36);
@@ -171,6 +175,29 @@
             loadCardPanel.Size = new Size(956, 811);
             loadCardPanel.TabIndex = 8;
             // 
+            // totalLabel
+            // 
+            totalLabel.AutoSize = true;
+            totalLabel.Font = new Font("Segoe UI", 9.75F);
+            totalLabel.Location = new Point(35, 250);
+            totalLabel.Margin = new Padding(6, 0, 6, 0);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new Size(75, 36);
+            totalLabel.TabIndex = 8;
+            totalLabel.Text = "Total:";
+            totalLabel.Click += label1_Click;
+            // 
+            // totalLabelText
+            // 
+            totalLabelText.AutoSize = true;
+            totalLabelText.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            totalLabelText.Location = new Point(303, 253);
+            totalLabelText.Margin = new Padding(6, 0, 6, 0);
+            totalLabelText.Name = "totalLabelText";
+            totalLabelText.Size = new Size(77, 32);
+            totalLabelText.TabIndex = 9;
+            totalLabelText.Text = "$2.50";
+            // 
             // CartUC
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -195,7 +222,7 @@
         private Label subtotalPriceLabel;
         private Label taxPriceLabel;
         private Label totalItemNumberLabel;
-        private Button button1;
+        private Button buyNowButton;
         private Label subtotalLabel;
         private Label taxLabel;
         private Label totalItemLabel;
@@ -203,5 +230,7 @@
         private CartItemUC cartItemuc2;
         private CartItemUC cartItemuc3;
         private Panel loadCardPanel;
+        private Label totalLabel;
+        private Label totalLabelText;
     }
 }

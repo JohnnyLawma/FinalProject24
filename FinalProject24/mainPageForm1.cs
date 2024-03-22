@@ -32,12 +32,17 @@ namespace FinalProject24
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
 
-
+           
 
 
         }
 
         int count = 0; // To count the item
+
+
+        //............
+        public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
+
 
 
 
@@ -46,6 +51,7 @@ namespace FinalProject24
             public string Title;
             public decimal Price;
             public string ImagePath;
+            public int Quantity;
         }
 
         private List<cartArray> selectedItems = new List<cartArray>();
@@ -77,6 +83,9 @@ namespace FinalProject24
             //MessageBox.Show(count.ToString());
         }
 
+
+
+
         // For handling - (remove) Button
         private void Card_RemoveButtonClicked(object sender, EventArgs e)
         {
@@ -106,6 +115,9 @@ namespace FinalProject24
             } // If line End
 
         }
+
+
+        
 
 
 
@@ -145,6 +157,9 @@ namespace FinalProject24
 
                 card.AddButtonClicked += Card_AddButtonClicked;
                 card.RemoveButtonClicked += Card_RemoveButtonClicked;
+
+         
+
 
 
                 menuPanel.Controls.Add(card);
@@ -230,7 +245,7 @@ namespace FinalProject24
             mainPanel.Controls.Clear();
             mainPanel.Visible = false; // Hide the mainPanel
             menuPanel.Visible = true; // Show the menuPanel
-            //menuLabel.Visible = true;
+            menuLabel.Visible = true;
 
         }
 
@@ -293,11 +308,12 @@ namespace FinalProject24
                 NS_AccountSettingPageUserControl1.Instance.BringToFront();
             }
 
-            mainPanel.Visible = true;
-            menuPanel.Visible = false;
-            menuLabel.Visible = false;
-        }
 
-        */
+
+
+       
+
+
+
     } // mainPageForm1 End Line
 }
