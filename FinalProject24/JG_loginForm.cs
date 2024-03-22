@@ -33,15 +33,28 @@ namespace FinalProject24
         {
             if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
             {
-                //MessageBox.Show("You have logged in! Welcome back Customer!");
                 successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                 successOrNotLabel.Text = "Success! Welcome back Customer!";
 
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
-
-                this.Hide(); // Hiding the Login Form
+                
                 loadMainForm.Show(); // Opening the Main Menu Form
+                this.Hide(); // Hiding the Login Form
+
+                if (emailTextBox.Text != "Enter your email")
+                {
+                    emailTextBox.Text = "Enter your email";
+                    emailTextBox.ForeColor = SystemColors.WindowText;
+                }
+                if (passwordTextBox.Text != "Enter your password")
+                {
+                    passwordTextBox.Text = "Enter your password";
+                    passwordTextBox.ForeColor = SystemColors.WindowText;
+                }
+
+                successOrNotLabel.Text = "";
+
             }
             else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
             {
@@ -51,8 +64,22 @@ namespace FinalProject24
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
 
-                this.Hide(); // Hiding the Login Form
                 loadMainForm.Show(); // Opening the Main Menu Form
+                this.Hide(); // Hiding the Login Form
+
+                if (emailTextBox.Text != "Enter your email")
+                {
+                    emailTextBox.Text = "Enter your email";
+                    emailTextBox.ForeColor = SystemColors.WindowText;
+                }
+                if (passwordTextBox.Text != "Enter your password")
+                {
+                    passwordTextBox.Text = "Enter your password";
+                    passwordTextBox.ForeColor = SystemColors.WindowText;
+                }
+
+                successOrNotLabel.Text = "";
+
             }
             else if (emailTextBox.Text == "Enter your email" || passwordTextBox.Text == "Enter your password")
             {
@@ -62,8 +89,6 @@ namespace FinalProject24
 
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
-
-
             }
             else //
             {
@@ -74,11 +99,8 @@ namespace FinalProject24
 
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
-
-
             }
         }
-
 
 
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

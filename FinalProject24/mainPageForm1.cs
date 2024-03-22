@@ -5,19 +5,21 @@ namespace FinalProject24
 {
     public partial class mainPageForm1 : Form
     {
-
+        // update image paths here to save time changing the path name
+        string imagePathProfilePicture = @"E:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
+        string imagePathMenuItems = @"E:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
 
         private CartUC cartUCInstance;
 
         public mainPageForm1()
         {
             InitializeComponent();
-           
+
             // For Loading Circular Shape image.
             try
             {
                 // Load the image from a file and set it to the roundPictureBox1
-                roundPictureBox1.Image = Image.FromFile(@"C:\Users\johnn\Downloads\profilePicture.jpg"); // Make sure to provide the correct path
+                roundPictureBox1.Image = Image.FromFile(imagePathProfilePicture); // Make sure to provide the correct path
                 //roundPictureBox1.SizeMode = PictureBoxSizeMode.Zoom; // This will ensure the image fits within the roundPictureBox1
                 roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
@@ -119,7 +121,7 @@ namespace FinalProject24
             int controlHeight = 382; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
-            string impagePaths = @"C:\Users\johnn\Downloads\foodbowl.jpg";
+            string impagePaths = imagePathMenuItems;
 
 
             // Load 9 demo menu cards
@@ -154,13 +156,8 @@ namespace FinalProject24
         // This is load when the Form is loaded.
         private void mainPageForm1_Load(object sender, EventArgs e)
         {
-            
-
             PopulateMenuPanel();
             mainPanel.Visible = false;
-
-
-
         } // mainPageForm1_Load End Line
 
 
@@ -192,8 +189,8 @@ namespace FinalProject24
             {
                 FoodName = item.Title,
                 Price = item.Price,
-                RestaurantName = "", 
-                Quantity = 1, 
+                RestaurantName = "",
+                Quantity = 1,
                 ImagePath = item.ImagePath // Include the image path
             }).ToList();
 
@@ -253,6 +250,33 @@ namespace FinalProject24
             mainPanel.Visible = true;
             menuPanel.Visible = false;
             menuLabel.Visible = false;
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                Form oForm = Application.OpenForms[i];
+                if (oForm is mainPageForm1 || oForm is JG_loginForm)
+                {
+                    oForm.Close();
+                }
+            }
+            this.Close();
+        }
+
+        private void signOutButton_Click(object sender, EventArgs e)
+        {
+            // add logic to clear the cart and also any user information here
+
+            foreach (Form oForm in Application.OpenForms)
+            {
+                if (oForm is JG_loginForm)
+                {
+                    oForm.Show();
+                }
+            }
+            this.Hide();
         }
 
         /*
