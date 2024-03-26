@@ -6,9 +6,8 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
-        string imagePathProfilePicture = @"E:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
-        string imagePathMenuItems = @"E:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
-
+        string imagePathProfilePicture = @"C:\Users\johnn\Downloads\profilePicture.jpg";
+        string imagePathMenuItems = @"C:\Users\johnn\Downloads\foodbowl.jpg";
         private CartUC cartUCInstance;
 
         public mainPageForm1()
@@ -308,12 +307,10 @@ namespace FinalProject24
                 NS_AccountSettingPageUserControl1.Instance.BringToFront();
             }
 
-
+        */
 
 
        
-
-
 
     } // mainPageForm1 End Line
 }
