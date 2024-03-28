@@ -37,7 +37,8 @@ namespace FinalProject24
 
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
-            string restaurantName, restaurantAddress, restaurantPhoneNumber, restaurantEmail, restaurantDescription;
+            string restaurantName = "", restaurantAddress = "", restaurantPhoneNumber = "",
+                restaurantEmail = "", restaurantDescription = "";
 
             if (newNameTextBox.Text != "")
             {
@@ -60,7 +61,9 @@ namespace FinalProject24
                 restaurantDescription = newDescriptionTextBox.Text;
             }
 
-            //currNameLabel.Text = restaurantName;
+            currNameLabel.Text = restaurantName;
+            currAddressLabel.Text = restaurantAddress;
+            //currPhoneNumberLabel
 
         }
     }
