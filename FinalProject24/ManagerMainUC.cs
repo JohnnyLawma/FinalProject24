@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class JG_managerLoginPageUserControl : UserControl
+    public partial class ManagerMainUC : UserControl
     {
-        public JG_managerLoginPageUserControl()
+        public ManagerMainUC()
         {
             InitializeComponent();
         }

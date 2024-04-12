@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            menuPictureBox = new PictureBox();
             itemNameLabel = new Label();
             priceLabel = new Label();
             addButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            removeButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)menuPictureBox).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // menuPictureBox
             // 
-            pictureBox1.BackColor = SystemColors.ButtonShadow;
-            pictureBox1.Location = new Point(-81, -33);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(600, 300);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            menuPictureBox.BackColor = SystemColors.ButtonShadow;
+            menuPictureBox.Location = new Point(0, 0);
+            menuPictureBox.Name = "menuPictureBox";
+            menuPictureBox.Size = new Size(400, 267);
+            menuPictureBox.TabIndex = 0;
+            menuPictureBox.TabStop = false;
             // 
             // itemNameLabel
             // 
@@ -75,26 +76,40 @@
             addButton.UseVisualStyleBackColor = true;
             addButton.Click += addButton_Click;
             // 
+            // removeButton
+            // 
+            removeButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            removeButton.Location = new Point(224, 191);
+            removeButton.Name = "removeButton";
+            removeButton.Size = new Size(68, 54);
+            removeButton.TabIndex = 4;
+            removeButton.Text = "-";
+            removeButton.UseVisualStyleBackColor = true;
+            removeButton.Click += removeButton_Click;
+            // 
             // menuCardUserControl
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(removeButton);
             Controls.Add(addButton);
             Controls.Add(priceLabel);
             Controls.Add(itemNameLabel);
-            Controls.Add(pictureBox1);
+            Controls.Add(menuPictureBox);
             Name = "menuCardUserControl";
-            Size = new Size(400, 382);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Size = new Size(398, 380);
+            ((System.ComponentModel.ISupportInitialize)menuPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox menuPictureBox;
         private Label itemNameLabel;
         private Label priceLabel;
         private Button addButton;
+        private Button removeButton;
     }
 }
