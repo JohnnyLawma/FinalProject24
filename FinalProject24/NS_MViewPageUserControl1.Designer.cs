@@ -28,17 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(941, 445);
+            panel1.TabIndex = 0;
             // 
             // NS_MViewPageUserControl1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel1);
             Name = "NS_MViewPageUserControl1";
-            Size = new Size(1151, 471);
+            Size = new Size(947, 451);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }

@@ -21,8 +21,10 @@ namespace FinalProject24
             public string ID { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
+            public Image ItemImage { get; set; } // Add property for the image
         }
         private List<MenuItem> menuItems = new List<MenuItem>();
+
         private void SelectImageButton_Click(object sender, EventArgs e)
         {
             // Should open file, allow you to choose an image then it should display the image in the pic box.
@@ -69,7 +71,8 @@ namespace FinalProject24
             {
                 ID = itemID,
                 Name = itemName,
-                Price = itemPrice
+                Price = itemPrice,
+                ItemImage = pictureBox.Image // Set the image
             };
             menuItems.Add(newItem);
 
