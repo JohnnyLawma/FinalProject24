@@ -6,8 +6,8 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
-        string imagePathProfilePicture = @"D:\Classes\CSCI 3037 Programs\finalProject\profilePicture.jpg";
-        string imagePathMenuItems = @"D:\Classes\CSCI 3037 Programs\finalProject\foodbowl.jpg";
+        string imagePathProfilePicture = @"C:\Users\Iam\Pictures\BG_Images\AvatarOceanSpirit.jpg";
+        string imagePathMenuItems = @"C:\Users\Iam\Pictures\BG_Images\AvatarOceanSpirit.jpg";
         private CartUC cartUCInstance;
 
         public mainPageForm1()
