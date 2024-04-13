@@ -60,18 +60,18 @@
             MenuSideBar.Controls.Add(orderButton);
             MenuSideBar.Controls.Add(nameLabel);
             MenuSideBar.Controls.Add(signOutButton);
-            MenuSideBar.Location = new Point(1, 0);
-            MenuSideBar.Margin = new Padding(2, 1, 2, 1);
+            MenuSideBar.Location = new Point(2, 0);
+            MenuSideBar.Margin = new Padding(4, 2, 4, 2);
             MenuSideBar.Name = "MenuSideBar";
-            MenuSideBar.Size = new Size(100, 600);
+            MenuSideBar.Size = new Size(186, 1280);
             MenuSideBar.TabIndex = 1;
             // 
             // exitButton
             // 
-            exitButton.Location = new Point(2, 511);
-            exitButton.Margin = new Padding(2, 1, 2, 1);
+            exitButton.Location = new Point(4, 1090);
+            exitButton.Margin = new Padding(4, 2, 4, 2);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(96, 42);
+            exitButton.Size = new Size(178, 90);
             exitButton.TabIndex = 8;
             exitButton.Text = "Exit";
             exitButton.UseVisualStyleBackColor = true;
@@ -81,20 +81,20 @@
             // 
             roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
             roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(12, 14);
-            roundPictureBox1.Margin = new Padding(2, 1, 2, 1);
+            roundPictureBox1.Location = new Point(22, 30);
+            roundPictureBox1.Margin = new Padding(4, 2, 4, 2);
             roundPictureBox1.Name = "roundPictureBox1";
-            roundPictureBox1.Size = new Size(83, 71);
+            roundPictureBox1.Size = new Size(151, 147);
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             roundPictureBox1.TabIndex = 7;
             roundPictureBox1.TabStop = false;
             // 
             // homeButton
             // 
-            homeButton.Location = new Point(2, 123);
-            homeButton.Margin = new Padding(2, 1, 2, 1);
+            homeButton.Location = new Point(4, 262);
+            homeButton.Margin = new Padding(4, 2, 4, 2);
             homeButton.Name = "homeButton";
-            homeButton.Size = new Size(96, 42);
+            homeButton.Size = new Size(178, 90);
             homeButton.TabIndex = 6;
             homeButton.Text = "Home";
             homeButton.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             // 
             // settingButton
             // 
-            settingButton.Location = new Point(2, 270);
-            settingButton.Margin = new Padding(2, 1, 2, 1);
+            settingButton.Location = new Point(4, 576);
+            settingButton.Margin = new Padding(4, 2, 4, 2);
             settingButton.Name = "settingButton";
-            settingButton.Size = new Size(96, 42);
+            settingButton.Size = new Size(178, 90);
             settingButton.TabIndex = 2;
             settingButton.Text = "Setting";
             settingButton.UseVisualStyleBackColor = true;
@@ -113,10 +113,10 @@
             // 
             // paymentButton
             // 
-            paymentButton.Location = new Point(2, 222);
-            paymentButton.Margin = new Padding(2, 1, 2, 1);
+            paymentButton.Location = new Point(4, 474);
+            paymentButton.Margin = new Padding(4, 2, 4, 2);
             paymentButton.Name = "paymentButton";
-            paymentButton.Size = new Size(96, 42);
+            paymentButton.Size = new Size(178, 90);
             paymentButton.TabIndex = 1;
             paymentButton.Text = "Payment";
             paymentButton.UseVisualStyleBackColor = true;
@@ -124,10 +124,10 @@
             // 
             // orderButton
             // 
-            orderButton.Location = new Point(2, 172);
-            orderButton.Margin = new Padding(2, 1, 2, 1);
+            orderButton.Location = new Point(4, 367);
+            orderButton.Margin = new Padding(4, 2, 4, 2);
             orderButton.Name = "orderButton";
-            orderButton.Size = new Size(96, 42);
+            orderButton.Size = new Size(178, 90);
             orderButton.TabIndex = 0;
             orderButton.Text = "Order History";
             orderButton.UseVisualStyleBackColor = true;
@@ -135,20 +135,20 @@
             // nameLabel
             // 
             nameLabel.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(12, 80);
-            nameLabel.Margin = new Padding(2, 0, 2, 0);
+            nameLabel.Location = new Point(22, 171);
+            nameLabel.Margin = new Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(75, 30);
+            nameLabel.Size = new Size(139, 64);
             nameLabel.TabIndex = 4;
             nameLabel.Text = "Emmly";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // signOutButton
             // 
-            signOutButton.Location = new Point(2, 467);
-            signOutButton.Margin = new Padding(2, 1, 2, 1);
+            signOutButton.Location = new Point(4, 996);
+            signOutButton.Margin = new Padding(4, 2, 4, 2);
             signOutButton.Name = "signOutButton";
-            signOutButton.Size = new Size(96, 42);
+            signOutButton.Size = new Size(178, 90);
             signOutButton.TabIndex = 3;
             signOutButton.Text = "Sign Out";
             signOutButton.UseVisualStyleBackColor = true;
@@ -156,10 +156,10 @@
             // 
             // mainPanel
             // 
-            mainPanel.Location = new Point(101, 62);
-            mainPanel.Margin = new Padding(2, 1, 2, 1);
+            mainPanel.Location = new Point(188, 132);
+            mainPanel.Margin = new Padding(4, 2, 4, 2);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(882, 494);
+            mainPanel.Size = new Size(1638, 1054);
             mainPanel.TabIndex = 3;
             // 
             // TopBar
@@ -168,28 +168,28 @@
             TopBar.BackColor = Color.FromArgb(41, 41, 41);
             TopBar.Controls.Add(searchTextBox);
             TopBar.Controls.Add(cartButton);
-            TopBar.Location = new Point(101, 0);
-            TopBar.Margin = new Padding(2, 1, 2, 1);
+            TopBar.Location = new Point(188, 0);
+            TopBar.Margin = new Padding(4, 2, 4, 2);
             TopBar.Name = "TopBar";
-            TopBar.Size = new Size(882, 62);
+            TopBar.Size = new Size(1638, 132);
             TopBar.TabIndex = 2;
             // 
             // searchTextBox
             // 
-            searchTextBox.Location = new Point(207, 14);
-            searchTextBox.Margin = new Padding(2, 1, 2, 1);
+            searchTextBox.Location = new Point(384, 30);
+            searchTextBox.Margin = new Padding(4, 2, 4, 2);
             searchTextBox.Multiline = true;
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(414, 34);
+            searchTextBox.Size = new Size(765, 68);
             searchTextBox.TabIndex = 0;
             searchTextBox.Text = "Search restaurant";
             // 
             // cartButton
             // 
-            cartButton.Location = new Point(675, 14);
-            cartButton.Margin = new Padding(2, 1, 2, 1);
+            cartButton.Location = new Point(1254, 30);
+            cartButton.Margin = new Padding(4, 2, 4, 2);
             cartButton.Name = "cartButton";
-            cartButton.Size = new Size(109, 32);
+            cartButton.Size = new Size(202, 68);
             cartButton.TabIndex = 2;
             cartButton.Text = "Carts: 0";
             cartButton.UseVisualStyleBackColor = true;
@@ -198,34 +198,35 @@
             // menuPanel
             // 
             menuPanel.AutoScroll = true;
-            menuPanel.Location = new Point(199, 106);
-            menuPanel.Margin = new Padding(2, 1, 2, 1);
+            menuPanel.Location = new Point(370, 226);
+            menuPanel.Margin = new Padding(4, 2, 4, 2);
             menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(695, 403);
+            menuPanel.Size = new Size(1291, 860);
             menuPanel.TabIndex = 0;
             // 
             // menuLabel
             // 
             menuLabel.AutoSize = true;
             menuLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuLabel.Location = new Point(193, 84);
-            menuLabel.Margin = new Padding(2, 0, 2, 0);
+            menuLabel.Location = new Point(358, 179);
+            menuLabel.Margin = new Padding(4, 0, 4, 0);
             menuLabel.Name = "menuLabel";
-            menuLabel.Size = new Size(52, 21);
+            menuLabel.Size = new Size(105, 45);
             menuLabel.TabIndex = 1;
             menuLabel.Text = "Menu";
             menuLabel.Click += menuLabel_Click;
             // 
             // mainPageForm1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 561);
+            ClientSize = new Size(1827, 1197);
             Controls.Add(mainPanel);
             Controls.Add(menuLabel);
             Controls.Add(menuPanel);
             Controls.Add(TopBar);
             Controls.Add(MenuSideBar);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "mainPageForm1";
             Text = "mainPageForm1";
             Load += mainPageForm1_Load;

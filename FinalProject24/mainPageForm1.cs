@@ -40,7 +40,7 @@ namespace FinalProject24
 
 
         //............
-        public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
+        //public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
 
 
 
@@ -293,21 +293,7 @@ namespace FinalProject24
             this.Hide();
         }
 
-        /*
-        private void settingButton_Click(object sender, EventArgs e)
-        {
-            if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
-            {
-                mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
-                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
-            else
-            {
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
-
-        */
+        
 
 
        
