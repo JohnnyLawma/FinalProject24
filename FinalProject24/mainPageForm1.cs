@@ -189,6 +189,7 @@ namespace FinalProject24
 
         }
 
+
         private void cartButton_Click(object sender, EventArgs e)
         {
             orderHistoryPanel.Visible = false;
@@ -226,6 +227,7 @@ namespace FinalProject24
             menuLabel.Visible = false;
 
         }
+
 
 
         private void paymentButton_Click(object sender, EventArgs e)
@@ -280,6 +282,8 @@ namespace FinalProject24
             menuLabel.Visible = false;
         }
 
+
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
@@ -308,8 +312,7 @@ namespace FinalProject24
         }
 
 
-        // Generate order number:
-        string orderNumber =  DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
+      
 
 
         //
@@ -370,6 +373,8 @@ namespace FinalProject24
 
         private void orderButton_Click(object sender, EventArgs e)
         {
+            cartButton.Text = "Carts: 0"; // Update the cart count display
+
             if (cartUCInstance.orderBoard.Count == 0)
             {
                 MessageBox.Show("No items in the order. Please add items before placing an order.", "Empty Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
