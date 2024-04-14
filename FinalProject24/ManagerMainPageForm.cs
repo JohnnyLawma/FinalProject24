@@ -16,5 +16,30 @@ namespace FinalProject24
         {
             InitializeComponent();
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                Form oForm = Application.OpenForms[i];
+                if (oForm is mainPageForm1 || oForm is JG_loginForm || oForm is ManagerMainPageForm)
+                {
+                    oForm.Close();
+                }
+            }
+            this.Close();
+        }
+
+        private void signOutButton_Click(object sender, EventArgs e)
+        {
+            foreach (Form oForm in Application.OpenForms)
+            {
+                if (oForm is JG_loginForm)
+                {
+                    oForm.Show();
+                }
+            }
+            this.Hide();
+        }
     }
 }

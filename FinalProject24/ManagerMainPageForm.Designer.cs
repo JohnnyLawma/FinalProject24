@@ -59,29 +59,30 @@
             // 
             // exitButton
             // 
-            exitButton.Location = new Point(2, 495);
+            exitButton.Location = new Point(2, 511);
             exitButton.Margin = new Padding(2, 1, 2, 1);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(96, 42);
             exitButton.TabIndex = 8;
             exitButton.Text = "Exit";
             exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
             // 
             // roundPictureBox1
             // 
             roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
             roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(16, 37);
+            roundPictureBox1.Location = new Point(9, 10);
             roundPictureBox1.Margin = new Padding(2, 1, 2, 1);
             roundPictureBox1.Name = "roundPictureBox1";
-            roundPictureBox1.Size = new Size(67, 69);
+            roundPictureBox1.Size = new Size(83, 71);
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             roundPictureBox1.TabIndex = 7;
             roundPictureBox1.TabStop = false;
             // 
             // settingButton
             // 
-            settingButton.Location = new Point(2, 270);
+            settingButton.Location = new Point(2, 219);
             settingButton.Margin = new Padding(2, 1, 2, 1);
             settingButton.Name = "settingButton";
             settingButton.Size = new Size(96, 42);
@@ -91,7 +92,7 @@
             // 
             // paymentButton
             // 
-            paymentButton.Location = new Point(2, 222);
+            paymentButton.Location = new Point(2, 171);
             paymentButton.Margin = new Padding(2, 1, 2, 1);
             paymentButton.Name = "paymentButton";
             paymentButton.Size = new Size(96, 42);
@@ -101,7 +102,7 @@
             // 
             // orderButton
             // 
-            orderButton.Location = new Point(2, 172);
+            orderButton.Location = new Point(2, 121);
             orderButton.Margin = new Padding(2, 1, 2, 1);
             orderButton.Name = "orderButton";
             orderButton.Size = new Size(96, 42);
@@ -112,7 +113,7 @@
             // nameLabel
             // 
             nameLabel.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(10, 107);
+            nameLabel.Location = new Point(12, 80);
             nameLabel.Margin = new Padding(2, 0, 2, 0);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(75, 30);
@@ -122,13 +123,14 @@
             // 
             // signOutButton
             // 
-            signOutButton.Location = new Point(2, 450);
+            signOutButton.Location = new Point(2, 467);
             signOutButton.Margin = new Padding(2, 1, 2, 1);
             signOutButton.Name = "signOutButton";
             signOutButton.Size = new Size(96, 42);
             signOutButton.TabIndex = 3;
             signOutButton.Text = "Sign Out";
             signOutButton.UseVisualStyleBackColor = true;
+            signOutButton.Click += signOutButton_Click;
             // 
             // ManagerMainPageForm
             // 
