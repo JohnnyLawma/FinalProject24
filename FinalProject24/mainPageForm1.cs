@@ -289,7 +289,7 @@ namespace FinalProject24
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             {
                 Form oForm = Application.OpenForms[i];
-                if (oForm is mainPageForm1 || oForm is JG_loginForm)
+                if (oForm is mainPageForm1 || oForm is JG_loginForm || oForm is ManagerMainPageForm)
                 {
                     oForm.Close();
                 }
