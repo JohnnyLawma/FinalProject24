@@ -31,6 +31,8 @@
             myCartLabel = new Label();
             summaryOrderLabel = new Label();
             summaryOrderPanel = new Panel();
+            totalLabelText = new Label();
+            totalLabel = new Label();
             subtotalPriceLabel = new Label();
             taxPriceLabel = new Label();
             totalItemNumberLabel = new Label();
@@ -39,8 +41,6 @@
             taxLabel = new Label();
             totalItemLabel = new Label();
             loadCardPanel = new Panel();
-            totalLabel = new Label();
-            totalLabelText = new Label();
             summaryOrderPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -86,6 +86,29 @@
             summaryOrderPanel.Name = "summaryOrderPanel";
             summaryOrderPanel.Size = new Size(462, 439);
             summaryOrderPanel.TabIndex = 7;
+            // 
+            // totalLabelText
+            // 
+            totalLabelText.AutoSize = true;
+            totalLabelText.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            totalLabelText.Location = new Point(303, 253);
+            totalLabelText.Margin = new Padding(6, 0, 6, 0);
+            totalLabelText.Name = "totalLabelText";
+            totalLabelText.Size = new Size(77, 32);
+            totalLabelText.TabIndex = 9;
+            totalLabelText.Text = "$2.50";
+            // 
+            // totalLabel
+            // 
+            totalLabel.AutoSize = true;
+            totalLabel.Font = new Font("Segoe UI", 9.75F);
+            totalLabel.Location = new Point(35, 250);
+            totalLabel.Margin = new Padding(6, 0, 6, 0);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new Size(75, 36);
+            totalLabel.TabIndex = 8;
+            totalLabel.Text = "Total:";
+            totalLabel.Click += label1_Click;
             // 
             // subtotalPriceLabel
             // 
@@ -133,6 +156,7 @@
             buyNowButton.TabIndex = 4;
             buyNowButton.Text = "Buy Now";
             buyNowButton.UseVisualStyleBackColor = false;
+            buyNowButton.Click += buyNowButton_Click;
             // 
             // subtotalLabel
             // 
@@ -174,29 +198,6 @@
             loadCardPanel.Name = "loadCardPanel";
             loadCardPanel.Size = new Size(956, 811);
             loadCardPanel.TabIndex = 8;
-            // 
-            // totalLabel
-            // 
-            totalLabel.AutoSize = true;
-            totalLabel.Font = new Font("Segoe UI", 9.75F);
-            totalLabel.Location = new Point(35, 250);
-            totalLabel.Margin = new Padding(6, 0, 6, 0);
-            totalLabel.Name = "totalLabel";
-            totalLabel.Size = new Size(75, 36);
-            totalLabel.TabIndex = 8;
-            totalLabel.Text = "Total:";
-            totalLabel.Click += label1_Click;
-            // 
-            // totalLabelText
-            // 
-            totalLabelText.AutoSize = true;
-            totalLabelText.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            totalLabelText.Location = new Point(303, 253);
-            totalLabelText.Margin = new Padding(6, 0, 6, 0);
-            totalLabelText.Name = "totalLabelText";
-            totalLabelText.Size = new Size(77, 32);
-            totalLabelText.TabIndex = 9;
-            totalLabelText.Text = "$2.50";
             // 
             // CartUC
             // 
