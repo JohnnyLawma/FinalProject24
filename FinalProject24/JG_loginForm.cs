@@ -27,7 +27,6 @@ namespace FinalProject24
 
         // Loading the main Form in Memeory
         mainPageForm1 loadMainForm = new mainPageForm1();
-        ManagerMainPageForm loadManagerMainPage = new ManagerMainPageForm();
 
 
         private async void signinButton_Click(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace FinalProject24
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
 
-                loadManagerMainPage.Show(); // Opening the Main Menu Form
+                loadMainForm.Show(); // Opening the Main Menu Form
                 this.Hide(); // Hiding the Login Form
 
                 if (emailTextBox.Text != "Enter your email")
