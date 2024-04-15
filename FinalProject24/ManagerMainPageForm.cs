@@ -44,8 +44,17 @@ namespace FinalProject24
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
-            JG_restaurantProfileUserControl.Instance.BringToFront();
-
+            if (!mainpanel1.Controls.Contains(JG_restaurantProfileUserControl.Instance))
+            {
+                mainpanel1.Controls.Add(JG_restaurantProfileUserControl.Instance);
+                JG_restaurantProfileUserControl.Instance.Dock = DockStyle.Fill;
+                JG_restaurantProfileUserControl.Instance.BringToFront();
+            }
+            else
+            {
+                JG_restaurantProfileUserControl.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
         }
     }
 }

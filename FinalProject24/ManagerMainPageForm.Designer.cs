@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerMainPageForm));
             MenuSideBar = new Panel();
             exitButton = new Button();
@@ -38,6 +37,7 @@
             orderButton = new Button();
             nameLabel = new Label();
             signOutButton = new Button();
+            mainpanel1 = new Panel();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             SuspendLayout();
@@ -55,7 +55,7 @@
             MenuSideBar.Location = new Point(1, 0);
             MenuSideBar.Margin = new Padding(2, 0, 2, 0);
             MenuSideBar.Name = "MenuSideBar";
-            MenuSideBar.Size = new Size(100, 600);
+            MenuSideBar.Size = new Size(100, 565);
             MenuSideBar.TabIndex = 2;
             // 
             // exitButton
@@ -134,17 +134,27 @@
             signOutButton.UseVisualStyleBackColor = true;
             signOutButton.Click += signOutButton_Click;
             // 
+            // mainpanel1
+            // 
+            mainpanel1.AutoSize = true;
+            mainpanel1.Location = new Point(98, 0);
+            mainpanel1.Name = "mainpanel1";
+            mainpanel1.Size = new Size(886, 562);
+            mainpanel1.TabIndex = 3;
+            // 
             // ManagerMainPageForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
+            Controls.Add(mainpanel1);
             Controls.Add(MenuSideBar);
             Name = "ManagerMainPageForm";
             Text = "ManagerMainPageForm";
             MenuSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -157,7 +167,6 @@
         private Button orderButton;
         private Label nameLabel;
         private Button signOutButton;
-
-
+        private Panel mainpanel1;
     }
 }
