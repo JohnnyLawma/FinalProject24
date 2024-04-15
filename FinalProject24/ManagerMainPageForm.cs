@@ -41,5 +41,11 @@ namespace FinalProject24
             }
             this.Hide();
         }
+
+        private void paymentButton_Click(object sender, EventArgs e)
+        {
+            JG_restaurantProfileUserControl.Instance.BringToFront();
+
+        }
     }
 }

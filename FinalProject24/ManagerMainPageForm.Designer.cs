@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerMainPageForm));
             MenuSideBar = new Panel();
             exitButton = new Button();
@@ -99,6 +100,7 @@
             paymentButton.TabIndex = 1;
             paymentButton.Text = "Resturant Profile";
             paymentButton.UseVisualStyleBackColor = true;
+            paymentButton.Click += paymentButton_Click;
             // 
             // orderButton
             // 
@@ -155,5 +157,7 @@
         private Button orderButton;
         private Label nameLabel;
         private Button signOutButton;
+
+
     }
 }
