@@ -15,6 +15,8 @@ namespace FinalProject24
         public ManagerMainPageForm()
         {
             InitializeComponent();
+
+            loadOrderBoard();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -41,5 +43,38 @@ namespace FinalProject24
             }
             this.Hide();
         }
+
+        private void paymentButton_Click(object sender, EventArgs e)
+        {
+            if (!mainpanel1.Controls.Contains(JG_restaurantProfileUserControl.Instance))
+            {
+                mainpanel1.Controls.Add(JG_restaurantProfileUserControl.Instance);
+                JG_restaurantProfileUserControl.Instance.Dock = DockStyle.Fill;
+                JG_restaurantProfileUserControl.Instance.BringToFront();
+            }
+            else
+            {
+                JG_restaurantProfileUserControl.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
+
+
+        private void loadOrderBoard ()
+        {
+            if (!mainpanel1.Controls.Contains(ManagerMainPageUserControl1.Instance))
+            {
+                mainpanel1.Controls.Add(ManagerMainPageUserControl1.Instance);
+                ManagerMainPageUserControl1.Instance.Dock = DockStyle.Fill;
+                ManagerMainPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                ManagerMainPageUserControl1.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
+
+
     }
 }

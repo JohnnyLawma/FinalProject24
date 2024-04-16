@@ -87,7 +87,7 @@
             // 
             roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
             roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(12, 14);
+            roundPictureBox1.Location = new Point(9, 10);
             roundPictureBox1.Margin = new Padding(2, 1, 2, 1);
             roundPictureBox1.Name = "roundPictureBox1";
             roundPictureBox1.Size = new Size(83, 71);
@@ -279,7 +279,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1022, 561);
+            ClientSize = new Size(984, 561);
             Controls.Add(orderHistoryPanel);
             Controls.Add(mainPanel);
             Controls.Add(menuLabel);
