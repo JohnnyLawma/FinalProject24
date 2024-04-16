@@ -177,7 +177,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(124, 172, 175);
-            ClientSize = new Size(1406, 935);
+            ClientSize = new Size(1378, 944);
             Controls.Add(panel1);
             Margin = new Padding(4, 5, 4, 5);
             Name = "JG_loginForm";
