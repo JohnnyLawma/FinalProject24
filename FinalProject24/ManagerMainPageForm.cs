@@ -15,6 +15,8 @@ namespace FinalProject24
         public ManagerMainPageForm()
         {
             InitializeComponent();
+
+            loadOrderBoard();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -56,5 +58,23 @@ namespace FinalProject24
             }
             mainpanel1.Visible = true;
         }
+
+
+        private void loadOrderBoard ()
+        {
+            if (!mainpanel1.Controls.Contains(ManagerMainPageUserControl1.Instance))
+            {
+                mainpanel1.Controls.Add(ManagerMainPageUserControl1.Instance);
+                ManagerMainPageUserControl1.Instance.Dock = DockStyle.Fill;
+                ManagerMainPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                ManagerMainPageUserControl1.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
+
+
     }
 }
