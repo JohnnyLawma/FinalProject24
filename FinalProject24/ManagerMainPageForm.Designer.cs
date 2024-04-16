@@ -28,28 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerMainPageForm));
             MenuSideBar = new Panel();
             exitButton = new Button();
-            roundPictureBox1 = new RoundPictureBox();
             settingButton = new Button();
             resturantProfileButton = new Button();
-            orderButton = new Button();
+            editMenu = new Button();
             nameLabel = new Label();
             signOutButton = new Button();
             mainpanel1 = new Panel();
             MenuSideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // MenuSideBar
             // 
             MenuSideBar.BackColor = Color.FromArgb(124, 172, 175);
             MenuSideBar.Controls.Add(exitButton);
-            MenuSideBar.Controls.Add(roundPictureBox1);
             MenuSideBar.Controls.Add(settingButton);
             MenuSideBar.Controls.Add(resturantProfileButton);
-            MenuSideBar.Controls.Add(orderButton);
+            MenuSideBar.Controls.Add(editMenu);
             MenuSideBar.Controls.Add(nameLabel);
             MenuSideBar.Controls.Add(signOutButton);
             MenuSideBar.Location = new Point(1, 0);
@@ -68,18 +64,6 @@
             exitButton.Text = "Exit";
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
-            // 
-            // roundPictureBox1
-            // 
-            roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
-            roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(9, 10);
-            roundPictureBox1.Margin = new Padding(2, 1, 2, 1);
-            roundPictureBox1.Name = "roundPictureBox1";
-            roundPictureBox1.Size = new Size(83, 71);
-            roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            roundPictureBox1.TabIndex = 7;
-            roundPictureBox1.TabStop = false;
             // 
             // settingButton
             // 
@@ -103,15 +87,16 @@
             resturantProfileButton.UseVisualStyleBackColor = true;
             resturantProfileButton.Click += resturantProfileButton_Click;
             // 
-            // orderButton
+            // editMenu
             // 
-            orderButton.Location = new Point(2, 121);
-            orderButton.Margin = new Padding(2, 1, 2, 1);
-            orderButton.Name = "orderButton";
-            orderButton.Size = new Size(96, 42);
-            orderButton.TabIndex = 0;
-            orderButton.Text = "Edit Menu";
-            orderButton.UseVisualStyleBackColor = true;
+            editMenu.Location = new Point(2, 121);
+            editMenu.Margin = new Padding(2, 1, 2, 1);
+            editMenu.Name = "editMenu";
+            editMenu.Size = new Size(96, 42);
+            editMenu.TabIndex = 0;
+            editMenu.Text = "Edit Menu";
+            editMenu.UseVisualStyleBackColor = true;
+            editMenu.Click += editMenu_Click;
             // 
             // nameLabel
             // 
@@ -147,13 +132,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 497);
+            ClientSize = new Size(984, 561);
             Controls.Add(mainpanel1);
             Controls.Add(MenuSideBar);
             Name = "ManagerMainPageForm";
             Text = "ManagerMainPageForm";
             MenuSideBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,7 +149,7 @@
         private RoundPictureBox roundPictureBox1;
         private Button settingButton;
         private Button resturantProfileButton;
-        private Button orderButton;
+        private Button editMenu;
         private Label nameLabel;
         private Button signOutButton;
         private Panel mainpanel1;

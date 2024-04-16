@@ -77,7 +77,7 @@ namespace FinalProject24
 
         private void settingButton_Click(object sender, EventArgs e)
         {
-            
+
             if (!mainpanel1.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
             {
                 mainpanel1.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
@@ -87,6 +87,21 @@ namespace FinalProject24
             else
             {
                 NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
+
+        private void editMenu_Click(object sender, EventArgs e)
+        {
+            if (!mainpanel1.Controls.Contains(editMenuMangerUserControl.Instance))
+            {
+                mainpanel1.Controls.Add(editMenuMangerUserControl.Instance);
+                editMenuMangerUserControl.Instance.Dock = DockStyle.Fill;
+                editMenuMangerUserControl.Instance.BringToFront();
+            }
+            else
+            {
+                editMenuMangerUserControl.Instance.BringToFront();
             }
             mainpanel1.Visible = true;
         }

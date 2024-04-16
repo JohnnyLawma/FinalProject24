@@ -30,14 +30,14 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
             textBox3 = new TextBox();
             pictureBox1 = new PictureBox();
             button1 = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
             button2 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -70,6 +70,35 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(132, 337);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(263, 23);
+            textBox3.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ActiveCaption;
+            pictureBox1.Location = new Point(489, 73);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(267, 203);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveCaptionText;
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(507, 304);
+            button1.Name = "button1";
+            button1.Size = new Size(239, 29);
+            button1.TabIndex = 9;
+            button1.Text = "Select Image File";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -100,13 +129,6 @@
             label4.TabIndex = 4;
             label4.Text = "Menu Price:";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(152, 62);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(243, 23);
-            textBox1.TabIndex = 5;
-            // 
             // textBox2
             // 
             textBox2.Location = new Point(132, 198);
@@ -114,35 +136,16 @@
             textBox2.Size = new Size(263, 23);
             textBox2.TabIndex = 6;
             // 
-            // textBox3
+            // textBox1
             // 
-            textBox3.Location = new Point(132, 337);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(263, 23);
-            textBox3.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.ActiveCaption;
-            pictureBox1.Location = new Point(489, 73);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(267, 203);
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ActiveCaptionText;
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(507, 304);
-            button1.Name = "button1";
-            button1.Size = new Size(239, 29);
-            button1.TabIndex = 9;
-            button1.Text = "Select Image File";
-            button1.UseVisualStyleBackColor = false;
+            textBox1.Location = new Point(152, 62);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(243, 23);
+            textBox1.TabIndex = 5;
             // 
             // button2
             // 
+            button2.AutoSize = true;
             button2.BackColor = SystemColors.ActiveCaptionText;
             button2.ForeColor = SystemColors.ControlLightLight;
             button2.Location = new Point(394, 477);
@@ -151,6 +154,7 @@
             button2.TabIndex = 10;
             button2.Text = "Apply Change";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // editMenuMangerUserControl
             // 
