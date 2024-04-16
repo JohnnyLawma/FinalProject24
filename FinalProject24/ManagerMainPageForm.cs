@@ -44,7 +44,7 @@ namespace FinalProject24
             this.Hide();
         }
 
-        private void paymentButton_Click(object sender, EventArgs e)
+        private void resturantProfileButton_Click(object sender, EventArgs e)
         {
             if (!mainpanel1.Controls.Contains(JG_restaurantProfileUserControl.Instance))
             {
@@ -60,7 +60,7 @@ namespace FinalProject24
         }
 
 
-        private void loadOrderBoard ()
+        private void loadOrderBoard()
         {
             if (!mainpanel1.Controls.Contains(ManagerMainPageUserControl1.Instance))
             {
@@ -75,6 +75,20 @@ namespace FinalProject24
             mainpanel1.Visible = true;
         }
 
-
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            
+            if (!mainpanel1.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
+            {
+                mainpanel1.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
+                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
     }
 }
