@@ -14,14 +14,16 @@ namespace FinalProject24
     {
         // Add a public event to the statusUserControl for when the status button is clicked
         public event EventHandler StatusButtonClicked;
+        public event EventHandler CancelButtonClicked;
 
-        
+
 
 
         public stausUserControl()
         {
             InitializeComponent();
             statusButton.Click += statusButton_Click;
+            cancelButton.Click += cancelButton_Click;
         }
 
         private void statusButton_Click(object sender, EventArgs e)
@@ -65,6 +67,26 @@ namespace FinalProject24
         public void ClearListBox()
         {
             itemsListBox.Items.Clear();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            if (this.Parent != null)
+            {
+                // Remove the control from its parent.
+                this.Parent.Controls.Remove(this);
+            }
+            else
+            {
+                // If there is no parent, log the error or notify the user.
+                // This could be due to the control not being added to a parent yet,
+                // or the parent being disposed of before this method was called.
+
+                // Log the error
+                Console.WriteLine("Error: Control does not have a parent to be removed from.");
+
+               
+            }
         }
 
         public bool StatusButtonVisible

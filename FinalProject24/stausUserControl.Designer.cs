@@ -31,7 +31,7 @@
             nameLabel = new Label();
             statusButton = new Button();
             itemsListBox = new ListBox();
-            button1 = new Button();
+            cancelButton = new Button();
             SuspendLayout();
             // 
             // nameLabel
@@ -65,17 +65,18 @@
             itemsListBox.Size = new Size(418, 356);
             itemsListBox.TabIndex = 0;
             // 
-            // button1
+            // cancelButton
             // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(265, 438);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 56);
-            button1.TabIndex = 3;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = false;
+            cancelButton.BackColor = Color.FromArgb(192, 0, 0);
+            cancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelButton.ForeColor = SystemColors.ControlLightLight;
+            cancelButton.Location = new Point(265, 438);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(189, 56);
+            cancelButton.TabIndex = 3;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
             // stausUserControl
             // 
@@ -83,7 +84,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             BorderStyle = BorderStyle.Fixed3D;
-            Controls.Add(button1);
+            Controls.Add(cancelButton);
             Controls.Add(itemsListBox);
             Controls.Add(statusButton);
             Controls.Add(nameLabel);
@@ -98,6 +99,6 @@
         private Label nameLabel;
         private Button statusButton;
         private ListBox itemsListBox;
-        private Button button1;
+        private Button cancelButton;
     }
 }

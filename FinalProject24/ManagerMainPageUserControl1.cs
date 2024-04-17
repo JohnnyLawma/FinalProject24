@@ -49,10 +49,28 @@ namespace FinalProject24
             // Subscribe to the StatusButtonClicked event
             statusControl.StatusButtonClicked += StatusControl_StatusButtonClicked;
 
+            // Subscribe to the CancelButtonClicked event
+            statusControl.CancelButtonClicked += StatusControl_CancelButtonClicked;
+
             // Set size and add to the pendingPanel
             statusControl.Size = new Size(495, 530);
             pendingPanel.Controls.Add(statusControl);
         }
+
+
+
+        // Event handler for the CancelButtonClicked event
+        private void StatusControl_CancelButtonClicked(object sender, EventArgs e)
+        {
+            var statusControl = sender as stausUserControl;
+            if (statusControl != null)
+            {
+                MessageBox.Show("Oder has been cancel");
+            }
+        }
+
+
+
 
         // Event handler for the StatusButtonClicked event
         private void StatusControl_StatusButtonClicked(object sender, EventArgs e)
