@@ -6,8 +6,10 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
+
         string imagePathProfilePicture = @"..\..\..\..\Images\profilePicture.jpg"; // Going back 4 level
         string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
+
         private CartUC cartUCInstance;
 
 
@@ -373,9 +375,11 @@ namespace FinalProject24
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            cartButton.Text = "Carts: 0"; // Update the cart count display
+            // Update the cart count display
+            cartButton.Text = "Carts: " + count.ToString();
 
-            if (cartUCInstance.orderBoard.Count == 0)
+            // Check if there are items in the cart
+            if (selectedItems.Count == 0)
             {
                 MessageBox.Show("No items in the order. Please add items before placing an order.", "Empty Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
