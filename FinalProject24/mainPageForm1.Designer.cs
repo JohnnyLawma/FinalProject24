@@ -44,9 +44,15 @@
             cartButton = new Button();
             menuPanel = new Panel();
             menuLabel = new Label();
+            orderHistoryPanel = new Panel();
+            label1 = new Label();
+            orderHistoryLabel = new Label();
+            orderSummaryPanel = new Panel();
+            orderListPanel = new Panel();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             TopBar.SuspendLayout();
+            orderHistoryPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuSideBar
@@ -61,7 +67,7 @@
             MenuSideBar.Controls.Add(nameLabel);
             MenuSideBar.Controls.Add(signOutButton);
             MenuSideBar.Location = new Point(1, 0);
-            MenuSideBar.Margin = new Padding(3, 2, 3, 2);
+            MenuSideBar.Margin = new Padding(3, 0, 3, 0);
             MenuSideBar.Name = "MenuSideBar";
             MenuSideBar.Size = new Size(143, 1000);
             MenuSideBar.TabIndex = 1;
@@ -81,7 +87,7 @@
             // 
             roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
             roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(17, 23);
+            roundPictureBox1.Location = new Point(13, 17);
             roundPictureBox1.Margin = new Padding(3, 2, 3, 2);
             roundPictureBox1.Name = "roundPictureBox1";
             roundPictureBox1.Size = new Size(117, 116);
@@ -131,6 +137,7 @@
             orderButton.TabIndex = 0;
             orderButton.Text = "Order History";
             orderButton.UseVisualStyleBackColor = true;
+            orderButton.Click += orderButton_Click;
             // 
             // nameLabel
             // 
@@ -158,7 +165,7 @@
             mainPanel.Location = new Point(144, 103);
             mainPanel.Margin = new Padding(3, 2, 3, 2);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1260, 823);
+            mainPanel.Size = new Size(1638, 1054);
             mainPanel.TabIndex = 3;
             // 
             // TopBar
@@ -200,7 +207,7 @@
             menuPanel.Location = new Point(284, 177);
             menuPanel.Margin = new Padding(3, 2, 3, 2);
             menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(993, 672);
+            menuPanel.Size = new Size(1291, 860);
             menuPanel.TabIndex = 0;
             // 
             // menuLabel
@@ -214,11 +221,62 @@
             menuLabel.Text = "Menu";
             menuLabel.Click += menuLabel_Click;
             // 
+            // orderHistoryPanel
+            // 
+            orderHistoryPanel.Controls.Add(label1);
+            orderHistoryPanel.Controls.Add(orderHistoryLabel);
+            orderHistoryPanel.Controls.Add(orderSummaryPanel);
+            orderHistoryPanel.Controls.Add(orderListPanel);
+            orderHistoryPanel.Location = new Point(144, 108);
+            orderHistoryPanel.Margin = new Padding(3, 2, 3, 2);
+            orderHistoryPanel.Name = "orderHistoryPanel";
+            orderHistoryPanel.Size = new Size(1260, 818);
+            orderHistoryPanel.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(559, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(150, 30);
+            label1.TabIndex = 3;
+            label1.Text = "Order Details:";
+            // 
+            // orderHistoryLabel
+            // 
+            orderHistoryLabel.AutoSize = true;
+            orderHistoryLabel.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            orderHistoryLabel.Location = new Point(56, 18);
+            orderHistoryLabel.Name = "orderHistoryLabel";
+            orderHistoryLabel.Size = new Size(154, 30);
+            orderHistoryLabel.TabIndex = 2;
+            orderHistoryLabel.Text = "Order History:";
+            // 
+            // orderSummaryPanel
+            // 
+            orderSummaryPanel.BorderStyle = BorderStyle.FixedSingle;
+            orderSummaryPanel.Location = new Point(559, 52);
+            orderSummaryPanel.Margin = new Padding(3, 2, 3, 2);
+            orderSummaryPanel.Name = "orderSummaryPanel";
+            orderSummaryPanel.Size = new Size(619, 765);
+            orderSummaryPanel.TabIndex = 1;
+            // 
+            // orderListPanel
+            // 
+            orderListPanel.BorderStyle = BorderStyle.FixedSingle;
+            orderListPanel.Location = new Point(56, 52);
+            orderListPanel.Margin = new Padding(3, 2, 3, 2);
+            orderListPanel.Name = "orderListPanel";
+            orderListPanel.Size = new Size(471, 764);
+            orderListPanel.TabIndex = 0;
+            // 
             // mainPageForm1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1406, 935);
+            ClientSize = new Size(1378, 944);
+            Controls.Add(orderHistoryPanel);
             Controls.Add(mainPanel);
             Controls.Add(menuLabel);
             Controls.Add(menuPanel);
@@ -232,6 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             TopBar.ResumeLayout(false);
             TopBar.PerformLayout();
+            orderHistoryPanel.ResumeLayout(false);
+            orderHistoryPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -254,5 +314,10 @@
         private Panel mainPanel;
         private RoundPictureBox roundPictureBox1;
         private Button exitButton;
+        private Panel orderHistoryPanel;
+        private Panel orderListPanel;
+        private Panel orderSummaryPanel;
+        private Label orderHistoryLabel;
+        private Label label1;
     }
 }

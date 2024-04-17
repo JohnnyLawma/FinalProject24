@@ -6,9 +6,15 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
-        string imagePathProfilePicture = @"C:\Users\Iam\Pictures\BG_Images\AvatarOceanSpirit.jpg";
-        string imagePathMenuItems = @"C:\Users\Iam\Pictures\BG_Images\AvatarOceanSpirit.jpg";
+
+        string imagePathProfilePicture = @"..\..\..\..\Images\profilePicture.jpg"; // Going back 4 level
+        string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
+
         private CartUC cartUCInstance;
+
+
+        
+
 
         public mainPageForm1()
         {
@@ -31,8 +37,11 @@ namespace FinalProject24
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
 
-           
+            cartUCInstance = new CartUC();
 
+            
+            orderHistoryPanel.Visible = false;
+            mainPanel.Visible = true;
 
         }
 
@@ -40,7 +49,7 @@ namespace FinalProject24
 
 
         //............
-        public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
+        //public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
 
 
 
@@ -116,7 +125,7 @@ namespace FinalProject24
         }
 
 
-        
+
 
 
 
@@ -151,13 +160,13 @@ namespace FinalProject24
                 // Set the properties for the demo
                 card.ItemName = "Demo Item " + (i + 1);
                 card.ItemPrice = "$" + (6.00m + i).ToString("0.00");
-                card.ItemImage = Image.FromFile(impagePaths);
-                card.ImagePath = impagePaths;
+                card.ItemImage = Image.FromFile(imagePathMenuItems);
+                card.ImagePath = imagePathMenuItems;
 
                 card.AddButtonClicked += Card_AddButtonClicked;
                 card.RemoveButtonClicked += Card_RemoveButtonClicked;
 
-         
+
 
 
 
@@ -182,8 +191,11 @@ namespace FinalProject24
 
         }
 
+
         private void cartButton_Click(object sender, EventArgs e)
         {
+            orderHistoryPanel.Visible = false;
+
             // Check if CartUC instance is null or not already added to the main panel
             if (cartUCInstance == null || !mainPanel.Controls.Contains(cartUCInstance))
             {
@@ -219,8 +231,11 @@ namespace FinalProject24
         }
 
 
+
         private void paymentButton_Click(object sender, EventArgs e)
         {
+            orderHistoryPanel.Visible = false;
+
             if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
             {
                 mainPanel.Controls.Add(PaymentUserControl1.Instance);
@@ -245,11 +260,14 @@ namespace FinalProject24
             mainPanel.Visible = false; // Hide the mainPanel
             menuPanel.Visible = true; // Show the menuPanel
             menuLabel.Visible = true;
+            orderHistoryPanel.Visible = false;
 
         }
 
         private void settingButton_Click(object sender, EventArgs e)
         {
+            orderHistoryPanel.Visible = false;
+
             if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
             {
                 mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
@@ -266,12 +284,14 @@ namespace FinalProject24
             menuLabel.Visible = false;
         }
 
+
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             {
                 Form oForm = Application.OpenForms[i];
-                if (oForm is mainPageForm1 || oForm is JG_loginForm)
+                if (oForm is mainPageForm1 || oForm is JG_loginForm || oForm is ManagerMainPageForm)
                 {
                     oForm.Close();
                 }
@@ -293,24 +313,118 @@ namespace FinalProject24
             this.Hide();
         }
 
-        /*
-        private void settingButton_Click(object sender, EventArgs e)
+
+      
+
+
+        //
+        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
         {
-            if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
+            // Define the directory where the CSV files will be saved
+            string relativePath = @"..\..\..\..\receipts\";
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            // Ensure the directory exists
+            if (!Directory.Exists(directoryPath))
             {
-                mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
-                NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+                Directory.CreateDirectory(directoryPath);
             }
-            else
+
+            // Create the file path for the new CSV file
+            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
+
+            // Open a new StreamWriter to write to the CSV file
+            using (StreamWriter file = new StreamWriter(filePath))
             {
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
+                // Write the CSV headers
+                file.WriteLine("Item Name,Quantity,Price,Total");
+
+                // Write each item's details to the CSV
+                foreach (var item in items)
+                {
+                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
+                }
+
+                // Write the subtotal, tax, and total to the CSV
+                file.WriteLine($"Subtotal,,${subtotal:0.00}");
+                file.WriteLine($"Tax,,${tax:0.00}");
+                file.WriteLine($"Total,,${total:0.00}");
             }
 
-        */
+            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
+            return filePath;
+        }
 
 
-       
+
+        private void HistoryCard_ViewDetailsClicked(object sender, EventArgs e)
+        {
+            if (sender is orderHistoryCard historyCard)
+            {
+                // Assuming the order number is set as a Tag or similar property
+                string filePath = Path.Combine(@"..\..\..\..\receipts\", $"{historyCard.orderNumberText.Replace("Order #", "").Trim()}.csv");
+
+                orderSummaryPanel.Controls.Clear(); // Clear previous details if any
+                orderHistoryDetailsUserControl detailsControl = new orderHistoryDetailsUserControl();
+                detailsControl.LoadOrderDetails(filePath); // Load details from the file associated with the order
+                orderSummaryPanel.Controls.Add(detailsControl); // Add the details control to the summary panel
+            }
+        }
+
+
+
+        private void orderButton_Click(object sender, EventArgs e)
+        {
+            cartButton.Text = "Carts: 0"; // Update the cart count display
+
+            if (cartUCInstance.orderBoard.Count == 0)
+            {
+                MessageBox.Show("No items in the order. Please add items before placing an order.", "Empty Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Make the order panel visible
+            orderHistoryPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+
+            // Calculate the total price of all items in the cart
+            decimal subtotal = cartUCInstance.orderBoard.Sum(item => item.Price * item.Quantity);
+            decimal tax = subtotal * 0.07m;  // Assume a 7% tax rate
+            decimal total = subtotal + tax;
+
+            // Generate a unique order number
+            string orderNumber = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
+
+            // Save the order details to a CSV file
+            string filePath = SaveOrderDetailsToCSV(orderNumber, cartUCInstance.orderBoard, subtotal, tax, total);
+
+            // Create and display the order history card
+            orderHistoryCard historyCard = new orderHistoryCard
+            {
+                dateText = DateTime.Now.ToString("yyyy-MM-dd"),
+                totalText = $"${total:0.00}",
+                statusText = "Pending",
+                orderNumberText = "Order #" + orderNumber,
+                Size = new Size(609, 165),
+                Tag = filePath  // Store the path to the CSV file in the Tag property
+            };
+
+            // Add the order history card to the panel
+            orderListPanel.Controls.Add(historyCard);
+
+            // Subscribe to the ViewDetailsClicked event
+            historyCard.ViewDetailsClicked += HistoryCard_ViewDetailsClicked;
+
+            // Make sure the panel can scroll if needed
+            orderListPanel.AutoScroll = true;
+
+
+        }
+
+
+
+
 
     } // mainPageForm1 End Line
 }

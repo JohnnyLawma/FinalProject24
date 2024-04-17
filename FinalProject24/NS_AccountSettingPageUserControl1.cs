@@ -33,9 +33,9 @@ namespace FinalProject24
 
 
         // Variables for dummy values, when db connected this maybe changed
-        private string name = "";
-        private string email = "";
-        private string phoneNumber = "";
+        private string name = "Emly King";
+        private string email = "emlyking@gmail.com";
+        private string phoneNumber = "615-564-3422";
 
         public NS_AccountSettingPageUserControl1()
         {
@@ -58,6 +58,7 @@ namespace FinalProject24
             PhonetextBox.Text = phoneNumber;
         }
 
+        /*
         private void Applybutton_Click(object sender, EventArgs e)
         {
             // When the user hits apply changes the text will be changed
@@ -69,7 +70,8 @@ namespace FinalProject24
 
             MessageBox.Show("Changes saved successfully!");
         
-    }
+        }
+        */
 
     }
     }

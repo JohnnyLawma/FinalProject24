@@ -29,11 +29,14 @@ namespace FinalProject24
         }
 
 
+       
+
+
         public CartUC()
         {
             InitializeComponent();
 
-          
+
 
         }
 
@@ -49,7 +52,7 @@ namespace FinalProject24
         public event EventHandler CartItemsChanged;
 
 
-  
+
 
         // Method to load items into the CartUC and update the list
         public void LoadCartItems(IEnumerable<CartItem> items)
@@ -83,7 +86,7 @@ namespace FinalProject24
                     ImagePath = item.ImagePath
                 };
 
-               
+
 
                 loadCardPanel.Controls.Add(cartItemControl);
 
@@ -105,21 +108,21 @@ namespace FinalProject24
         public void UpdateSummaryOrder()
         {
             decimal subtotal = selectedItems.Sum(item => item.Price * item.Quantity);
-            decimal tax = subtotal * 0.07m; // Example: tax rate of 10%
+            decimal tax = subtotal * 0.07m; // tax rate
             decimal total = subtotal + tax;
             int totalItems = selectedItems.Sum(item => item.Quantity);
 
-            
+
             totalItemNumberLabel.Text = totalItems.ToString();
             subtotalPriceLabel.Text = $"${subtotal:0.00}";
             taxPriceLabel.Text = $"${tax:0.00}";
             totalLabelText.Text = $"${total:0.00}";
 
-           
+
         }
 
-        
-        
+
+
 
 
 
@@ -143,7 +146,7 @@ namespace FinalProject24
             {
                 loadCardPanel.Controls.Remove(cartItemUC);
                 cartItemUC.Dispose();
-                
+
             }
 
             UpdateSummaryOrder(); // Recalculate the summary order
@@ -172,6 +175,7 @@ namespace FinalProject24
                 }
             };
 
+
             // When the quantity is decreased on the CartItemUC control...
             cartItemControl.QuantityDecreased += (sender, args) =>
             {
@@ -188,6 +192,7 @@ namespace FinalProject24
                     UpdateSummaryOrder();
                 }
             };
+
 
             // When an item is removed from the CartItemUC control...
             cartItemControl.ItemRemoved += (sender, args) =>
@@ -221,6 +226,53 @@ namespace FinalProject24
         {
 
         }
+
+
+        private void ClearCart()
+        {
+            // Clear the backend list
+            selectedItems.Clear();
+
+            // Clear the UI elements from the panel
+            loadCardPanel.Controls.Clear();
+
+            // Optionally, update any UI elements that reflect the cart status
+            UpdateSummaryOrder();  // This would reset any totals displayed to the user
+
+            MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
+        }
+
+
+        public List<CartItem> orderBoard { get; private set; } = new List<CartItem>();
+
+
+        private void buyNowButton_Click(object sender, EventArgs e)
+        {
+            // Clear previous orders
+            orderBoard.Clear();
+
+            // CartItemUC has properties FoodName, Price, Quantity, ImagePath
+            foreach (CartItemUC itemControl in loadCardPanel.Controls.OfType<CartItemUC>())
+            {
+                orderBoard.Add(new CartItem
+                {
+                    FoodName = itemControl.FoodName,
+                    Price = itemControl.Price,
+                    Quantity = itemControl.Quantity,
+                    ImagePath = itemControl.ImagePath
+                });
+            }
+
+            // Optionally, you can notify the user that the items have been added to the order board
+            MessageBox.Show("Items added to the order board.");
+
+            ClearCart();
+            
+
+        }
+
+
+
     }
 
     // Define the CartItem class items.

@@ -57,10 +57,10 @@
             // 
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(458, 96);
+            label1.Location = new Point(21, 11);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(322, 54);
+            label1.Size = new Size(322, 26);
             label1.TabIndex = 0;
             label1.Text = "Current Restaurant Profile: ";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -69,10 +69,10 @@
             // 
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.ImageAlign = ContentAlignment.MiddleLeft;
-            label2.Location = new Point(458, 172);
+            label2.Location = new Point(21, 37);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(322, 54);
+            label2.Size = new Size(322, 26);
             label2.TabIndex = 1;
             label2.Text = "Restaurant Name:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -81,10 +81,10 @@
             // 
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ImageAlign = ContentAlignment.MiddleLeft;
-            label3.Location = new Point(458, 300);
+            label3.Location = new Point(21, 120);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(322, 54);
+            label3.Size = new Size(322, 26);
             label3.TabIndex = 2;
             label3.Text = "Restaurant Address:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -93,10 +93,10 @@
             // 
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.ImageAlign = ContentAlignment.MiddleLeft;
-            label4.Location = new Point(458, 438);
+            label4.Location = new Point(21, 200);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(369, 54);
+            label4.Size = new Size(369, 26);
             label4.TabIndex = 3;
             label4.Text = "Restaurant Phone Number:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -105,10 +105,10 @@
             // 
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label5.ImageAlign = ContentAlignment.MiddleLeft;
-            label5.Location = new Point(458, 602);
+            label5.Location = new Point(21, 287);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(322, 54);
+            label5.Size = new Size(322, 26);
             label5.TabIndex = 4;
             label5.Text = "Restaurant Email:";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -117,10 +117,10 @@
             // 
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label6.ImageAlign = ContentAlignment.MiddleLeft;
-            label6.Location = new Point(458, 774);
+            label6.Location = new Point(21, 370);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(322, 54);
+            label6.Size = new Size(322, 26);
             label6.TabIndex = 5;
             label6.Text = "Restaurant Description:";
             label6.TextAlign = ContentAlignment.MiddleLeft;
@@ -128,50 +128,50 @@
             // currNameLabel
             // 
             currNameLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currNameLabel.Location = new Point(458, 246);
+            currNameLabel.Location = new Point(21, 69);
             currNameLabel.Margin = new Padding(4, 0, 4, 0);
             currNameLabel.Name = "currNameLabel";
-            currNameLabel.Size = new Size(322, 54);
+            currNameLabel.Size = new Size(322, 26);
             currNameLabel.TabIndex = 7;
             currNameLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // currAddressLabel
             // 
             currAddressLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currAddressLabel.Location = new Point(458, 366);
+            currAddressLabel.Location = new Point(21, 152);
             currAddressLabel.Margin = new Padding(4, 0, 4, 0);
             currAddressLabel.Name = "currAddressLabel";
-            currAddressLabel.Size = new Size(322, 54);
+            currAddressLabel.Size = new Size(322, 26);
             currAddressLabel.TabIndex = 8;
             currAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // currPhoneNumberLabel
             // 
             currPhoneNumberLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currPhoneNumberLabel.Location = new Point(458, 522);
+            currPhoneNumberLabel.Location = new Point(21, 235);
             currPhoneNumberLabel.Margin = new Padding(4, 0, 4, 0);
             currPhoneNumberLabel.Name = "currPhoneNumberLabel";
-            currPhoneNumberLabel.Size = new Size(322, 54);
+            currPhoneNumberLabel.Size = new Size(322, 26);
             currPhoneNumberLabel.TabIndex = 9;
             currPhoneNumberLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // currEmailLabel
             // 
             currEmailLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currEmailLabel.Location = new Point(458, 675);
+            currEmailLabel.Location = new Point(21, 325);
             currEmailLabel.Margin = new Padding(4, 0, 4, 0);
             currEmailLabel.Name = "currEmailLabel";
-            currEmailLabel.Size = new Size(322, 54);
+            currEmailLabel.Size = new Size(322, 26);
             currEmailLabel.TabIndex = 10;
             currEmailLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // currDescriptionLabel
             // 
             currDescriptionLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currDescriptionLabel.Location = new Point(458, 870);
+            currDescriptionLabel.Location = new Point(21, 429);
             currDescriptionLabel.Margin = new Padding(4, 0, 4, 0);
             currDescriptionLabel.Name = "currDescriptionLabel";
-            currDescriptionLabel.Size = new Size(322, 54);
+            currDescriptionLabel.Size = new Size(322, 26);
             currDescriptionLabel.TabIndex = 11;
             currDescriptionLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -179,10 +179,10 @@
             // 
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label19.ImageAlign = ContentAlignment.MiddleLeft;
-            label19.Location = new Point(909, 774);
+            label19.Location = new Point(467, 370);
             label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
-            label19.Size = new Size(442, 54);
+            label19.Size = new Size(401, 26);
             label19.TabIndex = 17;
             label19.Text = "Enter Your Restaurant's Description:";
             label19.TextAlign = ContentAlignment.MiddleLeft;
@@ -191,10 +191,10 @@
             // 
             label20.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label20.ImageAlign = ContentAlignment.MiddleLeft;
-            label20.Location = new Point(909, 602);
+            label20.Location = new Point(467, 287);
             label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
-            label20.Size = new Size(361, 54);
+            label20.Size = new Size(361, 26);
             label20.TabIndex = 16;
             label20.Text = "Enter Your Restaurant's Email:";
             label20.TextAlign = ContentAlignment.MiddleLeft;
@@ -203,10 +203,10 @@
             // 
             label21.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label21.ImageAlign = ContentAlignment.MiddleLeft;
-            label21.Location = new Point(909, 438);
+            label21.Location = new Point(467, 200);
             label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
-            label21.Size = new Size(476, 54);
+            label21.Size = new Size(401, 26);
             label21.TabIndex = 15;
             label21.Text = "Enter Your Restaurant's Phone Number:";
             label21.TextAlign = ContentAlignment.MiddleLeft;
@@ -215,10 +215,10 @@
             // 
             label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label22.ImageAlign = ContentAlignment.MiddleLeft;
-            label22.Location = new Point(909, 300);
+            label22.Location = new Point(467, 120);
             label22.Margin = new Padding(4, 0, 4, 0);
             label22.Name = "label22";
-            label22.Size = new Size(401, 54);
+            label22.Size = new Size(401, 26);
             label22.TabIndex = 14;
             label22.Text = "Enter Your Restaurant's Address";
             label22.TextAlign = ContentAlignment.MiddleLeft;
@@ -227,10 +227,10 @@
             // 
             label23.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label23.ImageAlign = ContentAlignment.MiddleLeft;
-            label23.Location = new Point(909, 172);
+            label23.Location = new Point(467, 37);
             label23.Margin = new Padding(4, 0, 4, 0);
             label23.Name = "label23";
-            label23.Size = new Size(379, 54);
+            label23.Size = new Size(379, 26);
             label23.TabIndex = 13;
             label23.Text = "Enter Your Restaurant's Name:";
             label23.TextAlign = ContentAlignment.MiddleLeft;
@@ -239,55 +239,55 @@
             // 
             label24.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label24.ImageAlign = ContentAlignment.MiddleLeft;
-            label24.Location = new Point(909, 96);
+            label24.Location = new Point(467, 11);
             label24.Margin = new Padding(4, 0, 4, 0);
             label24.Name = "label24";
-            label24.Size = new Size(322, 54);
+            label24.Size = new Size(322, 26);
             label24.TabIndex = 12;
             label24.Text = "Edit Restaurant Profile:";
             label24.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // newNameTextBox
             // 
-            newNameTextBox.Location = new Point(909, 242);
+            newNameTextBox.Location = new Point(467, 66);
             newNameTextBox.Name = "newNameTextBox";
-            newNameTextBox.Size = new Size(332, 39);
+            newNameTextBox.Size = new Size(332, 29);
             newNameTextBox.TabIndex = 19;
             // 
             // newAddressTextBox
             // 
-            newAddressTextBox.Location = new Point(909, 380);
+            newAddressTextBox.Location = new Point(467, 149);
             newAddressTextBox.Name = "newAddressTextBox";
-            newAddressTextBox.Size = new Size(332, 39);
+            newAddressTextBox.Size = new Size(332, 29);
             newAddressTextBox.TabIndex = 20;
             // 
             // newPhoneNumberTextBox
             // 
-            newPhoneNumberTextBox.Location = new Point(897, 513);
+            newPhoneNumberTextBox.Location = new Point(467, 235);
             newPhoneNumberTextBox.Name = "newPhoneNumberTextBox";
-            newPhoneNumberTextBox.Size = new Size(332, 39);
+            newPhoneNumberTextBox.Size = new Size(332, 29);
             newPhoneNumberTextBox.TabIndex = 21;
             // 
             // newEmailTextBox
             // 
-            newEmailTextBox.Location = new Point(909, 683);
+            newEmailTextBox.Location = new Point(467, 325);
             newEmailTextBox.Name = "newEmailTextBox";
-            newEmailTextBox.Size = new Size(332, 39);
+            newEmailTextBox.Size = new Size(332, 29);
             newEmailTextBox.TabIndex = 22;
             // 
             // newDescriptionTextBox
             // 
-            newDescriptionTextBox.Location = new Point(909, 853);
+            newDescriptionTextBox.Location = new Point(467, 409);
             newDescriptionTextBox.Name = "newDescriptionTextBox";
-            newDescriptionTextBox.Size = new Size(332, 39);
+            newDescriptionTextBox.Size = new Size(332, 29);
             newDescriptionTextBox.TabIndex = 23;
             // 
             // applyChangeButton
             // 
             applyChangeButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            applyChangeButton.Location = new Point(1004, 935);
+            applyChangeButton.Location = new Point(554, 444);
             applyChangeButton.Name = "applyChangeButton";
-            applyChangeButton.Size = new Size(150, 72);
+            applyChangeButton.Size = new Size(150, 29);
             applyChangeButton.TabIndex = 24;
             applyChangeButton.Text = "Apply Changes";
             applyChangeButton.UseVisualStyleBackColor = true;
@@ -295,7 +295,7 @@
             // 
             // JG_restaurantProfileUserControl
             // 
-            AutoScaleDimensions = new SizeF(14F, 32F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(applyChangeButton);
             Controls.Add(newDescriptionTextBox);
@@ -323,7 +323,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Margin = new Padding(4);
             Name = "JG_restaurantProfileUserControl";
-            Size = new Size(1764, 1060);
+            Size = new Size(882, 494);
             ResumeLayout(false);
             PerformLayout();
         }
