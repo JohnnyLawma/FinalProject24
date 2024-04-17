@@ -12,10 +12,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace FinalProject24
 {
-    public partial class JG_signUpPageUserControl : UserControl
+    public partial class JG_signUpPageUserControl : UserControl 
     {
 
-        public static JG_signUpPageUserControl _instance;
+        public static JG_signUpPageUserControl _instance; // make an instance of the UC
 
         public static JG_signUpPageUserControl Instance
         {
@@ -38,15 +38,15 @@ namespace FinalProject24
         }
 
         string newEmail, newPassword, newName, confirmPassword;
-
+        bool isCustomer;
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
-            newName = nameTextBox.Text;
+            newName = nameTextBox.Text; // save new account variables 
             newEmail = emailTextBox.Text;
             newPassword = passwordTextBox.Text;
             confirmPassword = confirmPasswordTextBox.Text;
-            if (!CheckPassword())
+            if (!CheckPassword()) // check if the passwords match
             {
                 MessageBox.Show("Passwords do not match!!!");
             }
@@ -55,7 +55,7 @@ namespace FinalProject24
                 MessageBox.Show("Your account was successfully created!");
             }
         }
-        private bool CheckPassword()
+        private bool CheckPassword() // bool function that determines if the passwords match
         {
             bool result = false;
             if (newPassword == confirmPassword)
@@ -67,10 +67,10 @@ namespace FinalProject24
 
         private void loginLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            JG_signUpPageUserControl.Instance.SendToBack();
+            JG_signUpPageUserControl.Instance.SendToBack(); // go back to the login form by hiding the UC
         }
 
-        private void nameTextBox_Enter(object sender, EventArgs e)
+        private void nameTextBox_Enter(object sender, EventArgs e) // more code to make the text grey and hidden while typing
         {
             if (nameTextBox.Text == "Enter your name")
             {
@@ -142,7 +142,7 @@ namespace FinalProject24
             }
         }
 
-        private void nameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void nameTextBox_KeyPress(object sender, KeyPressEventArgs e) // make the enter button move forward just like the tab button
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -170,7 +170,7 @@ namespace FinalProject24
             }
         }
 
-        private void confirmPasswordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void confirmPasswordTextBox_KeyPress(object sender, KeyPressEventArgs e) // and at the end of the form, make enter click the button
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -182,11 +182,13 @@ namespace FinalProject24
         private void customerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             // user is a customer
+            isCustomer = true;
         }
 
         private void managerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             // user is a manager
+            isCustomer = false;
         }
     }
 }
