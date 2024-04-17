@@ -43,9 +43,10 @@
             // 
             orderNumberLabel.AutoSize = true;
             orderNumberLabel.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold);
-            orderNumberLabel.Location = new Point(18, 13);
+            orderNumberLabel.Location = new Point(10, 6);
+            orderNumberLabel.Margin = new Padding(2, 0, 2, 0);
             orderNumberLabel.Name = "orderNumberLabel";
-            orderNumberLabel.Size = new Size(204, 30);
+            orderNumberLabel.Size = new Size(103, 13);
             orderNumberLabel.TabIndex = 0;
             orderNumberLabel.Text = "Order # 600360532";
             // 
@@ -53,9 +54,10 @@
             // 
             dateLabel.AutoSize = true;
             dateLabel.Font = new Font("Segoe UI Semibold", 7.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dateLabel.Location = new Point(24, 67);
+            dateLabel.Location = new Point(13, 31);
+            dateLabel.Margin = new Padding(2, 0, 2, 0);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new Size(58, 30);
+            dateLabel.Size = new Size(31, 13);
             dateLabel.TabIndex = 1;
             dateLabel.Text = "Date";
             // 
@@ -63,9 +65,10 @@
             // 
             totalLabel.AutoSize = true;
             totalLabel.Font = new Font("Segoe UI Semibold", 7.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalLabel.Location = new Point(222, 67);
+            totalLabel.Location = new Point(106, 31);
+            totalLabel.Margin = new Padding(2, 0, 2, 0);
             totalLabel.Name = "totalLabel";
-            totalLabel.Size = new Size(60, 30);
+            totalLabel.Size = new Size(32, 13);
             totalLabel.TabIndex = 2;
             totalLabel.Text = "Total";
             // 
@@ -73,9 +76,10 @@
             // 
             statusLabel.AutoSize = true;
             statusLabel.Font = new Font("Segoe UI Semibold", 7.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            statusLabel.Location = new Point(391, 67);
+            statusLabel.Location = new Point(186, 31);
+            statusLabel.Margin = new Padding(2, 0, 2, 0);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(71, 30);
+            statusLabel.Size = new Size(38, 13);
             statusLabel.TabIndex = 3;
             statusLabel.Text = "Status";
             // 
@@ -83,9 +87,10 @@
             // 
             dateTextLabel.AutoSize = true;
             dateTextLabel.Font = new Font("Segoe UI", 7.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTextLabel.Location = new Point(28, 107);
+            dateTextLabel.Location = new Point(15, 50);
+            dateTextLabel.Margin = new Padding(2, 0, 2, 0);
             dateTextLabel.Name = "dateTextLabel";
-            dateTextLabel.Size = new Size(129, 30);
+            dateTextLabel.Size = new Size(71, 13);
             dateTextLabel.TabIndex = 4;
             dateTextLabel.Text = "Feb 21, 2019";
             // 
@@ -93,9 +98,10 @@
             // 
             totalTextLabel.AutoSize = true;
             totalTextLabel.Font = new Font("Segoe UI", 7.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            totalTextLabel.Location = new Point(222, 107);
+            totalTextLabel.Location = new Point(106, 50);
+            totalTextLabel.Margin = new Padding(2, 0, 2, 0);
             totalTextLabel.Name = "totalTextLabel";
-            totalTextLabel.Size = new Size(84, 30);
+            totalTextLabel.Size = new Size(46, 13);
             totalTextLabel.TabIndex = 5;
             totalTextLabel.Text = "$375.34";
             // 
@@ -103,9 +109,10 @@
             // 
             statusTextLabel.AutoSize = true;
             statusTextLabel.Font = new Font("Segoe UI", 7.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            statusTextLabel.Location = new Point(391, 107);
+            statusTextLabel.Location = new Point(186, 50);
+            statusTextLabel.Margin = new Padding(2, 0, 2, 0);
             statusTextLabel.Name = "statusTextLabel";
-            statusTextLabel.Size = new Size(91, 30);
+            statusTextLabel.Size = new Size(51, 13);
             statusTextLabel.TabIndex = 6;
             statusTextLabel.Text = "On Hold";
             // 
@@ -114,16 +121,17 @@
             viewDetailButton.BackColor = Color.FromArgb(211, 210, 210);
             viewDetailButton.Font = new Font("Segoe UI", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             viewDetailButton.Image = (Image)resources.GetObject("viewDetailButton.Image");
-            viewDetailButton.Location = new Point(512, 0);
+            viewDetailButton.Location = new Point(259, 0);
+            viewDetailButton.Margin = new Padding(2, 1, 2, 1);
             viewDetailButton.Name = "viewDetailButton";
-            viewDetailButton.Size = new Size(96, 165);
+            viewDetailButton.Size = new Size(52, 77);
             viewDetailButton.TabIndex = 7;
             viewDetailButton.UseVisualStyleBackColor = false;
             viewDetailButton.Click += viewDetailButton_Click;
             // 
             // orderHistoryCard
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 217, 217);
             Controls.Add(viewDetailButton);
@@ -134,8 +142,9 @@
             Controls.Add(totalLabel);
             Controls.Add(dateLabel);
             Controls.Add(orderNumberLabel);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "orderHistoryCard";
-            Size = new Size(609, 165);
+            Size = new Size(310, 77);
             ResumeLayout(false);
             PerformLayout();
         }

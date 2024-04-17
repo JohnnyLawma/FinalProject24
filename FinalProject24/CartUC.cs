@@ -29,7 +29,7 @@ namespace FinalProject24
         }
 
 
-       
+
 
 
         public CartUC()
@@ -102,7 +102,17 @@ namespace FinalProject24
         }
 
 
-
+        public List<CartItem> GetCartItems()
+        {
+            // Create a new list and add copies of each CartItem in selectedItems
+            return selectedItems.Select(item => new CartItem
+            {
+                FoodName = item.FoodName,
+                Price = item.Price,
+                Quantity = item.Quantity,
+                ImagePath = item.ImagePath
+            }).ToList();
+        }
 
         // Method to calculate the summary order
         public void UpdateSummaryOrder()
@@ -118,6 +128,8 @@ namespace FinalProject24
             taxPriceLabel.Text = $"${tax:0.00}";
             totalLabelText.Text = $"${total:0.00}";
 
+            CartItemsChanged?.Invoke(this, EventArgs.Empty); // Fire the event
+
 
         }
 
@@ -131,12 +143,15 @@ namespace FinalProject24
         {
             // Handle the quantity increased event
             UpdateSummaryOrder(); // Recalculate the summary order
+
+
         }
 
         private void CartItemUC_QuantityDecreased(object sender, EventArgs e)
         {
             // Handle the quantity decreased event
             UpdateSummaryOrder(); // Recalculate the summary order
+
         }
 
         private void CartItemUC_ItemRemoved(object sender, EventArgs e)
@@ -150,6 +165,7 @@ namespace FinalProject24
             }
 
             UpdateSummaryOrder(); // Recalculate the summary order
+
 
         }
 
@@ -239,6 +255,8 @@ namespace FinalProject24
             // Optionally, update any UI elements that reflect the cart status
             UpdateSummaryOrder();  // This would reset any totals displayed to the user
 
+
+
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
 
@@ -267,12 +285,19 @@ namespace FinalProject24
             MessageBox.Show("Items added to the order board.");
 
             ClearCart();
-            
+
 
         }
 
+        private void CartUC_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void loadCardPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     // Define the CartItem class items.

@@ -48,10 +48,9 @@
             // 
             myCartLabel.AutoSize = true;
             myCartLabel.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            myCartLabel.Location = new Point(68, 81);
-            myCartLabel.Margin = new Padding(6, 0, 6, 0);
+            myCartLabel.Location = new Point(37, 38);
             myCartLabel.Name = "myCartLabel";
-            myCartLabel.Size = new Size(186, 59);
+            myCartLabel.Size = new Size(97, 30);
             myCartLabel.TabIndex = 6;
             myCartLabel.Text = "My Cart";
             myCartLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -61,10 +60,9 @@
             summaryOrderLabel.AutoSize = true;
             summaryOrderLabel.BackColor = Color.Transparent;
             summaryOrderLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            summaryOrderLabel.Location = new Point(35, 45);
-            summaryOrderLabel.Margin = new Padding(6, 0, 6, 0);
+            summaryOrderLabel.Location = new Point(19, 21);
             summaryOrderLabel.Name = "summaryOrderLabel";
-            summaryOrderLabel.Size = new Size(259, 45);
+            summaryOrderLabel.Size = new Size(131, 21);
             summaryOrderLabel.TabIndex = 0;
             summaryOrderLabel.Text = "Summary Order";
             // 
@@ -81,20 +79,18 @@
             summaryOrderPanel.Controls.Add(taxLabel);
             summaryOrderPanel.Controls.Add(totalItemLabel);
             summaryOrderPanel.Controls.Add(summaryOrderLabel);
-            summaryOrderPanel.Location = new Point(1111, 162);
-            summaryOrderPanel.Margin = new Padding(6);
+            summaryOrderPanel.Location = new Point(598, 76);
             summaryOrderPanel.Name = "summaryOrderPanel";
-            summaryOrderPanel.Size = new Size(462, 439);
+            summaryOrderPanel.Size = new Size(249, 206);
             summaryOrderPanel.TabIndex = 7;
             // 
             // totalLabelText
             // 
             totalLabelText.AutoSize = true;
             totalLabelText.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            totalLabelText.Location = new Point(303, 253);
-            totalLabelText.Margin = new Padding(6, 0, 6, 0);
+            totalLabelText.Location = new Point(163, 119);
             totalLabelText.Name = "totalLabelText";
-            totalLabelText.Size = new Size(77, 32);
+            totalLabelText.Size = new Size(38, 15);
             totalLabelText.TabIndex = 9;
             totalLabelText.Text = "$2.50";
             // 
@@ -102,10 +98,9 @@
             // 
             totalLabel.AutoSize = true;
             totalLabel.Font = new Font("Segoe UI", 9.75F);
-            totalLabel.Location = new Point(35, 250);
-            totalLabel.Margin = new Padding(6, 0, 6, 0);
+            totalLabel.Location = new Point(19, 117);
             totalLabel.Name = "totalLabel";
-            totalLabel.Size = new Size(75, 36);
+            totalLabel.Size = new Size(39, 17);
             totalLabel.TabIndex = 8;
             totalLabel.Text = "Total:";
             totalLabel.Click += label1_Click;
@@ -114,10 +109,9 @@
             // 
             subtotalPriceLabel.AutoSize = true;
             subtotalPriceLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            subtotalPriceLabel.Location = new Point(303, 161);
-            subtotalPriceLabel.Margin = new Padding(6, 0, 6, 0);
+            subtotalPriceLabel.Location = new Point(163, 75);
             subtotalPriceLabel.Name = "subtotalPriceLabel";
-            subtotalPriceLabel.Size = new Size(91, 32);
+            subtotalPriceLabel.Size = new Size(45, 15);
             subtotalPriceLabel.TabIndex = 7;
             subtotalPriceLabel.Text = "$10.90";
             // 
@@ -125,10 +119,9 @@
             // 
             taxPriceLabel.AutoSize = true;
             taxPriceLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            taxPriceLabel.Location = new Point(303, 209);
-            taxPriceLabel.Margin = new Padding(6, 0, 6, 0);
+            taxPriceLabel.Location = new Point(163, 98);
             taxPriceLabel.Name = "taxPriceLabel";
-            taxPriceLabel.Size = new Size(77, 32);
+            taxPriceLabel.Size = new Size(38, 15);
             taxPriceLabel.TabIndex = 6;
             taxPriceLabel.Text = "$2.50";
             // 
@@ -136,10 +129,9 @@
             // 
             totalItemNumberLabel.AutoSize = true;
             totalItemNumberLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            totalItemNumberLabel.Location = new Point(303, 119);
-            totalItemNumberLabel.Margin = new Padding(6, 0, 6, 0);
+            totalItemNumberLabel.Location = new Point(163, 56);
             totalItemNumberLabel.Name = "totalItemNumberLabel";
-            totalItemNumberLabel.Size = new Size(28, 32);
+            totalItemNumberLabel.Size = new Size(14, 15);
             totalItemNumberLabel.TabIndex = 5;
             totalItemNumberLabel.Text = "3";
             // 
@@ -149,10 +141,9 @@
             buyNowButton.FlatAppearance.BorderSize = 0;
             buyNowButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buyNowButton.ForeColor = SystemColors.ActiveCaptionText;
-            buyNowButton.Location = new Point(35, 305);
-            buyNowButton.Margin = new Padding(6);
+            buyNowButton.Location = new Point(19, 143);
             buyNowButton.Name = "buyNowButton";
-            buyNowButton.Size = new Size(399, 105);
+            buyNowButton.Size = new Size(215, 49);
             buyNowButton.TabIndex = 4;
             buyNowButton.Text = "Buy Now";
             buyNowButton.UseVisualStyleBackColor = false;
@@ -162,10 +153,9 @@
             // 
             subtotalLabel.AutoSize = true;
             subtotalLabel.Font = new Font("Segoe UI", 9.75F);
-            subtotalLabel.Location = new Point(35, 157);
-            subtotalLabel.Margin = new Padding(6, 0, 6, 0);
+            subtotalLabel.Location = new Point(19, 74);
             subtotalLabel.Name = "subtotalLabel";
-            subtotalLabel.Size = new Size(117, 36);
+            subtotalLabel.Size = new Size(59, 17);
             subtotalLabel.TabIndex = 3;
             subtotalLabel.Text = "Subtotal:";
             // 
@@ -173,10 +163,9 @@
             // 
             taxLabel.AutoSize = true;
             taxLabel.Font = new Font("Segoe UI", 9.75F);
-            taxLabel.Location = new Point(35, 205);
-            taxLabel.Margin = new Padding(6, 0, 6, 0);
+            taxLabel.Location = new Point(19, 96);
             taxLabel.Name = "taxLabel";
-            taxLabel.Size = new Size(57, 36);
+            taxLabel.Size = new Size(30, 17);
             taxLabel.TabIndex = 2;
             taxLabel.Text = "Tax:";
             // 
@@ -184,31 +173,32 @@
             // 
             totalItemLabel.AutoSize = true;
             totalItemLabel.Font = new Font("Segoe UI", 9.75F);
-            totalItemLabel.Location = new Point(35, 115);
-            totalItemLabel.Margin = new Padding(6, 0, 6, 0);
+            totalItemLabel.Location = new Point(19, 54);
             totalItemLabel.Name = "totalItemLabel";
-            totalItemLabel.Size = new Size(134, 36);
+            totalItemLabel.Size = new Size(68, 17);
             totalItemLabel.TabIndex = 1;
             totalItemLabel.Text = "Total Item:";
             // 
             // loadCardPanel
             // 
             loadCardPanel.AutoScroll = true;
-            loadCardPanel.Location = new Point(83, 162);
+            loadCardPanel.Location = new Point(45, 76);
+            loadCardPanel.Margin = new Padding(2, 1, 2, 1);
             loadCardPanel.Name = "loadCardPanel";
-            loadCardPanel.Size = new Size(956, 811);
+            loadCardPanel.Size = new Size(515, 380);
             loadCardPanel.TabIndex = 8;
+            loadCardPanel.Paint += loadCardPanel_Paint;
             // 
             // CartUC
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(loadCardPanel);
             Controls.Add(myCartLabel);
             Controls.Add(summaryOrderPanel);
-            Margin = new Padding(6);
             Name = "CartUC";
-            Size = new Size(1638, 1054);
+            Size = new Size(882, 494);
+            Load += CartUC_Load;
             summaryOrderPanel.ResumeLayout(false);
             summaryOrderPanel.PerformLayout();
             ResumeLayout(false);

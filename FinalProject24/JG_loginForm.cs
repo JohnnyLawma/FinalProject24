@@ -33,12 +33,13 @@ namespace FinalProject24
         {
             if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
             {
+                Environment.SetEnvironmentVariable("customerEmailEnv", emailTextBox.Text);
                 successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                 successOrNotLabel.Text = "Success! Welcome back Customer!";
 
                 // Wait for 1 seconds to show sucess message.
                 await Task.Delay(1000);
-                
+
                 loadMainForm.Show(); // Opening the Main Menu Form
                 this.Hide(); // Hiding the Login Form
 
@@ -58,6 +59,7 @@ namespace FinalProject24
             }
             else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
             {
+                Environment.SetEnvironmentVariable("managerEmailEnv", emailTextBox.Text);
                 successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                 successOrNotLabel.Text = "Success! Welcome back Manager!";
 
@@ -177,11 +179,16 @@ namespace FinalProject24
 
         private void emailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter) 
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 passwordTextBox.Focus();
                 e.Handled = true;
             }
+        }
+
+        private void JG_loginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

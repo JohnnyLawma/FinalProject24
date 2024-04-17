@@ -13,7 +13,7 @@ namespace FinalProject24
         private CartUC cartUCInstance;
 
 
-        
+
 
 
         public mainPageForm1()
@@ -39,9 +39,11 @@ namespace FinalProject24
 
             cartUCInstance = new CartUC();
 
-            
+
             orderHistoryPanel.Visible = false;
             mainPanel.Visible = true;
+            cartUCInstance = CartUC.Instance;
+            cartUCInstance.CartItemsChanged += CartUCInstance_CartItemsChanged;
 
         }
 
@@ -60,6 +62,26 @@ namespace FinalProject24
             public decimal Price;
             public string ImagePath;
             public int Quantity;
+        }
+        private void CartUCInstance_CartItemsChanged(object sender, EventArgs e)
+        {
+            // This method is called whenever the cart items are changed
+            UpdateSelectedItemsFromCart();
+        }
+        private void UpdateSelectedItemsFromCart()
+        {
+            selectedItems = cartUCInstance.GetCartItems()
+                .Select(item => new cartArray
+                {
+                    Title = item.FoodName,
+                    Price = item.Price,
+                    ImagePath = item.ImagePath,
+                    Quantity = item.Quantity
+                }).ToList();
+
+            // Calculate the total quantity by summing the Quantity of each item
+            count = selectedItems.Sum(item => item.Quantity);
+            cartButton.Text = "Carts: " + count.ToString();
         }
 
         private List<cartArray> selectedItems = new List<cartArray>();
@@ -314,7 +336,7 @@ namespace FinalProject24
         }
 
 
-      
+
 
 
         //
@@ -375,58 +397,93 @@ namespace FinalProject24
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            // Update the cart count display
-            cartButton.Text = "Carts: " + count.ToString();
+            // Ensure the order list panel is cleared before adding new items
+            orderListPanel.Controls.Clear();
 
-            // Check if there are items in the cart
-            if (selectedItems.Count == 0)
+            // Define the path to the receipts directory
+            string receiptsPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\receipts\"));
+
+            // Check if the directory exists and get all CSV files
+            if (Directory.Exists(receiptsPath))
             {
-                MessageBox.Show("No items in the order. Please add items before placing an order.", "Empty Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                string[] files = Directory.GetFiles(receiptsPath, "*.csv");
+                int yOffset = 0;  // Initialize an offset for the Y position.
+
+                foreach (string file in files)
+                {
+
+                    try
+                    {
+                        // Read the CSV file to get the order details (assuming the CSV has headers and consistent formatting)
+                        string[] lines = File.ReadAllLines(file);
+                        if (lines.Length > 1 && lines.Any(line => line.StartsWith("Total,")))  // Check if there is a "Total" line
+                        {
+                            // Extract order details from the lines
+                            string orderNumber = Path.GetFileNameWithoutExtension(file);
+                            string date = DateTime.Now.ToString("yyyy-MM-dd");  // Assuming you want today's date or extract from the file name
+                            decimal total = Convert.ToDecimal(lines.Last(line => line.StartsWith("Total,")).Split(',')[2].Replace("$", "").Trim()); // Total is on the last line
+
+                            // Create the order history card
+                            orderHistoryCard historyCard = new orderHistoryCard
+                            {
+                                dateText = date,
+                                totalText = $"${total:0.00}",
+                                statusText = "Completed",  // Assuming status is completed for past orders
+                                orderNumberText = "Order #" + orderNumber,
+                                Size = new Size(310, 77),
+                                Tag = file  // Store the path to the CSV file in the Tag property
+                            };
+                            historyCard.Location = new Point(0, yOffset);  // Set the location for each card.
+                            yOffset += historyCard.Height + 10;  // Increment yOffset for the next card.
+                            // Add the order history card to the panel
+                            orderListPanel.Controls.Add(historyCard);
+
+                            // Subscribe to the ViewDetailsClicked event
+                            historyCard.ViewDetailsClicked += HistoryCard_ViewDetailsClicked;
+                        }
+                        else
+                        {
+                            // Log the issue with the current file and continue with the next one
+                            MessageBox.Show($"The file {file} is not in the expected format or does not contain a total.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the exception and continue with the next file
+                        MessageBox.Show($"An exception occurred while processing the file {file}: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Receipts directory does not exist.", "Directory Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Make the order panel visible
             orderHistoryPanel.Visible = true;
             menuPanel.Visible = false;
             menuLabel.Visible = false;
-
-            // Calculate the total price of all items in the cart
-            decimal subtotal = cartUCInstance.orderBoard.Sum(item => item.Price * item.Quantity);
-            decimal tax = subtotal * 0.07m;  // Assume a 7% tax rate
-            decimal total = subtotal + tax;
-
-            // Generate a unique order number
-            string orderNumber = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
-
-            // Save the order details to a CSV file
-            string filePath = SaveOrderDetailsToCSV(orderNumber, cartUCInstance.orderBoard, subtotal, tax, total);
-
-            // Create and display the order history card
-            orderHistoryCard historyCard = new orderHistoryCard
-            {
-                dateText = DateTime.Now.ToString("yyyy-MM-dd"),
-                totalText = $"${total:0.00}",
-                statusText = "Pending",
-                orderNumberText = "Order #" + orderNumber,
-                Size = new Size(609, 165),
-                Tag = filePath  // Store the path to the CSV file in the Tag property
-            };
-
-            // Add the order history card to the panel
-            orderListPanel.Controls.Add(historyCard);
-
-            // Subscribe to the ViewDetailsClicked event
-            historyCard.ViewDetailsClicked += HistoryCard_ViewDetailsClicked;
+            mainPanel.Visible = true; // Show the main panel if needed
 
             // Make sure the panel can scroll if needed
             orderListPanel.AutoScroll = true;
-
-
         }
 
 
 
+        private void orderHistoryPanel_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
 
+        private void orderListPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void orderSummaryPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     } // mainPageForm1 End Line
 }
