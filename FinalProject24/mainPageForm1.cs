@@ -397,6 +397,7 @@ namespace FinalProject24
 
         private void orderButton_Click(object sender, EventArgs e)
         {
+
             // Ensure the order list panel is cleared before adding new items
             orderListPanel.Controls.Clear();
 
@@ -422,7 +423,6 @@ namespace FinalProject24
                             string orderNumber = Path.GetFileNameWithoutExtension(file);
                             string date = DateTime.Now.ToString("yyyy-MM-dd");  // Assuming you want today's date or extract from the file name
                             decimal total = Convert.ToDecimal(lines.Last(line => line.StartsWith("Total,")).Split(',')[2].Replace("$", "").Trim()); // Total is on the last line
-
                             // Create the order history card
                             orderHistoryCard historyCard = new orderHistoryCard
                             {

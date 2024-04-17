@@ -1,0 +1,6 @@
+Item Name,Quantity,Price,Total
+Demo Item 1,8,$6.00,$48.00
+Demo Item 2,2,$7.00,$14.00
+Subtotal,,$62.00
+Tax,,$4.34
+Total,,$66.34
