@@ -65,6 +65,7 @@ namespace FinalProject24
             currAddressLabel.Text = restaurantAddress;
             currPhoneNumberLabel.Text = restaurantPhoneNumber;
             currAddressLabel.Text = restaurantAddress;
+            currEmailLabel.Text = restaurantEmail;
             currDescriptionLabel.Text = restaurantDescription;
 
 

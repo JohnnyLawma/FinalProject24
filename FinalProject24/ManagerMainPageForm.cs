@@ -105,5 +105,10 @@ namespace FinalProject24
             }
             mainpanel1.Visible = true;
         }
+
+        private void ordersButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
