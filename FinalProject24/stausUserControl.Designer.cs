@@ -38,6 +38,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLabel.ForeColor = SystemColors.ControlLight;
             nameLabel.Location = new Point(25, 18);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(140, 37);
@@ -46,9 +47,9 @@
             // 
             // statusButton
             // 
-            statusButton.BackColor = SystemColors.ActiveCaptionText;
+            statusButton.BackColor = SystemColors.ControlLightLight;
             statusButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            statusButton.ForeColor = SystemColors.ControlLightLight;
+            statusButton.ForeColor = SystemColors.ControlText;
             statusButton.Location = new Point(36, 438);
             statusButton.Name = "statusButton";
             statusButton.Size = new Size(189, 56);
@@ -80,7 +81,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientActiveCaption;
+            BackColor = Color.FromArgb(64, 64, 64);
             BorderStyle = BorderStyle.Fixed3D;
             Controls.Add(button1);
             Controls.Add(itemsListBox);

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerMainPageForm));
             MenuSideBar = new Panel();
+            viewCurrentMenu = new Button();
             roundPictureBox1 = new RoundPictureBox();
             ordersButton = new Button();
             exitButton = new Button();
@@ -39,14 +40,13 @@
             nameLabel = new Label();
             signOutButton = new Button();
             mainpanel1 = new Panel();
-            viewCurrentMenu = new Button();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // MenuSideBar
             // 
-            MenuSideBar.BackColor = Color.FromArgb(124, 172, 175);
+            MenuSideBar.BackColor = Color.FromArgb(64, 64, 64);
             MenuSideBar.Controls.Add(viewCurrentMenu);
             MenuSideBar.Controls.Add(roundPictureBox1);
             MenuSideBar.Controls.Add(ordersButton);
@@ -61,6 +61,16 @@
             MenuSideBar.Name = "MenuSideBar";
             MenuSideBar.Size = new Size(185, 1205);
             MenuSideBar.TabIndex = 2;
+            // 
+            // viewCurrentMenu
+            // 
+            viewCurrentMenu.Location = new Point(3, 376);
+            viewCurrentMenu.Margin = new Padding(3, 2, 3, 2);
+            viewCurrentMenu.Name = "viewCurrentMenu";
+            viewCurrentMenu.Size = new Size(179, 90);
+            viewCurrentMenu.TabIndex = 11;
+            viewCurrentMenu.Text = "View current Menu";
+            viewCurrentMenu.UseVisualStyleBackColor = true;
             // 
             // roundPictureBox1
             // 
@@ -131,6 +141,7 @@
             // nameLabel
             // 
             nameLabel.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLabel.ForeColor = SystemColors.ControlLight;
             nameLabel.Location = new Point(23, 171);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(140, 64);
@@ -152,21 +163,12 @@
             // mainpanel1
             // 
             mainpanel1.AutoSize = true;
+            mainpanel1.BackColor = Color.FromArgb(0, 4, 120, 65);
             mainpanel1.Location = new Point(193, 0);
             mainpanel1.Margin = new Padding(5, 6, 5, 6);
             mainpanel1.Name = "mainpanel1";
             mainpanel1.Size = new Size(1633, 1198);
             mainpanel1.TabIndex = 3;
-            // 
-            // viewCurrentMenu
-            // 
-            viewCurrentMenu.Location = new Point(3, 376);
-            viewCurrentMenu.Margin = new Padding(3, 2, 3, 2);
-            viewCurrentMenu.Name = "viewCurrentMenu";
-            viewCurrentMenu.Size = new Size(179, 90);
-            viewCurrentMenu.TabIndex = 11;
-            viewCurrentMenu.Text = "View current Menu";
-            viewCurrentMenu.UseVisualStyleBackColor = true;
             // 
             // ManagerMainPageForm
             // 
