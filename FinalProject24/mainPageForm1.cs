@@ -6,8 +6,10 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
+
         string imagePathProfilePicture = @"..\..\..\..\Images\profilePicture.jpg"; // Going back 4 level
         string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
+
         private CartUC cartUCInstance;
 
 
