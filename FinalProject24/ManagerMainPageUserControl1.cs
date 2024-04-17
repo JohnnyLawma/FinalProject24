@@ -91,6 +91,8 @@ namespace FinalProject24
             }
         }
 
+
+
         private void StatusControl_ReadyButtonClicked(object sender, EventArgs e)
         {
             var statusControl = sender as stausUserControl;

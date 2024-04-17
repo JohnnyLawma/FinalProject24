@@ -71,6 +71,7 @@
             viewCurrentMenu.TabIndex = 11;
             viewCurrentMenu.Text = "View current Menu";
             viewCurrentMenu.UseVisualStyleBackColor = true;
+            viewCurrentMenu.Click += viewCurrentMenu_Click;
             // 
             // roundPictureBox1
             // 

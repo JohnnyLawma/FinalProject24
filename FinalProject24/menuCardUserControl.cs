@@ -60,6 +60,27 @@ namespace FinalProject24
         }
 
 
+        public void DisableAddButton()
+        {
+            addButton.Enabled = false;
+        }
+
+        public void DisableRemoveButton()
+        {
+            removeButton.Enabled = false;
+        }
+
+        public void HideAddButton()
+        {
+            addButton.Visible = false;
+        }
+
+        public void HideRemoveButton()
+        {
+            removeButton.Visible = false;
+        }
+
+
 
         // Method to load data into the control
         /*public void LoadData(MenuItemData data)

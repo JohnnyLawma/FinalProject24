@@ -110,5 +110,23 @@ namespace FinalProject24
         {
             loadOrderBoard();
         }
+
+        private void viewCurrentMenu_Click(object sender, EventArgs e)
+        {
+            if (!mainpanel1.Controls.Contains(NS_MViewPageUserControl1.Instance))
+            {
+                mainpanel1.Controls.Add(NS_MViewPageUserControl1.Instance);
+                NS_MViewPageUserControl1.Instance.Dock = DockStyle.Fill;
+                NS_MViewPageUserControl1.Instance.BringToFront();
+            }
+            else
+            {
+                NS_MViewPageUserControl1.Instance.BringToFront();
+            }
+            mainpanel1.Visible = true;
+        }
+
+
+
     }
 }

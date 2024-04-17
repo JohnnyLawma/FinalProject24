@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menuCardUserControl));
             menuPictureBox = new PictureBox();
             itemNameLabel = new Label();
             priceLabel = new Label();
@@ -39,6 +40,7 @@
             // menuPictureBox
             // 
             menuPictureBox.BackColor = SystemColors.ButtonShadow;
+            menuPictureBox.InitialImage = (Image)resources.GetObject("menuPictureBox.InitialImage");
             menuPictureBox.Location = new Point(0, 0);
             menuPictureBox.Name = "menuPictureBox";
             menuPictureBox.Size = new Size(400, 267);

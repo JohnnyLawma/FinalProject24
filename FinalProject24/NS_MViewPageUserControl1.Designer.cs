@@ -28,28 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            loadMenuPanel = new Panel();
+            menuLabel = new Label();
             SuspendLayout();
             // 
-            // panel1
+            // loadMenuPanel
             // 
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(941, 445);
-            panel1.TabIndex = 0;
+            loadMenuPanel.BorderStyle = BorderStyle.FixedSingle;
+            loadMenuPanel.Location = new Point(55, 138);
+            loadMenuPanel.Margin = new Padding(4);
+            loadMenuPanel.Name = "loadMenuPanel";
+            loadMenuPanel.Size = new Size(1538, 1005);
+            loadMenuPanel.TabIndex = 0;
+            // 
+            // menuLabel
+            // 
+            menuLabel.AutoSize = true;
+            menuLabel.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            menuLabel.Location = new Point(43, 97);
+            menuLabel.Name = "menuLabel";
+            menuLabel.Size = new Size(195, 37);
+            menuLabel.TabIndex = 1;
+            menuLabel.Text = "Current Menu:";
             // 
             // NS_MViewPageUserControl1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel1);
+            Controls.Add(menuLabel);
+            Controls.Add(loadMenuPanel);
+            Margin = new Padding(4);
             Name = "NS_MViewPageUserControl1";
-            Size = new Size(947, 451);
+            Size = new Size(1633, 1198);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel loadMenuPanel;
+        private Label menuLabel;
     }
 }
