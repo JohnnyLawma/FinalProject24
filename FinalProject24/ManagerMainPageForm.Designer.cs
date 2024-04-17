@@ -83,7 +83,7 @@
             // 
             // settingButton
             // 
-            settingButton.Location = new Point(4, 467);
+            settingButton.Location = new Point(4, 547);
             settingButton.Margin = new Padding(4, 2, 4, 2);
             settingButton.Name = "settingButton";
             settingButton.Size = new Size(178, 90);
@@ -93,7 +93,7 @@
             // 
             // paymentButton
             // 
-            paymentButton.Location = new Point(4, 365);
+            paymentButton.Location = new Point(4, 445);
             paymentButton.Margin = new Padding(4, 2, 4, 2);
             paymentButton.Name = "paymentButton";
             paymentButton.Size = new Size(178, 90);
@@ -104,7 +104,7 @@
             // 
             // orderButton
             // 
-            orderButton.Location = new Point(4, 258);
+            orderButton.Location = new Point(4, 338);
             orderButton.Margin = new Padding(4, 2, 4, 2);
             orderButton.Name = "orderButton";
             orderButton.Size = new Size(178, 90);
@@ -138,7 +138,7 @@
             // 
             mainpanel1.AutoSize = true;
             mainpanel1.Location = new Point(194, 0);
-            mainpanel1.Margin = new Padding(6, 6, 6, 6);
+            mainpanel1.Margin = new Padding(6);
             mainpanel1.Name = "mainpanel1";
             mainpanel1.Size = new Size(1633, 1199);
             mainpanel1.TabIndex = 3;
@@ -150,7 +150,7 @@
             ClientSize = new Size(1827, 1197);
             Controls.Add(mainpanel1);
             Controls.Add(MenuSideBar);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "ManagerMainPageForm";
             Text = "ManagerMainPageForm";
             MenuSideBar.ResumeLayout(false);
