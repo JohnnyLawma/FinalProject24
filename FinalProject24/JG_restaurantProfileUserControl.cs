@@ -12,7 +12,7 @@ namespace FinalProject24
 {
     public partial class JG_restaurantProfileUserControl : UserControl
     {
-        public static JG_restaurantProfileUserControl _instance;
+        public static JG_restaurantProfileUserControl _instance; // make an instance of the user control
 
         public static JG_restaurantProfileUserControl Instance
         {
@@ -40,7 +40,7 @@ namespace FinalProject24
             string restaurantName = "", restaurantAddress = "", restaurantPhoneNumber = "",
                 restaurantEmail = "", restaurantDescription = "";
 
-            if (newNameTextBox.Text != "")
+            if (newNameTextBox.Text != "") // check if the textbox is empty, and if not then update the changes
             {
                 restaurantName = newNameTextBox.Text;
             }
@@ -61,7 +61,7 @@ namespace FinalProject24
                 restaurantDescription = newDescriptionTextBox.Text;
             }
 
-            currNameLabel.Text = restaurantName;
+            currNameLabel.Text = restaurantName; // display the new info
             currAddressLabel.Text = restaurantAddress;
             currPhoneNumberLabel.Text = restaurantPhoneNumber;
             currAddressLabel.Text = restaurantAddress;
