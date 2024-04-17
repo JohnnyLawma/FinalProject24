@@ -29,7 +29,7 @@ namespace FinalProject24
         }
 
 
-       
+
 
 
         public CartUC()
@@ -102,7 +102,17 @@ namespace FinalProject24
         }
 
 
-
+        public List<CartItem> GetCartItems()
+        {
+            // Create a new list and add copies of each CartItem in selectedItems
+            return selectedItems.Select(item => new CartItem
+            {
+                FoodName = item.FoodName,
+                Price = item.Price,
+                Quantity = item.Quantity,
+                ImagePath = item.ImagePath
+            }).ToList();
+        }
 
         // Method to calculate the summary order
         public void UpdateSummaryOrder()
@@ -118,6 +128,8 @@ namespace FinalProject24
             taxPriceLabel.Text = $"${tax:0.00}";
             totalLabelText.Text = $"${total:0.00}";
 
+            CartItemsChanged?.Invoke(this, EventArgs.Empty); // Fire the event
+
 
         }
 
@@ -131,12 +143,15 @@ namespace FinalProject24
         {
             // Handle the quantity increased event
             UpdateSummaryOrder(); // Recalculate the summary order
+
+
         }
 
         private void CartItemUC_QuantityDecreased(object sender, EventArgs e)
         {
             // Handle the quantity decreased event
             UpdateSummaryOrder(); // Recalculate the summary order
+
         }
 
         private void CartItemUC_ItemRemoved(object sender, EventArgs e)
@@ -150,6 +165,7 @@ namespace FinalProject24
             }
 
             UpdateSummaryOrder(); // Recalculate the summary order
+
 
         }
 
@@ -239,12 +255,48 @@ namespace FinalProject24
             // Optionally, update any UI elements that reflect the cart status
             UpdateSummaryOrder();  // This would reset any totals displayed to the user
 
+
+
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
+        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
+        {
+            // Define the directory where the CSV files will be saved
+            string relativePath = @"..\..\..\..\receipts\";
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
+            // Ensure the directory exists
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Create the file path for the new CSV file
+            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
+
+            // Open a new StreamWriter to write to the CSV file
+            using (StreamWriter file = new StreamWriter(filePath))
+            {
+                // Write the CSV headers
+                file.WriteLine("Item Name,Quantity,Price,Total");
+
+                // Write each item's details to the CSV
+                foreach (var item in items)
+                {
+                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
+                }
+
+                // Write the subtotal, tax, and total to the CSV
+                file.WriteLine($"Subtotal,,${subtotal:0.00}");
+                file.WriteLine($"Tax,,${tax:0.00}");
+                file.WriteLine($"Total,,${total:0.00}");
+            }
+
+            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
+            return filePath;
+        }
 
         public List<CartItem> orderBoard { get; private set; } = new List<CartItem>();
-
 
         private void buyNowButton_Click(object sender, EventArgs e)
         {
@@ -262,17 +314,29 @@ namespace FinalProject24
                     ImagePath = itemControl.ImagePath
                 });
             }
+            string newCSVorderNum = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
+            decimal newCSVsubtotal = orderBoard.Sum(item => item.Price * item.Quantity);
+            decimal newCSVtax = newCSVsubtotal * 0.07m;  // Assume a 7% tax rate 
+            decimal newCSVtotal = newCSVsubtotal + newCSVtax;
+            SaveOrderDetailsToCSV(newCSVorderNum, orderBoard, newCSVsubtotal, newCSVtax, newCSVtotal);
 
             // Optionally, you can notify the user that the items have been added to the order board
             MessageBox.Show("Items added to the order board.");
 
             ClearCart();
-            
+
 
         }
 
+        private void CartUC_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void loadCardPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     // Define the CartItem class items.
