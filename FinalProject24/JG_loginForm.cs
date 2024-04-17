@@ -18,14 +18,14 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        // before implementation of a database for email and password, use these 
+        // before implementation of a csv for email and password, use these 
         const string customerEMAIL = "123";
         const string customerPASSWORD = "123";
         const string managerEMAIL = "456";
         const string managerPASSWORD = "456";
 
 
-        // Loading the main Form in Memeory
+        // Loading the main form and the manager main form in memory
         mainPageForm1 loadMainForm = new mainPageForm1();
         ManagerMainPageForm loadManagerForm = new ManagerMainPageForm();
 
@@ -42,7 +42,7 @@ namespace FinalProject24
                 loadMainForm.Show(); // Opening the Main Menu Form
                 this.Hide(); // Hiding the Login Form
 
-                if (emailTextBox.Text != "Enter your email")
+                if (emailTextBox.Text != "Enter your email") // use this as a template to get hidden text for the other textboxes
                 {
                     emailTextBox.Text = "Enter your email";
                     emailTextBox.ForeColor = SystemColors.WindowText;
@@ -106,12 +106,12 @@ namespace FinalProject24
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!panel1.Controls.Contains(JG_signUpPageUserControl.Instance))
-            {
+            { // check if there is an instance of the user control, and if not then add the instance
                 panel1.Controls.Add(JG_signUpPageUserControl.Instance);
                 panel1.Controls.Add(JG_blankPageUserControl.Instance);
                 JG_signUpPageUserControl.Instance.Dock = DockStyle.Fill;
                 JG_signUpPageUserControl.Instance.BringToFront();
-                JG_blankPageUserControl.Instance.SendToBack();
+                JG_blankPageUserControl.Instance.SendToBack(); // change ordering of the user controls
             }
             else
             {
@@ -121,7 +121,7 @@ namespace FinalProject24
 
         private void emailTextBox_Enter(object sender, EventArgs e)
         {
-
+            // also use these as a template to hide the text
             if (emailTextBox.Text == "Enter your email")
             {
                 emailTextBox.Text = "";
@@ -159,7 +159,7 @@ namespace FinalProject24
 
         private void signinButton_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter) // map the enter key to do the same as clicking the button
             {
                 signinButton_Click(sender, e);
                 e.Handled = true;
@@ -177,7 +177,7 @@ namespace FinalProject24
 
         private void emailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter) 
             {
                 passwordTextBox.Focus();
                 e.Handled = true;
