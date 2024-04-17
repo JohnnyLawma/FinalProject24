@@ -108,7 +108,7 @@ namespace FinalProject24
 
         private void ordersButton_Click(object sender, EventArgs e)
         {
-
+            loadOrderBoard();
         }
     }
 }

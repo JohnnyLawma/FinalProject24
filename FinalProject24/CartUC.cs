@@ -267,6 +267,7 @@ namespace FinalProject24
             MessageBox.Show("Items added to the order board.");
 
             ClearCart();
+            
 
         }
 
