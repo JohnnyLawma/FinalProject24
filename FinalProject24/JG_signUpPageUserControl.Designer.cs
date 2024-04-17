@@ -194,7 +194,7 @@
             // managerRadioButton
             // 
             managerRadioButton.AutoSize = true;
-            managerRadioButton.Location = new Point(299, 153);
+            managerRadioButton.Location = new Point(320, 148);
             managerRadioButton.Name = "managerRadioButton";
             managerRadioButton.Size = new Size(72, 19);
             managerRadioButton.TabIndex = 2;
@@ -217,7 +217,7 @@
             // customerRadioButton
             // 
             customerRadioButton.AutoSize = true;
-            customerRadioButton.Location = new Point(299, 128);
+            customerRadioButton.Location = new Point(320, 123);
             customerRadioButton.Name = "customerRadioButton";
             customerRadioButton.Size = new Size(77, 19);
             customerRadioButton.TabIndex = 1;
