@@ -375,9 +375,11 @@ namespace FinalProject24
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            cartButton.Text = "Carts: 0"; // Update the cart count display
+            // Update the cart count display
+            cartButton.Text = "Carts: " + count.ToString();
 
-            if (cartUCInstance.orderBoard.Count == 0)
+            // Check if there are items in the cart
+            if (selectedItems.Count == 0)
             {
                 MessageBox.Show("No items in the order. Please add items before placing an order.", "Empty Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
