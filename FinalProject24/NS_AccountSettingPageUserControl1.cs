@@ -36,10 +36,12 @@ namespace FinalProject24
         private string name = "Emly King";
         private string email = "emlyking@gmail.com";
         private string phoneNumber = "615-564-3422";
+        string name2, email2, phoneNumber2;
 
         public NS_AccountSettingPageUserControl1()
         {
             InitializeComponent();
+            // Call UpdateTextBoxes() when the form is loaded to populate the textboxes
             UpdateTextBoxes();
         }
 
@@ -58,20 +60,32 @@ namespace FinalProject24
             PhonetextBox.Text = phoneNumber;
         }
 
-        /*
+
         private void Applybutton_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             // When the user hits apply changes the text will be changed
             // for all three variables
             // Maybe when we have db we send the variables to db when updated?
-            name = NametextBox.Text;
-            email = EmailtextBox.Text;
-            phoneNumber = PhonetextBox.Text;
+            name2 = textBox3.Text;
+            email2 = textBox4.Text;
+            phoneNumber2 = textBox5.Text;
+
+
+
+
+            // Update NametextBox, EmailtextBox, and PhonetextBox with the new values
+            NametextBox.Text = name2;
+            EmailtextBox.Text = email2;
+            PhonetextBox.Text = phoneNumber2;
+
 
             MessageBox.Show("Changes saved successfully!");
-        
         }
-        */
-
     }
-    }
+}
