@@ -607,7 +607,7 @@ namespace FinalProject24
 
                     try
                     {
-                        // Read the CSV file to get the order details (assuming the CSV has headers and consistent formatting)
+                        // Read the CSV file to get the order details
                         string[] lines = File.ReadAllLines(file);
                         if (lines.Length > 1 && lines.Any(line => line.StartsWith("Total,")))  // Check if there is a "Total" line
                         {
@@ -622,7 +622,7 @@ namespace FinalProject24
                                 totalText = $"${total:0.00}",
                                 statusText = "Completed",  // Assuming status is completed for past orders
                                 orderNumberText = "Order #" + orderNumber,
-                                Size = new Size(310, 77),
+                                Size = new Size(576, 164),
                                 Tag = file  // Store the path to the CSV file in the Tag property
                             };
                             historyCard.Location = new Point(0, yOffset);  // Set the location for each card.
