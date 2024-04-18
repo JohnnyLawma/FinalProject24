@@ -226,7 +226,7 @@ namespace FinalProject24
             using (StreamWriter file = new StreamWriter(filePath))
             {
                 // Write the CSV headers
-                file.WriteLine("Name, Email, Password, Customer or Manager");
+                file.WriteLine("Email, Password, Name, Customer or Manager");
 
                 // Write the data to the CSV
                 file.WriteLine($"{email},{password},{name},{isCustomer}");

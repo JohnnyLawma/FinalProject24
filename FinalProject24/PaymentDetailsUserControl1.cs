@@ -16,7 +16,7 @@ namespace FinalProject24
     {
 
         private static PaymentUserControl1 _instance;
-
+        public List<CartItem> CartItems { get; set; }
 
         private PaymentUserControl1()
         {
@@ -73,8 +73,48 @@ namespace FinalProject24
                 return;
             }
 
-            MessageBox.Show("Payment details saved successfully.");
+
+
+            if (CartItems == null || CartItems.Count == 0)
+            {
+                MessageBox.Show("No items in cart to process.");
+                return;
+            }
+
+
+            string orderNumber = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
+            decimal subtotal = CartItems.Sum(item => item.Price * item.Quantity);
+            decimal tax = subtotal * 0.07m;
+            decimal total = subtotal + tax;
+
+            string filePath = SaveOrderDetailsToCSV(orderNumber, CartItems, subtotal, tax, total);
+            MessageBox.Show("Items added to the order board.");
+
+            CartUC.Instance.ClearCart(); // Clear the cart after payment
+
         }
+
+       
+        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
+        {
+            string directoryPath = @"..\..\..\..\receipts\";
+            Directory.CreateDirectory(directoryPath);
+            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
+
+            using (StreamWriter file = new StreamWriter(filePath))
+            {
+                file.WriteLine("Item Name,Quantity,Price,Total");
+                foreach (var item in items)
+                {
+                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
+                }
+                file.WriteLine($"Subtotal,,${subtotal:0.00}");
+                file.WriteLine($"Tax,,${tax:0.00}");
+                file.WriteLine($"Total,,${total:0.00}");
+            }
+            return filePath;
+        }
+
         // Helper method to validate card number with Luhn's Algorithm
         private bool IsValidCardNumber(string cardNumber)
         {
@@ -149,7 +189,7 @@ namespace FinalProject24
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (textBox1.Text == "123 Street Name, City, State")
+            if (textBox1.Text == "Address, City, State")
             {
                 textBox1.Text = "";
                 textBox1.ForeColor = SystemColors.WindowText;
@@ -160,7 +200,7 @@ namespace FinalProject24
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                textBox1.Text = "123 Street Name, City, State";
+                textBox1.Text = "Address, City, State";
                 textBox1.ForeColor = Color.Gray;
             }
         }
@@ -185,7 +225,7 @@ namespace FinalProject24
 
         private void textBox2_Enter(object sender, EventArgs e)
         {
-            if (textBox2.Text == "6037-9973-2234-7221")
+            if (textBox2.Text == "XXXX-XXXX-XXXX-XXXX")
             {
                 textBox2.Text = "";
                 textBox2.ForeColor = SystemColors.WindowText;
@@ -196,7 +236,7 @@ namespace FinalProject24
         {
             if (string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                textBox2.Text = "6037-9973-2234-7221";
+                textBox2.Text = "XXXX-XXXX-XXXX-XXXX";
                 textBox2.ForeColor = Color.Gray;
             }
         }

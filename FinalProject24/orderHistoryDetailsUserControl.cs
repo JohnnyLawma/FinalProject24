@@ -20,22 +20,22 @@ namespace FinalProject24
 
         public string orderNumberDetail
         {
-            get { return orderNumberText.Text; }
-            set { orderNumberText.Text = value; }
+            get { return orderNumberTextLabel.Text; }
+            set { orderNumberTextLabel.Text = value; }
         }
 
 
         public string dateTextDetail
         {
-            get { return dateText.Text; }
-            set { dateText.Text = value; }
+            get { return dateTextLabel.Text; }
+            set { dateTextLabel.Text = value; }
         }
 
 
         public string statusDetail
         {
-            get { return statusText.Text; } 
-            set { statusText.Text = value; }
+            get { return statusTextLabel.Text; } 
+            set { statusTextLabel.Text = value; }
         }
 
         public void LoadOrderDetails(string filePath)

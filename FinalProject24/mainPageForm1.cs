@@ -13,14 +13,9 @@ namespace FinalProject24
 
         private CartUC cartUCInstance;
 
-
-
-
-
         public mainPageForm1()
         {
             InitializeComponent();
-
             // For Loading Circular Shape image.
             try
             {
@@ -45,6 +40,7 @@ namespace FinalProject24
             mainPanel.Visible = true;
             cartUCInstance = CartUC.Instance;
             cartUCInstance.CartItemsChanged += CartUCInstance_CartItemsChanged;
+            cartUCInstance.NavigateToPayment += NavigateToPaymentUserControl;
 
         }
 
@@ -63,6 +59,24 @@ namespace FinalProject24
             public decimal Price;
             public string ImagePath;
             public int Quantity;
+        }
+
+        private void NavigateToPaymentUserControl(object sender, EventArgs e)
+        {
+            if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
+            {
+                mainPanel.Controls.Add(PaymentUserControl1.Instance);
+                PaymentUserControl1.Instance.Dock = DockStyle.Fill;
+                PaymentUserControl1.Instance.BringToFront();
+                PaymentUserControl1.Instance.CartItems = cartUCInstance.GetCartItems();
+            }
+            else
+            {
+                PaymentUserControl1.Instance.BringToFront();
+            }
+            mainPanel.Visible = true;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
         }
         private void CartUCInstance_CartItemsChanged(object sender, EventArgs e)
         {

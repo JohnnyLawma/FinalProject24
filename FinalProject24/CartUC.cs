@@ -28,10 +28,6 @@ namespace FinalProject24
 
         }
 
-
-
-
-
         public CartUC()
         {
             InitializeComponent();
@@ -39,7 +35,6 @@ namespace FinalProject24
 
 
         }
-
 
         private List<CartItem> selectedItems = new List<CartItem>();
 
@@ -244,12 +239,12 @@ namespace FinalProject24
         }
 
 
-        private void ClearCart()
-        {
-            // Clear the backend list
-            selectedItems.Clear();
+        public event EventHandler CartCleared; // Event to be triggered when the cart needs to be cleared
 
-            // Clear the UI elements from the panel
+        // Method to clear the cart
+        public void ClearCart()
+        {
+            selectedItems.Clear();
             loadCardPanel.Controls.Clear();
 
             // Optionally, update any UI elements that reflect the cart status
@@ -259,8 +254,6 @@ namespace FinalProject24
 
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
-
-
         private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
         {
             // Define the directory where the CSV files will be saved
@@ -288,46 +281,15 @@ namespace FinalProject24
                     file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
                 }
 
-                // Write the subtotal, tax, and total to the CSV
-                file.WriteLine($"Subtotal,,${subtotal:0.00}");
-                file.WriteLine($"Tax,,${tax:0.00}");
-                file.WriteLine($"Total,,${total:0.00}");
-            }
-
-            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
-            return filePath;
-        }
 
         public List<CartItem> orderBoard { get; private set; } = new List<CartItem>();
+        // Event declaration
+        public event EventHandler NavigateToPayment;
 
         private void buyNowButton_Click(object sender, EventArgs e)
         {
-            // Clear previous orders
-            orderBoard.Clear();
 
-            // CartItemUC has properties FoodName, Price, Quantity, ImagePath
-            foreach (CartItemUC itemControl in loadCardPanel.Controls.OfType<CartItemUC>())
-            {
-                orderBoard.Add(new CartItem
-                {
-                    FoodName = itemControl.FoodName,
-                    Price = itemControl.Price,
-                    Quantity = itemControl.Quantity,
-                    ImagePath = itemControl.ImagePath
-                });
-            }
-            string newCSVorderNum = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
-            decimal newCSVsubtotal = orderBoard.Sum(item => item.Price * item.Quantity);
-            decimal newCSVtax = newCSVsubtotal * 0.07m;  // Assume a 7% tax rate 
-            decimal newCSVtotal = newCSVsubtotal + newCSVtax;
-            SaveOrderDetailsToCSV(newCSVorderNum, orderBoard, newCSVsubtotal, newCSVtax, newCSVtotal);
-
-            // Optionally, you can notify the user that the items have been added to the order board
-            MessageBox.Show("Items added to the order board.");
-
-            ClearCart();
-
-
+            NavigateToPayment?.Invoke(this, EventArgs.Empty); 
         }
 
         private void CartUC_Load(object sender, EventArgs e)
