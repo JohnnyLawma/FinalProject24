@@ -31,19 +31,20 @@
             orderNumber = new Label();
             dateLabel = new Label();
             statusLabel = new Label();
-            statusText = new Label();
-            dateText = new Label();
+            statusTextLabel = new Label();
+            dateTextLabel = new Label();
             displayDetailText = new Label();
-            orderNumberText = new Label();
+            orderNumberTextLabel = new Label();
             SuspendLayout();
             // 
             // orderNumber
             // 
             orderNumber.AutoSize = true;
             orderNumber.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            orderNumber.Location = new Point(26, 65);
+            orderNumber.Location = new Point(14, 30);
+            orderNumber.Margin = new Padding(2, 0, 2, 0);
             orderNumber.Name = "orderNumber";
-            orderNumber.Size = new Size(118, 40);
+            orderNumber.Size = new Size(62, 20);
             orderNumber.TabIndex = 0;
             orderNumber.Text = "Order #";
             // 
@@ -51,9 +52,10 @@
             // 
             dateLabel.AutoSize = true;
             dateLabel.Font = new Font("Segoe UI Semibold", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dateLabel.Location = new Point(510, 65);
+            dateLabel.Location = new Point(275, 30);
+            dateLabel.Margin = new Padding(2, 0, 2, 0);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new Size(85, 40);
+            dateLabel.Size = new Size(45, 20);
             dateLabel.TabIndex = 1;
             dateLabel.Text = "Date:";
             // 
@@ -61,61 +63,67 @@
             // 
             statusLabel.AutoSize = true;
             statusLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            statusLabel.Location = new Point(34, 157);
+            statusLabel.Location = new Point(18, 74);
+            statusLabel.Margin = new Padding(2, 0, 2, 0);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(87, 32);
+            statusLabel.Size = new Size(43, 15);
             statusLabel.TabIndex = 2;
             statusLabel.Text = "Status:";
             // 
-            // statusText
+            // statusTextLabel
             // 
-            statusText.AutoSize = true;
-            statusText.Location = new Point(127, 157);
-            statusText.Name = "statusText";
-            statusText.Size = new Size(85, 32);
-            statusText.TabIndex = 3;
-            statusText.Text = "Cancel";
+            statusTextLabel.AutoSize = true;
+            statusTextLabel.Location = new Point(68, 74);
+            statusTextLabel.Margin = new Padding(2, 0, 2, 0);
+            statusTextLabel.Name = "statusTextLabel";
+            statusTextLabel.Size = new Size(43, 15);
+            statusTextLabel.TabIndex = 3;
+            statusTextLabel.Text = "Cancel";
             // 
-            // dateText
+            // dateTextLabel
             // 
-            dateText.AutoSize = true;
-            dateText.Location = new Point(587, 73);
-            dateText.Name = "dateText";
-            dateText.Size = new Size(150, 32);
-            dateText.TabIndex = 4;
-            dateText.Text = "Feb 21, 2019";
+            dateTextLabel.AutoSize = true;
+            dateTextLabel.Location = new Point(316, 34);
+            dateTextLabel.Margin = new Padding(2, 0, 2, 0);
+            dateTextLabel.Name = "dateTextLabel";
+            dateTextLabel.Size = new Size(71, 15);
+            dateTextLabel.TabIndex = 4;
+            dateTextLabel.Text = "Feb 21, 2019";
             // 
             // displayDetailText
             // 
             displayDetailText.BackColor = SystemColors.ControlLightLight;
             displayDetailText.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            displayDetailText.Location = new Point(46, 257);
+            displayDetailText.Location = new Point(25, 120);
+            displayDetailText.Margin = new Padding(2, 0, 2, 0);
             displayDetailText.Name = "displayDetailText";
-            displayDetailText.Size = new Size(691, 649);
+            displayDetailText.Size = new Size(372, 304);
             displayDetailText.TabIndex = 5;
             // 
-            // orderNumberText
+            // orderNumberTextLabel
             // 
-            orderNumberText.AutoSize = true;
-            orderNumberText.Location = new Point(150, 71);
-            orderNumberText.Name = "orderNumberText";
-            orderNumberText.Size = new Size(92, 32);
-            orderNumberText.TabIndex = 6;
-            orderNumberText.Text = "101010";
+            orderNumberTextLabel.AutoSize = true;
+            orderNumberTextLabel.Location = new Point(81, 33);
+            orderNumberTextLabel.Margin = new Padding(2, 0, 2, 0);
+            orderNumberTextLabel.Name = "orderNumberTextLabel";
+            orderNumberTextLabel.Size = new Size(43, 15);
+            orderNumberTextLabel.TabIndex = 6;
+            orderNumberTextLabel.Text = "101010";
             // 
             // orderHistoryDetailsUserControl
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(orderNumberText);
+            Controls.Add(orderNumberTextLabel);
             Controls.Add(displayDetailText);
-            Controls.Add(dateText);
-            Controls.Add(statusText);
+            Controls.Add(dateTextLabel);
+            Controls.Add(statusTextLabel);
             Controls.Add(statusLabel);
             Controls.Add(dateLabel);
             Controls.Add(orderNumber);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "orderHistoryDetailsUserControl";
-            Size = new Size(804, 978);
+            Size = new Size(433, 458);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,9 +133,9 @@
         private Label orderNumber;
         private Label dateLabel;
         private Label statusLabel;
-        private Label statusText;
-        private Label dateText;
-        private Label orderNumberText;
+        private Label statusTextLabel;
+        private Label dateTextLabel;
+        private Label orderNumberTextLabel;
         public Label displayDetailText;
     }
 }
