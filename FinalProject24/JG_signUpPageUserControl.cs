@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace FinalProject24
 {
-    public partial class JG_signUpPageUserControl : UserControl 
+    public partial class JG_signUpPageUserControl : UserControl
     {
 
         public static JG_signUpPageUserControl _instance; // make an instance of the UC
@@ -236,6 +236,9 @@ namespace FinalProject24
             return filePath;
         }
 
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
