@@ -195,7 +195,7 @@ namespace FinalProject24
                 // Logic for what happens when "Finished" is clicked
                 readyPanel.Controls.Remove(statusControl);
 
-                
+
 
                 // Optionally dispose the control if it's no longer needed
                 statusControl.Dispose();
@@ -241,6 +241,11 @@ namespace FinalProject24
             {
                 MessageBox.Show($"Error updating the CSV file: {ex.Message}");
             }
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            LoadStatusUserControl();
         }
 
 

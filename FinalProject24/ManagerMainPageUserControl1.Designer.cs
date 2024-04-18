@@ -34,38 +34,41 @@
             label1 = new Label();
             acceptedLabel = new Label();
             readyLabel = new Label();
+            RefreshButton = new Button();
             SuspendLayout();
             // 
             // pendingPanel
             // 
             pendingPanel.AutoScroll = true;
             pendingPanel.BorderStyle = BorderStyle.FixedSingle;
-            pendingPanel.Location = new Point(30, 121);
+            pendingPanel.Location = new Point(31, 67);
             pendingPanel.Name = "pendingPanel";
-            pendingPanel.Size = new Size(501, 999);
+            pendingPanel.Size = new Size(501, 976);
             pendingPanel.TabIndex = 0;
             // 
             // acceptedPanel
             // 
+            acceptedPanel.AutoScroll = true;
             acceptedPanel.BorderStyle = BorderStyle.FixedSingle;
-            acceptedPanel.Location = new Point(571, 119);
+            acceptedPanel.Location = new Point(572, 65);
             acceptedPanel.Name = "acceptedPanel";
-            acceptedPanel.Size = new Size(501, 1001);
+            acceptedPanel.Size = new Size(501, 978);
             acceptedPanel.TabIndex = 1;
             // 
             // readyPanel
             // 
+            readyPanel.AutoScroll = true;
             readyPanel.BorderStyle = BorderStyle.FixedSingle;
-            readyPanel.Location = new Point(1108, 119);
+            readyPanel.Location = new Point(1109, 65);
             readyPanel.Name = "readyPanel";
-            readyPanel.Size = new Size(501, 1001);
+            readyPanel.Size = new Size(501, 978);
             readyPanel.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(20, 73);
+            label1.Location = new Point(21, 19);
             label1.Name = "label1";
             label1.Size = new Size(139, 45);
             label1.TabIndex = 3;
@@ -75,7 +78,7 @@
             // 
             acceptedLabel.AutoSize = true;
             acceptedLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            acceptedLabel.Location = new Point(562, 71);
+            acceptedLabel.Location = new Point(563, 17);
             acceptedLabel.Name = "acceptedLabel";
             acceptedLabel.Size = new Size(155, 45);
             acceptedLabel.TabIndex = 4;
@@ -85,16 +88,30 @@
             // 
             readyLabel.AutoSize = true;
             readyLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            readyLabel.Location = new Point(1098, 71);
+            readyLabel.Location = new Point(1099, 17);
             readyLabel.Name = "readyLabel";
             readyLabel.Size = new Size(108, 45);
             readyLabel.TabIndex = 5;
             readyLabel.Text = "Ready";
             // 
+            // RefreshButton
+            // 
+            RefreshButton.BackColor = SystemColors.ControlText;
+            RefreshButton.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RefreshButton.ForeColor = SystemColors.ControlLightLight;
+            RefreshButton.Location = new Point(691, 1093);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Size = new Size(247, 73);
+            RefreshButton.TabIndex = 6;
+            RefreshButton.Text = "Refresh";
+            RefreshButton.UseVisualStyleBackColor = false;
+            RefreshButton.Click += RefreshButton_Click;
+            // 
             // ManagerMainPageUserControl1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(RefreshButton);
             Controls.Add(readyLabel);
             Controls.Add(acceptedLabel);
             Controls.Add(label1);
@@ -116,5 +133,6 @@
         private Label label1;
         private Label acceptedLabel;
         private Label readyLabel;
+        private Button RefreshButton;
     }
 }
