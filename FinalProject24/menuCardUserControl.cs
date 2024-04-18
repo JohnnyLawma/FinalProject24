@@ -50,6 +50,14 @@ namespace FinalProject24
 
         }
 
+        public string GetIDText
+        {
+            get { return idLabel.Text; }
+            set { idLabel.Text = value; }
+
+        }
+
+
         public string ImagePath { get; set; }
 
 

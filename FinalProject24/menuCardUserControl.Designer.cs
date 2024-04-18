@@ -34,6 +34,7 @@
             priceLabel = new Label();
             addButton = new Button();
             removeButton = new Button();
+            idLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)menuPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -89,11 +90,21 @@
             removeButton.UseVisualStyleBackColor = true;
             removeButton.Click += removeButton_Click;
             // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new Point(217, 322);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(19, 32);
+            idLabel.TabIndex = 5;
+            idLabel.Text = ":";
+            // 
             // menuCardUserControl
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(idLabel);
             Controls.Add(removeButton);
             Controls.Add(addButton);
             Controls.Add(priceLabel);
@@ -113,5 +124,6 @@
         private Label priceLabel;
         private Button addButton;
         private Button removeButton;
+        private Label idLabel;
     }
 }

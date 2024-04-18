@@ -79,7 +79,8 @@ namespace FinalProject24
                             {
                                 FoodName = columns[0].Trim(),
                                 Price = price,
-                                ImagePath = columns[3].Trim(), // Correct index for Image Path
+                                ImagePath = columns[3].Trim(), // Index for Image Path
+                                ID = columns[2].Trim() // Index for ID
                             });
                         }
                         else
@@ -163,6 +164,7 @@ namespace FinalProject24
                 // Set the properties of the user control
                 menuCard.ItemName = menuItem.FoodName;
                 menuCard.ItemPrice = menuItem.Price.ToString("C"); // Format as currency
+                menuCard.GetIDText = "#" + menuItem.ID;
 
                 // Set the size of the control
                 menuCard.Size = new Size(controlWidth, controlHeight);
@@ -218,6 +220,7 @@ namespace FinalProject24
             public string FoodName { get; set; }
             public decimal Price { get; set; }
             public string ImagePath { get; set; }
+            public string ID { get; set; } // Added ID property
         }
 
 
