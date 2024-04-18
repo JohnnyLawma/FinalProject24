@@ -32,16 +32,35 @@ namespace FinalProject24
             }
         }
 
+        public string UserEmail
+        {
+            get => userEmail;
+            set
+            {
+                if (userEmail != value)
+                {
+                    userEmail = value;
+                    ClearUserData();
+                    LoadUserData();
+                    UpdateTextBoxes();
+                }
+            }
+        }
+
         public NS_AccountSettingPageUserControl1()
         {
             InitializeComponent();
-            userEmail = Environment.GetEnvironmentVariable("EmailEnv");
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             LoadUserData();
             UpdateTextBoxes();
         }
-
-        private void LoadUserData()
+        private void ClearUserData()
         {
+            userDetails.Clear();  // Assuming userDetails is your Dictionary
+        }
+        public void LoadUserData()
+        {
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             string[] files = Directory.GetFiles(CsvFilePath, "*.csv");
             foreach (var file in files)
             {
@@ -62,7 +81,7 @@ namespace FinalProject24
 
                         int emailIndex = headers.IndexOf("Email");
 
-                        if (emailIndex != -1 && values[emailIndex].Equals(userEmail, StringComparison.OrdinalIgnoreCase))
+                        if (emailIndex != -1 && values[emailIndex].Equals(UserEmail, StringComparison.OrdinalIgnoreCase))
                         {
                             for (int i = 0; i < headers.Count; i++)
                             {
@@ -83,23 +102,30 @@ namespace FinalProject24
 
 
 
-        private void UpdateTextBoxes()
+        public void UpdateTextBoxes()
         {
-            //MessageBox.Show($"{userDetails["Name"]},{userDetails["Email"]}, {userDetails["PhoneNumber"]} ");
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(UpdateTextBoxes));
+                return;
+            }
+
             NametextBox.Text = userDetails.ContainsKey("Name") ? userDetails["Name"] : "Default Name";
             EmailtextBox.Text = userDetails.ContainsKey("Email") ? userDetails["Email"] : "Default Email";
             PhonetextBox.Text = userDetails.ContainsKey("Phone Number") ? userDetails["Phone Number"] : "Default Phone Number";
         }
 
+
         private void Applybutton_Click(object sender, EventArgs e)
         {
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             // Only update name, email, and phone number. Do not update password or customer/manager status.
             string newName = textBox3.Text.Trim();
             string newEmail = textBox4.Text.Trim();
             string newPhone = textBox5.Text.Trim();
 
             // Retain the old email to find the correct CSV record
-            string oldEmail = userEmail;
+            string oldEmail = UserEmail;
 
             // Update the userDetails dictionary
             userDetails["Name"] = newName;
@@ -114,7 +140,7 @@ namespace FinalProject24
                 MessageBox.Show("Changes saved successfully!");
 
                 // Update the global email variable and the environment variable after a successful update
-                userEmail = newEmail;
+                UserEmail = newEmail;
                 Environment.SetEnvironmentVariable("EmailEnv", newEmail);
                 LoadUserData();
                 UpdateTextBoxes();
@@ -123,11 +149,13 @@ namespace FinalProject24
             {
                 MessageBox.Show("Failed to find the CSV file to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
         private void UpdateCsvFile(string filePath, string oldEmail)
         {
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             var lines = File.ReadAllLines(filePath).ToList();
             var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
             int emailIndex = headers.IndexOf("Email");
@@ -170,6 +198,7 @@ namespace FinalProject24
 
         private string FindCsvFilePath(string email)
         {
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFilePath);
             Console.WriteLine("Searching in directory: " + directoryPath);  // Debug output
             string[] files = Directory.GetFiles(directoryPath, "*.csv");
@@ -210,6 +239,13 @@ namespace FinalProject24
                 return currentEmail;
             }
         }
+        public void ClearTextBoxes()
+        {
+            // Assuming you have text boxes named NametextBox, EmailtextBox, PhonetextBox
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+        }
 
         private string FormatPhoneNumber(string phoneNumber)
         {
@@ -231,6 +267,11 @@ namespace FinalProject24
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editSettingPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
