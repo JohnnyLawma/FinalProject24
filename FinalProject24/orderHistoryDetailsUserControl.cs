@@ -17,6 +17,11 @@ namespace FinalProject24
             InitializeComponent();
         }
 
+        public void UpdateOrderHistoryDetails(string orderNumber, string date)
+        {
+            orderNumberTextLabel.Text = orderNumber;
+            dateTextLabel.Text = date;
+        }
 
         public string orderNumberDetail
         {

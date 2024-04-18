@@ -81,11 +81,13 @@ namespace FinalProject24
                 return;
             }
 
-
+            
             string orderNumber = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
             decimal subtotal = CartItems.Sum(item => item.Price * item.Quantity);
             decimal tax = subtotal * 0.07m;
             decimal total = subtotal + tax;
+
+            //orderHistoryDetailsUserControl.UpdateOrderHistoryDetails(orderNumber, DateTime.Now.ToString("yyyyMMddHHmmss"));
 
             string filePath = SaveOrderDetailsToCSV(orderNumber, CartItems, subtotal, tax, total);
             MessageBox.Show("Items added to the order board.");

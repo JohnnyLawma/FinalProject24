@@ -10,15 +10,6 @@ namespace FinalProject24
 
         private static NS_MViewPageUserControl1 _instance;
 
-        public NS_MViewPageUserControl1()
-        {
-            InitializeComponent();
-
-            //ShowAllMenuItems();
-            LoadMenuItemsToPanel();
-
-        }
-
         public static NS_MViewPageUserControl1 Instance
         {
             get
@@ -30,6 +21,18 @@ namespace FinalProject24
                 return _instance;
             }
         }
+
+
+
+        public NS_MViewPageUserControl1()
+        {
+            InitializeComponent();
+
+            //ShowAllMenuItems();
+            LoadMenuItemsToPanel();
+
+        }
+
 
 
         private List<MenuItem> LoadMenuItemsFromCsv()
