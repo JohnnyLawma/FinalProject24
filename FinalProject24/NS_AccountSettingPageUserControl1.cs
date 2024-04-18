@@ -34,8 +34,8 @@ namespace FinalProject24
 
 
         // Variables for dummy values, when db connected this maybe changed
-        private string name = "Emly King";
-        private string email = "emlyking@gmail.com";
+        private string name = "Emily King";
+        private string email = "emilyking@gmail.com";
         private string phoneNumber = "615-564-3422";
         string name2, email2, phoneNumber2;
 
