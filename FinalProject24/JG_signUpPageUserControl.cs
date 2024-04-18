@@ -37,8 +37,8 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        string newEmail, newPassword, newName, confirmPassword;
-        bool isCustomer;
+        string newEmail, newPassword, newName, confirmPassword, isCustomer;
+
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
@@ -46,12 +46,15 @@ namespace FinalProject24
             newEmail = emailTextBox.Text;
             newPassword = passwordTextBox.Text;
             confirmPassword = confirmPasswordTextBox.Text;
+
             if (!CheckPassword()) // check if the passwords match
             {
                 MessageBox.Show("Passwords do not match!!!");
             }
             else
             {
+                isCustomer = CheckIfCustomer();
+                SaveNewAcctToCSV(newName, newEmail, newPassword, isCustomer);
                 MessageBox.Show("Your account was successfully created!");
             }
         }
@@ -63,6 +66,18 @@ namespace FinalProject24
                 result = true;
             }
             return result;
+        }
+        private string CheckIfCustomer() // change the value of isCustomer depending on which radiobutton is checked
+        {
+            if (customerRadioButton.Checked)
+            {
+                return isCustomer = "Customer";
+            }
+            else if (managerRadioButton.Checked)
+            {
+                return isCustomer = "Manager";
+            }
+            return isCustomer;
         }
 
         private void loginLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -182,13 +197,45 @@ namespace FinalProject24
         private void customerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             // user is a customer
-            isCustomer = true;
+            //isCustomer = true;
         }
 
         private void managerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             // user is a manager
-            isCustomer = false;
+            //isCustomer = false;
         }
+
+
+        private string SaveNewAcctToCSV(string name, string email, string password, string isCustomer)
+        {
+            // Define the directory where the CSV files will be saved
+            string relativePath = @"..\..\..\..\loginInfo\";
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            // Ensure the directory exists
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Create the file path for the new CSV file
+            string filePath = Path.Combine(directoryPath, $"{name}.csv");
+
+            // Open a new StreamWriter to write to the CSV file
+            using (StreamWriter file = new StreamWriter(filePath))
+            {
+                // Write the CSV headers
+                file.WriteLine("Name, Email, Password, Customer or Manager");
+
+                // Write the data to the CSV
+                file.WriteLine($"{email},{password},{name},{isCustomer}");
+            }
+
+            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
+            return filePath;
+        }
+
+
     }
 }
