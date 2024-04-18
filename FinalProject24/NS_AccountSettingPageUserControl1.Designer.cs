@@ -107,6 +107,7 @@
             // 
             // NametextBox
             // 
+            NametextBox.ForeColor = SystemColors.WindowText;
             NametextBox.Location = new Point(83, 147);
             NametextBox.Multiline = true;
             NametextBox.Name = "NametextBox";
