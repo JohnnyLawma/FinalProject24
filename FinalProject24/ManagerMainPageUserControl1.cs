@@ -103,12 +103,31 @@ namespace FinalProject24
                     // Logic to move the status control to the ready panel
                     acceptedPanel.Controls.Remove(statusControl);
                     readyPanel.Controls.Add(statusControl);
-                    // Here you can change the text to something else or disable the button
-                    statusControl.StatusButtonVisible = false; // For example, hide the button
+                    statusControl.StatusButtonText = "Finished"; // Change the button text to "Finished"
+                                                                 // Subscribe to the new click event for the "Finished" button
+                    statusControl.StatusButtonClicked -= StatusControl_ReadyButtonClicked;
+                    statusControl.StatusButtonClicked += StatusControl_FinishedButtonClicked;
                 }
             }
         }
 
+        private void StatusControl_FinishedButtonClicked(object sender, EventArgs e)
+        {
+            var statusControl = sender as stausUserControl;
+            if (statusControl != null && statusControl.StatusButtonText == "Finished")
+            {
+                MessageBox.Show("Order has been finished and archived.");
+                // Logic for what happens when "Finished" is clicked
+                // For example, remove from the readyPanel and perform other finalization logic
+                readyPanel.Controls.Remove(statusControl);
+
+                // Optionally dispose the control if it's no longer needed
+                statusControl.Dispose();
+
+                
+                
+            }
+        }
 
 
 
