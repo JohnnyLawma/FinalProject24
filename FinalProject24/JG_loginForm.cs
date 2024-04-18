@@ -36,7 +36,7 @@ namespace FinalProject24
             {
                 if (isCustomer == "Customer")
                 {
-                    Environment.SetEnvironmentVariable("customerEmailEnv", emailTextBox.Text);
+                    Environment.SetEnvironmentVariable("EmailEnv", emailTextBox.Text);
                     successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                     successOrNotLabel.Text = "Success! Welcome back Customer!";
 
@@ -61,7 +61,7 @@ namespace FinalProject24
                 }
                 else if (isCustomer == "Manager")
                 {
-                    Environment.SetEnvironmentVariable("managerEmailEnv", emailTextBox.Text);
+                    Environment.SetEnvironmentVariable("EmailEnv", emailTextBox.Text);
                     successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                     successOrNotLabel.Text = "Success! Welcome back Manager!";
 

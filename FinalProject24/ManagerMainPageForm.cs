@@ -77,17 +77,25 @@ namespace FinalProject24
 
         private void settingButton_Click(object sender, EventArgs e)
         {
+            NS_AccountSettingPageUserControl1.Instance.ClearTextBoxes();
+            string userEmail = Environment.GetEnvironmentVariable("EmailEnv");
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                MessageBox.Show("Email environment variable is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit if no email set
+            }
+
+            NS_AccountSettingPageUserControl1.Instance.UserEmail = userEmail;
 
             if (!mainpanel1.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
             {
                 mainpanel1.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
                 NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
             }
-            else
-            {
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
+
+            NS_AccountSettingPageUserControl1.Instance.LoadUserData();
+            NS_AccountSettingPageUserControl1.Instance.UpdateTextBoxes();
+            NS_AccountSettingPageUserControl1.Instance.BringToFront();
             mainpanel1.Visible = true;
         }
 

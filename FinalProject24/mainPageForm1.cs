@@ -466,22 +466,36 @@ namespace FinalProject24
 
         private void settingButton_Click(object sender, EventArgs e)
         {
+            // Hide unrelated panels
             orderHistoryPanel.Visible = false;
+            menuPanel.Visible = false;
+            menuLabel.Visible = false;
+            NS_AccountSettingPageUserControl1.Instance.ClearTextBoxes();
+            // Get the user email from environment variable
+            string userEmail = Environment.GetEnvironmentVariable("EmailEnv");
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                MessageBox.Show("Email environment variable is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit if no email set
+            }
 
+            // Set the UserEmail
+            NS_AccountSettingPageUserControl1.Instance.UserEmail = userEmail;
+
+            // Check if the user control is already added to the main panel
             if (!mainPanel.Controls.Contains(NS_AccountSettingPageUserControl1.Instance))
             {
                 mainPanel.Controls.Add(NS_AccountSettingPageUserControl1.Instance);
                 NS_AccountSettingPageUserControl1.Instance.Dock = DockStyle.Fill;
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
-            }
-            else
-            {
-                NS_AccountSettingPageUserControl1.Instance.BringToFront();
             }
 
+            // Load user data, update text boxes, and ensure the user control is in front
+            NS_AccountSettingPageUserControl1.Instance.LoadUserData();
+            NS_AccountSettingPageUserControl1.Instance.UpdateTextBoxes();
+            NS_AccountSettingPageUserControl1.Instance.BringToFront();
+
+            // Make sure the main panel is visible
             mainPanel.Visible = true;
-            menuPanel.Visible = false;
-            menuLabel.Visible = false;
         }
 
 

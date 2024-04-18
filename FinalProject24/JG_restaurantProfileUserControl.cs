@@ -12,7 +12,7 @@ namespace FinalProject24
         private static JG_restaurantProfileUserControl _instance;
 
         private const string CsvFilePath = @"../../../../resturantinformation/resturantinfo.csv";
-        private string currentUsername = Environment.GetEnvironmentVariable("managerEmailEnv");
+        private string currentUsername;
 
         public static JG_restaurantProfileUserControl Instance
         {
@@ -33,6 +33,7 @@ namespace FinalProject24
 
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
+            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             UpdateProfile(newNameTextBox.Text, newAddressTextBox.Text, newPhoneNumberTextBox.Text,
                           newEmailTextBox.Text, newDescriptionTextBox.Text);
             LoadProfile(currentUsername); // Refresh display after update
@@ -45,6 +46,7 @@ namespace FinalProject24
 
         private void LoadProfile(string username)
         {
+            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             var profiles = ReadCsvFile();
             var profile = profiles.FirstOrDefault(p => p.Username == username);
             if (profile == null)
@@ -58,6 +60,7 @@ namespace FinalProject24
 
         private void UpdateProfile(string name, string address, string phone, string email, string description)
         {
+            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             var profiles = ReadCsvFile();
             var profile = profiles.FirstOrDefault(p => p.Username == currentUsername);
             if (profile == null)
