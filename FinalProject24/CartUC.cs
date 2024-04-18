@@ -259,6 +259,8 @@ namespace FinalProject24
 
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
+
+
         private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
         {
             // Define the directory where the CSV files will be saved

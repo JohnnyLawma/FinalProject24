@@ -35,17 +35,17 @@
             // loadMenuPanel
             // 
             loadMenuPanel.BorderStyle = BorderStyle.FixedSingle;
-            loadMenuPanel.Location = new Point(55, 138);
+            loadMenuPanel.Location = new Point(174, 110);
             loadMenuPanel.Margin = new Padding(4);
             loadMenuPanel.Name = "loadMenuPanel";
-            loadMenuPanel.Size = new Size(1538, 1005);
+            loadMenuPanel.Size = new Size(1268, 1005);
             loadMenuPanel.TabIndex = 0;
             // 
             // menuLabel
             // 
             menuLabel.AutoSize = true;
             menuLabel.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuLabel.Location = new Point(43, 97);
+            menuLabel.Location = new Point(162, 69);
             menuLabel.Name = "menuLabel";
             menuLabel.Size = new Size(195, 37);
             menuLabel.TabIndex = 1;
