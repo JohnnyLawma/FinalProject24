@@ -1,0 +1,6 @@
+Food Name,Price,ID,Image Path,Status
+Cheeseburger,8.99,3234,cheeseburger.jpg,TRUE
+Veggie Pizza,12.5,9853,veggiePizza.jpg,TRUE
+Caesar Salad,7.25,2385,foodbowl.jpg,TRUE
+Grilled Salmon,15.75,1133,grilledSalmon.jpg,TRUE
+Special Dish 89,18.97,7436,foodbowl.jpg,FALSE
