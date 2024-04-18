@@ -28,10 +28,6 @@ namespace FinalProject24
 
         }
 
-
-
-
-
         public CartUC()
         {
             InitializeComponent();
@@ -39,7 +35,6 @@ namespace FinalProject24
 
 
         }
-
 
         private List<CartItem> selectedItems = new List<CartItem>();
 
