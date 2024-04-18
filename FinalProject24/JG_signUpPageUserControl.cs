@@ -37,7 +37,7 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        string newEmail, newPassword, newName, confirmPassword, isCustomer;
+        string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
 
 
         private void createAccountButton_Click(object sender, EventArgs e)
@@ -226,10 +226,10 @@ namespace FinalProject24
             using (StreamWriter file = new StreamWriter(filePath))
             {
                 // Write the CSV headers
-                file.WriteLine("Email, Password, Name, Customer or Manager");
+                file.WriteLine("Email, Password, Name, Customer or Manager, Phone Number");
 
                 // Write the data to the CSV
-                file.WriteLine($"{email},{password},{name},{isCustomer}");
+                file.WriteLine($"{email},{password},{name},{isCustomer}, {phoneNumber}");
             }
 
             // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
