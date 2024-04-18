@@ -35,7 +35,7 @@ namespace FinalProject24
         public NS_AccountSettingPageUserControl1()
         {
             InitializeComponent();
-            userEmail = Environment.GetEnvironmentVariable("customerEmailEnv");
+            userEmail = Environment.GetEnvironmentVariable("EmailEnv");
             LoadUserData();
             UpdateTextBoxes();
         }
@@ -115,7 +115,7 @@ namespace FinalProject24
 
                 // Update the global email variable and the environment variable after a successful update
                 userEmail = newEmail;
-                Environment.SetEnvironmentVariable("customerEmailEnv", newEmail);
+                Environment.SetEnvironmentVariable("EmailEnv", newEmail);
                 LoadUserData();
                 UpdateTextBoxes();
             }

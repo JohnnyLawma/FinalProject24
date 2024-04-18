@@ -12,7 +12,7 @@ namespace FinalProject24
         private static JG_restaurantProfileUserControl _instance;
 
         private const string CsvFilePath = @"../../../../resturantinformation/resturantinfo.csv";
-        private string currentUsername = Environment.GetEnvironmentVariable("managerEmailEnv");
+        private string currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
 
         public static JG_restaurantProfileUserControl Instance
         {
