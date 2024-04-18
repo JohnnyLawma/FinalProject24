@@ -183,7 +183,7 @@
             button1.TabIndex = 8;
             button1.Text = "Apply Changes";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button1.Click += Applybutton_Click;
             // 
             // textBox3
             // 
