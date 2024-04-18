@@ -207,7 +207,7 @@ namespace FinalProject24
                         continue;
                     }
 
-                    string status = columns[4]; // Assuming status is the fourth column
+                    string status = columns[4]; 
 
                     //MessageBox.Show($"Line: {line}\nParsed Columns: {string.Join("|", columns)}\nStatus read from CSV: '{status}'");
 
