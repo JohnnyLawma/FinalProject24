@@ -97,12 +97,12 @@ namespace FinalProject24
                 selectedImageFileName = Path.GetFileName(openFileDialog.FileName);
             }
         }
-
         private void ApplyChangeButton_Click(object sender, EventArgs e)
         {
             string id = textBox1.Text;
             string name = textBox2.Text;
             string price = textBox3.Text;
+            bool status = checkBox1.Checked;
 
             if (string.IsNullOrWhiteSpace(id))
             {
@@ -112,21 +112,53 @@ namespace FinalProject24
 
             List<MenuItem> items = LoadMenuItems();
             var existingItem = items.FirstOrDefault(i => i.MenuID == id);
-            if (existingItem == null)
+
+            // Handle updating an existing item
+            if (existingItem != null)
             {
-                MessageBox.Show("The provided ID does not match any existing menu items.");
-                return;
+                existingItem.MenuName = name;
+                existingItem.MenuPrice = price;
+                existingItem.Status = status;
+
+                // If a new image is selected
+                if (!string.IsNullOrWhiteSpace(selectedImageFileName))
+                {
+                    existingItem.ImagePath = selectedImageFileName;
+                    string filePath = Path.Combine(imagesFolderPath, selectedImageFileName);
+
+                    // Create a temporary image to bypass the GDI+ error
+                    using (var tempImage = new Bitmap(pictureBox1.Image))
+                    {
+                        tempImage.Save(filePath); // Save the temporary image
+                    }
+                }
             }
-
-            existingItem.MenuName = name;
-            existingItem.MenuPrice = price;
-            existingItem.Status = true; // Assuming you want to set this to true for an updated item
-
-            if (!string.IsNullOrWhiteSpace(selectedImageFileName))
+            else
             {
-                existingItem.ImagePath = selectedImageFileName;
-                string filePath = Path.Combine(imagesFolderPath, selectedImageFileName);
-                pictureBox1.Image.Save(filePath);
+                // Handle adding a new item if the ID doesn't exist
+                if (string.IsNullOrWhiteSpace(selectedImageFileName))
+                {
+                    MessageBox.Show("Please select an image for the menu item.");
+                    return;
+                }
+
+                var newItem = new MenuItem
+                {
+                    MenuID = id,
+                    MenuName = name,
+                    MenuPrice = price,
+                    ImagePath = selectedImageFileName,
+                    Status = status
+                };
+                items.Add(newItem);
+
+                string newFilePath = Path.Combine(imagesFolderPath, selectedImageFileName);
+
+                // Create a temporary image to bypass the GDI+ error
+                using (var tempImage = new Bitmap(pictureBox1.Image))
+                {
+                    tempImage.Save(newFilePath); // Save the temporary image
+                }
             }
 
             SaveMenuItems(items);
