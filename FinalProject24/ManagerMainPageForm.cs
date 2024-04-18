@@ -111,6 +111,8 @@ namespace FinalProject24
             loadOrderBoard();
         }
 
+
+
         private void viewCurrentMenu_Click(object sender, EventArgs e)
         {
             if (!mainpanel1.Controls.Contains(NS_MViewPageUserControl1.Instance))

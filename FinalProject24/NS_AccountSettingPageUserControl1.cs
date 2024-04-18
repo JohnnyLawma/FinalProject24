@@ -32,6 +32,17 @@ namespace FinalProject24
             }
         }
 
+<<<<<<< HEAD
+=======
+
+
+        // Variables for dummy values, when db connected this maybe changed
+        private string name = "Emily King";
+        private string email = "emilyking@gmail.com";
+        private string phoneNumber = "615-564-3422";
+        string name2, email2, phoneNumber2;
+
+>>>>>>> master
         public NS_AccountSettingPageUserControl1()
         {
             InitializeComponent();

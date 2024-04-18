@@ -37,7 +37,7 @@ namespace FinalProject24
             InitializeComponent();
         }
 
-        string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
+        string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber = "123-456-7890";
 
 
         private void createAccountButton_Click(object sender, EventArgs e)
