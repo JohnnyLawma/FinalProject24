@@ -21,7 +21,8 @@ namespace FinalProject24
             public string ID { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public Image ItemImage { get; set; } // Add property for the image
+            public Image ItemImage { get; set; } // The actual image
+            public string ImagePath { get; set; } // The path to the image file
         }
         private List<MenuItem> menuItems = new List<MenuItem>();
 
@@ -49,40 +50,116 @@ namespace FinalProject24
             }
         }
 
+        private string csvFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\MenuItemsUpdated.csv");
+        private string imagesFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images");
+
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            // Apply the changes, so take information provided and send to the DB
-            // For now, the data will instead be going into lists or a list for each one
-            // my hope is that it'll be easier to connect db since we would be using similar code
-
-            // Retrieve the text entered by the user in the TextBox
-            // Retrieve the text entered by the user in the TextBoxes
             string itemID = MenuIDtextBox.Text;
             string itemName = NametextBox.Text;
-            decimal itemPrice;
-            if (!decimal.TryParse(PricetextBox.Text, out itemPrice))
+            if (!decimal.TryParse(PricetextBox.Text, out decimal itemPrice))
             {
                 MessageBox.Show("Please enter a valid price.");
                 return;
             }
+            string selectedImagePath = pictureBox.Image?.Tag as string; // The image path is stored in the Tag property
 
-            // Create a new MenuItem object and add it to the list
-            MenuItem newItem = new MenuItem
+            // Load existing items
+            List<MenuItem> items = LoadMenuItems();
+
+            // Check if the item with the ID exists and update or add it
+            var existingItem = items.FirstOrDefault(item => item.ID == itemID);
+            if (existingItem != null)
             {
-                ID = itemID,
-                Name = itemName,
-                Price = itemPrice,
-                ItemImage = pictureBox.Image // Set the image
-            };
-            menuItems.Add(newItem);
+                // Update existing item
+                existingItem.Name = itemName;
+                existingItem.Price = itemPrice;
+                if (!string.IsNullOrWhiteSpace(selectedImagePath))
+                {
+                    existingItem.ItemImage = pictureBox.Image;
+                }
+            }
+            else
+            {
+                // Add new item if the ID doesn't exist
+                items.Add(new MenuItem
+                {
+                    ID = itemID,
+                    Name = itemName,
+                    Price = itemPrice,
+                    ItemImage = pictureBox.Image // Set the image
+                });
+            }
 
-            // Optionally, you can display a message to confirm that the item has been added
-            MessageBox.Show("Item added successfully.");
+            // Save the image file to the "Images" folder, if a new image was chosen
+            if (!string.IsNullOrWhiteSpace(selectedImagePath))
+            {
+                string fileName = Path.GetFileName(selectedImagePath);
+                string saveImagePath = Path.Combine(imagesFolderPath, fileName);
+                pictureBox.Image.Save(saveImagePath);
+                // Update the image path for the new item or the existing item
+                if (existingItem != null)
+                {
+                    existingItem.ImagePath = fileName;
+                }
+                else
+                {
+                    items.Last().ImagePath = fileName;
+                }
+            }
 
-            // Optionally, you can clear the TextBoxes after adding the item
+            // Save all items back to the CSV
+            SaveMenuItems(items);
+
+            MessageBox.Show("Menu item changes saved successfully.");
+
+            // Clear input fields and the PictureBox
             MenuIDtextBox.Clear();
             NametextBox.Clear();
             PricetextBox.Clear();
+            pictureBox.Image = null;
+        }
+
+        private List<MenuItem> LoadMenuItems()
+        {
+            var items = new List<MenuItem>();
+            if (File.Exists(csvFilePath))
+            {
+                var lines = File.ReadAllLines(csvFilePath);
+                foreach (var line in lines.Skip(1)) // Skip header line
+                {
+                    var columns = line.Split(',');
+                    if (columns.Length >= 4)
+                    {
+                        items.Add(new MenuItem
+                        {
+                            ID = columns[0],
+                            Name = columns[1],
+                            Price = decimal.Parse(columns[2]),
+                            ItemImage = LoadImage(columns[3])
+                        });
+                    }
+                }
+            }
+            return items;
+        }
+
+        private Image LoadImage(string imageName)
+        {
+            string imagePath = Path.Combine(imagesFolderPath, imageName);
+            return File.Exists(imagePath) ? Image.FromFile(imagePath) : null;
+        }
+
+        private void SaveMenuItems(List<MenuItem> items)
+        {
+            using (var writer = new StreamWriter(csvFilePath, false))
+            {
+                writer.WriteLine("ID,Name,Price,ImagePath"); // Assuming these are the headers
+                foreach (var item in items)
+                {
+                    writer.WriteLine($"{item.ID},{item.Name},{item.Price},{item.ImagePath ?? string.Empty}");
+                }
+            }
         }
     }
-    }
+}

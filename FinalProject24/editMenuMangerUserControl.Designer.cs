@@ -39,6 +39,7 @@
             textBox2 = new TextBox();
             textBox1 = new TextBox();
             button2 = new Button();
+            checkBox1 = new CheckBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -56,6 +57,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ControlDark;
+            groupBox1.Controls.Add(checkBox1);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(button1);
@@ -72,7 +74,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(132, 337);
+            textBox3.Location = new Point(146, 220);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(263, 23);
             textBox3.TabIndex = 7;
@@ -97,13 +99,13 @@
             button1.TabIndex = 9;
             button1.Text = "Select Image File";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button1.Click += SelectImageButton_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(18, 62);
+            label2.Location = new Point(32, 105);
             label2.Name = "label2";
             label2.Size = new Size(123, 21);
             label2.TabIndex = 2;
@@ -113,7 +115,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(18, 196);
+            label3.Location = new Point(32, 160);
             label3.Name = "label3";
             label3.Size = new Size(108, 21);
             label3.TabIndex = 3;
@@ -123,7 +125,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 339);
+            label4.Location = new Point(40, 222);
             label4.Name = "label4";
             label4.Size = new Size(100, 21);
             label4.TabIndex = 4;
@@ -131,14 +133,14 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(132, 198);
+            textBox2.Location = new Point(146, 162);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(263, 23);
             textBox2.TabIndex = 6;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(152, 62);
+            textBox1.Location = new Point(166, 105);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(243, 23);
             textBox1.TabIndex = 5;
@@ -154,7 +156,18 @@
             button2.TabIndex = 10;
             button2.Text = "Apply Change";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += ApplyChangeButton_Click;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkBox1.Location = new Point(138, 302);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(182, 29);
+            checkBox1.TabIndex = 10;
+            checkBox1.Text = "Show Menu Item";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // editMenuMangerUserControl
             // 
@@ -185,5 +198,6 @@
         private PictureBox pictureBox1;
         private Button button1;
         private Button button2;
+        private CheckBox checkBox1;
     }
 }
