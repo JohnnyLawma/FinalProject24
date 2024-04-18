@@ -34,7 +34,7 @@ namespace FinalProject24
 
         private List<MenuItem> LoadMenuItemsFromCsv()
         {
-            string filePath = @"C:\Users\johnn\Downloads\MenuItemsUpdated.csv";
+            string filePath = @"..\..\..\..\MenuItemsUpdated.csv";
             List<MenuItem> menuItems = new List<MenuItem>();
 
             if (!File.Exists(filePath))
