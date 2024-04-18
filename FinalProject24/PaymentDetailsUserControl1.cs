@@ -95,7 +95,36 @@ namespace FinalProject24
 
         }
 
-       
+
+        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
+        {
+            string directoryPath = @"..\..\..\..\receipts\";
+            Directory.CreateDirectory(directoryPath);
+            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
+
+            using (StreamWriter file = new StreamWriter(filePath))
+            {
+                // Remove 'Status' from the header
+                file.WriteLine("Item Name,Quantity,Price,Total");
+                foreach (var item in items)
+                {
+                    // Remove 'Pending' from each item line
+                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
+                }
+                // Write the subtotal, tax, and total without 'Status' column
+                file.WriteLine($"Subtotal,,${subtotal:0.00}");
+                file.WriteLine($"Tax,,${tax:0.00}");
+                file.WriteLine($"Total,,${total:0.00}");
+
+                // Add a final line for overall order status
+                file.WriteLine($",,,Order Status: Pending");
+            }
+            return filePath;
+        }
+
+
+
+        /*
         private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
         {
             string directoryPath = @"..\..\..\..\receipts\";
@@ -115,6 +144,9 @@ namespace FinalProject24
             }
             return filePath;
         }
+        */
+
+
 
         // Helper method to validate card number with Luhn's Algorithm
         private bool IsValidCardNumber(string cardNumber)
