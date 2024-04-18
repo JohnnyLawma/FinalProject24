@@ -109,6 +109,7 @@ namespace FinalProject24
 
 
 
+        // For debugging: show all item from the list
         private void ShowAllMenuItems()
         {
 
@@ -133,7 +134,7 @@ namespace FinalProject24
         }
 
 
-
+        
         private void LoadMenuItemsToPanel()
         {
             var menuItems = LoadMenuItemsFromCsv();
@@ -199,7 +200,7 @@ namespace FinalProject24
                     MessageBox.Show($"Failed to load image: {ex.Message}");
                 }
 
-                // Hide the buttons through methods
+                // Hide the buttons: 
                 menuCard.HideAddButton();
                 menuCard.HideRemoveButton();
 
