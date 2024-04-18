@@ -66,11 +66,13 @@ namespace FinalProject24
 
                         subtotal += total;
 
+
                         // Format each item's details
                         detailBuilder.AppendLine($"Item: {itemName}");
                         detailBuilder.AppendLine($"Qty: {quantity}");
                         detailBuilder.AppendLine($"Subtotal: ${total:0.00}");
                         detailBuilder.AppendLine(); // Empty line
+
                     }
                 }
 
@@ -82,6 +84,13 @@ namespace FinalProject24
                 detailBuilder.AppendLine($"Subtotal: ${subtotal:0.00}");
                 detailBuilder.AppendLine($"Tax: ${tax:0.00}");
                 detailBuilder.AppendLine($"Total: ${totalAmount:0.00}");
+
+                string orderNumber = Path.GetFileNameWithoutExtension(filePath);
+                string date = orderNumber.Split('_')[0];
+                date = date.Substring(0, date.Length - 6);
+                date = $"{date.Substring(4, 2)}/{date.Substring(6, 2)}/{date.Substring(0, 4)}";
+                UpdateOrderHistoryDetails(orderNumber, date);
+
             }
             catch (Exception ex)
             {

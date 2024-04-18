@@ -133,9 +133,9 @@
         private Label orderNumber;
         private Label dateLabel;
         private Label statusLabel;
-        private Label statusTextLabel;
-        private Label dateTextLabel;
-        private Label orderNumberTextLabel;
         public Label displayDetailText;
+        public Label statusTextLabel;
+        public Label dateTextLabel;
+        public Label orderNumberTextLabel;
     }
 }
