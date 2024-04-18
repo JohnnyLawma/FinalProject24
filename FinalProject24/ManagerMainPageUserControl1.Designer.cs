@@ -43,7 +43,7 @@
             pendingPanel.BorderStyle = BorderStyle.FixedSingle;
             pendingPanel.Location = new Point(31, 67);
             pendingPanel.Name = "pendingPanel";
-            pendingPanel.Size = new Size(501, 976);
+            pendingPanel.Size = new Size(520, 976);
             pendingPanel.TabIndex = 0;
             // 
             // acceptedPanel
@@ -52,7 +52,7 @@
             acceptedPanel.BorderStyle = BorderStyle.FixedSingle;
             acceptedPanel.Location = new Point(572, 65);
             acceptedPanel.Name = "acceptedPanel";
-            acceptedPanel.Size = new Size(501, 978);
+            acceptedPanel.Size = new Size(517, 978);
             acceptedPanel.TabIndex = 1;
             // 
             // readyPanel

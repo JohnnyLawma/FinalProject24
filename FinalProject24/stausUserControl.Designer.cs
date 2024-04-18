@@ -39,7 +39,7 @@
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             nameLabel.ForeColor = SystemColors.ControlLight;
-            nameLabel.Location = new Point(25, 18);
+            nameLabel.Location = new Point(17, 18);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(140, 37);
             nameLabel.TabIndex = 0;
@@ -50,7 +50,7 @@
             statusButton.BackColor = SystemColors.ControlLightLight;
             statusButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             statusButton.ForeColor = SystemColors.ControlText;
-            statusButton.Location = new Point(36, 438);
+            statusButton.Location = new Point(28, 438);
             statusButton.Name = "statusButton";
             statusButton.Size = new Size(189, 56);
             statusButton.TabIndex = 2;
@@ -60,7 +60,7 @@
             // itemsListBox
             // 
             itemsListBox.FormattingEnabled = true;
-            itemsListBox.Location = new Point(36, 58);
+            itemsListBox.Location = new Point(28, 58);
             itemsListBox.Name = "itemsListBox";
             itemsListBox.Size = new Size(418, 356);
             itemsListBox.TabIndex = 0;
@@ -70,7 +70,7 @@
             cancelButton.BackColor = Color.FromArgb(192, 0, 0);
             cancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cancelButton.ForeColor = SystemColors.ControlLightLight;
-            cancelButton.Location = new Point(265, 438);
+            cancelButton.Location = new Point(257, 438);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(189, 56);
             cancelButton.TabIndex = 3;
@@ -89,7 +89,7 @@
             Controls.Add(statusButton);
             Controls.Add(nameLabel);
             Name = "stausUserControl";
-            Size = new Size(497, 530);
+            Size = new Size(480, 530);
             ResumeLayout(false);
             PerformLayout();
         }

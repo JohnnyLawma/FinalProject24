@@ -35,7 +35,92 @@ namespace FinalProject24
         }
 
 
+        private void UpdateStatusUserControlPositions()
+        {
+            int yOffset = 0;
+            foreach (Control control in pendingPanel.Controls)
+            {
+                control.Location = new Point(0, yOffset);
+                yOffset += control.Height + 10; // Adjust the space between controls if necessary
+            }
+        }
 
+
+        private void LoadStatusUserControl()
+        {
+            string directoryPath = @"..\..\..\..\receipts\";
+
+            // Clear existing controls from the pendingPanel
+            pendingPanel.Controls.Clear();
+
+            if (Directory.Exists(directoryPath))
+            {
+                string[] csvFiles = Directory.GetFiles(directoryPath, "*.csv");
+                int yOffset = 0; // Initialize an offset for the Y position
+
+                foreach (string csvFilePath in csvFiles)
+                {
+                    var lines = File.ReadAllLines(csvFilePath);
+                    string orderStatusLine = lines.LastOrDefault();
+
+                    if (orderStatusLine != null && orderStatusLine.Contains("Order Status: Pending"))
+                    {
+                        stausUserControl statusControl = new stausUserControl();
+
+                        // Extract the order number from the file name
+                        string orderNumber = Path.GetFileNameWithoutExtension(csvFilePath);
+
+                        // Configure properties of statusControl
+                        statusControl.GetName = $"Order #{orderNumber}";
+                        statusControl.StatusButtonText = "Accept";
+
+                        // Extract item details and add to ListBoxItems
+                        List<string> itemList = new List<string>();
+                        for (int i = 1; i < lines.Length - 3; i++) // Skip header and last 3 lines
+                        {
+                            string[] columns = lines[i].Split(',');
+                            if (columns.Length > 3) // Ensure there are enough columns
+                            {
+                                string itemName = columns[0].Trim();
+                                string quantity = columns[1].Trim();
+                                string itemTotal = columns[3].Trim();
+                                itemList.Add($"{itemName} x{quantity} - {itemTotal}");
+                            }
+                        }
+                        statusControl.ListBoxItems = itemList;
+
+                        // Subscribe to the StatusButtonClicked event
+                        statusControl.StatusButtonClicked += StatusControl_StatusButtonClicked;
+
+                        // Subscribe to the CancelButtonClicked event
+                        statusControl.CancelButtonClicked += StatusControl_CancelButtonClicked;
+
+                        // Set the size of the control
+                        statusControl.Size = new Size(480, 530); // Adjust height as needed
+
+                        // Set the location of the control
+                        statusControl.Location = new Point(0, yOffset);
+
+                        // Add the height of the control plus some margin to the offset for the next control
+                        yOffset += statusControl.Height + 10; // Adjust margin space as needed
+
+                        // Add the statusControl to the pendingPanel
+                        pendingPanel.Controls.Add(statusControl);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Directory not found: {directoryPath}");
+            }
+        }
+
+        // Include the event handler methods for StatusButtonClicked and CancelButtonClicked as well
+
+
+
+
+        /*
         private void LoadStatusUserControl()
         {
             string directoryPath = @"..\..\..\..\receipts\";
@@ -97,6 +182,7 @@ namespace FinalProject24
             }
         }
 
+        */
 
 
         /*
@@ -156,6 +242,8 @@ namespace FinalProject24
                     // Subscribe to the new click event for the "Ready" button
                     statusControl.StatusButtonClicked -= StatusControl_StatusButtonClicked;
                     statusControl.StatusButtonClicked += StatusControl_ReadyButtonClicked;
+
+                    UpdateStatusUserControlPositions();
                 }
             }
         }
@@ -201,6 +289,8 @@ namespace FinalProject24
                 statusControl.Dispose();
             }
         }
+
+
 
 
 

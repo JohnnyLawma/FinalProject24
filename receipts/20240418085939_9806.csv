@@ -1,0 +1,8 @@
+Item Name,Quantity,Price,Total
+Veg Pizza,1,$13.00,$13.00
+Blueberry Pancakes,1,$8.50,$8.50
+Beef Stew,2,$13.45,$26.90
+Subtotal,,$48.40
+Tax,,$3.39
+Total,,$51.79
+,,,Order Status: Finished
