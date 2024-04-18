@@ -215,20 +215,15 @@ namespace FinalProject24
                 {
                     var lines = File.ReadAllLines(filePath).ToList();
 
-                    // Log the existing lines for debugging
-                    MessageBox.Show("Before Update:\n" + String.Join("\n", lines));
-
-                    int statusLineIndex = lines.FindIndex(line => line.StartsWith("Order Status:"));
+                    // Find the index of the line that starts with ",,,Order Status:"
+                    int statusLineIndex = lines.FindIndex(line => line.Trim().StartsWith(",,,Order Status:"));
                     if (statusLineIndex != -1)
                     {
-                        // Update the status line
-                        lines[statusLineIndex] = $"Order Status: {newStatus}";
+                        // Update the status line with the new status
+                        lines[statusLineIndex] = $",,,Order Status: {newStatus}";
 
                         // Write the updated lines back to the CSV file
                         File.WriteAllLines(filePath, lines);
-
-                        // Log the updated lines for debugging
-                        MessageBox.Show("After Update:\n" + String.Join("\n", lines));
 
                         MessageBox.Show("Order status updated to Finished."); // Confirmation message
                     }
@@ -247,6 +242,7 @@ namespace FinalProject24
                 MessageBox.Show($"Error updating the CSV file: {ex.Message}");
             }
         }
+
 
 
 
