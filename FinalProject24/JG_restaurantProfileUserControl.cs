@@ -1,74 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinalProject24
 {
     public partial class JG_restaurantProfileUserControl : UserControl
     {
-        public static JG_restaurantProfileUserControl _instance; // make an instance of the user control
+        private static JG_restaurantProfileUserControl _instance;
+
+        private const string CsvFilePath = @"../../../../resturantinformation/resturantinfo.csv";
+        private string currentUsername = Environment.GetEnvironmentVariable("managerEmailEnv");
 
         public static JG_restaurantProfileUserControl Instance
         {
             get
             {
-                // If the instance is null, create it
                 if (_instance == null)
                 {
                     _instance = new JG_restaurantProfileUserControl();
                 }
-                // Return the existing or new instance
                 return _instance;
-
             }
         }
 
         public JG_restaurantProfileUserControl()
         {
             InitializeComponent();
-
         }
 
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
-            string restaurantName = "", restaurantAddress = "", restaurantPhoneNumber = "",
-                restaurantEmail = "", restaurantDescription = "";
+            UpdateProfile(newNameTextBox.Text, newAddressTextBox.Text, newPhoneNumberTextBox.Text,
+                          newEmailTextBox.Text, newDescriptionTextBox.Text);
+            LoadProfile(currentUsername); // Refresh display after update
+        }
 
-            if (newNameTextBox.Text != "") // check if the textbox is empty, and if not then update the changes
-            {
-                restaurantName = newNameTextBox.Text;
-            }
-            if (newAddressTextBox.Text != "")
-            {
-                restaurantAddress = newAddressTextBox.Text;
-            }
-            if (newPhoneNumberTextBox.Text != "")
-            {
-                restaurantPhoneNumber = newPhoneNumberTextBox.Text;
-            }
-            if (newEmailTextBox.Text != "")
-            {
-                restaurantEmail = newEmailTextBox.Text;
-            }
-            if (newDescriptionTextBox.Text != "")
-            {
-                restaurantDescription = newDescriptionTextBox.Text;
-            }
+        private void JG_restaurantProfileUserControl_Load(object sender, EventArgs e)
+        {
+            LoadProfile(currentUsername);
+        }
 
-            currNameLabel.Text = restaurantName; // display the new info
-            currAddressLabel.Text = restaurantAddress;
-            currPhoneNumberLabel.Text = restaurantPhoneNumber;
-            currAddressLabel.Text = restaurantAddress;
-            currEmailLabel.Text = restaurantEmail;
-            currDescriptionLabel.Text = restaurantDescription;
+        private void LoadProfile(string username)
+        {
+            var profiles = ReadCsvFile();
+            var profile = profiles.FirstOrDefault(p => p.Username == username);
+            if (profile == null)
+            {
+                profile = CreateDefaultProfile(username);
+                profiles.Add(profile);
+                WriteCsvFile(profiles);
+            }
+            DisplayProfile(profile);
+        }
 
+        private void UpdateProfile(string name, string address, string phone, string email, string description)
+        {
+            var profiles = ReadCsvFile();
+            var profile = profiles.FirstOrDefault(p => p.Username == currentUsername);
+            if (profile == null)
+            {
+                profile = CreateDefaultProfile(currentUsername);
+                profiles.Add(profile);
+            }
+            profile.RestaurantName = name;
+            profile.RestaurantAddress = address;
+            profile.RestaurantPhone = phone;
+            profile.RestaurantEmail = email;
+            profile.RestaurantDescription = description;
+            WriteCsvFile(profiles);
+        }
 
+        private RestaurantProfile CreateDefaultProfile(string username)
+        {
+            return new RestaurantProfile($"{username},n/a,n/a,n/a,n/a,n/a");
+        }
+
+        private void DisplayProfile(RestaurantProfile profile)
+        {
+            currNameLabel.Text = profile.RestaurantName;
+            currAddressLabel.Text = profile.RestaurantAddress;
+            currPhoneNumberLabel.Text = profile.RestaurantPhone;
+            currEmailLabel.Text = profile.RestaurantEmail;
+            currDescriptionLabel.Text = profile.RestaurantDescription;
+        }
+
+        private List<RestaurantProfile> ReadCsvFile()
+        {
+            return File.ReadAllLines(CsvFilePath)
+                       .Skip(1)
+                       .Where(line => !string.IsNullOrWhiteSpace(line))
+                       .Select(line => new RestaurantProfile(line))
+                       .ToList();
+        }
+
+        private void WriteCsvFile(List<RestaurantProfile> profiles)
+        {
+            var data = new StringBuilder("Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");
+            foreach (var profile in profiles)
+            {
+                data.AppendLine($"{profile.Username},{profile.RestaurantName},{profile.RestaurantAddress},{profile.RestaurantPhone},{profile.RestaurantEmail},{profile.RestaurantDescription}");
+            }
+            File.WriteAllText(CsvFilePath, data.ToString());
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public class RestaurantProfile
+    {
+        public string Username { get; set; }
+        public string RestaurantName { get; set; }
+        public string RestaurantAddress { get; set; }
+        public string RestaurantPhone { get; set; }
+        public string RestaurantEmail { get; set; }
+        public string RestaurantDescription { get; set; }
+
+        public RestaurantProfile(string csvLine)
+        {
+            var values = csvLine.Split(',');
+            Username = values[0];
+            RestaurantName = values.Length > 1 ? values[1] : "";
+            RestaurantAddress = values.Length > 2 ? values[2] : "";
+            RestaurantPhone = values.Length > 3 ? values[3] : "";
+            RestaurantEmail = values.Length > 4 ? values[4] : "";
+            RestaurantDescription = values.Length > 5 ? values[5] : "";
         }
     }
 }
