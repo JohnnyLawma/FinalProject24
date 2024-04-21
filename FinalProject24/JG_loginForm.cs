@@ -35,6 +35,8 @@ namespace FinalProject24
         //
         private async void signinButton_Click(object sender, EventArgs e)
         {
+
+            // Create the directory path for the user's data
             string inputEmail = emailTextBox.Text.Trim(); // Trim input values
             string inputPassword = passwordTextBox.Text.Trim();
 

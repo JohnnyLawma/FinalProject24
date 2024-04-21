@@ -60,37 +60,58 @@ namespace FinalProject24
                 try
                 {
                     // Here we call the method to handle all the account creation logic
-                    SaveNewAcctToCSV(newName, newEmail, newPassword);
-                    MessageBox.Show("Your account was successfully created!");
-                    JG_signUpPageUserControl.Instance.SendToBack(); // go back to the login form by hiding the UC
+                    bool isCreated = SaveNewAcctToCSV(newName, newEmail, newPassword, phoneNumber);
+
+                    // Only show the success message and hide the sign-up control if the account was created
+                    if (isCreated)
+                    {
+                        MessageBox.Show("Your account was successfully created!");
+                        JG_signUpPageUserControl.Instance.SendToBack(); // go back to the login form by hiding the UC
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while creating the account: " + ex.Message);
                 }
+
             }
         }
 
 
 
-
-        private void SaveNewAcctToCSV(string name, string email, string password)
+        //
+        private bool SaveNewAcctToCSV(string name, string email, string password, string phNumber)
         {
-            // Generate a unique UserID (using a GUID for simplicity)
-            string userID = Guid.NewGuid().ToString();
-
-            // Hash the password using SHA-256
-            string hashedPassword = SecurityHelper.HashPassword(newPassword);
-
-            // Create the directory path for the user's data
             string relativePath = @"..\..\..\..\CustomerUserFolder\";
-            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
             // Ensure the main CustomerUserFolder directory exists
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
             }
+
+            // Check if the email already exists in allCustomerUser.csv
+            string allCustomerUserPath = Path.Combine(directoryPath, "allCustomerUser.csv");
+            if (File.Exists(allCustomerUserPath))
+            {
+                string[] allUsers = File.ReadAllLines(allCustomerUserPath);
+                foreach (string user in allUsers)
+                {
+                    string[] userDetails = user.Split(',');
+                    if (userDetails.Length >= 2 && userDetails[1].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("An account with this email already exists.");
+                        return false; // Exit the method without creating a new account
+                    }
+                }
+            }
+
+            // Generate a unique UserID (using a GUID for simplicity)
+            string userID = Guid.NewGuid().ToString();
+
+            // Hash the password using SHA-256
+            string hashedPassword = SecurityHelper.HashPassword(password);
 
             // Create the user-specific folder
             string userFolderPath = Path.Combine(directoryPath, userID);
@@ -105,22 +126,27 @@ namespace FinalProject24
 
             // Create the profile.csv file
             string profileFilePath = Path.Combine(userFolderPath, "profile.csv");
-            File.WriteAllText(profileFilePath, $"Name,Email,Phone Number,Address\n{name},{email},{phoneNumber},\"\"");
+            File.WriteAllText(profileFilePath, $"Name,Email,Phone Number,Address\n{name},{email},{phNumber},\"\"");
 
             // Create a receipts directory for the user
             string receiptsFolderPath = Path.Combine(userFolderPath, "receipts");
             Directory.CreateDirectory(receiptsFolderPath);
 
             // Append the new user to the allCustomerUser.csv
-            string allCustomerUserPath = Path.Combine(directoryPath, "allCustomerUser.csv");
             string newUserLine = $"{userID},{email}\n";
             File.AppendAllText(allCustomerUserPath, newUserLine);
+            
+            //MessageBox.Show("Your account was successfully created!");
+
+            return true;
+
         }
 
 
 
 
-        
+
+
 
 
 
@@ -291,7 +317,7 @@ namespace FinalProject24
             //isCustomer = false;
         }
 
-
+        /*
         private string SaveNewAcctToCSV(string name, string email, string password, string isCustomer)
         {
             // Define the directory where the CSV files will be saved
@@ -320,6 +346,8 @@ namespace FinalProject24
             // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
             return filePath;
         }
+
+        */
 
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
