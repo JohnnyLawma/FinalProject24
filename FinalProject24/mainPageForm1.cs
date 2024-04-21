@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
@@ -7,15 +8,22 @@ namespace FinalProject24
     public partial class mainPageForm1 : Form
     {
         // update image paths here to save time changing the path name
-
         string imagePathProfilePicture = @"..\..\..\..\Images\profilePicture.jpg"; // Going back 4 level
         string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
 
         private CartUC cartUCInstance;
 
-        public mainPageForm1()
+        // Field to store userID
+        private string userID;
+
+        string name, email, phoneNumber, address;
+
+        public mainPageForm1(string userID)
         {
             InitializeComponent();
+            this.userID = userID; // Assign the passed userID to the field
+            LoadUserProfile(userID);
+
             // For Loading Circular Shape image.
             try
             {
@@ -51,8 +59,6 @@ namespace FinalProject24
         //public int TotalQuantity => selectedItems.Sum(item => item.Quantity);
 
 
-
-
         public struct cartArray
         {
             public string Title;
@@ -60,6 +66,69 @@ namespace FinalProject24
             public string ImagePath;
             public int Quantity;
         }
+
+
+
+        //
+        private void LoadUserProfile(string userID)
+        {
+            // First, check if userID is null or empty
+            if (string.IsNullOrEmpty(userID))
+            {
+                MessageBox.Show("User ID cannot be null or empty.");
+                return;
+            }
+
+            // Define the directory where the user folders are stored
+            string relativePath = @"..\..\..\..\CustomerUserFolder\"; // Adjust this path as needed
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            if (!Directory.Exists(directoryPath))
+            {
+                MessageBox.Show("Directory not found: " + directoryPath);
+                return;
+            }
+
+            string userFolderPath = Path.Combine(directoryPath, userID);
+            string profileFilePath = Path.Combine(userFolderPath, "profile.csv");
+
+            if (!File.Exists(profileFilePath))
+            {
+                MessageBox.Show("Profile file not found for user: " + userID);
+                return;
+            }
+
+            // Read the profile.csv file and load user profile data
+            try
+            {
+                string[] profileData = File.ReadAllLines(profileFilePath);
+                if (profileData.Length >= 2)
+                {
+                    string[] profileFields = profileData[1].Split(',');
+                    if (profileFields.Length >= 4) // Assuming there are 4 columns: Name, Email, Phone Number, Address
+                    {
+                        string name = profileFields[0].Trim();
+                        string email = profileFields[1].Trim();
+                        string phoneNumber = profileFields[2].Trim();
+                        string address = profileFields[3].Trim();
+
+                        nameLabel.Text = name;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading profile: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
 
         private void NavigateToPaymentUserControl(object sender, EventArgs e)
         {

@@ -27,9 +27,10 @@ namespace FinalProject24
 
 
         // Loading the main form and the manager main form in memory
-        mainPageForm1 loadMainForm = new mainPageForm1();
+        //mainPageForm1 loadMainForm = new mainPageForm1();
         ManagerMainPageForm loadManagerForm = new ManagerMainPageForm();
 
+        string userID;
 
         //
         private async void signinButton_Click(object sender, EventArgs e)
@@ -62,16 +63,16 @@ namespace FinalProject24
             {
                 // Check customer credentials
                 string userRole;
-                if (AccountExists(inputEmail, inputPassword, out userRole))
+                string userID;
+                if (AccountExists(inputEmail, inputPassword, out userRole, out userID))
                 {
-                    // Logic for successful customer login
+                    // Logic for successful login
                     successOrNotLabel.ForeColor = System.Drawing.Color.Green;
                     successOrNotLabel.Text = "Success! Welcome back, Customer!";
+
                     await Task.Delay(1000); // Wait for 1 second to show success message
 
-                    loadMainForm.Show(); // Open the customer main form
-                    ResetTextFields();
-                    this.Hide(); // Hide the Login Form
+                    OpenMainForm(userID); // Now we pass the userID to OpenMainForm
                 }
                 else
                 {
@@ -83,6 +84,24 @@ namespace FinalProject24
             }
         }
 
+
+        private void OpenMainForm(string userID)
+        {
+            // Check if userID is not null or empty.
+            if (!string.IsNullOrEmpty(userID))
+            {
+                // Proceed with opening the main form with the userID
+                mainPageForm1 mainForm = new mainPageForm1(userID);
+                mainForm.Show(); // Show the main form
+                ResetTextFields(); // Reset the text fields in the current form
+                this.Hide(); // Hide the login form
+            }
+            else
+            {
+                // If userID is null or empty, show an error message.
+                MessageBox.Show("User ID cannot be null or empty.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
@@ -98,31 +117,34 @@ namespace FinalProject24
 
 
 
+
+
+
         //
-        private bool AccountExists(string email, string password, out string userRole)
+        private bool AccountExists(string email, string password, out string userRole, out string userID)
         {
-            // Define the directory where the user folders are stored
-            string relativePath = @"..\..\..\..\CustomerUserFolder\"; // Adjust this path as needed
+            userRole = null;
+            userID = null; // Initialize userID
+            string relativePath = @"..\..\..\..\CustomerUserFolder\";
             string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
             if (!Directory.Exists(directoryPath))
             {
                 Debug.WriteLine("Directory not found: " + directoryPath);
-                userRole = null;
                 return false;
             }
 
             foreach (string userIDFolder in Directory.GetDirectories(directoryPath))
             {
-                string userID = Path.GetFileName(userIDFolder);
+                string localUserID = Path.GetFileName(userIDFolder); // Correctly obtain the userID from the folder name
                 string passwordFilePath = Path.Combine(userIDFolder, "password.txt");
 
                 if (File.Exists(passwordFilePath))
                 {
-                    string storedHashedPassword = File.ReadAllText(passwordFilePath).Trim(); // Trim whitespace
-                    string inputHashedPassword = SecurityHelper.HashPassword(password.Trim()); // Trim whitespace
+                    string storedHashedPassword = File.ReadAllText(passwordFilePath).Trim();
+                    string inputHashedPassword = SecurityHelper.HashPassword(password.Trim());
 
-                    Debug.WriteLine($"User ID: {userID}");
+                    Debug.WriteLine($"User ID: {localUserID}");
                     Debug.WriteLine($"Stored hashed password: {storedHashedPassword}");
                     Debug.WriteLine($"Input hashed password: {inputHashedPassword}");
 
@@ -138,7 +160,8 @@ namespace FinalProject24
                                 string[] profileFields = profileData[1].Split(',');
                                 if (profileFields.Length >= 3)
                                 {
-                                    userRole = profileFields[2].Trim(); // Assuming role is in the 3rd position
+                                    userRole = profileFields[2].Trim();
+                                    userID = localUserID; // Set the userID here
                                     return true;
                                 }
                             }
@@ -146,10 +169,9 @@ namespace FinalProject24
                     }
                 }
             }
-
-            userRole = null;
             return false;
         }
+
 
 
 
