@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Security.Cryptography; // For hasing password.
+
 
 namespace FinalProject24
 {
@@ -35,6 +37,7 @@ namespace FinalProject24
         public JG_signUpPageUserControl()
         {
             InitializeComponent();
+            HideRadioButtons();
         }
 
         string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber = "123-456-7890";
@@ -53,11 +56,73 @@ namespace FinalProject24
             }
             else
             {
-                isCustomer = CheckIfCustomer();
-                SaveNewAcctToCSV(newName, newEmail, newPassword, isCustomer);
-                MessageBox.Show("Your account was successfully created!");
+                try
+                {
+                    // Here we call the method to handle all the account creation logic
+                    SaveNewAcctToCSV(newName, newEmail, newPassword);
+                    MessageBox.Show("Your account was successfully created!");
+                    JG_signUpPageUserControl.Instance.SendToBack(); // go back to the login form by hiding the UC
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while creating the account: " + ex.Message);
+                }
             }
         }
+
+
+
+
+        private void SaveNewAcctToCSV(string name, string email, string password)
+        {
+            // Generate a unique UserID (using a GUID for simplicity)
+            string userID = Guid.NewGuid().ToString();
+
+            // Hash the password using SHA-256
+            string hashedPassword = SecurityHelper.HashPassword(newPassword);
+
+            // Create the directory path for the user's data
+            string relativePath = @"..\..\..\..\CustomerUserFolder\";
+            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+
+            // Ensure the main CustomerUserFolder directory exists
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Create the user-specific folder
+            string userFolderPath = Path.Combine(directoryPath, userID);
+            Directory.CreateDirectory(userFolderPath);
+
+            // Create the password.txt file
+            File.WriteAllText(Path.Combine(userFolderPath, "password.txt"), hashedPassword);
+
+            // Create an Images directory for the user
+            string imagesFolderPath = Path.Combine(userFolderPath, "Images");
+            Directory.CreateDirectory(imagesFolderPath);
+
+            // Create the profile.csv file
+            string profileFilePath = Path.Combine(userFolderPath, "profile.csv");
+            File.WriteAllText(profileFilePath, $"Name,Email,Phone Number,Address\n{name},{email},{phoneNumber},\"\"");
+
+            // Create a receipts directory for the user
+            string receiptsFolderPath = Path.Combine(userFolderPath, "receipts");
+            Directory.CreateDirectory(receiptsFolderPath);
+
+            // Append the new user to the allCustomerUser.csv
+            string allCustomerUserPath = Path.Combine(directoryPath, "allCustomerUser.csv");
+            string newUserLine = $"{userID},{email}\n";
+            File.AppendAllText(allCustomerUserPath, newUserLine);
+        }
+
+
+
+
+        
+
+
+
         private bool CheckPassword() // bool function that determines if the passwords match
         {
             bool result = false;
@@ -67,6 +132,8 @@ namespace FinalProject24
             }
             return result;
         }
+
+
         private string CheckIfCustomer() // change the value of isCustomer depending on which radiobutton is checked
         {
             if (customerRadioButton.Checked)
@@ -80,10 +147,21 @@ namespace FinalProject24
             return isCustomer;
         }
 
+
+        private void HideRadioButtons()
+        {
+            customerRadioButton.Visible = false;
+            managerRadioButton.Visible = false;
+        }
+
+
+
+
         private void loginLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             JG_signUpPageUserControl.Instance.SendToBack(); // go back to the login form by hiding the UC
         }
+
 
         private void nameTextBox_Enter(object sender, EventArgs e) // more code to make the text grey and hidden while typing
         {
@@ -94,6 +172,7 @@ namespace FinalProject24
             }
         }
 
+
         private void nameTextBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(nameTextBox.Text))
@@ -103,6 +182,7 @@ namespace FinalProject24
             }
         }
 
+
         private void emailTextBox_Enter(object sender, EventArgs e)
         {
             if (emailTextBox.Text == "Enter your email")
@@ -111,6 +191,8 @@ namespace FinalProject24
                 emailTextBox.ForeColor = SystemColors.WindowText;
             }
         }
+
+
 
         private void emailTextBox_Leave(object sender, EventArgs e)
         {
@@ -129,6 +211,8 @@ namespace FinalProject24
                 passwordTextBox.ForeColor = SystemColors.WindowText;
             }
         }
+
+
 
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
