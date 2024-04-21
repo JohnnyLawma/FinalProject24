@@ -40,7 +40,7 @@ namespace FinalProject24
             HideRadioButtons();
         }
 
-        string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber = "123-456-7890";
+        string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
 
 
         private void createAccountButton_Click(object sender, EventArgs e)
@@ -49,6 +49,7 @@ namespace FinalProject24
             newEmail = emailTextBox.Text;
             newPassword = passwordTextBox.Text;
             confirmPassword = confirmPasswordTextBox.Text;
+            phoneNumber = phoneNumberTextBox.Text;
 
             if (!CheckPassword()) // check if the passwords match
             {
