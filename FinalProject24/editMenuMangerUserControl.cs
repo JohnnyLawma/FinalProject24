@@ -97,6 +97,24 @@ namespace FinalProject24
                 selectedImageFileName = Path.GetFileName(openFileDialog.FileName);
             }
         }
+
+        private string GetUniqueImagePath(string baseFilePath)
+        {
+            string filePath = baseFilePath;
+            string directory = Path.GetDirectoryName(baseFilePath);
+            string fileName = Path.GetFileNameWithoutExtension(baseFilePath);
+            string extension = Path.GetExtension(baseFilePath);
+            int count = 1;
+
+            while (File.Exists(filePath))
+            {
+                filePath = Path.Combine(directory, $"{fileName}_{count}{extension}");
+                count++;
+            }
+
+            return filePath;
+        }
+
         private void ApplyChangeButton_Click(object sender, EventArgs e)
         {
             string id = textBox1.Text;
@@ -123,8 +141,15 @@ namespace FinalProject24
                 // If a new image is selected
                 if (!string.IsNullOrWhiteSpace(selectedImageFileName))
                 {
-                    existingItem.ImagePath = selectedImageFileName;
                     string filePath = Path.Combine(imagesFolderPath, selectedImageFileName);
+
+                    if (File.Exists(filePath))
+                    {
+                        filePath = GetUniqueImagePath(filePath);
+                        selectedImageFileName = Path.GetFileName(filePath);
+                    }
+
+                    existingItem.ImagePath = selectedImageFileName;
 
                     // Create a temporary image to bypass the GDI+ error
                     using (var tempImage = new Bitmap(pictureBox1.Image))
@@ -153,6 +178,12 @@ namespace FinalProject24
                 items.Add(newItem);
 
                 string newFilePath = Path.Combine(imagesFolderPath, selectedImageFileName);
+
+                if (File.Exists(newFilePath))
+                {
+                    newFilePath = GetUniqueImagePath(newFilePath);
+                    newItem.ImagePath = Path.GetFileName(newFilePath);
+                }
 
                 // Create a temporary image to bypass the GDI+ error
                 using (var tempImage = new Bitmap(pictureBox1.Image))
