@@ -123,6 +123,7 @@ namespace FinalProject24
 
         private void viewCurrentMenu_Click(object sender, EventArgs e)
         {
+           
             if (!mainpanel1.Controls.Contains(NS_MViewPageUserControl1.Instance))
             {
                 mainpanel1.Controls.Add(NS_MViewPageUserControl1.Instance);

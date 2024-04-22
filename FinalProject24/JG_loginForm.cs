@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,191 +27,157 @@ namespace FinalProject24
 
 
         // Loading the main form and the manager main form in memory
-        mainPageForm1 loadMainForm = new mainPageForm1();
+        //mainPageForm1 loadMainForm = new mainPageForm1();
         ManagerMainPageForm loadManagerForm = new ManagerMainPageForm();
 
+        string userID;
+
+        //
         private async void signinButton_Click(object sender, EventArgs e)
         {
-            string inputEmail = emailTextBox.Text, inputPassword = passwordTextBox.Text, isCustomer = "";
-            if (AccountExists(inputEmail, inputPassword, out isCustomer))
+
+            // Create the directory path for the user's data
+            string inputEmail = emailTextBox.Text.Trim(); // Trim input values
+            string inputPassword = passwordTextBox.Text.Trim();
+
+            // Clear any previous error messages
+            successOrNotLabel.Text = "";
+
+            if (string.IsNullOrWhiteSpace(inputEmail) || string.IsNullOrWhiteSpace(inputPassword))
             {
-                if (isCustomer == "Customer")
-                {
-                    Environment.SetEnvironmentVariable("EmailEnv", emailTextBox.Text);
-                    successOrNotLabel.ForeColor = System.Drawing.Color.Green;
-                    successOrNotLabel.Text = "Success! Welcome back Customer!";
-
-                    // Wait for 1 seconds to show sucess message.
-                    await Task.Delay(1000);
-
-                    loadMainForm.Show(); // Opening the Main Menu Form
-                    this.Hide(); // Hiding the Login Form
-
-                    if (emailTextBox.Text != "Enter your email") // use this as a template to get hidden text for the other textboxes
-                    {
-                        emailTextBox.Text = "Enter your email";
-                        emailTextBox.ForeColor = SystemColors.WindowText;
-                    }
-                    if (passwordTextBox.Text != "Enter your password")
-                    {
-                        passwordTextBox.Text = "Enter your password";
-                        passwordTextBox.ForeColor = SystemColors.WindowText;
-                    }
-
-                    successOrNotLabel.Text = "";
-                }
-                else if (isCustomer == "Manager")
-                {
-                    Environment.SetEnvironmentVariable("EmailEnv", emailTextBox.Text);
-                    successOrNotLabel.ForeColor = System.Drawing.Color.Green;
-                    successOrNotLabel.Text = "Success! Welcome back Manager!";
-
-                    // Wait for 1 seconds to show sucess message.
-                    await Task.Delay(1000);
-
-                    loadManagerForm.Show(); // Opening the Main Menu Form
-                    this.Hide(); // Hiding the Login Form
-
-                    if (emailTextBox.Text != "Enter your email")
-                    {
-                        emailTextBox.Text = "Enter your email";
-                        emailTextBox.ForeColor = SystemColors.WindowText;
-                    }
-                    if (passwordTextBox.Text != "Enter your password")
-                    {
-                        passwordTextBox.Text = "Enter your password";
-                        passwordTextBox.ForeColor = SystemColors.WindowText;
-                    }
-
-                    successOrNotLabel.Text = "";
-                }
-
+                successOrNotLabel.Text = "Please enter both an email and a password.";
+                return;
             }
-            else if (emailTextBox.Text == "Enter your email" || passwordTextBox.Text == "Enter your password")
-            {
-                successOrNotLabel.ForeColor = System.Drawing.Color.Yellow;
-                successOrNotLabel.Text = "Please enter your email and password.";
-                emailTextBox.Focus();
 
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
+            // Check manager credentials first
+            if (inputEmail == managerEMAIL && inputPassword == managerPASSWORD)
+            {
+                // Logic for successful manager login
+                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                successOrNotLabel.Text = "Success! Welcome, Manager!";
+                await Task.Delay(1000); // Wait for 1 second to show success message
+
+                loadManagerForm.Show(); // Open the manager main form
+                ResetTextFields();
+                this.Hide(); // Hide the Login Form
             }
             else
             {
-                //MessageBox.Show($"input email {inputEmail}");
-                successOrNotLabel.ForeColor = System.Drawing.Color.Red;
-                successOrNotLabel.Text = "The email or password was entered incorrectly";
-                emailTextBox.Focus();
+                // Check customer credentials
+                string userRole;
+                string userID;
+                if (AccountExists(inputEmail, inputPassword, out userRole, out userID))
+                {
+                    // Logic for successful login
+                    successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                    successOrNotLabel.Text = "Success! Welcome back, Customer!";
 
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
+                    await Task.Delay(1000); // Wait for 1 second to show success message
+
+                    OpenMainForm(userID); // Now we pass the userID to OpenMainForm
+                }
+                else
+                {
+                    // Logic for failed login
+                    successOrNotLabel.ForeColor = System.Drawing.Color.Red;
+                    successOrNotLabel.Text = "The email or password was incorrectly.";
+                    await Task.Delay(1000); // Wait for 1 second to show the error message
+                }
             }
         }
-            /*
-            if (emailTextBox.Text == customerEMAIL && passwordTextBox.Text == customerPASSWORD)
-            {
-                Environment.SetEnvironmentVariable("customerEmailEnv", emailTextBox.Text);
-                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
-                successOrNotLabel.Text = "Success! Welcome back Customer!";
 
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
 
-                loadMainForm.Show(); // Opening the Main Menu Form
-                this.Hide(); // Hiding the Login Form
-
-                if (emailTextBox.Text != "Enter your email") // use this as a template to get hidden text for the other textboxes
-                {
-                    emailTextBox.Text = "Enter your email";
-                    emailTextBox.ForeColor = SystemColors.WindowText;
-                }
-                if (passwordTextBox.Text != "Enter your password")
-                {
-                    passwordTextBox.Text = "Enter your password";
-                    passwordTextBox.ForeColor = SystemColors.WindowText;
-                }
-
-                successOrNotLabel.Text = "";
-
-            }
-            else if (emailTextBox.Text == managerEMAIL && passwordTextBox.Text == managerPASSWORD)
-            {
-                Environment.SetEnvironmentVariable("managerEmailEnv", emailTextBox.Text);
-                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
-                successOrNotLabel.Text = "Success! Welcome back Manager!";
-
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
-
-                loadManagerForm.Show(); // Opening the Main Menu Form
-                this.Hide(); // Hiding the Login Form
-
-                if (emailTextBox.Text != "Enter your email")
-                {
-                    emailTextBox.Text = "Enter your email";
-                    emailTextBox.ForeColor = SystemColors.WindowText;
-                }
-                if (passwordTextBox.Text != "Enter your password")
-                {
-                    passwordTextBox.Text = "Enter your password";
-                    passwordTextBox.ForeColor = SystemColors.WindowText;
-                }
-
-                successOrNotLabel.Text = "";
-
-            }
-            else if (emailTextBox.Text == "Enter your email" || passwordTextBox.Text == "Enter your password")
-            {
-                successOrNotLabel.ForeColor = System.Drawing.Color.Yellow;
-                successOrNotLabel.Text = "Please enter your email and password.";
-                emailTextBox.Focus();
-
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
-            }
-            else //
-            {
-                //MessageBox.Show("The email or password was entered incorrectly. Try again!");
-                successOrNotLabel.ForeColor = System.Drawing.Color.Red;
-                successOrNotLabel.Text = "The email or password was entered incorrectly";
-                emailTextBox.Focus();
-
-                // Wait for 1 seconds to show sucess message.
-                await Task.Delay(1000);
-            }
-        }
-            */
-
-        private bool AccountExists(string email, string password, out string isCustomer)
+        private void OpenMainForm(string userID)
         {
-            string relativePath = @"..\..\..\..\loginInfo\"; // Define the directory where the CSV files will be saved
-            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
-            // then make a list of csv files so they can get checked
-            string[] CSVFiles = Directory.GetFiles(directoryPath, "*.csv");
-
-            foreach (string CSVFile in CSVFiles) // cycle through all the files in the folder
+            // Check if userID is not null or empty.
+            if (!string.IsNullOrEmpty(userID))
             {
-                string[] data = File.ReadAllLines(CSVFile); // make an array that goes through the files data
+                // Proceed with opening the main form with the userID
+                mainPageForm1 mainForm = new mainPageForm1(userID);
+                mainForm.Show(); // Show the main form
+                ResetTextFields(); // Reset the text fields in the current form
+                this.Hide(); // Hide the login form
+            }
+            else
+            {
+                // If userID is null or empty, show an error message.
+                MessageBox.Show("User ID cannot be null or empty.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-                for (int i = 1; i < data.Length; i++) // i = 1 because the first line is setup to be a header
-                { // go through each line and make an array that holds the data that gets split
-                    string line = data[i];
-                    string[] inFileData = line.Split(',');
 
-                    string currEmail = inFileData[0];
-                    string currPassword = inFileData[1];
-                    string currIsCustomer = inFileData[3];
 
-                    if (currEmail == email && currPassword == password)
+
+        private void ResetTextFields()
+        {
+            emailTextBox.Text = "Enter your email";
+            emailTextBox.ForeColor = SystemColors.WindowText;
+            passwordTextBox.Text = "Enter your password";
+            passwordTextBox.ForeColor = SystemColors.WindowText;
+            successOrNotLabel.Text = "";
+        }
+
+
+
+
+
+
+        //
+        private bool AccountExists(string email, string password, out string userRole, out string userID)
+        {
+            userRole = null;
+            userID = null; // Initialize userID
+            string relativePath = @"..\..\..\..\CustomerUserFolder\";
+            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Debug.WriteLine("Directory not found: " + directoryPath);
+                return false;
+            }
+
+            foreach (string userIDFolder in Directory.GetDirectories(directoryPath))
+            {
+                string localUserID = Path.GetFileName(userIDFolder); // Correctly obtain the userID from the folder name
+                string passwordFilePath = Path.Combine(userIDFolder, "password.txt");
+
+                if (File.Exists(passwordFilePath))
+                {
+                    string storedHashedPassword = File.ReadAllText(passwordFilePath).Trim();
+                    string inputHashedPassword = SecurityHelper.HashPassword(password.Trim());
+
+                    Debug.WriteLine($"User ID: {localUserID}");
+                    Debug.WriteLine($"Stored hashed password: {storedHashedPassword}");
+                    Debug.WriteLine($"Input hashed password: {inputHashedPassword}");
+
+                    if (inputHashedPassword.Equals(storedHashedPassword, StringComparison.OrdinalIgnoreCase))
                     {
-                        isCustomer = currIsCustomer;
-                        return true;
+                        string profileFilePath = Path.Combine(userIDFolder, "profile.csv");
+
+                        if (File.Exists(profileFilePath))
+                        {
+                            string[] profileData = File.ReadAllLines(profileFilePath);
+                            if (profileData.Length >= 2)
+                            {
+                                string[] profileFields = profileData[1].Split(',');
+                                if (profileFields.Length >= 3)
+                                {
+                                    userRole = profileFields[2].Trim();
+                                    userID = localUserID; // Set the userID here
+                                    return true;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            isCustomer = null;
             return false;
         }
+
+
+
+
+
 
 
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
