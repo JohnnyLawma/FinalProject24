@@ -135,23 +135,29 @@ namespace FinalProject24
             if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
             {
                 mainPanel.Controls.Add(PaymentUserControl1.Instance);
+                PaymentUserControl1.Instance.SetUserID(userID);  // Set the userID for the instance
                 PaymentUserControl1.Instance.Dock = DockStyle.Fill;
+                
                 PaymentUserControl1.Instance.BringToFront();
                 PaymentUserControl1.Instance.CartItems = cartUCInstance.GetCartItems();
             }
             else
             {
+                PaymentUserControl1.Instance.SetUserID(userID);
                 PaymentUserControl1.Instance.BringToFront();
             }
             mainPanel.Visible = true;
             menuPanel.Visible = false;
             menuLabel.Visible = false;
         }
+
         private void CartUCInstance_CartItemsChanged(object sender, EventArgs e)
         {
             // This method is called whenever the cart items are changed
             UpdateSelectedItemsFromCart();
         }
+
+
         private void UpdateSelectedItemsFromCart()
         {
             selectedItems = cartUCInstance.GetCartItems()
@@ -396,53 +402,7 @@ namespace FinalProject24
             }
         }
 
-        /*
-        private void PopulateMenuPanel()
-        {
-            menuPanel.Controls.Clear();
-
-            menuPanel.AutoScroll = true; // Enable the scrollbar for the panel
-
-
-            int controlSpacing = 15; // Spacing between controls
-            int controlWidth = 400; // Width of the user control
-            int controlHeight = 382; // Height of the user control
-            int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
-
-            string impagePaths = imagePathMenuItems;
-
-
-            // Load 9 demo menu cards
-            for (int i = 0; i < 9; i++)
-            {
-                // Create a new instance of the menuCardUserControl
-                menuCardUserControl card = new menuCardUserControl();
-
-                // Assuming each card is 400 x 382 and we want a 15-pixel space between them
-                card.Size = new Size(controlWidth, controlHeight);
-                card.Location = new Point(
-                    (i % numControlsPerRow) * (controlWidth + controlSpacing), // X position
-                    (i / numControlsPerRow) * (controlHeight + controlSpacing) // Y position
-                );
-
-                // Set the properties for the demo
-                card.ItemName = "Demo Item " + (i + 1);
-                card.ItemPrice = "$" + (6.00m + i).ToString("0.00");
-                card.ItemImage = Image.FromFile(imagePathMenuItems);
-                card.ImagePath = imagePathMenuItems;
-
-                card.AddButtonClicked += Card_AddButtonClicked;
-                card.RemoveButtonClicked += Card_RemoveButtonClicked;
-
-
-
-
-
-                menuPanel.Controls.Add(card);
-            } // For Loop End Line
-        }
-
-        */
+        
 
 
         // This is load when the Form is loaded.
@@ -505,22 +465,25 @@ namespace FinalProject24
         {
             orderHistoryPanel.Visible = false;
 
+            // Create the instance if it does not exist
             if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
             {
                 mainPanel.Controls.Add(PaymentUserControl1.Instance);
                 PaymentUserControl1.Instance.Dock = DockStyle.Fill;
-                PaymentUserControl1.Instance.BringToFront();
             }
-            else
-            {
-                PaymentUserControl1.Instance.BringToFront();
-            }
+
+            // Set the userID for the PaymentUserControl1 instance
+            //string userID = "theUserID"; // Retrieve the actual userID from the context
+            PaymentUserControl1.Instance.SetUserID(userID);
+
+            // Make sure the PaymentUserControl1 is visible
+            PaymentUserControl1.Instance.BringToFront();
 
             mainPanel.Visible = true;
             menuPanel.Visible = false;
             menuLabel.Visible = false;
-
         }
+
 
 
         private void homeButton_Click(object sender, EventArgs e)

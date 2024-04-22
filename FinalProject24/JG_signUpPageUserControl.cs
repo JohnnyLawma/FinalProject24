@@ -268,6 +268,10 @@ namespace FinalProject24
             }
         }
 
+
+ 
+
+
         private void nameTextBox_KeyPress(object sender, KeyPressEventArgs e) // make the enter button move forward just like the tab button
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -304,6 +308,10 @@ namespace FinalProject24
                 e.Handled = true;
             }
         }
+
+
+        
+
 
         private void customerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
