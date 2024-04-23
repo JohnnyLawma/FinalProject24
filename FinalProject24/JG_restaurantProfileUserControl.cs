@@ -10,8 +10,7 @@ namespace FinalProject24
     public partial class JG_restaurantProfileUserControl : UserControl
     {
         private static JG_restaurantProfileUserControl _instance;
-
-        private const string CsvFilePath = @"../../../../resturantinformation/resturantinfo.csv";
+        private static readonly string CsvFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../../resturantinformation/resturantInformation.csv");
         private string currentUsername;
 
         public static JG_restaurantProfileUserControl Instance
@@ -29,14 +28,24 @@ namespace FinalProject24
         public JG_restaurantProfileUserControl()
         {
             InitializeComponent();
+            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
+            EnsureCsvFileExists();
+        }
+
+        private void EnsureCsvFileExists()
+        {
+            if (!File.Exists(CsvFilePath))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(CsvFilePath));  // Create directory if it doesn't exist
+                File.WriteAllText(CsvFilePath, "Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");  // Create file with header
+            }
         }
 
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
-            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             UpdateProfile(newNameTextBox.Text, newAddressTextBox.Text, newPhoneNumberTextBox.Text,
                           newEmailTextBox.Text, newDescriptionTextBox.Text);
-            LoadProfile(currentUsername); // Refresh display after update
+            LoadProfile(currentUsername);
         }
 
         private void JG_restaurantProfileUserControl_Load(object sender, EventArgs e)
@@ -46,39 +55,44 @@ namespace FinalProject24
 
         private void LoadProfile(string username)
         {
-            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             var profiles = ReadCsvFile();
-            var profile = profiles.FirstOrDefault(p => p.Username == username);
+            var profile = profiles.FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.Username) && p.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+
             if (profile == null)
             {
-                profile = CreateDefaultProfile(username);
-                profiles.Add(profile);
-                WriteCsvFile(profiles);
+                DisplayProfile(new RestaurantProfile($"{username},,,,,"));
             }
-            DisplayProfile(profile);
+            else
+            {
+                DisplayProfile(profile);
+            }
         }
 
         private void UpdateProfile(string name, string address, string phone, string email, string description)
         {
-            currentUsername = Environment.GetEnvironmentVariable("EmailEnv");
             var profiles = ReadCsvFile();
             var profile = profiles.FirstOrDefault(p => p.Username == currentUsername);
-            if (profile == null)
+
+            if (profile == null && IsAnyFieldNonEmpty(name, address, phone, email, description))
             {
-                profile = CreateDefaultProfile(currentUsername);
+                profile = new RestaurantProfile($"{currentUsername},n/a,n/a,n/a,n/a,n/a");
                 profiles.Add(profile);
             }
-            profile.RestaurantName = name;
-            profile.RestaurantAddress = address;
-            profile.RestaurantPhone = phone;
-            profile.RestaurantEmail = email;
-            profile.RestaurantDescription = description;
-            WriteCsvFile(profiles);
+
+            if (profile != null)
+            {
+                profile.RestaurantName = string.IsNullOrWhiteSpace(name) ? "n/a" : name;
+                profile.RestaurantAddress = string.IsNullOrWhiteSpace(address) ? "n/a" : address;
+                profile.RestaurantPhone = string.IsNullOrWhiteSpace(phone) ? "n/a" : phone;
+                profile.RestaurantEmail = string.IsNullOrWhiteSpace(email) ? "n/a" : email;
+                profile.RestaurantDescription = string.IsNullOrWhiteSpace(description) ? "n/a" : description;
+                WriteCsvFile(profiles);
+            }
         }
 
-        private RestaurantProfile CreateDefaultProfile(string username)
+        private bool IsAnyFieldNonEmpty(params string[] fields)
         {
-            return new RestaurantProfile($"{username},n/a,n/a,n/a,n/a,n/a");
+            return fields.Any(field => !string.IsNullOrWhiteSpace(field));
         }
 
         private void DisplayProfile(RestaurantProfile profile)
@@ -92,31 +106,36 @@ namespace FinalProject24
 
         private List<RestaurantProfile> ReadCsvFile()
         {
-            return File.ReadAllLines(CsvFilePath)
-                       .Skip(1)
-                       .Where(line => !string.IsNullOrWhiteSpace(line))
-                       .Select(line => new RestaurantProfile(line))
-                       .ToList();
+            EnsureCsvFileExists();  // Ensure file exists before reading
+            var lines = File.ReadAllLines(CsvFilePath).Skip(1);
+            return lines.Select(line => new RestaurantProfile(line)).ToList();
         }
 
         private void WriteCsvFile(List<RestaurantProfile> profiles)
         {
-            var data = new StringBuilder("Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");
-            foreach (var profile in profiles)
+            try
             {
-                data.AppendLine($"{profile.Username},{profile.RestaurantName},{profile.RestaurantAddress},{profile.RestaurantPhone},{profile.RestaurantEmail},{profile.RestaurantDescription}");
+                var data = new StringBuilder("Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");
+                foreach (var profile in profiles.Where(p => IsAnyFieldNonEmpty(p.RestaurantName, p.RestaurantAddress, p.RestaurantPhone, p.RestaurantEmail, p.RestaurantDescription)))
+                {
+                    data.AppendLine(profile.ToString());
+                }
+                File.WriteAllText(CsvFilePath, data.ToString());
             }
-            File.WriteAllText(CsvFilePath, data.ToString());
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Failed to write to the file: {ex.Message}", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label22_Click(object sender, EventArgs e)
         {
-
+            // Placeholder for any additional event handling
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            // Placeholder for any additional event handling
         }
     }
 
@@ -133,11 +152,16 @@ namespace FinalProject24
         {
             var values = csvLine.Split(',');
             Username = values[0];
-            RestaurantName = values.Length > 1 ? values[1] : "";
-            RestaurantAddress = values.Length > 2 ? values[2] : "";
-            RestaurantPhone = values.Length > 3 ? values[3] : "";
-            RestaurantEmail = values.Length > 4 ? values[4] : "";
-            RestaurantDescription = values.Length > 5 ? values[5] : "";
+            RestaurantName = values.Length > 1 ? values[1] : "n/a";
+            RestaurantAddress = values.Length > 2 ? values[2] : "n/a";
+            RestaurantPhone = values.Length > 3 ? values[3] : "n/a";
+            RestaurantEmail = values.Length > 4 ? values[4] : "n/a";
+            RestaurantDescription = values.Length > 5 ? values[5] : "n/a";
+        }
+
+        public override string ToString()
+        {
+            return $"{Username},{RestaurantName},{RestaurantAddress},{RestaurantPhone},{RestaurantEmail},{RestaurantDescription}";
         }
     }
 }
