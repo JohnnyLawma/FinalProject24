@@ -36,8 +36,8 @@ namespace FinalProject24
         {
             if (!File.Exists(CsvFilePath))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(CsvFilePath));  // Create directory if it doesn't exist
-                File.WriteAllText(CsvFilePath, "Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");  // Create file with header
+                Directory.CreateDirectory(Path.GetDirectoryName(CsvFilePath));
+                File.WriteAllText(CsvFilePath, "Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");
             }
         }
 
@@ -60,7 +60,7 @@ namespace FinalProject24
 
             if (profile == null)
             {
-                DisplayProfile(new RestaurantProfile($"{username},,,,,"));
+                DisplayProfile(new RestaurantProfile($"{username},n/a,n/a,n/a,n/a,n/a"));
             }
             else
             {
@@ -85,7 +85,7 @@ namespace FinalProject24
                 profile.RestaurantAddress = string.IsNullOrWhiteSpace(address) ? "n/a" : address;
                 profile.RestaurantPhone = string.IsNullOrWhiteSpace(phone) ? "n/a" : phone;
                 profile.RestaurantEmail = string.IsNullOrWhiteSpace(email) ? "n/a" : email;
-                profile.RestaurantDescription = string.IsNullOrWhiteSpace(description) ? "n/a" : description;
+                profile.RestaurantDescription = string.IsNullOrWhiteSpace(description) ? "n/a" : $"\"{description}\"";
                 WriteCsvFile(profiles);
             }
         }
@@ -101,12 +101,12 @@ namespace FinalProject24
             currAddressLabel.Text = profile.RestaurantAddress;
             currPhoneNumberLabel.Text = profile.RestaurantPhone;
             currEmailLabel.Text = profile.RestaurantEmail;
-            currDescriptionLabel.Text = profile.RestaurantDescription;
+            currDescriptionLabel.Text = profile.RestaurantDescription.Trim('"');
         }
 
         private List<RestaurantProfile> ReadCsvFile()
         {
-            EnsureCsvFileExists();  // Ensure file exists before reading
+            EnsureCsvFileExists();
             var lines = File.ReadAllLines(CsvFilePath).Skip(1);
             return lines.Select(line => new RestaurantProfile(line)).ToList();
         }
@@ -116,7 +116,7 @@ namespace FinalProject24
             try
             {
                 var data = new StringBuilder("Username,RestaurantName,RestaurantAddress,RestaurantPhone,RestaurantEmail,RestaurantDescription\n");
-                foreach (var profile in profiles.Where(p => IsAnyFieldNonEmpty(p.RestaurantName, p.RestaurantAddress, p.RestaurantPhone, p.RestaurantEmail, p.RestaurantDescription)))
+                foreach (var profile in profiles)
                 {
                     data.AppendLine(profile.ToString());
                 }
@@ -130,12 +130,10 @@ namespace FinalProject24
 
         private void label22_Click(object sender, EventArgs e)
         {
-            // Placeholder for any additional event handling
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            // Placeholder for any additional event handling
         }
     }
 
@@ -150,18 +148,47 @@ namespace FinalProject24
 
         public RestaurantProfile(string csvLine)
         {
-            var values = csvLine.Split(',');
+            var values = ParseCsvLine(csvLine);
             Username = values[0];
             RestaurantName = values.Length > 1 ? values[1] : "n/a";
             RestaurantAddress = values.Length > 2 ? values[2] : "n/a";
             RestaurantPhone = values.Length > 3 ? values[3] : "n/a";
             RestaurantEmail = values.Length > 4 ? values[4] : "n/a";
-            RestaurantDescription = values.Length > 5 ? values[5] : "n/a";
+            RestaurantDescription = values.Length > 5 ? values[5].Trim('"') : "n/a";
+        }
+
+        private string[] ParseCsvLine(string csvLine)
+        {
+            var columns = new List<string>();
+            var column = new StringBuilder();
+            bool inQuotes = false;
+
+            foreach (char ch in csvLine)
+            {
+                if (ch == '\"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                else if (ch == ',' && !inQuotes)
+                {
+                    columns.Add(column.ToString());
+                    column.Clear();
+                }
+                else
+                {
+                    column.Append(ch);
+                }
+            }
+
+            columns.Add(column.ToString()); // Add the last column
+            return columns.ToArray();
         }
 
         public override string ToString()
         {
-            return $"{Username},{RestaurantName},{RestaurantAddress},{RestaurantPhone},{RestaurantEmail},{RestaurantDescription}";
+            // Enclose description in quotes if it contains a comma or quotes
+            string safeDescription = RestaurantDescription.Contains(",") || RestaurantDescription.Contains("\"") ? $"\"{RestaurantDescription.Replace("\"", "\"\"")}\"" : RestaurantDescription;
+            return $"{Username},{RestaurantName},{RestaurantAddress},{RestaurantPhone},{RestaurantEmail},{safeDescription}";
         }
     }
 }

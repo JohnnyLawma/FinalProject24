@@ -98,7 +98,7 @@
             // 
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             label4.ImageAlign = ContentAlignment.MiddleLeft;
-            label4.Location = new Point(17, 157);
+            label4.Location = new Point(17, 143);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(227, 43);
@@ -110,7 +110,7 @@
             // 
             label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ImageAlign = ContentAlignment.MiddleLeft;
-            label5.Location = new Point(17, 236);
+            label5.Location = new Point(17, 209);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(179, 43);
@@ -122,7 +122,7 @@
             // 
             label6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             label6.ImageAlign = ContentAlignment.MiddleLeft;
-            label6.Location = new Point(17, 307);
+            label6.Location = new Point(17, 271);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(179, 45);
@@ -135,10 +135,10 @@
             currNameLabel.BorderStyle = BorderStyle.FixedSingle;
             currNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             currNameLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currNameLabel.Location = new Point(17, 49);
+            currNameLabel.Location = new Point(17, 53);
             currNameLabel.Margin = new Padding(4, 0, 4, 0);
             currNameLabel.Name = "currNameLabel";
-            currNameLabel.Size = new Size(222, 24);
+            currNameLabel.Size = new Size(222, 20);
             currNameLabel.TabIndex = 7;
             currNameLabel.Text = "Chinese Fusion Food";
             currNameLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -148,10 +148,10 @@
             currAddressLabel.BorderStyle = BorderStyle.FixedSingle;
             currAddressLabel.Font = new Font("Segoe UI", 9F);
             currAddressLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currAddressLabel.Location = new Point(17, 112);
+            currAddressLabel.Location = new Point(17, 118);
             currAddressLabel.Margin = new Padding(4, 0, 4, 0);
             currAddressLabel.Name = "currAddressLabel";
-            currAddressLabel.Size = new Size(222, 31);
+            currAddressLabel.Size = new Size(222, 25);
             currAddressLabel.TabIndex = 8;
             currAddressLabel.Text = "128 Nolensvile Pike, Nashville, TN 37211";
             currAddressLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -161,7 +161,7 @@
             currPhoneNumberLabel.BorderStyle = BorderStyle.FixedSingle;
             currPhoneNumberLabel.Font = new Font("Segoe UI", 9F);
             currPhoneNumberLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currPhoneNumberLabel.Location = new Point(17, 200);
+            currPhoneNumberLabel.Location = new Point(17, 186);
             currPhoneNumberLabel.Margin = new Padding(4, 0, 4, 0);
             currPhoneNumberLabel.Name = "currPhoneNumberLabel";
             currPhoneNumberLabel.Size = new Size(222, 23);
@@ -174,7 +174,7 @@
             currEmailLabel.BorderStyle = BorderStyle.FixedSingle;
             currEmailLabel.Font = new Font("Segoe UI", 9F);
             currEmailLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currEmailLabel.Location = new Point(17, 279);
+            currEmailLabel.Location = new Point(17, 252);
             currEmailLabel.Margin = new Padding(4, 0, 4, 0);
             currEmailLabel.Name = "currEmailLabel";
             currEmailLabel.Size = new Size(222, 17);
@@ -187,7 +187,7 @@
             currDescriptionLabel.BorderStyle = BorderStyle.FixedSingle;
             currDescriptionLabel.Font = new Font("Segoe UI", 9F);
             currDescriptionLabel.ImageAlign = ContentAlignment.MiddleLeft;
-            currDescriptionLabel.Location = new Point(17, 352);
+            currDescriptionLabel.Location = new Point(17, 316);
             currDescriptionLabel.Margin = new Padding(4, 0, 4, 0);
             currDescriptionLabel.Name = "currDescriptionLabel";
             currDescriptionLabel.Size = new Size(325, 120);
@@ -248,10 +248,10 @@
             // 
             label23.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             label23.ImageAlign = ContentAlignment.MiddleLeft;
-            label23.Location = new Point(22, 4);
+            label23.Location = new Point(19, 10);
             label23.Margin = new Padding(4, 0, 4, 0);
             label23.Name = "label23";
-            label23.Size = new Size(351, 44);
+            label23.Size = new Size(351, 33);
             label23.TabIndex = 13;
             label23.Text = "Enter Your Restaurant's Name:";
             label23.TextAlign = ContentAlignment.MiddleLeft;
@@ -271,10 +271,10 @@
             // newNameTextBox
             // 
             newNameTextBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            newNameTextBox.Location = new Point(22, 49);
+            newNameTextBox.Location = new Point(22, 46);
             newNameTextBox.Multiline = true;
             newNameTextBox.Name = "newNameTextBox";
-            newNameTextBox.Size = new Size(242, 18);
+            newNameTextBox.Size = new Size(242, 27);
             newNameTextBox.TabIndex = 19;
             // 
             // newAddressTextBox
@@ -288,7 +288,7 @@
             // 
             // newPhoneNumberTextBox
             // 
-            newPhoneNumberTextBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            newPhoneNumberTextBox.Font = new Font("Segoe UI", 9F);
             newPhoneNumberTextBox.Location = new Point(22, 177);
             newPhoneNumberTextBox.Multiline = true;
             newPhoneNumberTextBox.Name = "newPhoneNumberTextBox";
@@ -297,6 +297,7 @@
             // 
             // newEmailTextBox
             // 
+            newEmailTextBox.Font = new Font("Segoe UI", 9F);
             newEmailTextBox.Location = new Point(19, 242);
             newEmailTextBox.Multiline = true;
             newEmailTextBox.Name = "newEmailTextBox";
@@ -305,7 +306,8 @@
             // 
             // newDescriptionTextBox
             // 
-            newDescriptionTextBox.Location = new Point(19, 307);
+            newDescriptionTextBox.Font = new Font("Segoe UI", 9F);
+            newDescriptionTextBox.Location = new Point(22, 307);
             newDescriptionTextBox.Multiline = true;
             newDescriptionTextBox.Name = "newDescriptionTextBox";
             newDescriptionTextBox.Size = new Size(315, 123);
