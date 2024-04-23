@@ -156,7 +156,6 @@
             editSettingPanel.Name = "editSettingPanel";
             editSettingPanel.Size = new Size(323, 439);
             editSettingPanel.TabIndex = 11;
-            editSettingPanel.Paint += editSettingPanel_Paint;
             // 
             // textBox2
             // 
