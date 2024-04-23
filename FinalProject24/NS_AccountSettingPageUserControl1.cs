@@ -18,7 +18,7 @@ namespace FinalProject24
         private Dictionary<string, string> userDetails = new Dictionary<string, string>();
         private string userEmail;
 
-        private const string CsvFilePath = @"../../../../loginInfo";
+        private const string CsvFolderPath = @"../../../../CustomerUserFolder";
 
         public static NS_AccountSettingPageUserControl1 Instance
         {
@@ -60,27 +60,22 @@ namespace FinalProject24
         }
         public void LoadUserData()
         {
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFolderPath);
             UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            string[] files = Directory.GetFiles(CsvFilePath, "*.csv");
-            foreach (var file in files)
+
+            // Traverse each user folder to find the correct profile.csv
+            foreach (var subFolder in Directory.GetDirectories(directoryPath))
             {
-                var lines = File.ReadAllLines(file);
-                if (lines.Length > 1) // Ensure there is more than just the header line
+                string profilePath = Path.Combine(subFolder, "profile.csv");
+                if (File.Exists(profilePath))
                 {
-                    var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
-
-                    for (int j = 1; j < lines.Length; j++) // Iterate over each data line, not just the first
+                    var lines = File.ReadAllLines(profilePath);
+                    if (lines.Length > 1) // Ensure there is more than just the header line
                     {
-                        var values = lines[j].Split(',').Select(v => v.Trim()).ToList();
-
-                        if (values.Count < headers.Count)
-                        {
-                            MessageBox.Show($"Data row {j} in file {file} is missing some values and has been skipped.");
-                            continue;  // Skip this iteration if there aren't enough values
-                        }
+                        var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
+                        var values = lines[1].Split(',').Select(v => v.Trim()).ToList();
 
                         int emailIndex = headers.IndexOf("Email");
-
                         if (emailIndex != -1 && values[emailIndex].Equals(UserEmail, StringComparison.OrdinalIgnoreCase))
                         {
                             for (int i = 0; i < headers.Count; i++)
@@ -136,7 +131,7 @@ namespace FinalProject24
             string filePath = FindCsvFilePath(oldEmail);
             if (!string.IsNullOrEmpty(filePath))
             {
-                UpdateCsvFile(filePath, oldEmail);  // Pass in the oldEmail for comparison
+                UpdateCsvFile(filePath);  // Pass in the oldEmail for comparison
                 MessageBox.Show("Changes saved successfully!");
 
                 // Update the global email variable and the environment variable after a successful update
@@ -153,76 +148,68 @@ namespace FinalProject24
         }
 
 
-        private void UpdateCsvFile(string filePath, string oldEmail)
+        private void UpdateCsvFile(string filePath)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
             var lines = File.ReadAllLines(filePath).ToList();
             var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
+
+            // Indices for columns
             int emailIndex = headers.IndexOf("Email");
             int nameIndex = headers.IndexOf("Name");
             int phoneNumberIndex = headers.IndexOf("Phone Number");
 
-            List<string> updatedLines = new List<string>() { lines[0] }; // Start with the headers
-
-            bool foundAndUpdated = false;
+            List<string> updatedLines = new List<string> { lines[0] }; // Include header
 
             for (int i = 1; i < lines.Count; i++)
             {
                 var fields = lines[i].Split(',').Select(f => f.Trim()).ToArray();
-                if (fields.Length > emailIndex && fields[emailIndex].Equals(oldEmail, StringComparison.OrdinalIgnoreCase))
+                if (fields.Length > emailIndex && fields[emailIndex].Equals(UserEmail, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Update only the name, email, and phone number
+                    // Update the necessary fields
                     if (nameIndex != -1) fields[nameIndex] = userDetails["Name"];
                     if (emailIndex != -1) fields[emailIndex] = userDetails["Email"];
                     if (phoneNumberIndex != -1) fields[phoneNumberIndex] = userDetails["Phone Number"];
 
                     updatedLines.Add(string.Join(",", fields));
-                    foundAndUpdated = true;
                 }
                 else
                 {
-                    updatedLines.Add(lines[i]);  // Keep other entries unchanged
+                    updatedLines.Add(lines[i]);
                 }
             }
 
-            if (!foundAndUpdated)
-            {
-                MessageBox.Show("No entry found for the original email to update.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                File.WriteAllLines(filePath, updatedLines);
-            }
+            File.WriteAllLines(filePath, updatedLines);
+            MessageBox.Show("Changes saved successfully!");
         }
+
 
 
         private string FindCsvFilePath(string email)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFilePath);
-            Console.WriteLine("Searching in directory: " + directoryPath);  // Debug output
-            string[] files = Directory.GetFiles(directoryPath, "*.csv");
-
-            foreach (string file in files)
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFolderPath);
+            foreach (var subFolder in Directory.GetDirectories(directoryPath))
             {
-                Console.WriteLine("Checking file: " + file);  // Debug output
-                var lines = File.ReadAllLines(file);
-                if (lines.Length > 1)
+                string profilePath = Path.Combine(subFolder, "profile.csv");
+                if (File.Exists(profilePath))
                 {
-                    var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
-                    int emailIndex = headers.IndexOf("Email");
-                    var values = lines[1].Split(',').Select(v => v.Trim()).ToArray();
-                    Console.WriteLine("Current checking email: " + values[emailIndex]); // Debug output
-
-                    if (values.Length > emailIndex && values[emailIndex].Equals(email, StringComparison.OrdinalIgnoreCase))
+                    var lines = File.ReadAllLines(profilePath);
+                    if (lines.Length > 1)
                     {
-                        return file;
+                        var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
+                        int emailIndex = headers.IndexOf("Email");
+                        var values = lines[1].Split(',').Select(v => v.Trim()).ToArray();
+
+                        if (values.Length > emailIndex && values[emailIndex].Equals(email, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return profilePath;
+                        }
                     }
                 }
             }
-            MessageBox.Show("No matching email found in any CSV files.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("No matching email found in any profile CSV files.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return null;
         }
+
 
 
 

@@ -35,12 +35,9 @@ namespace FinalProject24
         //
         private async void signinButton_Click(object sender, EventArgs e)
         {
-
-            // Create the directory path for the user's data
-            string inputEmail = emailTextBox.Text.Trim(); // Trim input values
+            string inputEmail = emailTextBox.Text.Trim();
             string inputPassword = passwordTextBox.Text.Trim();
 
-            // Clear any previous error messages
             successOrNotLabel.Text = "";
 
             if (string.IsNullOrWhiteSpace(inputEmail) || string.IsNullOrWhiteSpace(inputPassword))
@@ -49,42 +46,44 @@ namespace FinalProject24
                 return;
             }
 
-            // Check manager credentials first
             if (inputEmail == managerEMAIL && inputPassword == managerPASSWORD)
             {
-                // Logic for successful manager login
-                successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                Environment.SetEnvironmentVariable("EmailEnv", inputEmail);
+                successOrNotLabel.ForeColor = Color.Green;
                 successOrNotLabel.Text = "Success! Welcome, Manager!";
-                await Task.Delay(1000); // Wait for 1 second to show success message
+                await Task.Delay(1000);
 
-                loadManagerForm.Show(); // Open the manager main form
+                // Set the environment variable here for manager
+
+                loadManagerForm.Show();
                 ResetTextFields();
-                this.Hide(); // Hide the Login Form
+                this.Hide();
             }
             else
             {
-                // Check customer credentials
                 string userRole;
                 string userID;
                 if (AccountExists(inputEmail, inputPassword, out userRole, out userID))
                 {
-                    // Logic for successful login
-                    successOrNotLabel.ForeColor = System.Drawing.Color.Green;
+                    Environment.SetEnvironmentVariable("EmailEnv", inputEmail);
+                    successOrNotLabel.ForeColor = Color.Green;
                     successOrNotLabel.Text = "Success! Welcome back, Customer!";
+                    await Task.Delay(1000);
 
-                    await Task.Delay(1000); // Wait for 1 second to show success message
+                    // Set the environment variable here for customer
+                  
 
-                    OpenMainForm(userID); // Now we pass the userID to OpenMainForm
+                    OpenMainForm(userID);
                 }
                 else
                 {
-                    // Logic for failed login
-                    successOrNotLabel.ForeColor = System.Drawing.Color.Red;
-                    successOrNotLabel.Text = "The email or password was incorrectly.";
-                    await Task.Delay(1000); // Wait for 1 second to show the error message
+                    successOrNotLabel.ForeColor = Color.Red;
+                    successOrNotLabel.Text = "The email or password was incorrect.";
+                    await Task.Delay(1000);
                 }
             }
         }
+
 
 
         private void OpenMainForm(string userID)
@@ -262,6 +261,11 @@ namespace FinalProject24
         }
 
         private void JG_loginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

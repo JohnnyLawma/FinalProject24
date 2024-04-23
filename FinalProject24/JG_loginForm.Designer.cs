@@ -140,6 +140,7 @@
             emailTextBox.Size = new Size(262, 29);
             emailTextBox.TabIndex = 0;
             emailTextBox.Text = "Enter your email";
+            emailTextBox.TextChanged += emailTextBox_TextChanged;
             emailTextBox.Enter += emailTextBox_Enter;
             emailTextBox.KeyPress += emailTextBox_KeyPress;
             emailTextBox.Leave += emailTextBox_Leave;
