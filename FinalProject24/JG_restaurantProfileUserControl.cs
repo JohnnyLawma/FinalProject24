@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    // Definition of the UserControl for handling restaurant profiles
+    
     public partial class JG_restaurantProfileUserControl : UserControl
     {
         // instance of the UserControl to make sure  only one instance exists
