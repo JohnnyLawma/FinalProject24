@@ -68,7 +68,6 @@
             label1.TabIndex = 0;
             label1.Text = "Current Restaurant Profile: ";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -242,7 +241,6 @@
             label22.TabIndex = 14;
             label22.Text = "Enter Your Restaurant's Address";
             label22.TextAlign = ContentAlignment.MiddleLeft;
-            label22.Click += label22_Click;
             // 
             // label23
             // 
