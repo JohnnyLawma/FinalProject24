@@ -208,7 +208,7 @@ namespace FinalProject24
         private void emailTextBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(emailTextBox.Text))
-            {
+            { 
                 emailTextBox.Text = "Enter your email";
                 emailTextBox.ForeColor = Color.Gray;
             }

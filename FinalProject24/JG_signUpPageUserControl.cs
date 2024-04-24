@@ -37,7 +37,7 @@ namespace FinalProject24
         public JG_signUpPageUserControl()
         {
             InitializeComponent();
-            HideRadioButtons();
+            //HideRadioButtons();
         }
 
         string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
@@ -135,7 +135,7 @@ namespace FinalProject24
             // Append the new user to the allCustomerUser.csv
             string newUserLine = $"{userID},{email}\n";
             File.AppendAllText(allCustomerUserPath, newUserLine);
-            
+
             //MessageBox.Show("Your account was successfully created!");
 
             return true;
@@ -268,16 +268,31 @@ namespace FinalProject24
             }
         }
 
+        private void phoneNumberTextBox_Enter(object sender, EventArgs e)
+        {
+            if (phoneNumberTextBox.Text == "615-123-4567")
+            {
+                phoneNumberTextBox.Text = "";
+                phoneNumberTextBox.ForeColor = SystemColors.WindowText;
+            }
+        }
 
- 
+        private void phoneNumberTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(phoneNumberTextBox.Text))
+            {
+                phoneNumberTextBox.Text = "615-123-4567";
+                phoneNumberTextBox.ForeColor = Color.Gray;
+            }
+        }
+
 
 
         private void nameTextBox_KeyPress(object sender, KeyPressEventArgs e) // make the enter button move forward just like the tab button
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                customerRadioButton.Focus();
-                customerRadioButton.Checked = false;
+                emailTextBox.Focus();
                 e.Handled = true;
             }
         }
@@ -304,13 +319,20 @@ namespace FinalProject24
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                phoneNumberTextBox.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void phoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
                 createAccountButton_Click(sender, e);
                 e.Handled = true;
             }
         }
 
-
-        
 
 
         private void customerRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -361,5 +383,7 @@ namespace FinalProject24
         {
 
         }
+
+
     }
 }

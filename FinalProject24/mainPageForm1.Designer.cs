@@ -87,10 +87,10 @@
             // 
             roundPictureBox1.BorderStyle = BorderStyle.Fixed3D;
             roundPictureBox1.Image = (Image)resources.GetObject("roundPictureBox1.Image");
-            roundPictureBox1.Location = new Point(9, 10);
+            roundPictureBox1.Location = new Point(10, 10);
             roundPictureBox1.Margin = new Padding(2, 1, 2, 1);
             roundPictureBox1.Name = "roundPictureBox1";
-            roundPictureBox1.Size = new Size(83, 71);
+            roundPictureBox1.Size = new Size(82, 71);
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             roundPictureBox1.TabIndex = 7;
             roundPictureBox1.TabStop = false;
