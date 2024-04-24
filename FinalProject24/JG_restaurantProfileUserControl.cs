@@ -17,7 +17,7 @@ namespace FinalProject24
         // Username to load and update profiles based on current user
         private string currentUsername;
 
-        // Property to access the singleton instance
+        // Property to access the instance
         public static JG_restaurantProfileUserControl Instance
         {
             get
