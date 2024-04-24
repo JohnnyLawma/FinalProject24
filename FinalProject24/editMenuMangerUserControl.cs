@@ -11,23 +11,30 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
+    // UserControl for managing menu items in a restaurant application.
     public partial class editMenuMangerUserControl : UserControl
     {
+        // Class to represent a menu item.
         public class MenuItem
         {
             public string MenuID { get; set; }
             public string MenuName { get; set; }
             public string MenuPrice { get; set; }
             public string ImagePath { get; set; }
-            public bool Status { get; set; } // Added to reflect the CSV structure
+            public bool Status { get; set; } // True if the menu item is active, false otherwise.
         }
 
+        // Path to the CSV file where menu items are stored.
         private string csvFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\MenuItemsUpdated.csv");
+        // Path to the folder where menu item images are stored.
         private string imagesFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Images");
+        // The file name of the selected image for a menu item.
         private string selectedImageFileName;
 
+        // Singleton instance of this UserControl.
         public static editMenuMangerUserControl _instance;
 
+        // Property to get the singleton instance of this UserControl.
         public static editMenuMangerUserControl Instance
         {
             get
@@ -40,22 +47,24 @@ namespace FinalProject24
             }
         }
 
+        // Constructor that initializes components and creates the images directory if it doesn't exist.
         public editMenuMangerUserControl()
         {
             InitializeComponent();
             Directory.CreateDirectory(imagesFolderPath);
         }
 
+        // Loads menu items from a CSV file and returns them as a list of MenuItem.
         private List<MenuItem> LoadMenuItems()
         {
             var items = new List<MenuItem>();
             if (File.Exists(csvFilePath))
             {
                 string[] lines = File.ReadAllLines(csvFilePath);
-                foreach (var line in lines.Skip(1)) // Skip the header
+                foreach (var line in lines.Skip(1)) // Skip the header line.
                 {
                     var columns = line.Split(',');
-                    if (columns.Length >= 5) // Ensure there are enough columns
+                    if (columns.Length >= 5) // Ensure there are enough columns.
                     {
                         items.Add(new MenuItem
                         {
@@ -63,7 +72,7 @@ namespace FinalProject24
                             MenuPrice = columns[1].Trim(),
                             MenuID = columns[2].Trim(),
                             ImagePath = columns[3].Trim(),
-                            Status = columns[4].Trim().Equals("TRUE", StringComparison.OrdinalIgnoreCase) // Parse the status as a boolean
+                            Status = columns[4].Trim().Equals("TRUE", StringComparison.OrdinalIgnoreCase) // Parse the status as a boolean.
                         });
                     }
                 }
@@ -75,11 +84,12 @@ namespace FinalProject24
             return items;
         }
 
+        // Saves a list of MenuItem to the CSV file.
         private void SaveMenuItems(List<MenuItem> items)
         {
             using (StreamWriter writer = new StreamWriter(csvFilePath, false))
             {
-                writer.WriteLine("Food Name,Price,ID,Image Path,Status"); // Correct the header to match CSV
+                writer.WriteLine("Food Name,Price,ID,Image Path,Status"); // Write the header line.
                 foreach (var item in items)
                 {
                     writer.WriteLine($"{item.MenuName},{item.MenuPrice},{item.MenuID},{item.ImagePath},{item.Status}");
@@ -87,6 +97,7 @@ namespace FinalProject24
             }
         }
 
+        // Event handler for the "Select Image" button. Opens a dialog to choose an image file.
         private void SelectImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -97,6 +108,26 @@ namespace FinalProject24
                 selectedImageFileName = Path.GetFileName(openFileDialog.FileName);
             }
         }
+
+        // Generates a unique file path if the same file name already exists.
+        private string GetUniqueImagePath(string baseFilePath)
+        {
+            string filePath = baseFilePath;
+            string directory = Path.GetDirectoryName(baseFilePath);
+            string fileName = Path.GetFileNameWithoutExtension(baseFilePath);
+            string extension = Path.GetExtension(baseFilePath);
+            int count = 1;
+
+            while (File.Exists(filePath))
+            {
+                filePath = Path.Combine(directory, $"{fileName}_{count}{extension}");
+                count++;
+            }
+
+            return filePath;
+        }
+
+        // Event handler for the "Apply Changes" button. Updates or adds menu items based on user input.
         private void ApplyChangeButton_Click(object sender, EventArgs e)
         {
             string id = textBox1.Text;
@@ -113,29 +144,36 @@ namespace FinalProject24
             List<MenuItem> items = LoadMenuItems();
             var existingItem = items.FirstOrDefault(i => i.MenuID == id);
 
-            // Handle updating an existing item
+            // Update an existing item or add a new one.
             if (existingItem != null)
             {
                 existingItem.MenuName = name;
                 existingItem.MenuPrice = price;
                 existingItem.Status = status;
 
-                // If a new image is selected
+                // Update image if a new one is selected.
                 if (!string.IsNullOrWhiteSpace(selectedImageFileName))
                 {
-                    existingItem.ImagePath = selectedImageFileName;
                     string filePath = Path.Combine(imagesFolderPath, selectedImageFileName);
 
-                    // Create a temporary image to bypass the GDI+ error
+                    if (File.Exists(filePath))
+                    {
+                        filePath = GetUniqueImagePath(filePath);
+                        selectedImageFileName = Path.GetFileName(filePath);
+                    }
+
+                    existingItem.ImagePath = selectedImageFileName;
+
+                    // Save the image using a temporary Bitmap to avoid file locking issues.
                     using (var tempImage = new Bitmap(pictureBox1.Image))
                     {
-                        tempImage.Save(filePath); // Save the temporary image
+                        tempImage.Save(filePath);
                     }
                 }
             }
             else
             {
-                // Handle adding a new item if the ID doesn't exist
+                // Add a new item if ID does not exist.
                 if (string.IsNullOrWhiteSpace(selectedImageFileName))
                 {
                     MessageBox.Show("Please select an image for the menu item.");
@@ -154,14 +192,20 @@ namespace FinalProject24
 
                 string newFilePath = Path.Combine(imagesFolderPath, selectedImageFileName);
 
-                // Create a temporary image to bypass the GDI+ error
+                if (File.Exists(newFilePath))
+                {
+                    newFilePath = GetUniqueImagePath(newFilePath);
+                    newItem.ImagePath = Path.GetFileName(newFilePath);
+                }
+
+                // Save the image using a temporary Bitmap to avoid file locking issues.
                 using (var tempImage = new Bitmap(pictureBox1.Image))
                 {
-                    tempImage.Save(newFilePath); // Save the temporary image
+                    tempImage.Save(newFilePath);
                 }
             }
 
-            SaveMenuItems(items);
+            SaveMenuItems(items); // Save changes to CSV file.
 
             MessageBox.Show("The menu item has been updated successfully.");
             textBox1.Clear();

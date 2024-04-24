@@ -27,8 +27,6 @@ namespace FinalProject24
         public NS_MViewPageUserControl1()
         {
             InitializeComponent();
-
-            //ShowAllMenuItems();
             LoadMenuItemsToPanel();
 
         }
@@ -109,36 +107,8 @@ namespace FinalProject24
 
             return menuItems;
         }
-
-
-
-        // For debugging: show all item from the list
-        private void ShowAllMenuItems()
-        {
-
-            var menuItems = LoadMenuItemsFromCsv();
-
-            // Check if there are any menu items to display
-            if (menuItems.Count == 0)
-            {
-                MessageBox.Show("No menu items to display.", "Menu Items");
-                return;
-            }
-
-            // Build the display message
-            StringBuilder messageBuilder = new StringBuilder();
-            foreach (var item in menuItems)
-            {
-                messageBuilder.AppendLine($"Name: {item.FoodName}, Price: ${item.Price:0.00}, Image Path: {item.ImagePath}");
-            }
-
-            // Show the message box with all menu items
-            MessageBox.Show(messageBuilder.ToString(), "All Menu Items");
-        }
-
-
         
-        private void LoadMenuItemsToPanel()
+        public void LoadMenuItemsToPanel()
         {
             var menuItems = LoadMenuItemsFromCsv();
 

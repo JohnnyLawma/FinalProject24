@@ -254,42 +254,26 @@ namespace FinalProject24
 
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
-        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
-        {
-            // Define the directory where the CSV files will be saved
-            string relativePath = @"..\..\..\..\receipts\";
-            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
-            // Ensure the directory exists
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
 
-            // Create the file path for the new CSV file
-            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
-
-            // Open a new StreamWriter to write to the CSV file
-            using (StreamWriter file = new StreamWriter(filePath))
-            {
-                // Write the CSV headers
-                file.WriteLine("Item Name,Quantity,Price,Total");
-
-                // Write each item's details to the CSV
-                foreach (var item in items)
-                {
-                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
-                }
-            }
-            return filePath;
-        }
+        
 
         public List<CartItem> orderBoard { get; private set; } = new List<CartItem>();
+        
+        
         // Event declaration
         public event EventHandler NavigateToPayment;
 
+
+
         private void buyNowButton_Click(object sender, EventArgs e)
         {
+
+            // Get the current cart items
+            List<CartItem> cartItems = GetCartItems();
+
+            // Check if the PaymentUserControl1 Instance is not null and set the cart items
+            PaymentUserControl1.Instance?.SetCartItemsAndDisplay(cartItems);
 
             NavigateToPayment?.Invoke(this, EventArgs.Empty); 
         }
@@ -303,6 +287,13 @@ namespace FinalProject24
         {
 
         }
+
+
+
+       
+
+
+
     }
 
     // Define the CartItem class items.

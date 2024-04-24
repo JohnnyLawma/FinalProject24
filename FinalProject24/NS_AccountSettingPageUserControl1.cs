@@ -10,20 +10,31 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
 
-namespace FinalProject24
-{
+
+namespace FinalProject24 { 
+
     public partial class NS_AccountSettingPageUserControl1 : UserControl
     {
+        // instance to ensure only one instance of this user control is created
         private static NS_AccountSettingPageUserControl1 _instance;
+
+        // Dictionary to store user details.
+        // keys are the data field names like "Email", "Name"
         private Dictionary<string, string> userDetails = new Dictionary<string, string>();
+
+        // Stores the email of the user currently logged in or being edited
         private string userEmail;
 
-        private const string CsvFilePath = @"../../../../loginInfo";
+        // Constant string to define the path to the folder containing user CSV files
+        private const string CsvFolderPath = @"../../../../CustomerUserFolder";
 
+        // Property to get the single instance of this UserControl
         public static NS_AccountSettingPageUserControl1 Instance
         {
             get
             {
+                // Check if an instance already exists
+                // if not, create one
                 if (_instance == null)
                 {
                     _instance = new NS_AccountSettingPageUserControl1();
@@ -32,200 +43,198 @@ namespace FinalProject24
             }
         }
 
+        // Property to manage the user's email used throughout the UserControl
         public string UserEmail
         {
+            // Getter returns the current email
             get => userEmail;
             set
             {
+                // Setter updates the email if it is different from the current value
                 if (userEmail != value)
                 {
                     userEmail = value;
-                    ClearUserData();
-                    LoadUserData();
-                    UpdateTextBoxes();
+                    ClearUserData(); // Clears existing user data
+                    LoadUserData();  // Loads new user data based on the new email
+                    UpdateTextBoxes(); // Updates UI text boxes with new user data
                 }
             }
         }
 
+        // Constructor of the UserControl
         public NS_AccountSettingPageUserControl1()
         {
-            InitializeComponent();
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            LoadUserData();
+            // Initializes component settings
+            InitializeComponent(); 
+            // Gets user email from environment variables
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv"); 
+            LoadUserData(); 
             UpdateTextBoxes();
         }
+
+        // Clears all user data stored in the userDetails dictionary
         private void ClearUserData()
         {
-            userDetails.Clear();  // Assuming userDetails is your Dictionary
+            userDetails.Clear();
         }
+
+        // Loads user data from a CSV file based on the current userEmail
         public void LoadUserData()
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            string[] files = Directory.GetFiles(CsvFilePath, "*.csv");
-            foreach (var file in files)
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFolderPath); // Combines paths to form the full directory path
+
+            // Iterates over each subfolder in the directory to find the correct user's CSV file
+            foreach (var subFolder in Directory.GetDirectories(directoryPath))
             {
-                var lines = File.ReadAllLines(file);
-                if (lines.Length > 1) // Ensure there is more than just the header line
+                string profilePath = Path.Combine(subFolder, "profile.csv"); // Gets the path to the profile CSV file
+                if (File.Exists(profilePath)) // Checks if the file exists
                 {
-                    var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
-
-                    for (int j = 1; j < lines.Length; j++) // Iterate over each data line, not just the first
+                    var lines = File.ReadAllLines(profilePath); // Reads all lines from the file
+                    if (lines.Length > 1) // Ensures there is more than just the header line
                     {
-                        var values = lines[j].Split(',').Select(v => v.Trim()).ToList();
+                        var headers = lines[0].Split(',').Select(h => h.Trim()).ToList(); // Splits the first line into headers
+                        var values = lines[1].Split(',').Select(v => v.Trim()).ToList(); // Splits the second line into values
 
-                        if (values.Count < headers.Count)
+                        int emailIndex = headers.IndexOf("Email"); // Finds the index of the "Email" header
+                        if (emailIndex != -1 && values[emailIndex].Equals(userEmail, StringComparison.OrdinalIgnoreCase)) // Checks if the email matches
                         {
-                            MessageBox.Show($"Data row {j} in file {file} is missing some values and has been skipped.");
-                            continue;  // Skip this iteration if there aren't enough values
-                        }
-
-                        int emailIndex = headers.IndexOf("Email");
-
-                        if (emailIndex != -1 && values[emailIndex].Equals(UserEmail, StringComparison.OrdinalIgnoreCase))
-                        {
-                            for (int i = 0; i < headers.Count; i++)
+                            for (int i = 0; i < headers.Count; i++) // Iterates over all headers
                             {
-                                userDetails[headers[i]] = values[i];
+                                userDetails[headers[i]] = values[i]; // Stores each value in the userDetails dictionary
                             }
-                            break; // Stop searching once the correct file is found
+                            break; // Breaks the loop once the correct file is found
                         }
                     }
                 }
             }
 
+            // If no data was loaded, shows an error message
             if (userDetails.Count == 0)
             {
                 MessageBox.Show("No user data file found for the provided email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-
-
+        // Updates the text boxes on the form with data from userDetails
         public void UpdateTextBoxes()
         {
-            if (InvokeRequired)
+            if (InvokeRequired) // Checks if the call is from a different thread
             {
-                this.Invoke(new Action(UpdateTextBoxes));
+                this.Invoke(new Action(UpdateTextBoxes)); // Invokes the method on the UI
                 return;
             }
 
+            // Sets text box values based on userDetails content, or defaults if key is missing
             NametextBox.Text = userDetails.ContainsKey("Name") ? userDetails["Name"] : "Default Name";
             EmailtextBox.Text = userDetails.ContainsKey("Email") ? userDetails["Email"] : "Default Email";
             PhonetextBox.Text = userDetails.ContainsKey("Phone Number") ? userDetails["Phone Number"] : "Default Phone Number";
         }
 
 
+        // Event handler for when the 'Apply' button is clicked
         private void Applybutton_Click(object sender, EventArgs e)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            // Only update name, email, and phone number. Do not update password or customer/manager status.
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv"); // Refreshes userEmail from environment variable
+                                                                        // Collects new values from text boxes
             string newName = textBox3.Text.Trim();
             string newEmail = textBox4.Text.Trim();
             string newPhone = textBox5.Text.Trim();
 
-            // Retain the old email to find the correct CSV record
+            // Saves the old email to help locate the correct CSV record
             string oldEmail = UserEmail;
 
-            // Update the userDetails dictionary
+            // Updates userDetails with the new values
             userDetails["Name"] = newName;
             userDetails["Email"] = newEmail;
             userDetails["Phone Number"] = newPhone;
 
-            // Now find the file path using the old email
+            // Finds the CSV file path using the old email
             string filePath = FindCsvFilePath(oldEmail);
             if (!string.IsNullOrEmpty(filePath))
             {
-                UpdateCsvFile(filePath, oldEmail);  // Pass in the oldEmail for comparison
+                UpdateCsvFile(filePath); // Calls a method to update the CSV file with new data
                 MessageBox.Show("Changes saved successfully!");
 
-                // Update the global email variable and the environment variable after a successful update
+                // Updates the global email variable and environment variable after successful update
                 UserEmail = newEmail;
                 Environment.SetEnvironmentVariable("EmailEnv", newEmail);
-                LoadUserData();
-                UpdateTextBoxes();
+                LoadUserData(); // Reloads user data based on new email
+                UpdateTextBoxes(); // Updates UI text boxes with new data
             }
             else
             {
                 MessageBox.Show("Failed to find the CSV file to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-
-        private void UpdateCsvFile(string filePath, string oldEmail)
+        // Updates the CSV file with new user details
+        private void UpdateCsvFile(string filePath)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            var lines = File.ReadAllLines(filePath).ToList();
-            var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
+            var lines = File.ReadAllLines(filePath).ToList(); // Reads all lines from the CSV file
+            var headers = lines[0].Split(',').Select(h => h.Trim()).ToList(); // Extracts headers from the first line
+
+            // Finds indices for columns 'Email', 'Name', and 'Phone Number'
             int emailIndex = headers.IndexOf("Email");
             int nameIndex = headers.IndexOf("Name");
             int phoneNumberIndex = headers.IndexOf("Phone Number");
 
-            List<string> updatedLines = new List<string>() { lines[0] }; // Start with the headers
-
-            bool foundAndUpdated = false;
+            List<string> updatedLines = new List<string> { lines[0] }; // Starts with the header line
 
             for (int i = 1; i < lines.Count; i++)
             {
                 var fields = lines[i].Split(',').Select(f => f.Trim()).ToArray();
-                if (fields.Length > emailIndex && fields[emailIndex].Equals(oldEmail, StringComparison.OrdinalIgnoreCase))
+                if (fields.Length > emailIndex && fields[emailIndex].Equals(UserEmail, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Update only the name, email, and phone number
+                    // Updates the necessary fields if the current line is the user's line
                     if (nameIndex != -1) fields[nameIndex] = userDetails["Name"];
                     if (emailIndex != -1) fields[emailIndex] = userDetails["Email"];
                     if (phoneNumberIndex != -1) fields[phoneNumberIndex] = userDetails["Phone Number"];
 
-                    updatedLines.Add(string.Join(",", fields));
-                    foundAndUpdated = true;
+                    updatedLines.Add(string.Join(",", fields)); // Adds the updated line back to the list
                 }
                 else
                 {
-                    updatedLines.Add(lines[i]);  // Keep other entries unchanged
+                    updatedLines.Add(lines[i]); // Adds unchanged lines back to the list
                 }
             }
 
-            if (!foundAndUpdated)
-            {
-                MessageBox.Show("No entry found for the original email to update.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                File.WriteAllLines(filePath, updatedLines);
-            }
+            File.WriteAllLines(filePath, updatedLines); // Writes the updated lines back to the CSV file
+            MessageBox.Show("Changes saved successfully!");
         }
 
-
+        // Finds the file path for the CSV file that contains the user's data using the email address
         private string FindCsvFilePath(string email)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
-            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFilePath);
-            Console.WriteLine("Searching in directory: " + directoryPath);  // Debug output
-            string[] files = Directory.GetFiles(directoryPath, "*.csv");
+            // Forms the full path to the directory
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), CsvFolderPath); 
 
-            foreach (string file in files)
+            foreach (var subFolder in Directory.GetDirectories(directoryPath))
             {
-                Console.WriteLine("Checking file: " + file);  // Debug output
-                var lines = File.ReadAllLines(file);
-                if (lines.Length > 1)
+                // Forms the path to the profile CSV file
+                string profilePath = Path.Combine(subFolder, "profile.csv"); 
+                if (File.Exists(profilePath))
                 {
-                    var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
-                    int emailIndex = headers.IndexOf("Email");
-                    var values = lines[1].Split(',').Select(v => v.Trim()).ToArray();
-                    Console.WriteLine("Current checking email: " + values[emailIndex]); // Debug output
-
-                    if (values.Length > emailIndex && values[emailIndex].Equals(email, StringComparison.OrdinalIgnoreCase))
+                    var lines = File.ReadAllLines(profilePath);
+                    if (lines.Length > 1)
                     {
-                        return file;
+                        var headers = lines[0].Split(',').Select(h => h.Trim()).ToList();
+                        int emailIndex = headers.IndexOf("Email");
+                        var values = lines[1].Split(',').Select(v => v.Trim()).ToArray();
+
+                        if (values.Length > emailIndex && values[emailIndex].Equals(email, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return profilePath; // Returns the path if the email matches
+                        }
                     }
                 }
             }
-            MessageBox.Show("No matching email found in any CSV files.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return null;
+            MessageBox.Show("No matching email found in any profile CSV files.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            // Returns null if no matching email is found
+            return null; 
         }
 
 
-
+           //method that validatest he email address
         private string ValidateEmail(string email, string currentEmail)
         {
             try
@@ -239,6 +248,8 @@ namespace FinalProject24
                 return currentEmail;
             }
         }
+        
+         //method that clears text3,text4,and text5 boxes.
         public void ClearTextBoxes()
         {
             // Assuming you have text boxes named NametextBox, EmailtextBox, PhonetextBox
@@ -246,6 +257,8 @@ namespace FinalProject24
             textBox4.Text = "";
             textBox5.Text = "";
         }
+
+        //method that formats phone number that is passed in
 
         private string FormatPhoneNumber(string phoneNumber)
         {
@@ -266,14 +279,5 @@ namespace FinalProject24
             }
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void editSettingPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

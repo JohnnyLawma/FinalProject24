@@ -1,5 +1,5 @@
 Food Name,Price,ID,Image Path,Status
-Veg Pizza,13,9853,veggiePizza.jpg,True
+Vegan Pizza,13.33,9853,veggiePizza_3.jpg,True
 Grilled Salmon,15.75,1133,grilledSalmon.jpg,True
 Special Dish 89,18.97,7436,foodbowl.jpg,False
 Spaghetti Carbonara,10.5,1834,spaghettiCarbonara.jpg,True
@@ -7,3 +7,6 @@ Chicken Tacos,9.75,9472,chickenTacos.jpg,True
 Tofu Stir Fry,11,3921,tofuStirFry.jpg,True
 Beef Stew,13.45,8276,beefStew.jpg,True
 Blueberry Pancakes,8.5,1523,blueberryPancakes.jpg,True
+Apple Pie,13,9999,applepie.jpg,False
+New Veg Pizza,13,3341,veggiePizza_2.jpg,True
+Ham Burger,11,8871,cheeseburger_1.jpg,True
