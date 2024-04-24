@@ -127,6 +127,7 @@ namespace FinalProject24
                 return;
             }
 
+
             string currentDate = DateTime.Now.ToString("MMddyyyy");
             string orderNumber = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + new Random().Next(1000, 9999);
             decimal subtotal = CartItems.Sum(item => item.Price * item.Quantity);
