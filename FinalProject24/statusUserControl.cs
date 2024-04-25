@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FinalProject24
 {
-    public partial class stausUserControl : UserControl
+    public partial class statusUserControl : UserControl
     {
         // Add a public event to the statusUserControl for when the status button is clicked
         public event EventHandler StatusButtonClicked;
@@ -19,7 +19,7 @@ namespace FinalProject24
 
 
 
-        public stausUserControl()
+        public statusUserControl()
         {
             InitializeComponent();
             statusButton.Click += statusButton_Click;

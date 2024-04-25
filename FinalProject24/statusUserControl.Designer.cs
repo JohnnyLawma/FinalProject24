@@ -1,6 +1,6 @@
 ﻿namespace FinalProject24
 {
-    partial class stausUserControl
+    partial class statusUserControl
     {
         /// <summary> 
         /// Required designer variable.
