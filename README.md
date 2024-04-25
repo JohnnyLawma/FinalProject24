@@ -1,4 +1,4 @@
-Welcome! 
+Welcome!  
 
 To start, first access the customer form by logging in with a preexisting account (username: customerAccount@gmail.com - password: customer) or create your own. 
 Once logged in, peruse the menu and add whichever items to your cart. 
