@@ -22,8 +22,8 @@ namespace FinalProject24
         // before implementation of a csv for email and password, use these 
         const string customerEMAIL = "123";
         const string customerPASSWORD = "123";
-        const string managerEMAIL = "456";
-        const string managerPASSWORD = "456";
+        const string managerEMAIL = "managerAccount@gmail.com";
+        const string managerPASSWORD = "manager";
 
 
         // Loading the main form and the manager main form in memory
