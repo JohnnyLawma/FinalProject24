@@ -85,7 +85,6 @@ namespace FinalProject24
         }
 
 
-
         private void OpenMainForm(string userID)
         {
             // Check if userID is not null or empty.
@@ -104,9 +103,6 @@ namespace FinalProject24
             }
         }
 
-
-
-
         private void ResetTextFields()
         {
             emailTextBox.Text = "Enter your email";
@@ -117,11 +113,7 @@ namespace FinalProject24
         }
 
 
-
-
-
-
-        //
+        //Checks of the Account Exists
         private bool AccountExists(string email, string password, out string userRole, out string userID)
         {
             userRole = null;
@@ -172,10 +164,6 @@ namespace FinalProject24
             }
             return false;
         }
-
-
-
-
 
 
 
@@ -260,14 +248,5 @@ namespace FinalProject24
             }
         }
 
-        private void JG_loginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void emailTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

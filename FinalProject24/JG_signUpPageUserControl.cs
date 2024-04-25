@@ -142,14 +142,6 @@ namespace FinalProject24
 
         }
 
-
-
-
-
-
-
-
-
         private bool CheckPassword() // bool function that determines if the passwords match
         {
             bool result = false;
@@ -378,11 +370,6 @@ namespace FinalProject24
         }
 
         */
-
-        private void emailTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
     }

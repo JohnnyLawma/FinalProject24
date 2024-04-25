@@ -129,42 +129,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-
-
-        private void CartItemUC_QuantityIncreased(object sender, EventArgs e)
-        {
-            // Handle the quantity increased event
-            UpdateSummaryOrder(); // Recalculate the summary order
-
-
-        }
-
-        private void CartItemUC_QuantityDecreased(object sender, EventArgs e)
-        {
-            // Handle the quantity decreased event
-            UpdateSummaryOrder(); // Recalculate the summary order
-
-        }
-
-        private void CartItemUC_ItemRemoved(object sender, EventArgs e)
-        {
-            var cartItemUC = sender as CartItemUC;
-            if (cartItemUC != null)
-            {
-                loadCardPanel.Controls.Remove(cartItemUC);
-                cartItemUC.Dispose();
-
-            }
-
-            UpdateSummaryOrder(); // Recalculate the summary order
-
-
-        }
-
-
         //............
         // This method sets up event listeners for the CartItemUC controls.
         private void SubscribeToItemEvents(CartItemUC cartItemControl)
@@ -230,15 +194,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         public event EventHandler CartCleared; // Event to be triggered when the cart needs to be cleared
 
         // Method to clear the cart
@@ -255,16 +210,10 @@ namespace FinalProject24
             MessageBox.Show("The cart has been cleared.");  // Optional: Notify the user
         }
 
-
-        
-
         public List<CartItem> orderBoard { get; private set; } = new List<CartItem>();
-        
-        
+          
         // Event declaration
         public event EventHandler NavigateToPayment;
-
-
 
         private void buyNowButton_Click(object sender, EventArgs e)
         {
@@ -277,22 +226,6 @@ namespace FinalProject24
 
             NavigateToPayment?.Invoke(this, EventArgs.Empty); 
         }
-
-        private void CartUC_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loadCardPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
-       
-
-
 
     }
 
