@@ -77,6 +77,42 @@ namespace FinalProject24 {
         {
             userDetails.Clear();
         }
+        private void UpdateGlobalCsvFile(string oldEmail, string newEmail)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), CsvFolderPath, "allCustomerUser.csv");
+
+            if (File.Exists(filePath))
+            {
+                var lines = File.ReadAllLines(filePath).ToList();
+                bool updated = false;
+
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    var parts = lines[i].Split(',');
+                    if (parts.Length > 1 && parts[1].Trim().Equals(oldEmail, StringComparison.OrdinalIgnoreCase))
+                    {
+                        parts[1] = newEmail; // Update the email
+                        lines[i] = string.Join(",", parts);
+                        updated = true;
+                        break;
+                    }
+                }
+
+                if (updated)
+                {
+                    File.WriteAllLines(filePath, lines);
+                    MessageBox.Show("Global user data updated successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("No matching email found to update in global file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Global CSV file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         // Loads user data from a CSV file based on the current userEmail
         public void LoadUserData()
@@ -163,14 +199,14 @@ namespace FinalProject24 {
             string filePath = FindCsvFilePath(oldEmail);
             if (!string.IsNullOrEmpty(filePath))
             {
-                UpdateCsvFile(filePath); // Calls a method to update the CSV file with new data
+                UpdateCsvFile(filePath); // Update individual profile
+                UpdateGlobalCsvFile(oldEmail, newEmail); // Update global file
                 MessageBox.Show("Changes saved successfully!");
 
-                // Updates the global email variable and environment variable after successful update
-                UserEmail = newEmail;
+                UserEmail = newEmail; // Update the global email variable
                 Environment.SetEnvironmentVariable("EmailEnv", newEmail);
-                LoadUserData(); // Reloads user data based on new email
-                UpdateTextBoxes(); // Updates UI text boxes with new data
+                LoadUserData(); // Reload user data based on new email
+                UpdateTextBoxes(); // Update UI text boxes with new data
             }
             else
             {
