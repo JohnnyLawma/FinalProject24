@@ -149,7 +149,7 @@
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(75, 30);
             nameLabel.TabIndex = 4;
-            nameLabel.Text = "Emily";
+            nameLabel.Text = "Manager";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // signOutButton
