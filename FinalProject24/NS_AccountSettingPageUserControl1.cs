@@ -180,6 +180,13 @@ namespace FinalProject24 {
                 return; // Exits the method to prevent further processing
             }
 
+            // check if the text boxes are not empty
+            if (textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
+            {
+                MessageBox.Show("Please enter data for every text box!");
+                return; // exits the method since it should not save blank data
+            }
+
             // Refreshes userEmail from environment variable
             UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
 
