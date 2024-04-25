@@ -202,7 +202,6 @@
             managerRadioButton.TabStop = true;
             managerRadioButton.Text = "Manager";
             managerRadioButton.UseVisualStyleBackColor = true;
-            managerRadioButton.CheckedChanged += managerRadioButton_CheckedChanged;
             // 
             // label7
             // 
@@ -225,7 +224,6 @@
             customerRadioButton.TabStop = true;
             customerRadioButton.Text = "Customer";
             customerRadioButton.UseVisualStyleBackColor = true;
-            customerRadioButton.CheckedChanged += customerRadioButton_CheckedChanged;
             // 
             // phoneNumberTextBox
             // 
