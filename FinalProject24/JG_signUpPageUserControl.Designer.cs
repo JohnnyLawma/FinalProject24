@@ -80,7 +80,7 @@
             confirmPasswordTextBox.Location = new Point(93, 242);
             confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             confirmPasswordTextBox.Size = new Size(262, 29);
-            confirmPasswordTextBox.TabIndex = 5;
+            confirmPasswordTextBox.TabIndex = 3;
             confirmPasswordTextBox.Text = "Confirm your password";
             confirmPasswordTextBox.Enter += confirmPasswordTextBox_Enter;
             confirmPasswordTextBox.KeyPress += confirmPasswordTextBox_KeyPress;
@@ -103,7 +103,7 @@
             loginLabel.Location = new Point(297, 393);
             loginLabel.Name = "loginLabel";
             loginLabel.Size = new Size(53, 21);
-            loginLabel.TabIndex = 7;
+            loginLabel.TabIndex = 8;
             loginLabel.TabStop = true;
             loginLabel.Text = "Log In";
             loginLabel.LinkClicked += loginLabel_LinkClicked;
@@ -117,6 +117,7 @@
             label4.Size = new Size(186, 21);
             label4.TabIndex = 32;
             label4.Text = "Already have an account?";
+            //label4.Click += label4_Click;
             // 
             // createAccountButton
             // 
@@ -127,7 +128,7 @@
             createAccountButton.Location = new Point(93, 357);
             createAccountButton.Name = "createAccountButton";
             createAccountButton.Size = new Size(262, 33);
-            createAccountButton.TabIndex = 6;
+            createAccountButton.TabIndex = 7;
             createAccountButton.Text = "Create Account";
             createAccountButton.UseVisualStyleBackColor = false;
             createAccountButton.Click += createAccountButton_Click;
@@ -141,7 +142,7 @@
             passwordTextBox.Location = new Point(93, 182);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(262, 29);
-            passwordTextBox.TabIndex = 4;
+            passwordTextBox.TabIndex = 2;
             passwordTextBox.Text = "Enter your password";
             passwordTextBox.Enter += passwordTextBox_Enter;
             passwordTextBox.KeyPress += passwordTextBox_KeyPress;
@@ -166,7 +167,7 @@
             emailTextBox.Location = new Point(93, 128);
             emailTextBox.Name = "emailTextBox";
             emailTextBox.Size = new Size(262, 29);
-            emailTextBox.TabIndex = 3;
+            emailTextBox.TabIndex = 1;
             emailTextBox.Text = "Enter your email";
             emailTextBox.Enter += emailTextBox_Enter;
             emailTextBox.KeyPress += emailTextBox_KeyPress;
@@ -198,7 +199,7 @@
             managerRadioButton.Location = new Point(230, 332);
             managerRadioButton.Name = "managerRadioButton";
             managerRadioButton.Size = new Size(72, 19);
-            managerRadioButton.TabIndex = 2;
+            managerRadioButton.TabIndex = 6;
             managerRadioButton.TabStop = true;
             managerRadioButton.Text = "Manager";
             managerRadioButton.UseVisualStyleBackColor = true;
@@ -220,7 +221,7 @@
             customerRadioButton.Location = new Point(134, 332);
             customerRadioButton.Name = "customerRadioButton";
             customerRadioButton.Size = new Size(77, 19);
-            customerRadioButton.TabIndex = 1;
+            customerRadioButton.TabIndex = 5;
             customerRadioButton.TabStop = true;
             customerRadioButton.Text = "Customer";
             customerRadioButton.UseVisualStyleBackColor = true;
@@ -234,7 +235,7 @@
             phoneNumberTextBox.Location = new Point(93, 297);
             phoneNumberTextBox.Name = "phoneNumberTextBox";
             phoneNumberTextBox.Size = new Size(262, 29);
-            phoneNumberTextBox.TabIndex = 43;
+            phoneNumberTextBox.TabIndex = 4;
             phoneNumberTextBox.Text = "615-123-4567";
             phoneNumberTextBox.Enter += phoneNumberTextBox_Enter;
             phoneNumberTextBox.KeyPress += phoneNumberTextBox_KeyPress;

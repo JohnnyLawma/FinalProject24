@@ -174,10 +174,17 @@ namespace FinalProject24 {
             string newEmail = textBox4.Text.Trim();
 
             // Check if the current email is for the manager account and if the new email is different
-            if (userEmail.Equals("456") && !newEmail.Equals(userEmail))
+            if (userEmail.Equals("managerAccount@gmail.com") && !newEmail.Equals(userEmail))
             {
-                MessageBox.Show("This is a manager account; you cannot change the email. Please enter 456 as email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This is a manager account; you cannot change the email. Please enter managerAccount@gmail.com as email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Exits the method to prevent further processing
+            }
+
+            // check if the text boxes are not empty
+            if (textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
+            {
+                MessageBox.Show("Please enter data for every text box!");
+                return; // exits the method since it should not save blank data
             }
 
             // Refreshes userEmail from environment variable

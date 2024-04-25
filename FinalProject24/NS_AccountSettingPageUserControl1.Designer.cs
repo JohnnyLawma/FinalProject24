@@ -104,7 +104,7 @@
             settingsPanel.Controls.Add(label3);
             settingsPanel.Controls.Add(label2);
             settingsPanel.Location = new Point(56, 35);
-            settingsPanel.Margin = new Padding(1, 1, 1, 1);
+            settingsPanel.Margin = new Padding(1);
             settingsPanel.Name = "settingsPanel";
             settingsPanel.Size = new Size(323, 439);
             settingsPanel.TabIndex = 10;
@@ -113,9 +113,10 @@
             // 
             NametextBox.ForeColor = SystemColors.WindowText;
             NametextBox.Location = new Point(58, 88);
-            NametextBox.Margin = new Padding(2, 2, 2, 2);
+            NametextBox.Margin = new Padding(2);
             NametextBox.Multiline = true;
             NametextBox.Name = "NametextBox";
+            NametextBox.ReadOnly = true;
             NametextBox.Size = new Size(201, 30);
             NametextBox.TabIndex = 10;
             NametextBox.Text = "FirstName LastName";
@@ -123,9 +124,10 @@
             // EmailtextBox
             // 
             EmailtextBox.Location = new Point(58, 151);
-            EmailtextBox.Margin = new Padding(2, 2, 2, 2);
+            EmailtextBox.Margin = new Padding(2);
             EmailtextBox.Multiline = true;
             EmailtextBox.Name = "EmailtextBox";
+            EmailtextBox.ReadOnly = true;
             EmailtextBox.Size = new Size(201, 28);
             EmailtextBox.TabIndex = 11;
             EmailtextBox.Text = "Email@email.com";
@@ -133,9 +135,10 @@
             // PhonetextBox
             // 
             PhonetextBox.Location = new Point(58, 211);
-            PhonetextBox.Margin = new Padding(2, 2, 2, 2);
+            PhonetextBox.Margin = new Padding(2);
             PhonetextBox.Multiline = true;
             PhonetextBox.Name = "PhonetextBox";
+            PhonetextBox.ReadOnly = true;
             PhonetextBox.Size = new Size(201, 30);
             PhonetextBox.TabIndex = 12;
             PhonetextBox.Text = "1234567890";
@@ -152,7 +155,7 @@
             editSettingPanel.Controls.Add(textBox5);
             editSettingPanel.Controls.Add(label8);
             editSettingPanel.Location = new Point(456, 35);
-            editSettingPanel.Margin = new Padding(1, 1, 1, 1);
+            editSettingPanel.Margin = new Padding(1);
             editSettingPanel.Name = "editSettingPanel";
             editSettingPanel.Size = new Size(323, 439);
             editSettingPanel.TabIndex = 11;
@@ -162,7 +165,7 @@
             textBox2.BackColor = SystemColors.Control;
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Location = new Point(39, 297);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Margin = new Padding(2);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(237, 56);
@@ -187,7 +190,7 @@
             button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ControlLightLight;
             button1.Location = new Point(85, 259);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(130, 31);
             button1.TabIndex = 8;
@@ -198,7 +201,7 @@
             // textBox3
             // 
             textBox3.Location = new Point(58, 88);
-            textBox3.Margin = new Padding(2, 2, 2, 2);
+            textBox3.Margin = new Padding(2);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(201, 30);
@@ -219,7 +222,7 @@
             // textBox4
             // 
             textBox4.Location = new Point(58, 151);
-            textBox4.Margin = new Padding(2, 2, 2, 2);
+            textBox4.Margin = new Padding(2);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(201, 28);
@@ -240,7 +243,7 @@
             // textBox5
             // 
             textBox5.Location = new Point(58, 211);
-            textBox5.Margin = new Padding(2, 2, 2, 2);
+            textBox5.Margin = new Padding(2);
             textBox5.Multiline = true;
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(201, 30);
