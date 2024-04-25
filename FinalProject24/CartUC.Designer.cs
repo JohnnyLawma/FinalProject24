@@ -108,7 +108,6 @@
             totalLabel.Size = new Size(75, 36);
             totalLabel.TabIndex = 8;
             totalLabel.Text = "Total:";
-            totalLabel.Click += label1_Click;
             // 
             // subtotalPriceLabel
             // 
@@ -199,7 +198,6 @@
             loadCardPanel.Name = "loadCardPanel";
             loadCardPanel.Size = new Size(956, 811);
             loadCardPanel.TabIndex = 8;
-            loadCardPanel.Paint += loadCardPanel_Paint;
             // 
             // CartUC
             // 
@@ -211,7 +209,6 @@
             Margin = new Padding(6);
             Name = "CartUC";
             Size = new Size(1638, 1054);
-            Load += CartUC_Load;
             summaryOrderPanel.ResumeLayout(false);
             summaryOrderPanel.PerformLayout();
             ResumeLayout(false);

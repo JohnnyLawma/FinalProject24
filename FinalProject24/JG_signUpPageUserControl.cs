@@ -37,7 +37,7 @@ namespace FinalProject24
         public JG_signUpPageUserControl()
         {
             InitializeComponent();
-            HideRadioButtons(); 
+            HideRadioButtons();
         }
 
         string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
@@ -142,14 +142,6 @@ namespace FinalProject24
 
         }
 
-
-
-
-
-
-
-
-
         private bool CheckPassword() // bool function that determines if the passwords match
         {
             bool result = false;
@@ -158,20 +150,6 @@ namespace FinalProject24
                 result = true;
             }
             return result;
-        }
-
-
-        private string CheckIfCustomer() // change the value of isCustomer depending on which radiobutton is checked
-        {
-            if (customerRadioButton.Checked)
-            {
-                return isCustomer = "Customer";
-            }
-            else if (managerRadioButton.Checked)
-            {
-                return isCustomer = "Manager";
-            }
-            return isCustomer;
         }
 
 
@@ -347,46 +325,6 @@ namespace FinalProject24
             //isCustomer = false;
         }
 
-        /*
-        private string SaveNewAcctToCSV(string name, string email, string password, string isCustomer)
-        {
-            // Define the directory where the CSV files will be saved
-            string relativePath = @"..\..\..\..\loginInfo\";
-            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
-            // Ensure the directory exists
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            // Create the file path for the new CSV file
-            string filePath = Path.Combine(directoryPath, $"{name}.csv");
-
-            // Open a new StreamWriter to write to the CSV file
-            using (StreamWriter file = new StreamWriter(filePath))
-            {
-                // Write the CSV headers
-                file.WriteLine("Email, Password, Name, Customer or Manager, Phone Number");
-
-                // Write the data to the CSV
-                file.WriteLine($"{email},{password},{name},{isCustomer}, {phoneNumber}");
-            }
-
-            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
-            return filePath;
-        }
-
-        */
-
-        private void emailTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

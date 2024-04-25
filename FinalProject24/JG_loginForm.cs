@@ -22,8 +22,8 @@ namespace FinalProject24
         // before implementation of a csv for email and password, use these 
         const string customerEMAIL = "123";
         const string customerPASSWORD = "123";
-        const string managerEMAIL = "managerAccount@gmail.com";
-        const string managerPASSWORD = "manager";
+        const string managerEMAIL = "456";
+        const string managerPASSWORD = "456";
 
 
         // Loading the main form and the manager main form in memory
@@ -104,6 +104,9 @@ namespace FinalProject24
             }
         }
 
+
+
+
         private void ResetTextFields()
         {
             emailTextBox.Text = "Enter your email";
@@ -113,10 +116,41 @@ namespace FinalProject24
             successOrNotLabel.Text = "";
         }
 
+
+
+        private bool EmailExistsInGlobalFile(string email)
+        {
+            string relativePath = @"..\..\..\..\CustomerUserFolder\allCustomerUser.csv";  // Path to the global CSV file
+            string filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            if (File.Exists(filePath))
+            {
+                var lines = File.ReadAllLines(filePath);
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length > 1 && parts[1].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;  // Email found in the global file
+                    }
+                }
+            }
+            return false;  // Email not found
+        }
+
+
         private bool AccountExists(string email, string password, out string userRole, out string userID)
         {
             userRole = null;
             userID = null; // Initialize userID
+
+            // First check if the email exists in the global CSV file
+            if (!EmailExistsInGlobalFile(email))
+            {
+                Debug.WriteLine("Email does not exist in allCustomerUser.csv");
+                return false;
+            }
+
             string relativePath = @"..\..\..\..\CustomerUserFolder\";
             string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
@@ -163,6 +197,12 @@ namespace FinalProject24
             }
             return false;
         }
+
+
+
+
+
+
 
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -216,6 +256,7 @@ namespace FinalProject24
                 passwordTextBox.ForeColor = Color.Gray;
             }
         }
+
 
         private void signinButton_KeyPress(object sender, KeyPressEventArgs e)
         {
