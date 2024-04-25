@@ -104,9 +104,6 @@ namespace FinalProject24
             }
         }
 
-
-
-
         private void ResetTextFields()
         {
             emailTextBox.Text = "Enter your email";
@@ -116,12 +113,6 @@ namespace FinalProject24
             successOrNotLabel.Text = "";
         }
 
-
-
-
-
-
-        //
         private bool AccountExists(string email, string password, out string userRole, out string userID)
         {
             userRole = null;
@@ -172,12 +163,6 @@ namespace FinalProject24
             }
             return false;
         }
-
-
-
-
-
-
 
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -231,7 +216,6 @@ namespace FinalProject24
                 passwordTextBox.ForeColor = Color.Gray;
             }
         }
-
 
         private void signinButton_KeyPress(object sender, KeyPressEventArgs e)
         {
