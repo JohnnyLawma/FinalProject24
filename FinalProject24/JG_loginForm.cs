@@ -16,7 +16,7 @@ namespace FinalProject24
     {
         public JG_loginForm()
         {
-            InitializeComponent(); // most up to date
+            InitializeComponent(); // most up to date #2
         }
 
         // before implementation of a csv for email and password, use these 
