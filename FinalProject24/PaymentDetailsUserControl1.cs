@@ -84,48 +84,6 @@ namespace FinalProject24
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Validate Address (not empty)
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                MessageBox.Show("Address cannot be empty.");
-                return;
-            }
-
-            // Validate Card Number (not empty and valid format)
-            if (!IsValidCardNumber(textBox2.Text))
-            {
-                MessageBox.Show("Invalid card number.");
-                return;
-            }
-
-            // Validate Card Holder's Name (not empty)
-            if (string.IsNullOrWhiteSpace(textBox3.Text))
-            {
-                MessageBox.Show("Card holder's name cannot be empty.");
-                return;
-            }
-
-            // Validate CVV (3 or 4 digits)
-            if (!IsValidCVV(textBox4.Text))
-            {
-                MessageBox.Show("Invalid CVV number. It must be 3 or 4 digits.");
-                return;
-            }
-
-            // Validate Expiry Date (MM/yy format and not past)
-            if (!IsValidExpiryDate(textBox5.Text))
-            {
-                MessageBox.Show("Invalid or past expiry date.");
-                return;
-            }
-
-
-
-            if (CartItems == null || CartItems.Count == 0)
-            {
-                MessageBox.Show("No items in cart to process.");
-                return;
-            }
 
 
             string currentDate = DateTime.Now.ToString("MMddyyyy");
@@ -215,82 +173,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-
-
-        // Helper method to validate card number with Luhn's Algorithm
-        private bool IsValidCardNumber(string cardNumber)
-        {
-            int sum = 0;
-            bool alternate = false;
-
-            // Reverse the card number
-            char[] nums = cardNumber.Reverse().ToArray();
-
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (!char.IsDigit(nums[i]))
-                    return false; // Not a numeric digit
-
-                // Parse to integer to calculate sum
-                int num = int.Parse(nums[i].ToString());
-
-                if (alternate)
-                {
-                    num *= 2;
-                    if (num > 9)
-                    {
-                        num = (num % 10) + 1;
-                    }
-                }
-
-                sum += num;
-                alternate = !alternate;
-            }
-
-            // Valid if sum is a multiple of 10
-            return (sum % 10 == 0);
-        }
-
-        // Helper method to validate CVV without regex
-        private bool IsValidCVV(string cvv)
-        {
-            int cvvNum;
-            return (cvv.Length == 3 || cvv.Length == 4) && int.TryParse(cvv, out cvvNum);
-        }
-
-        // Helper method to validate expiry date without regex
-        private bool IsValidExpiryDate(string expiryDate)
-        {
-            if (expiryDate.Length != 5 || expiryDate[2] != '/')
-            {
-                return false;
-            }
-
-            if (!int.TryParse(expiryDate.Substring(0, 2), out int month) ||
-                !int.TryParse(expiryDate.Substring(3, 2), out int year))
-            {
-                return false;
-            }
-
-            if (month < 1 || month > 12)
-            {
-                return false;
-            }
-
-            int currentYear = DateTime.Now.Year % 100; // Get last two digits of the year
-            int currentMonth = DateTime.Now.Month;
-
-            // Check if the year is valid (00 to 99) and not in the past
-            if (year < currentYear || (year == currentYear && month < currentMonth))
-            {
-                return false;
-            }
-
-            return true;
-        }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
@@ -431,6 +313,8 @@ namespace FinalProject24
             DisplayCartItem(); // Display the items on the control
         }
 
+
+
         private void DisplayCartItem()
         {
             loadItemCardPanel.Controls.Clear(); // Clear existing controls
@@ -521,6 +405,7 @@ namespace FinalProject24
             textBox1.Enabled = true;
             textBox6.Enabled = true;
             textBox2.Enabled = true;
+            textBox5.Enabled = true;
             textBox4.Enabled = true;
             textBox3.Enabled = true;
 
@@ -653,8 +538,91 @@ namespace FinalProject24
 
 
 
+
+
+
+
+        private bool ValidateInputs()
+        {
+            // Validation for Main Address
+            if (!Regex.IsMatch(textBox1.Text, @"^[\w\s]+,\s*\w+,\s*\w+$"))
+            {
+                MessageBox.Show("Main Address must be in the format: street address, City, State");
+                return false;
+            }
+
+            // Validation for Zip Code
+            if (!Regex.IsMatch(textBox6.Text, @"^\d{5}$"))
+            {
+                MessageBox.Show("Zip Code must be 5 digits");
+                return false;
+            }
+
+            // Validate Card Number (15 or 16 digits, optionally formatted with spaces or hyphens)
+            if (!Regex.IsMatch(textBox2.Text, @"^(\d{4}-){3}\d{4}$") && !Regex.IsMatch(textBox2.Text, @"^(\d{4} ){3}\d{4}$") && !Regex.IsMatch(textBox2.Text, @"^\d{16}$") && !Regex.IsMatch(textBox2.Text, @"^\d{15}$"))
+            {
+                MessageBox.Show("Card Number must be 15 or 16 digits.");
+                return false;
+            }
+
+
+
+
+            // Validate CVV
+            if (!Regex.IsMatch(textBox4.Text, @"^\d{3,4}$"))
+            {
+                MessageBox.Show("CVV must be 3 or 4 digits");
+                return false;
+            }
+
+            // Validate Expiry Date
+            if (!ValidExpiryDate(textBox5.Text))
+            {
+                MessageBox.Show("Expiry Date must be in the format: MM/YY and cannot be in the past.");
+                return false;
+            }
+
+            // Validate Card Holder's Name
+            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            {
+                MessageBox.Show("Card Holder's Name cannot be empty.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidExpiryDate(string expiryDate)
+        {
+            if (!Regex.IsMatch(expiryDate, @"^(0[1-9]|1[0-2])\/\d{2}$"))
+            {
+                return false;
+            }
+
+            DateTime expiry;
+            if (!DateTime.TryParseExact(expiryDate, "MM/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out expiry) || expiry < DateTime.UtcNow)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+
+
+
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
+
+
+            // Perform all validations
+            if (!ValidateInputs())
+            {
+                return; // Stop processing if validation fails
+            }
+
+
             // Collect data from the text boxes
             string mainAddress = textBox1.Text;
             string zipCode = textBox6.Text;
@@ -662,6 +630,10 @@ namespace FinalProject24
             string cvv = textBox4.Text;
             string expiryDate = textBox5.Text;
             string cardHolderName = textBox3.Text;
+
+
+
+
 
             // Define the directory path for the user's data
             string userFolderPath = Path.Combine(@"..\..\..\..\CustomerUserFolder\", userID);
@@ -705,6 +677,7 @@ namespace FinalProject24
             applyChangeButton.Visible = false;
             cancelLabel.Visible = false;
 
+            // Change back the label
             // Payment Details label
             label1.Text = "Payment Details";
 
