@@ -558,12 +558,15 @@ namespace FinalProject24
                 return false;
             }
 
-            // Validate Card Number (15 or 16 digits, optionally formatted with spaces or hyphens)
-            if (!Regex.IsMatch(textBox2.Text, @"^(\d{4}-){3}\d{4}$") && !Regex.IsMatch(textBox2.Text, @"^(\d{4} ){3}\d{4}$") && !Regex.IsMatch(textBox2.Text, @"^\d{16}$") && !Regex.IsMatch(textBox2.Text, @"^\d{15}$"))
+            // Validate Card Number (15 or 16 digits).
+            if (!Regex.IsMatch(textBox2.Text, @"^(\d{4}-){3}\d{4}$") &&
+                !Regex.IsMatch(textBox2.Text, @"^(\d{4} ){3}\d{4}$") &&
+                !Regex.IsMatch(textBox2.Text, @"^\d{15,16}$")) // Matches 15 or 16 continuous digits
             {
                 MessageBox.Show("Card Number must be 15 or 16 digits.");
                 return false;
             }
+
 
 
 
