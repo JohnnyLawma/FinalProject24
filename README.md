@@ -1,17 +1,11 @@
 Welcome!  
 
 To start, first access the customer form by logging in with a preexisting account (username: customerAccount@gmail.com - password: customer) or create your own. 
-
 Once logged in, peruse the menu and add whichever items to your cart. 
-
 Click the cart button at the top right to be directed to the items in your cart, which will also tell you the total cost. 
-
 When you are ready to check out, add your information.
-
 The address must be in the form of Address, City, State.
-
 The card number must also be valid.
-
 The following can be used for card info as a test: 
 
   address: 919 Blue Mountain, Nashville, TN - zip: 37013 - card number: 5555555555554444 - cvv: 123 - date: 04/28 - name: Customer Account
