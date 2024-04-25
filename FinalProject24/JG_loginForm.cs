@@ -85,6 +85,7 @@ namespace FinalProject24
         }
 
 
+
         private void OpenMainForm(string userID)
         {
             // Check if userID is not null or empty.
@@ -103,6 +104,9 @@ namespace FinalProject24
             }
         }
 
+
+
+
         private void ResetTextFields()
         {
             emailTextBox.Text = "Enter your email";
@@ -113,11 +117,40 @@ namespace FinalProject24
         }
 
 
-        //Checks of the Account Exists
+
+        private bool EmailExistsInGlobalFile(string email)
+        {
+            string relativePath = @"..\..\..\..\CustomerUserFolder\allCustomerUser.csv";  // Path to the global CSV file
+            string filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
+
+            if (File.Exists(filePath))
+            {
+                var lines = File.ReadAllLines(filePath);
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length > 1 && parts[1].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;  // Email found in the global file
+                    }
+                }
+            }
+            return false;  // Email not found
+        }
+
+
         private bool AccountExists(string email, string password, out string userRole, out string userID)
         {
             userRole = null;
             userID = null; // Initialize userID
+
+            // First check if the email exists in the global CSV file
+            if (!EmailExistsInGlobalFile(email))
+            {
+                Debug.WriteLine("Email does not exist in allCustomerUser.csv");
+                return false;
+            }
+
             string relativePath = @"..\..\..\..\CustomerUserFolder\";
             string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
 
@@ -164,6 +197,10 @@ namespace FinalProject24
             }
             return false;
         }
+
+
+
+
 
 
 
@@ -248,5 +285,14 @@ namespace FinalProject24
             }
         }
 
+        private void JG_loginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
