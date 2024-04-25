@@ -93,4 +93,4 @@ namespace FinalProject24
             NewPictureBox.Image = null;
         }
     }
-    }
+}

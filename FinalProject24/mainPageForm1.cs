@@ -9,14 +9,11 @@ namespace FinalProject24
     {
         // update image paths here to save time changing the path name
         string imagePathProfilePicture = @"..\..\..\..\Images\newDefaultProfilePicture.jpg"; // Going back 4 level
-        string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
 
         private CartUC cartUCInstance;
 
         // Field to store userID
         private string userID;
-
-        string name, email, phoneNumber, address;
 
         public mainPageForm1(string userID)
         {
@@ -67,9 +64,6 @@ namespace FinalProject24
             public int Quantity;
         }
 
-
-
-        //
         private void LoadUserProfile(string userID)
         {
             // First, check if userID is null or empty

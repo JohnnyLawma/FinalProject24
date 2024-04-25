@@ -24,6 +24,7 @@ namespace FinalProject24
             public Image ItemImage { get; set; } // The actual image
             public string ImagePath { get; set; } // The path to the image file
         }
+
         private List<MenuItem> menuItems = new List<MenuItem>();
 
         private void SelectImageButton_Click(object sender, EventArgs e)

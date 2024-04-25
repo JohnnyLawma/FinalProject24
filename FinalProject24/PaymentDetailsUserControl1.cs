@@ -282,31 +282,6 @@ namespace FinalProject24
             }
         }
 
-        public string subTotalPriceText
-        {
-            get { return subtotalPriceLabel.Text; }
-            set { subtotalPriceLabel.Text = value; }
-
-
-        }
-
-
-        public string taxText
-        {
-            get { return taxPriceLabel.Text; }
-            set { taxPriceLabel.Text = value; }
-        }
-
-        public string totalPriceText
-        {
-            get { return totalDuePirceLabel.Text; }
-            set { totalDuePirceLabel.Text = value; }
-        }
-
-
-
-
-
         public void SetCartItemsAndDisplay(List<CartItem> items)
         {
             CartItems = items; // Save the items to the local list
@@ -392,10 +367,6 @@ namespace FinalProject24
             totalDuePirceLabel.Text = total.ToString("C2");
             button1.Text = "Pay: " + total.ToString("C2");
         }
-
-
-
-
 
         private void editLabel_Click(object sender, EventArgs e)
         {
@@ -535,12 +506,6 @@ namespace FinalProject24
                 }
             }
         }
-
-
-
-
-
-
 
         private bool ValidateInputs()
         {
@@ -695,13 +660,5 @@ namespace FinalProject24
 
             CheckOrCreatePaymentCsv(userID); 
         }
-
-
-
-
-
-
-
-
     }
 }

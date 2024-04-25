@@ -47,12 +47,6 @@ namespace FinalProject24
 
         }
 
-        // Method to set the status text color
-        public void SetStatusTextColor(Color color)
-        {
-            statusTextLabel.ForeColor = color;
-        }
-
         private void viewDetailButton_Click(object sender, EventArgs e)
         {
             ViewDetailsClicked?.Invoke(this, EventArgs.Empty);

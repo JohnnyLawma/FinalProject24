@@ -183,11 +183,6 @@ namespace FinalProject24
             }
         }
 
-
-
-
-
-
         // MenuItem class to hold the data for each menu item
         public class MenuItem
         {
@@ -196,18 +191,6 @@ namespace FinalProject24
             public string ImagePath { get; set; }
             public string ID { get; set; } // Added ID property
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
