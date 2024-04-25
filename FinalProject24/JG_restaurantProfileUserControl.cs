@@ -52,6 +52,12 @@ namespace FinalProject24
         // Event handler for applying changes to the profile
         private void applyChangeButton_Click(object sender, EventArgs e)
         {
+            if (newNameTextBox.Text == "" || newAddressTextBox.Text == "" || newEmailTextBox.Text == "" || 
+                newPhoneNumberTextBox.Text == "" || newDescriptionTextBox.Text == "")
+            {
+                MessageBox.Show("Please fill in every text box!");
+                return;
+            }
             UpdateProfile(newNameTextBox.Text, newAddressTextBox.Text, newPhoneNumberTextBox.Text,
                           newEmailTextBox.Text, newDescriptionTextBox.Text);
             LoadProfile(currentUsername);
