@@ -123,13 +123,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-
-
-
-
         private void NavigateToPaymentUserControl(object sender, EventArgs e)
         {
             if (!mainPanel.Controls.Contains(PaymentUserControl1.Instance))
