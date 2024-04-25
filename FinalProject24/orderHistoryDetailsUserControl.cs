@@ -23,26 +23,6 @@ namespace FinalProject24
             dateTextLabel.Text = date;
         }
 
-        public string orderNumberDetail
-        {
-            get { return orderNumberTextLabel.Text; }
-            set { orderNumberTextLabel.Text = value; }
-        }
-
-
-        public string dateTextDetail
-        {
-            get { return dateTextLabel.Text; }
-            set { dateTextLabel.Text = value; }
-        }
-
-
-        public string statusDetail
-        {
-            get { return statusTextLabel.Text; } 
-            set { statusTextLabel.Text = value; }
-        }
-
         public void LoadOrderDetails(string filePath)
         {
             StringBuilder detailBuilder = new StringBuilder();
@@ -101,11 +81,6 @@ namespace FinalProject24
             // Display the formatted details
             displayDetailText.Text = detailBuilder.ToString();
         }
-
-
-
-
-
 
     }
 }

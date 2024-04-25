@@ -9,14 +9,11 @@ namespace FinalProject24
     {
         // update image paths here to save time changing the path name
         string imagePathProfilePicture = @"..\..\..\..\Images\newDefaultProfilePicture.jpg"; // Going back 4 level
-        string imagePathMenuItems = @"..\..\..\..\Images\foodbowl.jpg";
 
         private CartUC cartUCInstance;
 
         // Field to store userID
         private string userID;
-
-        string name, email, phoneNumber, address;
 
         public mainPageForm1(string userID)
         {
@@ -67,9 +64,6 @@ namespace FinalProject24
             public int Quantity;
         }
 
-
-
-        //
         private void LoadUserProfile(string userID)
         {
             // First, check if userID is null or empty
@@ -325,8 +319,8 @@ namespace FinalProject24
             menuPanel.AutoScroll = true;
 
             int controlSpacing = 15; // Spacing between controls
-            int controlWidth = 400; // Width of the user control
-            int controlHeight = 382; // Height of the user control
+            int controlWidth = 214; // Width of the user control
+            int controlHeight = 178; // Height of the user control
             int numControlsPerRow = menuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
 
@@ -592,7 +586,7 @@ namespace FinalProject24
                                 totalText = $"${total:0.00}",
                                 statusText = "Completed",  // Assuming status is completed for past orders
                                 orderNumberText = "Order #" + orderNumber,
-                                Size = new Size(576, 164),
+                                Size = new Size(310, 77),
                                 Tag = file  // Store the path to the CSV file in the Tag property
                             };
                             historyCard.Location = new Point(0, yOffset);  // Set the location for each card.

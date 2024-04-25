@@ -40,7 +40,6 @@
             signOutButton = new Button();
             mainPanel = new Panel();
             TopBar = new Panel();
-            searchTextBox = new TextBox();
             cartButton = new Button();
             menuPanel = new Panel();
             menuLabel = new Label();
@@ -49,6 +48,7 @@
             orderHistoryLabel = new Label();
             orderSummaryPanel = new Panel();
             orderListPanel = new Panel();
+            label2 = new Label();
             MenuSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             TopBar.SuspendLayout();
@@ -147,7 +147,7 @@
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(75, 30);
             nameLabel.TabIndex = 4;
-            nameLabel.Text = "Emily";
+            nameLabel.Text = "Customer";
             nameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // signOutButton
@@ -173,7 +173,7 @@
             // 
             TopBar.AutoSize = true;
             TopBar.BackColor = Color.FromArgb(41, 41, 41);
-            TopBar.Controls.Add(searchTextBox);
+            TopBar.Controls.Add(label2);
             TopBar.Controls.Add(cartButton);
             TopBar.Location = new Point(101, 0);
             TopBar.Margin = new Padding(2, 1, 2, 1);
@@ -181,19 +181,9 @@
             TopBar.Size = new Size(882, 62);
             TopBar.TabIndex = 2;
             // 
-            // searchTextBox
-            // 
-            searchTextBox.Location = new Point(207, 14);
-            searchTextBox.Margin = new Padding(2, 1, 2, 1);
-            searchTextBox.Multiline = true;
-            searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(414, 34);
-            searchTextBox.TabIndex = 0;
-            searchTextBox.Text = "Search restaurant";
-            // 
             // cartButton
             // 
-            cartButton.Location = new Point(675, 14);
+            cartButton.Location = new Point(725, 14);
             cartButton.Margin = new Padding(2, 1, 2, 1);
             cartButton.Name = "cartButton";
             cartButton.Size = new Size(109, 32);
@@ -274,6 +264,17 @@
             orderListPanel.Size = new Size(329, 459);
             orderListPanel.TabIndex = 0;
             // 
+            // label2
+            // 
+            label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(351, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(173, 38);
+            label2.TabIndex = 3;
+            label2.Text = "Welcome!";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // mainPageForm1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -291,7 +292,6 @@
             MenuSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             TopBar.ResumeLayout(false);
-            TopBar.PerformLayout();
             orderHistoryPanel.ResumeLayout(false);
             orderHistoryPanel.PerformLayout();
             ResumeLayout(false);
@@ -308,7 +308,6 @@
         private Label nameLabel;
         private Button signOutButton;
         private Panel TopBar;
-        private TextBox searchTextBox;
         private Button cartButton;
         private Button homeButton;
         private Panel menuPanel;
@@ -321,5 +320,6 @@
         private Panel orderSummaryPanel;
         private Label orderHistoryLabel;
         private Label label1;
+        private Label label2;
     }
 }

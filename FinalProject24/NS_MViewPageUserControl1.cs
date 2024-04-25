@@ -117,8 +117,8 @@ namespace FinalProject24
             loadMenuPanel.AutoScroll = true;
 
             int controlSpacing = 15; // Spacing between controls
-            int controlWidth = 400; // Width of the user control
-            int controlHeight = 382; // Height of the user control
+            int controlWidth = 214; // Width of the user control
+            int controlHeight = 178; // Height of the user control
             int numControlsPerRow = loadMenuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
 
@@ -183,11 +183,6 @@ namespace FinalProject24
             }
         }
 
-
-
-
-
-
         // MenuItem class to hold the data for each menu item
         public class MenuItem
         {
@@ -196,18 +191,6 @@ namespace FinalProject24
             public string ImagePath { get; set; }
             public string ID { get; set; } // Added ID property
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

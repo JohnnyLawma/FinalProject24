@@ -191,7 +191,7 @@
             currDescriptionLabel.Name = "currDescriptionLabel";
             currDescriptionLabel.Size = new Size(325, 120);
             currDescriptionLabel.TabIndex = 11;
-            currDescriptionLabel.Text = "Chinese eatery with a lineup of familiar eats in an informa, functional setting.";
+            currDescriptionLabel.Text = "Chinese eatery with a lineup of familiar eats in an informal functional setting.";
             currDescriptionLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label19
@@ -281,7 +281,7 @@
             newAddressTextBox.Location = new Point(22, 101);
             newAddressTextBox.Multiline = true;
             newAddressTextBox.Name = "newAddressTextBox";
-            newAddressTextBox.Size = new Size(242, 26);
+            newAddressTextBox.Size = new Size(242, 27);
             newAddressTextBox.TabIndex = 20;
             // 
             // newPhoneNumberTextBox
@@ -290,16 +290,16 @@
             newPhoneNumberTextBox.Location = new Point(22, 177);
             newPhoneNumberTextBox.Multiline = true;
             newPhoneNumberTextBox.Name = "newPhoneNumberTextBox";
-            newPhoneNumberTextBox.Size = new Size(239, 23);
+            newPhoneNumberTextBox.Size = new Size(242, 27);
             newPhoneNumberTextBox.TabIndex = 21;
             // 
             // newEmailTextBox
             // 
             newEmailTextBox.Font = new Font("Segoe UI", 9F);
-            newEmailTextBox.Location = new Point(19, 242);
+            newEmailTextBox.Location = new Point(22, 242);
             newEmailTextBox.Multiline = true;
             newEmailTextBox.Name = "newEmailTextBox";
-            newEmailTextBox.Size = new Size(239, 25);
+            newEmailTextBox.Size = new Size(242, 27);
             newEmailTextBox.TabIndex = 22;
             // 
             // newDescriptionTextBox

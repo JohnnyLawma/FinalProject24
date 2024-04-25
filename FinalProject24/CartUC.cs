@@ -31,9 +31,6 @@ namespace FinalProject24
         public CartUC()
         {
             InitializeComponent();
-
-
-
         }
 
         private List<CartItem> selectedItems = new List<CartItem>();
@@ -78,7 +75,7 @@ namespace FinalProject24
                     FoodName = item.FoodName,
                     Price = item.Price,
                     Quantity = item.Quantity,
-                    ImagePath = item.ImagePath
+                    ImagePath = item.ImagePath,
                 };
 
 
@@ -89,7 +86,7 @@ namespace FinalProject24
 
                 cartItemControl.Location = new Point(0, yOffset); // Set the location with the current yOffset.
                 yOffset += cartItemControl.Height + 10; // Increment yOffset for the next item.
-
+                Size = cartItemControl.Size;
                 SubscribeToItemEvents(cartItemControl);
 
                 loadCardPanel.Controls.Add(cartItemControl); // Add the control to the panel.

@@ -41,36 +41,40 @@
             // 
             pendingPanel.AutoScroll = true;
             pendingPanel.BorderStyle = BorderStyle.FixedSingle;
-            pendingPanel.Location = new Point(31, 67);
+            pendingPanel.Location = new Point(17, 31);
+            pendingPanel.Margin = new Padding(2, 1, 2, 1);
             pendingPanel.Name = "pendingPanel";
-            pendingPanel.Size = new Size(520, 976);
+            pendingPanel.Size = new Size(281, 459);
             pendingPanel.TabIndex = 0;
             // 
             // acceptedPanel
             // 
             acceptedPanel.AutoScroll = true;
             acceptedPanel.BorderStyle = BorderStyle.FixedSingle;
-            acceptedPanel.Location = new Point(572, 65);
+            acceptedPanel.Location = new Point(308, 30);
+            acceptedPanel.Margin = new Padding(2, 1, 2, 1);
             acceptedPanel.Name = "acceptedPanel";
-            acceptedPanel.Size = new Size(517, 978);
+            acceptedPanel.Size = new Size(279, 460);
             acceptedPanel.TabIndex = 1;
             // 
             // readyPanel
             // 
             readyPanel.AutoScroll = true;
             readyPanel.BorderStyle = BorderStyle.FixedSingle;
-            readyPanel.Location = new Point(1109, 65);
+            readyPanel.Location = new Point(597, 30);
+            readyPanel.Margin = new Padding(2, 1, 2, 1);
             readyPanel.Name = "readyPanel";
-            readyPanel.Size = new Size(501, 978);
+            readyPanel.Size = new Size(271, 460);
             readyPanel.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(21, 19);
+            label1.Location = new Point(11, 9);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(139, 45);
+            label1.Size = new Size(69, 21);
             label1.TabIndex = 3;
             label1.Text = "Pending";
             // 
@@ -78,9 +82,10 @@
             // 
             acceptedLabel.AutoSize = true;
             acceptedLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            acceptedLabel.Location = new Point(563, 17);
+            acceptedLabel.Location = new Point(303, 8);
+            acceptedLabel.Margin = new Padding(2, 0, 2, 0);
             acceptedLabel.Name = "acceptedLabel";
-            acceptedLabel.Size = new Size(155, 45);
+            acceptedLabel.Size = new Size(81, 21);
             acceptedLabel.TabIndex = 4;
             acceptedLabel.Text = "Accepted";
             // 
@@ -88,9 +93,10 @@
             // 
             readyLabel.AutoSize = true;
             readyLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            readyLabel.Location = new Point(1099, 17);
+            readyLabel.Location = new Point(592, 8);
+            readyLabel.Margin = new Padding(2, 0, 2, 0);
             readyLabel.Name = "readyLabel";
-            readyLabel.Size = new Size(108, 45);
+            readyLabel.Size = new Size(55, 21);
             readyLabel.TabIndex = 5;
             readyLabel.Text = "Ready";
             // 
@@ -99,9 +105,10 @@
             RefreshButton.BackColor = SystemColors.ControlText;
             RefreshButton.Font = new Font("Segoe UI Semibold", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             RefreshButton.ForeColor = SystemColors.ControlLightLight;
-            RefreshButton.Location = new Point(691, 1093);
+            RefreshButton.Location = new Point(372, 512);
+            RefreshButton.Margin = new Padding(2, 1, 2, 1);
             RefreshButton.Name = "RefreshButton";
-            RefreshButton.Size = new Size(247, 73);
+            RefreshButton.Size = new Size(133, 34);
             RefreshButton.TabIndex = 6;
             RefreshButton.Text = "Refresh";
             RefreshButton.UseVisualStyleBackColor = false;
@@ -109,7 +116,7 @@
             // 
             // ManagerMainPageUserControl1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(RefreshButton);
             Controls.Add(readyLabel);
@@ -118,9 +125,8 @@
             Controls.Add(readyPanel);
             Controls.Add(acceptedPanel);
             Controls.Add(pendingPanel);
-            Margin = new Padding(6);
             Name = "ManagerMainPageUserControl1";
-            Size = new Size(1645, 1199);
+            Size = new Size(886, 562);
             ResumeLayout(false);
             PerformLayout();
         }

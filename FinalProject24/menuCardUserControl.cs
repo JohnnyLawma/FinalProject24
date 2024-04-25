@@ -59,17 +59,6 @@ namespace FinalProject24
             // Add other properties if needed
         }
 
-
-        public void DisableAddButton()
-        {
-            addButton.Enabled = false;
-        }
-
-        public void DisableRemoveButton()
-        {
-            removeButton.Enabled = false;
-        }
-
         public void HideAddButton()
         {
             addButton.Visible = false;

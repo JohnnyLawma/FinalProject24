@@ -44,7 +44,24 @@ namespace FinalProject24
                 yOffset += control.Height + 10; // Adjust the space between controls if necessary
             }
         }
-
+        private void UpdateAcceptUserControlPositions()
+        {
+            int yOffset = 0;
+            foreach (Control control in acceptedPanel.Controls)
+            {
+                control.Location = new Point(0, yOffset);
+                yOffset += control.Height + 10; // Adjust the space between controls if necessary
+            }
+        }
+        private void UpdateReadyUserControlPositions()
+        {
+            int yOffset = 0;
+            foreach (Control control in readyPanel.Controls)
+            {
+                control.Location = new Point(0, yOffset);
+                yOffset += control.Height + 10; // Adjust the space between controls if necessary
+            }
+        }
 
         private void LoadStatusUserControl()
         {
@@ -65,7 +82,7 @@ namespace FinalProject24
 
                     if (orderStatusLine != null && orderStatusLine.Contains("Order Status: Pending"))
                     {
-                        stausUserControl statusControl = new stausUserControl();
+                        statusUserControl statusControl = new statusUserControl();
 
                         // Extract the order number from the file name
                         string orderNumber = Path.GetFileNameWithoutExtension(csvFilePath);
@@ -96,7 +113,7 @@ namespace FinalProject24
                         statusControl.CancelButtonClicked += StatusControl_CancelButtonClicked;
 
                         // Set the size of the control
-                        statusControl.Size = new Size(480, 530); // Adjust height as needed
+                        statusControl.Size = new Size(258, 248); // Adjust height as needed
 
                         // Set the location of the control
                         statusControl.Location = new Point(0, yOffset);
@@ -124,7 +141,7 @@ namespace FinalProject24
         // Event handler for the CancelButtonClicked event
         private void StatusControl_CancelButtonClicked(object sender, EventArgs e)
         {
-            var statusControl = sender as stausUserControl;
+            var statusControl = sender as statusUserControl;
             if (statusControl != null)
             {
                 MessageBox.Show("Oder has been cancel");
@@ -137,7 +154,7 @@ namespace FinalProject24
         // Event handler for the StatusButtonClicked event
         private void StatusControl_StatusButtonClicked(object sender, EventArgs e)
         {
-            var statusControl = sender as stausUserControl;
+            var statusControl = sender as statusUserControl;
             if (statusControl != null)
             {
                 if (statusControl.StatusButtonText == "Accept")
@@ -150,7 +167,7 @@ namespace FinalProject24
                     statusControl.StatusButtonClicked -= StatusControl_StatusButtonClicked;
                     statusControl.StatusButtonClicked += StatusControl_ReadyButtonClicked;
 
-                    UpdateStatusUserControlPositions();
+                    UpdateAcceptUserControlPositions();
                 }
             }
         }
@@ -159,7 +176,7 @@ namespace FinalProject24
 
         private void StatusControl_ReadyButtonClicked(object sender, EventArgs e)
         {
-            var statusControl = sender as stausUserControl;
+            var statusControl = sender as statusUserControl;
             if (statusControl != null)
             {
                 if (statusControl.StatusButtonText == "Ready")
@@ -171,6 +188,8 @@ namespace FinalProject24
                                                                  // Subscribe to the new click event for the "Finished" button
                     statusControl.StatusButtonClicked -= StatusControl_ReadyButtonClicked;
                     statusControl.StatusButtonClicked += StatusControl_FinishedButtonClicked;
+
+                    UpdateReadyUserControlPositions();
                 }
             }
         }
@@ -178,12 +197,13 @@ namespace FinalProject24
 
         private void StatusControl_FinishedButtonClicked(object sender, EventArgs e)
         {
-            var statusControl = sender as stausUserControl;
+            var statusControl = sender as statusUserControl;
             if (statusControl != null && statusControl.StatusButtonText == "Finished")
             {
                 // Update the CSV file to set the Order Status to Finished
                 string orderNumber = statusControl.GetName.Replace("Order #", "").Trim();
                 UpdateOrderStatusInCSV(orderNumber, "Finished");
+
 
                 MessageBox.Show("Order has been finished and archived.");
 
