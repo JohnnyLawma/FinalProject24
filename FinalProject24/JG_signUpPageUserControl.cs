@@ -37,7 +37,7 @@ namespace FinalProject24
         public JG_signUpPageUserControl()
         {
             InitializeComponent();
-            //HideRadioButtons();
+            HideRadioButtons(); 
         }
 
         string newEmail, newPassword, newName, confirmPassword, isCustomer, phoneNumber;
