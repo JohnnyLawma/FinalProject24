@@ -178,6 +178,7 @@ namespace FinalProject24 {
             }
         }
 
+
         // Updates the CSV file with new user details
         private void UpdateCsvFile(string filePath)
         {
