@@ -138,9 +138,9 @@ namespace FinalProject24 {
             string newEmail = textBox4.Text.Trim();
 
             // Check if the current email is for the manager account and if the new email is different
-            if (userEmail.Equals("456") && !newEmail.Equals(userEmail))
+            if (userEmail.Equals("managerAccount@gmail.com") && !newEmail.Equals(userEmail))
             {
-                MessageBox.Show("This is a manager account; you cannot change the email. Please enter 456 as email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This is a manager account; you cannot change the email. Please enter managerAccount@gmail.com as email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Exits the method to prevent further processing
             }
 
