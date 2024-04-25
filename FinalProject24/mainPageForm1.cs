@@ -311,8 +311,6 @@ namespace FinalProject24
                     }
 
 
-
-
                 }
             }
             catch (Exception ex)
@@ -402,8 +400,6 @@ namespace FinalProject24
             }
         }
 
-        
-
 
         // This is load when the Form is loaded.
         private void mainPageForm1_Load(object sender, EventArgs e)
@@ -411,14 +407,6 @@ namespace FinalProject24
             PopulateMenuPanel();
             mainPanel.Visible = false;
         } // mainPageForm1_Load End Line
-
-
-
-
-        private void menuLabel_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void cartButton_Click(object sender, EventArgs e)
@@ -560,49 +548,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-        //
-        private string SaveOrderDetailsToCSV(string orderNumber, List<CartItem> items, decimal subtotal, decimal tax, decimal total)
-        {
-            // Define the directory where the CSV files will be saved
-            string relativePath = @"..\..\..\..\receipts\";
-            string directoryPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath));
-
-            // Ensure the directory exists
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            // Create the file path for the new CSV file
-            string filePath = Path.Combine(directoryPath, $"{orderNumber}.csv");
-
-            // Open a new StreamWriter to write to the CSV file
-            using (StreamWriter file = new StreamWriter(filePath))
-            {
-                // Write the CSV headers
-                file.WriteLine("Item Name,Quantity,Price,Total");
-
-                // Write each item's details to the CSV
-                foreach (var item in items)
-                {
-                    file.WriteLine($"{item.FoodName},{item.Quantity},${item.Price},${item.Price * item.Quantity}");
-                }
-
-                // Write the subtotal, tax, and total to the CSV
-                file.WriteLine($"Subtotal,,${subtotal:0.00}");
-                file.WriteLine($"Tax,,${tax:0.00}");
-                file.WriteLine($"Total,,${total:0.00}");
-            }
-
-            // Return the file path in case it needs to be used (e.g., for reading or sending as an email attachment)
-            return filePath;
-        }
-
-
-
         private void HistoryCard_ViewDetailsClicked(object sender, EventArgs e)
         {
             if (sender is orderHistoryCard historyCard)
@@ -693,21 +638,5 @@ namespace FinalProject24
             orderListPanel.AutoScroll = true;
         }
 
-
-
-        private void orderHistoryPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void orderListPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void orderSummaryPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     } // mainPageForm1 End Line
 }

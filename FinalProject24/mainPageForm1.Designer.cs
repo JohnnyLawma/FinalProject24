@@ -221,7 +221,6 @@
             menuLabel.Size = new Size(52, 21);
             menuLabel.TabIndex = 1;
             menuLabel.Text = "Menu";
-            menuLabel.Click += menuLabel_Click;
             // 
             // orderHistoryPanel
             // 
@@ -234,7 +233,6 @@
             orderHistoryPanel.Name = "orderHistoryPanel";
             orderHistoryPanel.Size = new Size(882, 491);
             orderHistoryPanel.TabIndex = 0;
-            orderHistoryPanel.Paint += orderHistoryPanel_Paint;
             // 
             // label1
             // 
@@ -266,7 +264,6 @@
             orderSummaryPanel.Name = "orderSummaryPanel";
             orderSummaryPanel.Size = new Size(434, 460);
             orderSummaryPanel.TabIndex = 1;
-            orderSummaryPanel.Paint += orderSummaryPanel_Paint;
             // 
             // orderListPanel
             // 
@@ -276,7 +273,6 @@
             orderListPanel.Name = "orderListPanel";
             orderListPanel.Size = new Size(329, 459);
             orderListPanel.TabIndex = 0;
-            orderListPanel.Paint += orderListPanel_Paint;
             // 
             // mainPageForm1
             // 
