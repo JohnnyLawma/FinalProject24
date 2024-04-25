@@ -117,8 +117,8 @@ namespace FinalProject24
             loadMenuPanel.AutoScroll = true;
 
             int controlSpacing = 15; // Spacing between controls
-            int controlWidth = 400; // Width of the user control
-            int controlHeight = 382; // Height of the user control
+            int controlWidth = 214; // Width of the user control
+            int controlHeight = 178; // Height of the user control
             int numControlsPerRow = loadMenuPanel.Width / controlWidth; // Calculate how many controls fit per row
 
 
