@@ -199,11 +199,6 @@ namespace FinalProject24
         }
 
 
-
-
-
-
-
         private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!panel1.Controls.Contains(JG_signUpPageUserControl.Instance))
