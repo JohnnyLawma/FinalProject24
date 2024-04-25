@@ -177,7 +177,6 @@ namespace FinalProject24 {
                 MessageBox.Show("Failed to find the CSV file to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-4
 
         // Updates the CSV file with new user details
         private void UpdateCsvFile(string filePath)
