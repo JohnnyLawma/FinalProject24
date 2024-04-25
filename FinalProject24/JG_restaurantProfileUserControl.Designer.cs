@@ -296,7 +296,7 @@
             // newEmailTextBox
             // 
             newEmailTextBox.Font = new Font("Segoe UI", 9F);
-            newEmailTextBox.Location = new Point(19, 242);
+            newEmailTextBox.Location = new Point(22, 242);
             newEmailTextBox.Multiline = true;
             newEmailTextBox.Name = "newEmailTextBox";
             newEmailTextBox.Size = new Size(239, 25);
