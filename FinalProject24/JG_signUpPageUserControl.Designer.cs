@@ -117,7 +117,7 @@
             label4.Size = new Size(186, 21);
             label4.TabIndex = 32;
             label4.Text = "Already have an account?";
-            label4.Click += label4_Click;
+            //label4.Click += label4_Click;
             // 
             // createAccountButton
             // 
