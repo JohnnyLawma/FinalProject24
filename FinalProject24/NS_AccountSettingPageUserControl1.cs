@@ -134,10 +134,21 @@ namespace FinalProject24 {
         // Event handler for when the 'Apply' button is clicked
         private void Applybutton_Click(object sender, EventArgs e)
         {
-            UserEmail = Environment.GetEnvironmentVariable("EmailEnv"); // Refreshes userEmail from environment variable
-                                                                        // Collects new values from text boxes
-            string newName = textBox3.Text.Trim();
+            // Gets the new email from the text box
             string newEmail = textBox4.Text.Trim();
+
+            // Check if the current email is for the manager account and if the new email is different
+            if (userEmail.Equals("456") && !newEmail.Equals(userEmail))
+            {
+                MessageBox.Show("This is a manager account; you cannot change the email. Please enter 456 as email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exits the method to prevent further processing
+            }
+
+            // Refreshes userEmail from environment variable
+            UserEmail = Environment.GetEnvironmentVariable("EmailEnv");
+
+            // Collects new values from text boxes
+            string newName = textBox3.Text.Trim();
             string newPhone = textBox5.Text.Trim();
 
             // Saves the old email to help locate the correct CSV record
@@ -166,6 +177,7 @@ namespace FinalProject24 {
                 MessageBox.Show("Failed to find the CSV file to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+4
 
         // Updates the CSV file with new user details
         private void UpdateCsvFile(string filePath)
